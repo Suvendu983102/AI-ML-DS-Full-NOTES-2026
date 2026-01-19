@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python ML Libraries - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="topics1.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#topics">Topics</a> / 
+                <span>Python ML Libraries</span>
+            </div>
+            <h1>Python ML Libraries (Hours 5-8)</h1>
+            <p class="topic-description">Essential libraries for Machine Learning: NumPy, Pandas, Matplotlib, and Scikit-learn</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 4 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Intermediate</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="topic-sidebar">
+                    <h3>In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#hour5" class="active">Hour 5: NumPy Arrays</a></li>
+                        <li><a href="#hour6">Hour 6: Pandas Basics</a></li>
+                        <li><a href="#hour7">Hour 7: Data Cleaning</a></li>
+                        <li><a href="#hour8">Hour 8: Visualization</a></li>
+                        <li><a href="#practice">Practice Exercises</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Library Cheat Sheet</h4>
+                        <div class="library-icons">
+                            <div class="library-icon">
+                                <i class="fas fa-cube"></i>
+                                <span>NumPy</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-table"></i>
+                                <span>Pandas</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Matplotlib</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-robot"></i>
+                                <span>Scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 5: NumPy -->
+                    <section id="hour5" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 5</span> NumPy - Numerical Python</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Why NumPy?</h3>
+                            <p>NumPy provides fast mathematical operations on arrays - essential for ML algorithms. It's 50x faster than regular Python lists for numerical operations.</p>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Creating NumPy Arrays</span>
+                                    <button class="copy-code">
+                                        <i class="far fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <pre><code>import numpy as np
+
+# Create arrays
+arr = np.array([1, 2, 3, 4, 5])
+matrix = np.array([[1, 2], [3, 4]])
+
+# Special arrays
+zeros = np.zeros((3, 3))
+ones = np.ones((2, 4))
+range_arr = np.arange(0, 10, 2)  # [0, 2, 4, 6, 8]
+random_arr = np.random.rand(3, 3)
+
+print("Array:", arr)
+print("Matrix shape:", matrix.shape)
+print("Zeros matrix:\n", zeros)</code></pre>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Array Operations</span>
+                                </div>
+                                <pre><code># Mathematical operations
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+print("Addition:", a + b)
+print("Multiplication:", a * 2)
+print("Dot product:", np.dot(a, b))
+print("Sum:", np.sum(a))
+print("Mean:", np.mean(a))
+print("Standard deviation:", np.std(a))
+
+# Matrix operations
+mat1 = np.array([[1, 2], [3, 4]])
+mat2 = np.array([[5, 6], [7, 8]])
+print("Matrix multiplication:\n", np.matmul(mat1, mat2))</code></pre>
+                            </div>
+                            
+                            <h3>Interactive NumPy Demo</h3>
+                            <div class="interactive-demo">
+                                <div class="demo-controls">
+                                    <select id="numpy-operation">
+                                        <option value="create">Create Array</option>
+                                        <option value="math">Math Operations</option>
+                                        <option value="reshape">Reshape</option>
+                                        <option value="statistics">Statistics</option>
+                                    </select>
+                                    <button onclick="runNumpyDemo()" class="btn small">
+                                        <i class="fas fa-play"></i> Run Demo
+                                    </button>
+                                    <button onclick="clearNumpyDemo()" class="btn small">
+                                        <i class="fas fa-redo"></i> Clear
+                                    </button>
+                                </div>
+                                <div id="numpy-output" class="demo-output"></div>
+                            </div>
+                            
+                            <div class="key-points">
+                                <h4><i class="fas fa-key"></i> Key Points</h4>
+                                <ul>
+                                    <li>NumPy arrays are homogeneous (all elements same type)</li>
+                                    <li>Arrays support vectorized operations (no loops needed)</li>
+                                    <li>Memory efficient compared to Python lists</li>
+                                    <li>Foundation for Pandas and Scikit-learn</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 6: Pandas -->
+                    <section id="hour6" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 6</span> Pandas - Data Analysis Library</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Series and DataFrames</h3>
+                            <p>Pandas provides two main data structures: Series (1D) and DataFrame (2D). Think of DataFrames as Excel spreadsheets in Python.</p>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Working with Series</span>
+                                </div>
+                                <pre><code>import pandas as pd
+
+# Create Series
+s = pd.Series([1, 3, 5, np.nan, 6, 8])
+print("Series:")
+print(s)
+print("\nIndex:", s.index)
+print("Values:", s.values)
+print("Mean:", s.mean())
+print("Sum:", s.sum())
+
+# Series with custom index
+temps = pd.Series([22, 25, 18, 30], 
+                  index=['Mon', 'Tue', 'Wed', 'Thu'])
+print("\nTemperatures:")
+print(temps)
+print("Wednesday temp:", temps['Wed'])</code></pre>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>DataFrames: Excel-like Tables</span>
+                                </div>
+                                <pre><code># Create DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve'],
+    'Age': [21, 22, 20, 19, 22],
+    'Grade': ['A', 'B', 'A', 'C', 'B'],
+    'Score': [85, 78, 92, 65, 88]
+}
+df = pd.DataFrame(data)
+
+print("DataFrame:")
+print(df)
+print("\nShape:", df.shape)
+print("Columns:", df.columns.tolist())
+print("Index:", df.index.tolist())
+
+# Accessing data
+print("\nFirst 3 rows:")
+print(df.head(3))
+print("\nAge column:")
+print(df['Age'])
+print("\nRow 2:")
+print(df.iloc[2])
+print("\nGrades A only:")
+print(df[df['Grade'] == 'A'])</code></pre>
+                            </div>
+                            
+                            <h3>DataFrame Visualizer</h3>
+                            <div class="dataframe-visualizer">
+                                <div class="table-container">
+                                    <table id="dataframe-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Age</th>
+                                                <th>Grade</th>
+                                                <th>Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Alice</td>
+                                                <td>21</td>
+                                                <td>A</td>
+                                                <td>85</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bob</td>
+                                                <td>22</td>
+                                                <td>B</td>
+                                                <td>78</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Charlie</td>
+                                                <td>20</td>
+                                                <td>A</td>
+                                                <td>92</td>
+                                            </tr>
+                                            <tr>
+                                                <td>David</td>
+                                                <td>19</td>
+                                                <td>C</td>
+                                                <td>65</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Eve</td>
+                                                <td>22</td>
+                                                <td>B</td>
+                                                <td>88</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="dataframe-actions">
+                                    <button onclick="sortTable('Age')" class="btn small">
+                                        <i class="fas fa-sort-numeric-down"></i> Sort by Age
+                                    </button>
+                                    <button onclick="filterTable('A')" class="btn small">
+                                        <i class="fas fa-filter"></i> Filter Grade A
+                                    </button>
+                                    <button onclick="showStats()" class="btn small">
+                                        <i class="fas fa-chart-bar"></i> Show Stats
+                                    </button>
+                                </div>
+                                <div id="table-stats" class="stats-output"></div>
+                            </div>
+                            
+                            <div class="key-points">
+                                <h4><i class="fas fa-key"></i> Key Points</h4>
+                                <ul>
+                                    <li>DataFrame is a 2D labeled data structure with columns of potentially different types</li>
+                                    <li>Can handle missing data intelligently</li>
+                                    <li>Powerful data alignment and indexing capabilities</li>
+                                    <li>Can read/write data from various formats (CSV, Excel, SQL)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 7: Data Cleaning -->
+                    <section id="hour7" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 7</span> Data Cleaning with Pandas</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Handling Missing Data</h3>
+                            <p>Real-world datasets often have missing values. Pandas provides tools to clean and prepare data for ML.</p>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Data Cleaning Techniques</span>
+                                </div>
+                                <pre><code>import pandas as pd
+import numpy as np
+
+# Create sample data with missing values
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', None, 'Eve'],
+    'Age': [21, None, 20, 19, 22],
+    'Salary': [30000, 35000, None, 28000, 32000],
+    'Department': ['IT', 'IT', 'HR', 'HR', None],
+    'Experience': [2, 5, None, 4, 1]
+}
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+print(f"\nMissing values per column:")
+print(df.isnull().sum())
+
+# Method 1: Fill with specific values
+df_filled = df.copy()
+df_filled['Age'].fillna(df_filled['Age'].mean(), inplace=True)
+df_filled['Salary'].fillna(df_filled['Salary'].median(), inplace=True)
+df_filled['Department'].fillna('Unknown', inplace=True)
+df_filled['Experience'].fillna(0, inplace=True)
+
+# Method 2: Drop rows/columns
+df_dropped_rows = df.dropna()  # Drop rows with any NaN
+df_dropped_cols = df.dropna(axis=1)  # Drop columns with any NaN
+
+print("\nAfter filling missing values:")
+print(df_filled)
+print(f"\nRows dropped: {len(df) - len(df_dropped_rows)}")
+print(f"Columns dropped: {df.shape[1] - df_dropped_cols.shape[1]}")</code></pre>
+                            </div>
+                            
+                            <h3>Data Aggregations and Grouping</h3>
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>GroupBy and Aggregations</span>
+                                </div>
+                                <pre><code># Sample employee data
+employee_data = {
+    'Department': ['IT', 'IT', 'HR', 'HR', 'IT', 'Sales', 'Sales', 'HR'],
+    'Employee': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Henry'],
+    'Salary': [50000, 55000, 45000, 47000, 52000, 40000, 42000, 46000],
+    'Experience': [2, 5, 3, 4, 1, 2, 3, 5],
+    'Performance': [85, 90, 78, 82, 88, 75, 80, 85]
+}
+df = pd.DataFrame(employee_data)
+
+# Group by department
+dept_stats = df.groupby('Department').agg({
+    'Salary': ['mean', 'min', 'max', 'count', 'sum'],
+    'Experience': 'mean',
+    'Performance': 'mean'
+}).round(2)
+
+print("Department Statistics:")
+print(dept_stats)
+
+# Pivot tables
+pivot = pd.pivot_table(df, 
+                       values=['Salary', 'Performance'], 
+                       index='Department', 
+                       aggfunc={'Salary': ['mean', 'sum'], 
+                                'Performance': 'mean'})
+
+print("\nPivot Table:")
+print(pivot)
+
+# Multi-level grouping
+print("\nAdvanced grouping (by Department and Experience level):")
+df['Exp_Level'] = pd.cut(df['Experience'], 
+                         bins=[0, 2, 4, 6], 
+                         labels=['Junior', 'Mid', 'Senior'])
+grouped = df.groupby(['Department', 'Exp_Level']).agg({
+    'Salary': 'mean',
+    'Employee': 'count'
+})
+print(grouped)</code></pre>
+                            </div>
+                            
+                            <div class="data-cleaning-exercise">
+                                <h4><i class="fas fa-tasks"></i> Data Cleaning Exercise</h4>
+                                <p>Try cleaning this dataset:</p>
+                                <pre><code># Dataset with issues
+raw_data = {
+    'Product': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+    'Price': [100, None, 150, 200, None, 175, 120],
+    'Quantity': [10, 15, None, 20, 5, None, 8],
+    'Category': ['Electronics', 'Clothing', 'Electronics', None, 'Clothing', 'Home', 'Electronics'],
+    'Rating': [4.5, 3.8, None, 4.2, 3.5, 4.0, 4.7]
+}</code></pre>
+                                <div class="exercise-tasks">
+                                    <ol>
+                                        <li>Fill missing prices with average price</li>
+                                        <li>Fill missing quantities with 0</li>
+                                        <li>Fill missing categories with 'Unknown'</li>
+                                        <li>Fill missing ratings with median rating</li>
+                                        <li>Calculate total revenue (Price × Quantity) for each product</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 8: Visualization & ML Libraries -->
+                    <section id="hour8" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 8</span> Visualization & ML Libraries Overview</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Matplotlib & Seaborn Visualization</h3>
+                            <p>Visualization is crucial for understanding data before applying ML algorithms.</p>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Basic Visualization with Matplotlib</span>
+                                </div>
+                                <pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+# Sample data
+np.random.seed(42)
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+# Create figure with subplots
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# 1. Line plot
+axes[0, 0].plot(x, y1, 'b-', linewidth=2, label='sin(x)')
+axes[0, 0].plot(x, y2, 'r--', linewidth=2, label='cos(x)')
+axes[0, 0].set_title('Trigonometric Functions', fontsize=12)
+axes[0, 0].set_xlabel('X values')
+axes[0, 0].set_ylabel('Y values')
+axes[0, 0].legend()
+axes[0, 0].grid(True, alpha=0.3)
+
+# 2. Scatter plot
+x_scatter = np.random.randn(100)
+y_scatter = 2 * x_scatter + np.random.randn(100) * 0.5
+axes[0, 1].scatter(x_scatter, y_scatter, alpha=0.6, 
+                   c='green', edgecolors='black', linewidth=0.5)
+axes[0, 1].set_title('Scatter Plot with Correlation', fontsize=12)
+axes[0, 1].set_xlabel('Feature 1')
+axes[0, 1].set_ylabel('Feature 2')
+
+# Add trend line
+z = np.polyfit(x_scatter, y_scatter, 1)
+p = np.poly1d(z)
+axes[0, 1].plot(x_scatter, p(x_scatter), "r--", alpha=0.8)
+
+# 3. Histogram
+data_hist = np.random.randn(1000)
+axes[1, 0].hist(data_hist, bins=30, edgecolor='black', 
+                alpha=0.7, color='skyblue')
+axes[1, 0].set_title('Histogram of Normal Distribution', fontsize=12)
+axes[1, 0].set_xlabel('Value')
+axes[1, 0].set_ylabel('Frequency')
+
+# 4. Bar chart (using Seaborn)
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [25, 40, 30, 35, 28]
+sns.barplot(x=categories, y=values, ax=axes[1, 1], 
+            palette='viridis', alpha=0.8)
+axes[1, 1].set_title('Bar Chart (Seaborn)', fontsize=12)
+axes[1, 1].set_xlabel('Category')
+axes[1, 1].set_ylabel('Value')
+
+# Add value labels on bars
+for i, v in enumerate(values):
+    axes[1, 1].text(i, v + 0.5, str(v), 
+                   ha='center', va='bottom', fontweight='bold')
+
+plt.tight_layout()
+plt.show()</code></pre>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Advanced Visualizations with Seaborn</span>
+                                </div>
+                                <pre><code># Seaborn advanced plots
+import seaborn as sns
+
+# Load sample dataset
+tips = sns.load_dataset('tips')
+
+# Create a dashboard of different plots
+fig, axes = plt.subplots(2, 2, figsize=(14, 12))
+
+# 1. Box plot
+sns.boxplot(x='day', y='total_bill', data=tips, ax=axes[0, 0])
+axes[0, 0].set_title('Box Plot: Total Bill by Day')
+
+# 2. Violin plot
+sns.violinplot(x='day', y='total_bill', hue='sex', 
+               data=tips, split=True, ax=axes[0, 1])
+axes[0, 1].set_title('Violin Plot: Bill by Day and Gender')
+
+# 3. Heatmap (correlation)
+corr_matrix = tips.corr()
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', 
+            center=0, ax=axes[1, 0])
+axes[1, 0].set_title('Correlation Heatmap')
+
+# 4. Pair plot (multiple relationships)
+# For demo purposes, showing subset
+subset = tips[['total_bill', 'tip', 'size']]
+sns.pairplot(subset)
+plt.suptitle('Pair Plot of Numerical Features', y=1.02)
+
+plt.tight_layout()
+plt.show()</code></pre>
+                            </div>
+                            
+                            <h3>Essential ML Libraries Overview</h3>
+                            <div class="libraries-overview">
+                                <div class="library-card">
+                                    <div class="library-icon-header">
+                                        <i class="fas fa-robot"></i>
+                                        <h4>Scikit-learn</h4>
+                                    </div>
+                                    <p class="library-description">Most popular ML library with implementations of classification, regression, clustering algorithms.</p>
+                                    <div class="library-features">
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>Simple and consistent API</li>
+                                            <li>Built on NumPy, SciPy, and matplotlib</li>
+                                            <li>Comprehensive documentation</li>
+                                            <li>Open source, commercially usable</li>
+                                        </ul>
+                                    </div>
+                                    <div class="code-snippet">
+                                        <pre><code>from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+# Train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict
+predictions = model.predict(X_test)</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="library-card">
+                                    <div class="library-icon-header">
+                                        <i class="fas fa-network-wired"></i>
+                                        <h4>TensorFlow & PyTorch</h4>
+                                    </div>
+                                    <p class="library-description">Deep learning frameworks for neural networks and complex ML models.</p>
+                                    <div class="library-features">
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li><strong>TensorFlow:</strong> Google's production-ready framework</li>
+                                            <li><strong>PyTorch:</strong> Facebook's research-focused framework</li>
+                                            <li>Both support GPU acceleration</li>
+                                            <li>Extensive community support</li>
+                                        </ul>
+                                    </div>
+                                    <div class="code-snippet">
+                                        <pre><code># TensorFlow example
+import tensorflow as tf
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="library-card">
+                                    <div class="library-icon-header">
+                                        <i class="fas fa-chart-pie"></i>
+                                        <h4>Other Important Libraries</h4>
+                                    </div>
+                                    <p class="library-description">Specialized libraries for specific tasks.</p>
+                                    <div class="library-features">
+                                        <h5>Notable Libraries:</h5>
+                                        <ul>
+                                            <li><strong>SciPy:</strong> Scientific computing extensions</li>
+                                            <li><strong>Statsmodels:</strong> Statistical modeling and tests</li>
+                                            <li><strong>NLTK/Spacy:</strong> Natural Language Processing</li>
+                                            <li><strong>OpenCV:</strong> Computer Vision</li>
+                                            <li><strong>XGBoost/LightGBM:</strong> Gradient boosting</li>
+                                        </ul>
+                                    </div>
+                                    <div class="code-snippet">
+                                        <pre><code># SciPy example
+from scipy import stats
+
+# Statistical test
+t_stat, p_value = stats.ttest_ind(group1, group2)
+
+# Optimization
+from scipy.optimize import minimize
+result = minimize(objective_function, x0)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="installation-guide">
+                                <h4><i class="fas fa-download"></i> Installation Guide</h4>
+                                <div class="installation-options">
+                                    <div class="option">
+                                        <h5>Using pip:</h5>
+                                        <pre><code>pip install numpy pandas matplotlib seaborn scikit-learn</code></pre>
+                                    </div>
+                                    <div class="option">
+                                        <h5>Using conda:</h5>
+                                        <pre><code>conda install numpy pandas matplotlib seaborn scikit-learn</code></pre>
+                                    </div>
+                                    <div class="option">
+                                        <h5>For Jupyter Notebook:</h5>
+                                        <pre><code>!pip install numpy pandas matplotlib seaborn scikit-learn</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Practice Exercises -->
+                    <section id="practice" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-laptop-code"></i> Practice Exercises</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Test Your Knowledge</h3>
+                            <p>Complete these exercises to reinforce your learning. Solutions are provided in collapsed sections.</p>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 1: NumPy Operations</h4>
+                                    <span class="difficulty-badge easy">Easy</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Create a 4x4 matrix with values from 1 to 16. Calculate:</p>
+                                    <ol>
+                                        <li>The sum of all elements</li>
+                                        <li>The mean of each column</li>
+                                        <li>The matrix transposed</li>
+                                        <li>The determinant of the matrix</li>
+                                        <li>The diagonal elements</li>
+                                    </ol>
+                                    <div class="hint-section">
+                                        <button class="hint-toggle" onclick="toggleHint('hint1')">
+                                            <i class="fas fa-lightbulb"></i> Show Hint
+                                        </button>
+                                        <div id="hint1" class="hint-content">
+                                            <p>Use <code>np.arange(1, 17).reshape(4, 4)</code> to create the matrix. For determinant, use <code>np.linalg.det()</code>.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('solution1')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="solution1" class="solution-content">
+                                            <pre><code>import numpy as np
+
+# Create matrix
+matrix = np.arange(1, 17).reshape(4, 4)
+print("Matrix:\n", matrix)
+
+# Calculations
+total_sum = np.sum(matrix)
+column_means = np.mean(matrix, axis=0)
+transposed = matrix.T
+determinant = np.linalg.det(matrix)
+diagonal = np.diag(matrix)
+
+print(f"\n1. Total sum: {total_sum}")
+print(f"2. Column means: {column_means}")
+print(f"3. Transposed:\n{transposed}")
+print(f"4. Determinant: {determinant:.2f}")
+print(f"5. Diagonal elements: {diagonal}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 2: Pandas Data Analysis</h4>
+                                    <span class="difficulty-badge medium">Medium</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Given the following sales dataset:</p>
+                                    <pre><code>sales_data = {
+    'Date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02', 
+             '2024-01-03', '2024-01-03', '2024-01-04'],
+    'Product': ['A', 'B', 'A', 'C', 'B', 'C', 'A'],
+    'Quantity': [10, 15, 12, 8, 20, 5, 18],
+    'Price': [100, 150, 100, 200, 150, 200, 100],
+    'Region': ['North', 'South', 'North', 'East', 'South', 'East', 'North']
+}</code></pre>
+                                    <p>Tasks:</p>
+                                    <ol>
+                                        <li>Create a DataFrame from this data</li>
+                                        <li>Add a 'Revenue' column (Quantity × Price)</li>
+                                        <li>Find total revenue by product</li>
+                                        <li>Find average quantity sold by region</li>
+                                        <li>Find the best selling product (highest total revenue)</li>
+                                        <li>Create a pivot table showing revenue by product and region</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('solution2')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="solution2" class="solution-content">
+                                            <pre><code>import pandas as pd
+
+# Create DataFrame
+df = pd.DataFrame(sales_data)
+
+# Convert Date to datetime
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Add Revenue column
+df['Revenue'] = df['Quantity'] * df['Price']
+
+print("DataFrame with Revenue:")
+print(df)
+
+# Total revenue by product
+revenue_by_product = df.groupby('Product')['Revenue'].sum()
+print(f"\nTotal revenue by product:\n{revenue_by_product}")
+
+# Average quantity by region
+avg_qty_by_region = df.groupby('Region')['Quantity'].mean()
+print(f"\nAverage quantity by region:\n{avg_qty_by_region}")
+
+# Best selling product
+best_product = revenue_by_product.idxmax()
+best_revenue = revenue_by_product.max()
+print(f"\nBest selling product: {best_product} (Revenue: ${best_revenue})")
+
+# Pivot table
+pivot_table = pd.pivot_table(df, 
+                            values='Revenue',
+                            index='Product',
+                            columns='Region',
+                            aggfunc='sum',
+                            fill_value=0)
+print("\nPivot Table - Revenue by Product and Region:")
+print(pivot_table)</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 3: Data Visualization Challenge</h4>
+                                    <span class="difficulty-badge hard">Hard</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Create a comprehensive visualization dashboard for the following dataset:</p>
+                                    <pre><code># Student performance dataset
+student_data = {
+    'Student_ID': range(1, 101),
+    'Math_Score': np.random.normal(70, 15, 100).clip(0, 100),
+    'Science_Score': np.random.normal(75, 12, 100).clip(0, 100),
+    'English_Score': np.random.normal(72, 14, 100).clip(0, 100),
+    'Study_Hours': np.random.uniform(1, 10, 100),
+    'Attendance': np.random.uniform(70, 100, 100),
+    'Gender': np.random.choice(['Male', 'Female'], 100),
+    'Extracurricular': np.random.choice([0, 1], 100, p=[0.3, 0.7])
+}</code></pre>
+                                    <p>Create a 2x2 subplot containing:</p>
+                                    <ol>
+                                        <li>Histogram of Math scores with KDE curve</li>
+                                        <li>Scatter plot of Math vs Science scores with regression line</li>
+                                        <li>Box plot of scores by gender</li>
+                                        <li>Bar chart showing average score by extracurricular activity</li>
+                                    </ol>
+                                    <p>Add proper titles, labels, and legends to each plot.</p>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('solution3')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="solution3" class="solution-content">
+                                            <pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+# Create DataFrame
+df = pd.DataFrame(student_data)
+
+# Calculate average score
+df['Average_Score'] = df[['Math_Score', 'Science_Score', 'English_Score']].mean(axis=1)
+
+# Create figure
+fig, axes = plt.subplots(2, 2, figsize=(15, 12))
+
+# 1. Histogram with KDE
+sns.histplot(data=df, x='Math_Score', kde=True, ax=axes[0, 0], 
+             bins=20, color='skyblue', edgecolor='black')
+axes[0, 0].set_title('Distribution of Math Scores', fontsize=14, fontweight='bold')
+axes[0, 0].set_xlabel('Math Score')
+axes[0, 0].set_ylabel('Frequency')
+axes[0, 0].axvline(df['Math_Score'].mean(), color='red', linestyle='--', 
+                  label=f'Mean: {df["Math_Score"].mean():.1f}')
+axes[0, 0].legend()
+
+# 2. Scatter plot with regression line
+scatter = axes[0, 1].scatter(df['Math_Score'], df['Science_Score'], 
+                            c=df['Study_Hours'], cmap='viridis', 
+                            alpha=0.7, edgecolors='black', linewidth=0.5)
+axes[0, 1].set_title('Math vs Science Scores', fontsize=14, fontweight='bold')
+axes[0, 1].set_xlabel('Math Score')
+axes[0, 1].set_ylabel('Science Score')
+
+# Add regression line
+z = np.polyfit(df['Math_Score'], df['Science_Score'], 1)
+p = np.poly1d(z)
+axes[0, 1].plot(df['Math_Score'], p(df['Math_Score']), "r--", alpha=0.8)
+
+# Add colorbar for Study Hours
+plt.colorbar(scatter, ax=axes[0, 1], label='Study Hours')
+
+# 3. Box plot by gender
+box_data = df[['Math_Score', 'Science_Score', 'English_Score', 'Gender']]
+box_data_melted = pd.melt(box_data, id_vars=['Gender'], 
+                         value_vars=['Math_Score', 'Science_Score', 'English_Score'],
+                         var_name='Subject', value_name='Score')
+sns.boxplot(x='Subject', y='Score', hue='Gender', data=box_data_melted, 
+            ax=axes[1, 0], palette='Set2')
+axes[1, 0].set_title('Score Distribution by Subject and Gender', 
+                     fontsize=14, fontweight='bold')
+axes[1, 0].set_xlabel('Subject')
+axes[1, 0].set_ylabel('Score')
+axes[1, 0].legend(title='Gender')
+
+# 4. Bar chart - Average score by extracurricular
+extracurricular_avg = df.groupby('Extracurricular')['Average_Score'].mean()
+bars = axes[1, 1].bar(['No Activities', 'Activities'], 
+                     extracurricular_avg, 
+                     color=['lightcoral', 'lightgreen'], 
+                     edgecolor='black')
+axes[1, 1].set_title('Average Score by Extracurricular Participation', 
+                     fontsize=14, fontweight='bold')
+axes[1, 1].set_xlabel('Extracurricular Activities')
+axes[1, 1].set_ylabel('Average Score')
+
+# Add value labels on bars
+for bar in bars:
+    height = bar.get_height()
+    axes[1, 1].text(bar.get_x() + bar.get_width()/2., height + 0.5,
+                   f'{height:.1f}', ha='center', va='bottom', fontweight='bold')
+
+plt.tight_layout()
+plt.show()</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Resources -->
+                    <section id="resources" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-book"></i> Additional Resources</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Further Learning Materials</h3>
+                            
+                            <div class="resource-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h4>Official Documentation</h4>
+                                    <ul>
+                                        <li><a href="https://numpy.org/doc/" target="_blank">NumPy Documentation</a></li>
+                                        <li><a href="https://pandas.pydata.org/docs/" target="_blank">Pandas User Guide</a></li>
+                                        <li><a href="https://matplotlib.org/stable/contents.html" target="_blank">Matplotlib Tutorials</a></li>
+                                        <li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Seaborn Tutorial</a></li>
+                                        <li><a href="https://scikit-learn.org/stable/documentation.html" target="_blank">Scikit-learn Docs</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h4>Video Tutorials</h4>
+                                    <ul>
+                                        <li>NumPy in 60 Minutes - Corey Schafer</li>
+                                        <li>Pandas Tutorial (8 hours) - Keith Galli</li>
+                                        <li>Matplotlib Complete Guide - Sentdex</li>
+                                        <li>Seaborn Data Visualization - Data School</li>
+                                        <li>Scikit-learn Crash Course - freeCodeCamp</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>Practice Platforms</h4>
+                                    <ul>
+                                        <li><a href="https://www.kaggle.com/learn/pandas" target="_blank">Kaggle - Pandas Course</a></li>
+                                        <li><a href="https://leetcode.com/studyplan/30-days-of-pandas/" target="_blank">LeetCode - 30 Days of Pandas</a></li>
+                                        <li><a href="https://www.hackerrank.com/domains/python/numpy" target="_blank">HackerRank - NumPy</a></li>
+                                        <li><a href="https://www.datacamp.com/courses/intro-to-python-for-data-science" target="_blank">DataCamp - Python for Data Science</a></li>
+                                        <li><a href="https://www.codewars.com/" target="_blank">Codewars - Python Challenges</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Project Ideas</h4>
+                                    <ul>
+                                        <li>Analyze COVID-19 dataset with Pandas</li>
+                                        <li>Visualize stock market trends</li>
+                                        <li>Clean and prepare Titanic dataset</li>
+                                        <li>Build interactive data dashboard</li>
+                                        <li>Predict house prices with Scikit-learn</li>
+                                        <li>Customer segmentation with clustering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="book-recommendations">
+                                <h4><i class="fas fa-book"></i> Recommended Books</h4>
+                                <div class="books-grid">
+                                    <div class="book">
+                                        <h5>Python for Data Analysis</h5>
+                                        <p class="author">by Wes McKinney</p>
+                                        <p class="description">The creator of Pandas teaches data manipulation.</p>
+                                    </div>
+                                    <div class="book">
+                                        <h5>Hands-On Machine Learning</h5>
+                                        <p class="author">by Aurélien Géron</p>
+                                        <p class="description">Practical ML with Scikit-learn, Keras & TensorFlow.</p>
+                                    </div>
+                                    <div class="book">
+                                        <h5>Python Data Science Handbook</h5>
+                                        <p class="author">by Jake VanderPlas</p>
+                                        <p class="description">Essential tools for working with data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pro-tip">
+                                <h4><i class="fas fa-lightbulb"></i> Pro Tip: Learning Strategy</h4>
+                                <p>Master these 4 libraries in this order:</p>
+                                <ol>
+                                    <li><strong>NumPy (Week 1):</strong> Focus on array operations and broadcasting</li>
+                                    <li><strong>Pandas (Week 2-3):</strong> Master DataFrames, grouping, and data cleaning</li>
+                                    <li><strong>Matplotlib/Seaborn (Week 4):</strong> Learn to visualize insights effectively</li>
+                                    <li><strong>Scikit-learn (Week 5+):</strong> Apply ML algorithms to your cleaned data</li>
+                                </ol>
+                                <p>Practice daily with real datasets from Kaggle or UCI Machine Learning Repository. Build a portfolio of 3-5 complete projects showcasing your skills with these libraries.</p>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4><i class="fas fa-arrow-right"></i> Next Steps in Curriculum</h4>
+                                <div class="next-topics">
+                                    <div class="topic-preview">
+                                        <h5>Module 3: Statistics for ML</h5>
+                                        <p>Probability, distributions, hypothesis testing, and statistical inference.</p>
+                                        <span class="duration">4 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 4: ML Algorithms - I</h5>
+                                        <p>Linear regression, logistic regression, and evaluation metrics.</p>
+                                        <span class="duration">6 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 5: ML Algorithms - II</h5>
+                                        <p>Decision trees, random forests, and clustering algorithms.</p>
+                                        <span class="duration">6 hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Comprehensive learning resource for BCA students</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#topics">All Topics</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: aiguide@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide for BCA Students. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Demo Functions
+        function runNumpyDemo() {
+            const operation = document.getElementById('numpy-operation').value;
+            const outputDiv = document.getElementById('numpy-output');
+            
+            outputDiv.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Running NumPy operation...</div>';
+            
+            setTimeout(() => {
+                let output = '';
+                
+                switch(operation) {
+                    case 'create':
+                        output = `# Creating NumPy Arrays
+>>> import numpy as np
+>>> arr = np.array([1, 2, 3, 4, 5])
+>>> matrix = np.array([[1, 2], [3, 4]])
+>>> 
+>>> print("Array:", arr)
+Array: [1 2 3 4 5]
+>>> print("Matrix:\\n", matrix)
+Matrix:
+ [[1 2]
+ [3 4]]
+>>> print("Matrix shape:", matrix.shape)
+Matrix shape: (2, 2)
+>>> print("Zeros matrix:\\n", np.zeros((2,3)))
+Zeros matrix:
+ [[0. 0. 0.]
+ [0. 0. 0.]]`;
+                        break;
+                        
+                    case 'math':
+                        output = `# Mathematical Operations
+>>> arr = np.array([1, 2, 3, 4, 5])
+>>> 
+>>> print("Array + 10:", arr + 10)
+Array + 10: [11 12 13 14 15]
+>>> print("Array * 2:", arr * 2)
+Array * 2: [ 2  4  6  8 10]
+>>> print("Array squared:", arr ** 2)
+Array squared: [ 1  4  9 16 25]
+>>> print("Mean:", np.mean(arr))
+Mean: 3.0
+>>> print("Sum:", np.sum(arr))
+Sum: 15
+>>> print("Standard deviation:", np.std(arr))
+Standard deviation: 1.4142135623730951
+>>> print("Product of elements:", np.prod(arr))
+Product of elements: 120`;
+                        break;
+                        
+                    case 'reshape':
+                        output = `# Reshaping Arrays
+>>> arr = np.arange(1, 13)
+>>> print("Original array:", arr)
+Original array: [ 1  2  3  4  5  6  7  8  9 10 11 12]
+>>> 
+>>> reshaped = arr.reshape(3, 4)
+>>> print("Reshaped to 3x4:\\n", reshaped)
+Reshaped to 3x4:
+ [[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+>>> 
+>>> flattened = reshaped.flatten()
+>>> print("Flattened back:", flattened)
+Flattened back: [ 1  2  3  4  5  6  7  8  9 10 11 12]
+>>> 
+>>> transposed = reshaped.T
+>>> print("Transposed:\\n", transposed)
+Transposed:
+ [[ 1  5  9]
+ [ 2  6 10]
+ [ 3  7 11]
+ [ 4  8 12]]`;
+                        break;
+                        
+                    case 'statistics':
+                        output = `# Statistical Operations
+>>> data = np.array([15, 22, 18, 25, 30, 21, 19, 28, 24, 20])
+>>> 
+>>> print("Data:", data)
+Data: [15 22 18 25 30 21 19 28 24 20]
+>>> print("Mean:", np.mean(data))
+Mean: 22.2
+>>> print("Median:", np.median(data))
+Median: 21.5
+>>> print("Min:", np.min(data))
+Min: 15
+>>> print("Max:", np.max(data))
+Max: 30
+>>> print("25th percentile:", np.percentile(data, 25))
+25th percentile: 19.0
+>>> print("75th percentile:", np.percentile(data, 75))
+75th percentile: 25.0
+>>> print("Variance:", np.var(data))
+Variance: 20.76
+>>> print("Standard deviation:", np.std(data))
+Standard deviation: 4.556313998077445`;
+                        break;
+                }
+                
+                outputDiv.innerHTML = `<pre class="python-output">${output}</pre>`;
+            }, 800);
+        }
+        
+        function clearNumpyDemo() {
+            document.getElementById('numpy-output').innerHTML = '';
+        }
+        
+        // DataFrame Table Functions
+        function sortTable(column) {
+            const table = document.getElementById('dataframe-table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            const isNumeric = column === 'Age' || column === 'Score';
+            const columnIndex = column === 'Name' ? 0 : 
+                               column === 'Age' ? 1 : 
+                               column === 'Grade' ? 2 : 3;
+            
+            rows.sort((a, b) => {
+                const aVal = a.cells[columnIndex].textContent;
+                const bVal = b.cells[columnIndex].textContent;
+                
+                if (isNumeric) {
+                    return parseInt(aVal) - parseInt(bVal);
+                } else {
+                    return aVal.localeCompare(bVal);
+                }
+            });
+            
+            // Reappend sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+            
+            // Update stats
+            showStats();
+        }
+        
+        function filterTable(grade) {
+            const table = document.getElementById('dataframe-table');
+            const rows = table.querySelectorAll('tbody tr');
+            const columnIndex = 2; // Grade column
+            
+            rows.forEach(row => {
+                const gradeValue = row.cells[columnIndex].textContent;
+                if (grade === 'all' || gradeValue === grade) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // Update stats
+            showStats();
+        }
+        
+        function showStats() {
+            const table = document.getElementById('dataframe-table');
+            const rows = Array.from(table.querySelectorAll('tbody tr:not([style*="display: none"])'));
+            const ages = rows.map(row => parseInt(row.cells[1].textContent));
+            const scores = rows.map(row => parseInt(row.cells[3].textContent));
+            
+            const statsDiv = document.getElementById('table-stats');
+            
+            if (ages.length > 0) {
+                const avgAge = (ages.reduce((a, b) => a + b, 0) / ages.length).toFixed(1);
+                const avgScore = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+                const minAge = Math.min(...ages);
+                const maxAge = Math.max(...ages);
+                const minScore = Math.min(...scores);
+                const maxScore = Math.max(...scores);
+                
+                statsDiv.innerHTML = `
+                    <div class="stats-card">
+                        <h5>Statistics for ${rows.length} students:</h5>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <span class="stat-label">Average Age:</span>
+                                <span class="stat-value">${avgAge}</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Average Score:</span>
+                                <span class="stat-value">${avgScore}</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Age Range:</span>
+                                <span class="stat-value">${minAge} - ${maxAge}</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Score Range:</span>
+                                <span class="stat-value">${minScore} - ${maxScore}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                statsDiv.innerHTML = '<div class="stats-card"><p>No data to display</p></div>';
+            }
+        }
+        
+        // Toggle functions for hints and solutions
+        function toggleHint(hintId) {
+            const hint = document.getElementById(hintId);
+            hint.style.display = hint.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Copy code functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add copy buttons to all code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                if (!pre.parentElement.classList.contains('code-example')) return;
+                
+                const button = document.createElement('button');
+                button.className = 'copy-code';
+                button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                button.onclick = function() {
+                    const code = pre.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                };
+                
+                if (!pre.parentElement.querySelector('.example-header')) {
+                    const header = document.createElement('div');
+                    header.className = 'example-header';
+                    header.innerHTML = '<span>Code Example</span>';
+                    header.appendChild(button);
+                    pre.parentElement.insertBefore(header, pre);
+                } else {
+                    pre.parentElement.querySelector('.example-header').appendChild(button);
+                }
+            });
+            
+            // Mark as complete functionality
+            const completeBtn = document.querySelector('.completed');
+            if (completeBtn) {
+                completeBtn.addEventListener('click', function() {
+                    const isComplete = this.classList.contains('completed-active');
+                    this.classList.toggle('completed-active');
+                    this.innerHTML = isComplete ? 
+                        '<i class="far fa-check-circle"></i> Mark Complete' : 
+                        '<i class="fas fa-check-circle"></i> Completed!';
+                    
+                    // Save to localStorage
+                    localStorage.setItem('python-ml-libraries-complete', !isComplete);
+                    
+                    // Show congratulation message
+                    if (!isComplete) {
+                        alert('🎉 Congratulations! You have completed Python ML Libraries module!');
+                    }
+                });
+                
+                // Check localStorage on load
+                if (localStorage.getItem('python-ml-libraries-complete') === 'true') {
+                    completeBtn.classList.add('completed-active');
+                    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed!';
+                }
+            }
+            
+            // Initialize table stats
+            showStats();
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active sidebar link on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.hour-section');
+                const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+                
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Responsive menu toggle for mobile (optional enhancement)
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+        
+        // Initialize any animations or effects
+        window.onload = function() {
+            // Add animation to cards on load
+            document.querySelectorAll('.content-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        };
+    </script>
+</body>
+</html>

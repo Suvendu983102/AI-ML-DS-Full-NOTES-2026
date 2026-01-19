@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Progress - AI & ML Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="dashboard.html" class="active">My Progress</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Hero -->
+    <section class="dashboard-hero">
+        <div class="container">
+            <h1>My Learning Dashboard</h1>
+            <p class="subtitle">Track your progress through the 60-hour AI/ML curriculum</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Stats -->
+    <section class="dashboard-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Time Spent</h3>
+                        <span class="stat-value" id="total-time">0 hours</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="far fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Topics Completed</h3>
+                        <span class="stat-value" id="topics-completed">0/12</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Projects Done</h3>
+                        <span class="stat-value" id="projects-done">0/10</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Current Streak</h3>
+                        <span class="stat-value" id="current-streak">0 days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Charts -->
+    <section class="progress-charts">
+        <div class="container">
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Overall Progress</h3>
+                    <div class="chart-container">
+                        <canvas id="progress-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <h3>Weekly Activity</h3>
+                    <div class="chart-container">
+                        <canvas id="activity-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Timeline -->
+    <section class="learning-timeline">
+        <div class="container">
+            <h2>Your Learning Journey</h2>
+            <div class="timeline">
+                <!-- Dynamic timeline items will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Goals -->
+    <section class="upcoming-goals">
+        <div class="container">
+            <h2>Upcoming Learning Goals</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3>This Week</h3>
+                    <ul class="goal-list">
+                        <li>
+                            <input type="checkbox" id="goal1">
+                            <label for="goal1">Complete Python Basics</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="goal2">
+                            <label for="goal2">Start Weather Classification Project</label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="goal-card">
+                    <h3>This Month</h3>
+                    <ul class="goal-list">
+                        <li>
+                            <input type="checkbox" id="goal3">
+                            <label for="goal3">Finish ML Algorithms Module</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="goal4">
+                            <label for="goal4">Complete 3 Projects</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI & ML Guide for BCA Students</p>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

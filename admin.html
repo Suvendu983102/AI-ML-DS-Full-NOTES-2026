@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - AI & ML Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Admin Navigation -->
+    <nav class="navbar admin-navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Admin
+            </a>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#users"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#content"><i class="fas fa-book"></i> Content</a></li>
+                <li><a href="#analytics"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                <li><a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Exit Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard" id="dashboard">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            
+            <!-- Quick Stats -->
+            <div class="admin-stats">
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Students</h3>
+                        <span class="stat-value" id="total-students">0</span>
+                        <span class="stat-change positive">+12% this month</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Active Learners</h3>
+                        <span class="stat-value" id="active-learners">0</span>
+                        <span class="stat-change positive">+8% this week</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Projects Submitted</h3>
+                        <span class="stat-value" id="projects-submitted">0</span>
+                        <span class="stat-change positive">+25% today</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Completion Rate</h3>
+                        <span class="stat-value" id="completion-rate">0%</span>
+                        <span class="stat-change positive">+5% this month</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="admin-content-grid">
+                <!-- Left Column -->
+                <div class="admin-left-column">
+                    <!-- User Activity Chart -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> User Activity</h3>
+                            <select id="time-period">
+                                <option value="7">Last 7 days</option>
+                                <option value="30">Last 30 days</option>
+                                <option value="90">Last 90 days</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="user-activity-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        </div>
+                        <div class="activity-list" id="recent-activity">
+                            <!-- Activities will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="admin-right-column">
+                    <!-- Topic Completion Stats -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-book"></i> Topic Completion</h3>
+                        </div>
+                        <div class="topic-stats" id="topic-stats">
+                            <!-- Topic stats will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="addNewTopic()">
+                                <i class="fas fa-plus"></i>
+                                <span>Add New Topic</span>
+                            </button>
+                            <button class="action-btn" onclick="sendAnnouncement()">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Send Announcement</span>
+                            </button>
+                            <button class="action-btn" onclick="viewReports()">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Generate Report</span>
+                            </button>
+                            <button class="action-btn" onclick="manageUsers()">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Manage Users</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Management Section -->
+    <section class="admin-section" id="users" style="display: none;">
+        <div class="container">
+            <h2><i class="fas fa-users"></i> User Management</h2>
+            
+            <div class="user-management">
+                <div class="user-filters">
+                    <input type="text" placeholder="Search users..." id="user-search">
+                    <select id="user-filter">
+                        <option value="all">All Users</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="admin">Admins</option>
+                    </select>
+                    <button class="btn primary" onclick="exportUsers()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+
+                <div class="users-table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Progress</th>
+                                <th>Last Active</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Management Section -->
+    <section class="admin-section" id="content" style="display: none;">
+        <div class="container">
+            <h2><i class="fas fa-book"></i> Content Management</h2>
+            
+            <div class="content-management">
+                <div class="content-tabs">
+                    <button class="tab-btn active" data-tab="topics">Topics</button>
+                    <button class="tab-btn" data-tab="projects">Projects</button>
+                    <button class="tab-btn" data-tab="resources">Resources</button>
+                </div>
+
+                <div class="tab-content active" id="topics-tab">
+                    <div class="content-actions">
+                        <button class="btn primary" onclick="createNewTopic()">
+                            <i class="fas fa-plus"></i> Add New Topic
+                        </button>
+                    </div>
+                    
+                    <div class="topics-list" id="topics-list">
+                        <!-- Topics will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="projects-tab">
+                    <!-- Projects management content -->
+                </div>
+
+                <div class="tab-content" id="resources-tab">
+                    <!-- Resources management content -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section class="admin-section" id="analytics" style="display: none;">
+        <div class="container">
+            <h2><i class="fas fa-chart-bar"></i> Analytics</h2>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Engagement Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <span class="metric-label">Avg. Time on Site</span>
+                            <span class="metric-value">24 min</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Bounce Rate</span>
+                            <span class="metric-value">32%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Pages/Session</span>
+                            <span class="metric-value">5.2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Popular Topics</h3>
+                    <div class="popular-topics" id="popular-topics">
+                        <!-- Popular topics will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Footer -->
+    <footer class="admin-footer">
+        <div class="container">
+            <p>AI & ML Learning Portal Admin Panel &copy; 2024</p>
+            <p class="system-status">
+                <i class="fas fa-circle online"></i> System Status: <span>Online</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Admin Modals -->
+    <div id="admin-modals">
+        <!-- Modals will be inserted here -->
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

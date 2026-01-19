@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>AI & ML Tools Mastery</h1>
+                <p class="subtitle">Master Essential Tools for AI/ML Development</p>
+                <p class="description">
+                    Learn to use industry-standard tools including OpenCV, PyTorch, TensorFlow, 
+                    NLP libraries, and computer vision frameworks.
+                </p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-tools"></i>
+                        <span>15+ Tools</span>
+                        <p>Covered</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>12 Hours</span>
+                        <p>Hands-on Practice</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-code"></i>
+                        <span>50+ Examples</span>
+                        <p>Real Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Beginner to Pro</span>
+                        <p>Learning Path</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Tools Grid Section -->
+            <section class="tools-grid-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tools"></i> Essential AI/ML Tools</h2>
+                    <p class="section-subtitle">Master the tools that power modern AI development</p>
+                </div>
+
+                <div class="tools-filter">
+                    <button class="filter-btn active" data-filter="all">All Tools</button>
+                    <button class="filter-btn" data-filter="computer-vision">Computer Vision</button>
+                    <button class="filter-btn" data-filter="nlp">NLP</button>
+                    <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
+                    <button class="filter-btn" data-filter="data-processing">Data Processing</button>
+                    <button class="filter-btn" data-filter="deployment">Deployment</button>
+                </div>
+
+                <div class="tools-grid">
+                    <!-- OpenCV Card -->
+                    <div class="tool-card computer-vision" data-tool="opencv">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge cv">Computer Vision</span>
+                                <span class="badge popular"><i class="fas fa-fire"></i> Popular</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>OpenCV</h3>
+                            <p class="tool-description">
+                                Open Source Computer Vision Library for real-time image and video processing.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>C++/Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2000</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Image processing & analysis</li>
+                                <li><i class="fas fa-check"></i> Object detection & tracking</li>
+                                <li><i class="fas fa-check"></i> Face recognition</li>
+                                <li><i class="fas fa-check"></i> Video analysis</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="opencv">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PyTorch Card -->
+                    <div class="tool-card deep-learning" data-tool="pytorch">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge dl">Deep Learning</span>
+                                <span class="badge trending"><i class="fas fa-chart-line"></i> Trending</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>PyTorch</h3>
+                            <p class="tool-description">
+                                Open source machine learning framework for computer vision and NLP.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2016</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Dynamic computation graphs</li>
+                                <li><i class="fas fa-check"></i> GPU acceleration</li>
+                                <li><i class="fas fa-check"></i> Neural network building</li>
+                                <li><i class="fas fa-check"></i> Research-friendly</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="pytorch">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TensorFlow Card -->
+                    <div class="tool-card deep-learning" data-tool="tensorflow">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge dl">Deep Learning</span>
+                                <span class="badge industry"><i class="fas fa-industry"></i> Industry</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>TensorFlow</h3>
+                            <p class="tool-description">
+                                End-to-end open source platform for machine learning and neural networks.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python/JS/C++</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2015</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Production-ready models</li>
+                                <li><i class="fas fa-check"></i> TensorFlow Lite for mobile</li>
+                                <li><i class="fas fa-check"></i> Keras integration</li>
+                                <li><i class="fas fa-check"></i> Distributed training</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="tensorflow">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- NLP Libraries Card -->
+                    <div class="tool-card nlp" data-tool="nlp">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge nlp">NLP</span>
+                                <span class="badge essential"><i class="fas fa-star"></i> Essential</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>NLP Libraries</h3>
+                            <p class="tool-description">
+                                Natural Language Processing tools: NLTK, spaCy, Transformers, BERT.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.6/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2001-2020</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Text preprocessing</li>
+                                <li><i class="fas fa-check"></i> Sentiment analysis</li>
+                                <li><i class="fas fa-check"></i> Named entity recognition</li>
+                                <li><i class="fas fa-check"></i> Language translation</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="nlp">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Scikit-learn Card -->
+                    <div class="tool-card data-processing" data-tool="scikit">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge ml">ML</span>
+                                <span class="badge beginner"><i class="fas fa-user-graduate"></i> Beginner</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>Scikit-learn</h3>
+                            <p class="tool-description">
+                                Machine learning library for traditional algorithms and data preprocessing.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2007</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Classification & regression</li>
+                                <li><i class="fas fa-check"></i> Clustering algorithms</li>
+                                <li><i class="fas fa-check"></i> Feature engineering</li>
+                                <li><i class="fas fa-check"></i> Model evaluation</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="scikit">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pandas Card -->
+                    <div class="tool-card data-processing" data-tool="pandas">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge data">Data</span>
+                                <span class="badge essential"><i class="fas fa-star"></i> Essential</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>Pandas</h3>
+                            <p class="tool-description">
+                                Data manipulation and analysis library for structured data operations.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2008</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> DataFrame operations</li>
+                                <li><i class="fas fa-check"></i> Data cleaning</li>
+                                <li><i class="fas fa-check"></i> Time series analysis</li>
+                                <li><i class="fas fa-check"></i> Data visualization</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="pandas">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- NumPy Card -->
+                    <div class="tool-card data-processing" data-tool="numpy">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge data">Numerical</span>
+                                <span class="badge foundation"><i class="fas fa-layer-group"></i> Foundation</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>NumPy</h3>
+                            <p class="tool-description">
+                                Fundamental package for scientific computing with Python.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2005</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> N-dimensional arrays</li>
+                                <li><i class="fas fa-check"></i> Mathematical functions</li>
+                                <li><i class="fas fa-check"></i> Linear algebra</li>
+                                <li><i class="fas fa-check"></i> Random number generation</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="numpy">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FastAPI/Flask Card -->
+                    <div class="tool-card deployment" data-tool="api">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge deployment">Deployment</span>
+                                <span class="badge trending"><i class="fas fa-chart-line"></i> Trending</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>FastAPI/Flask</h3>
+                            <p class="tool-description">
+                                Web frameworks for building and deploying ML models as APIs.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Python</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2010/2018</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> REST API development</li>
+                                <li><i class="fas fa-check"></i> Model serving</li>
+                                <li><i class="fas fa-check"></i> Real-time predictions</li>
+                                <li><i class="fas fa-check"></i> Async support</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="api">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Docker/Kubernetes Card -->
+                    <div class="tool-card deployment" data-tool="docker">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="tool-badges">
+                                <span class="badge devops">DevOps</span>
+                                <span class="badge industry"><i class="fas fa-industry"></i> Industry</span>
+                            </div>
+                        </div>
+                        <div class="tool-content">
+                            <h3>Docker/Kubernetes</h3>
+                            <p class="tool-description">
+                                Containerization and orchestration for ML model deployment.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8/5</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Multi-language</span>
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2013/2014</span>
+                                </span>
+                            </div>
+                            <ul class="tool-features">
+                                <li><i class="fas fa-check"></i> Containerized deployments</li>
+                                <li><i class="fas fa-check"></i> Scalable infrastructure</li>
+                                <li><i class="fas fa-check"></i> CI/CD pipelines</li>
+                                <li><i class="fas fa-check"></i> Resource management</li>
+                            </ul>
+                        </div>
+                        <div class="tool-footer">
+                            <div class="progress-section">
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span class="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn start-learning" data-tool="docker">
+                                <i class="fas fa-play-circle"></i> Start Learning
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Path Section -->
+            <section class="learning-path">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-signs"></i> Learning Path</h2>
+                    <p class="section-subtitle">Structured approach to mastering AI tools</p>
+                </div>
+
+                <div class="path-container">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Foundation Tools</h3>
+                            <p>NumPy, Pandas, Matplotlib - Data manipulation and visualization</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">NumPy</span>
+                                <span class="tool-tag">Pandas</span>
+                                <span class="tool-tag">Matplotlib</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 8 hours
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Traditional ML</h3>
+                            <p>Scikit-learn - Machine learning algorithms and evaluation</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">Scikit-learn</span>
+                                <span class="tool-tag">Statsmodels</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 10 hours
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Deep Learning</h3>
+                            <p>PyTorch, TensorFlow - Neural networks and deep learning</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">PyTorch</span>
+                                <span class="tool-tag">TensorFlow</span>
+                                <span class="tool-tag">Keras</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 15 hours
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="path-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Computer Vision</h3>
+                            <p>OpenCV, PIL - Image processing and computer vision</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">OpenCV</span>
+                                <span class="tool-tag">PIL</span>
+                                <span class="tool-tag">scikit-image</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 12 hours
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="path-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Natural Language Processing</h3>
+                            <p>NLTK, spaCy, Transformers - Text processing and analysis</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">NLTK</span>
+                                <span class="tool-tag">spaCy</span>
+                                <span class="tool-tag">Transformers</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 14 hours
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="path-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>Deployment & MLOps</h3>
+                            <p>FastAPI, Docker, MLflow - Model deployment and monitoring</p>
+                            <div class="step-tools">
+                                <span class="tool-tag">FastAPI</span>
+                                <span class="tool-tag">Docker</span>
+                                <span class="tool-tag">MLflow</span>
+                                <span class="tool-tag">Kubernetes</span>
+                            </div>
+                            <div class="step-duration">
+                                <i class="far fa-clock"></i> 16 hours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tool Details Modal -->
+            <div id="toolModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalToolName">OpenCV</h2>
+                        <button class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-tool-info">
+                            <div class="modal-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="modal-details">
+                                <div class="modal-meta">
+                                    <span class="modal-category">Computer Vision</span>
+                                    <span class="modal-rating">4.8/5</span>
+                                    <span class="modal-year">Released: 2000</span>
+                                </div>
+                                <p class="modal-description">
+                                    OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in commercial products.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="modal-features">
+                            <h3><i class="fas fa-check-circle"></i> Key Features</h3>
+                            <div class="features-grid">
+                                <div class="feature">
+                                    <i class="fas fa-camera"></i>
+                                    <h4>Image Processing</h4>
+                                    <p>Filtering, transformation, color space conversion</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-video"></i>
+                                    <h4>Video Analysis</h4>
+                                    <p>Motion tracking, background subtraction</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-object-group"></i>
+                                    <h4>Object Detection</h4>
+                                    <p>Face detection, object recognition</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-robot"></i>
+                                    <h4>ML Integration</h4>
+                                    <p>Integration with ML frameworks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-resources">
+                            <h3><i class="fas fa-book"></i> Learning Resources</h3>
+                            <div class="resources-tabs">
+                                <button class="tab-btn active" data-tab="tutorials">Tutorials</button>
+                                <button class="tab-btn" data-tab="projects">Projects</button>
+                                <button class="tab-btn" data-tab="docs">Documentation</button>
+                                <button class="tab-btn" data-tab="community">Community</button>
+                            </div>
+                            <div class="tab-content active" id="tutorials">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-video"></i> OpenCV Crash Course - 2 hours</a></li>
+                                    <li><a href="#"><i class="fas fa-laptop-code"></i> Hands-on Image Processing</a></li>
+                                    <li><a href="#"><i class="fas fa-graduation-cap"></i> Computer Vision Fundamentals</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="projects">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-project-diagram"></i> Face Detection System</a></li>
+                                    <li><a href="#"><i class="fas fa-project-diagram"></i> Real-time Object Tracking</a></li>
+                                    <li><a href="#"><i class="fas fa-project-diagram"></i> Image Stitching Application</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="btn btn-primary start-course">
+                                <i class="fas fa-play"></i> Start Course
+                            </button>
+                            <button class="btn btn-secondary download-resources">
+                                <i class="fas fa-download"></i> Download Resources
+                            </button>
+                            <button class="btn btn-outline view-docs">
+                                <i class="fas fa-external-link-alt"></i> Official Docs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <section class="progress-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Your Progress</h2>
+                    <p class="section-subtitle">Track your learning journey across all tools</p>
+                </div>
+
+                <div class="progress-overview">
+                    <div class="overall-progress">
+                        <div class="progress-circle">
+                            <svg width="160" height="160">
+                                <circle cx="80" cy="80" r="70" stroke="#e2e8f0" stroke-width="10" fill="none"></circle>
+                                <circle cx="80" cy="80" r="70" stroke="#4a6de5" stroke-width="10" fill="none" 
+                                        stroke-dasharray="440" stroke-dashoffset="352" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="percentage">20%</span>
+                                <span class="label">Overall Progress</span>
+                            </div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="number">3</span>
+                                <span class="text">Tools Started</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">1</span>
+                                <span class="text">Tools Mastered</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">8</span>
+                                <span class="text">Hours Spent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-progress">
+                        <h3>Tool-wise Progress</h3>
+                        <div class="progress-bars">
+                            <div class="progress-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-eye"></i>
+                                    <span>OpenCV</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 40%"></div>
+                                </div>
+                                <span class="percent">40%</span>
+                            </div>
+                            <div class="progress-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-brain"></i>
+                                    <span>PyTorch</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 25%"></div>
+                                </div>
+                                <span class="percent">25%</span>
+                            </div>
+                            <div class="progress-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-table"></i>
+                                    <span>Pandas</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 60%"></div>
+                                </div>
+                                <span class="percent">60%</span>
+                            </div>
+                            <div class="progress-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-calculator"></i>
+                                    <span>NumPy</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%"></div>
+                                </div>
+                                <span class="percent">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Master AI/ML tools through hands-on practice and real-world projects</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Tool Categories</h4>
+                    <ul>
+                        <li><a href="#computer-vision">Computer Vision</a></li>
+                        <li><a href="#deep-learning">Deep Learning</a></li>
+                        <li><a href="#nlp">NLP Tools</a></li>
+                        <li><a href="#deployment">Deployment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: aitools@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Tools Guide. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="tools.js"></script>
+</body>
+</html>

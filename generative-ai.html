@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* Generative AI specific styles */
+        :root {
+            --primary-grad: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%);
+            --secondary-grad: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            --accent-grad: linear-gradient(135deg, #00CED1 0%, #20B2AA 100%);
+        }
+        
+        .genai-header {
+            background: var(--primary-grad);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .genai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .model-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
+            border-color: #8A2BE2;
+        }
+        
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary-grad);
+        }
+        
+        .model-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .icon-gan {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+        }
+        
+        .icon-vae {
+            background: linear-gradient(135deg, #36D1DC, #5B86E5);
+        }
+        
+        .icon-transformer {
+            background: linear-gradient(135deg, #834d9b, #d04ed6);
+        }
+        
+        .icon-diffusion {
+            background: linear-gradient(135deg, #0ba360, #3cba92);
+        }
+        
+        .generation-demo {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .demo-canvas {
+            width: 100%;
+            height: 300px;
+            background: white;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+        
+        .grid-cell {
+            background: #f0f0f0;
+            border-radius: 5px;
+            aspect-ratio: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .grid-cell.active {
+            background: var(--primary-grad);
+        }
+        
+        .gan-architecture {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .gan-component {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+        
+        .gan-arrow {
+            font-size: 2rem;
+            color: #8A2BE2;
+        }
+        
+        .latent-space {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .space-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .latent-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        
+        .text-generation {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .text-output {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #8A2BE2;
+            font-family: 'Courier New', monospace;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        
+        .model-comparison {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-grad);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .training-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .training-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-grad);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #8A2BE2;
+            margin-bottom: 1rem;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .code-header {
+            background: #2d2d30;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .code-header span {
+            color: #d4d4d4;
+            font-family: monospace;
+        }
+        
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .code-content pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        
+        .math-equation {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+        
+        .interactive-slider {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .slider-container {
+            margin: 2rem 0;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slider-value {
+            font-weight: bold;
+            color: #8A2BE2;
+        }
+        
+        .progress-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-grad);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .gan-architecture {
+                flex-direction: column;
+            }
+            
+            .gan-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .genai-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="genai-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#curriculum">Curriculum</a> / 
+                <span>Generative AI</span>
+            </div>
+            <h1>Generative AI (Hours 34-38)</h1>
+            <p class="subtitle">Creating new content using deep learning models</p>
+            <div class="header-meta">
+                <span class="meta-item"><i class="far fa-clock"></i> 5 Hours</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="meta-item"><i class="fas fa-star"></i> Trending</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3>In This Module</h3>
+                    <ul class="module-nav">
+                        <li><a href="#introduction" class="active">Hour 34: Introduction</a></li>
+                        <li><a href="#autoencoders">Hour 35: Autoencoders</a></li>
+                        <li><a href="#gans">Hour 36: GANs</a></li>
+                        <li><a href="#textgen">Hour 37: Text Generation</a></li>
+                        <li><a href="#conditional">Hour 38: Conditional Models</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Model Types</h4>
+                    <div class="model-types">
+                        <div class="model-type">
+                            <div class="type-dot" style="background: #FF6B6B;"></div>
+                            <span>GANs</span>
+                        </div>
+                        <div class="model-type">
+                            <div class="type-dot" style="background: #36D1DC;"></div>
+                            <span>VAEs</span>
+                        </div>
+                        <div class="model-type">
+                            <div class="type-dot" style="background: #834d9b;"></div>
+                            <span>Transformers</span>
+                        </div>
+                        <div class="model-type">
+                            <div class="type-dot" style="background: #0ba360;"></div>
+                            <span>Diffusion</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Quick Links</h4>
+                    <div class="quick-links">
+                        <a href="#demo" class="quick-link">
+                            <i class="fas fa-play-circle"></i> Live Demo
+                        </a>
+                        <a href="#code" class="quick-link">
+                            <i class="fas fa-code"></i> Code Examples
+                        </a>
+                        <a href="#projects" class="quick-link">
+                            <i class="fas fa-project-diagram"></i> Projects
+                        </a>
+                        <a href="#resources" class="quick-link">
+                            <i class="fas fa-book"></i> Resources
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Hour 34: Introduction to Generative Models -->
+                <section id="introduction" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 34</span>
+                        <h2>Introduction to Generative Models</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Generative models are AI systems that can create new data similar to what they were trained on. Unlike discriminative models that classify or predict labels, generative models learn the underlying probability distribution of the data.</p>
+                        
+                        <div class="genai-grid">
+                            <div class="model-card">
+                                <div class="model-icon icon-gan">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h3>Generative Adversarial Networks</h3>
+                                <p>Two neural networks competing against each other to generate realistic data</p>
+                                <ul class="features-list">
+                                    <li>High-quality image generation</li>
+                                    <li>Style transfer</li>
+                                    <li>Data augmentation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="model-card">
+                                <div class="model-icon icon-vae">
+                                    <i class="fas fa-compress"></i>
+                                </div>
+                                <h3>Variational Autoencoders</h3>
+                                <p>Probabilistic models that learn compressed representations of data</p>
+                                <ul class="features-list">
+                                    <li>Structured latent space</li>
+                                    <li>Controllable generation</li>
+                                    <li>Good for interpolation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="model-card">
+                                <div class="model-icon icon-transformer">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <h3>Transformer Models</h3>
+                                <p>Attention-based models for text and sequence generation</p>
+                                <ul class="features-list">
+                                    <li>GPT series</li>
+                                    <li>BERT for language</li>
+                                    <li>Code generation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="model-card">
+                                <div class="model-icon icon-diffusion">
+                                    <i class="fas fa-wave-square"></i>
+                                </div>
+                                <h3>Diffusion Models</h3>
+                                <p>Gradually denoising random data to generate samples</p>
+                                <ul class="features-list">
+                                    <li>DALL-E 2, Stable Diffusion</li>
+                                    <li>High fidelity images</li>
+                                    <li>Text-to-image</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="math-equation">
+                            <h4>Fundamental Objective</h4>
+                            <p>Generative models aim to learn the true data distribution p<sub>data</sub>(x) and generate samples from it:</p>
+                            <p>min<sub>θ</sub> D<sub>KL</sub>(p<sub>data</sub>(x) || p<sub>θ</sub>(x))</p>
+                            <p>where D<sub>KL</sub> is the Kullback-Leibler divergence</p>
+                        </div>
+                        
+                        <div class="applications-grid">
+                            <h4>Real-World Applications</h4>
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h5>Art Generation</h5>
+                                <p>Creating original artwork and designs</p>
+                            </div>
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <h5>Music Composition</h5>
+                                <p>Generating new musical pieces</p>
+                            </div>
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h5>Content Creation</h5>
+                                <p>Writing articles, stories, code</p>
+                            </div>
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <h5>Drug Discovery</h5>
+                                <p>Generating molecular structures</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 35: Autoencoders -->
+                <section id="autoencoders" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 35</span>
+                        <h2>Autoencoders – Basics & Applications</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Autoencoders are neural networks that learn efficient representations of data through compression and reconstruction.</p>
+                        
+                        <div class="architecture-diagram">
+                            <div class="diagram-container">
+                                <div class="ae-layers">
+                                    <div class="layer input">
+                                        <h5>Input (784)</h5>
+                                        <div class="neurons">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layer encoder">
+                                        <h5>Encoder (256)</h5>
+                                        <div class="neurons">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layer bottleneck">
+                                        <h5>Latent Space (32)</h5>
+                                        <div class="neurons">
+                                            <div class="neuron active"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layer decoder">
+                                        <h5>Decoder (256)</h5>
+                                        <div class="neurons">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layer output">
+                                        <h5>Output (784)</h5>
+                                        <div class="neurons">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Simple Autoencoder Implementation</span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code>import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Autoencoder(nn.Module):
+    def __init__(self, input_dim=784, latent_dim=32):
+        super(Autoencoder, self).__init__()
+        
+        # Encoder layers
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, latent_dim)
+        )
+        
+        # Decoder layers
+        self.decoder = nn.Sequential(
+            nn.Linear(latent_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 256),
+            nn.ReLU(),
+            nn.Linear(256, input_dim),
+            nn.Sigmoid()  # For pixel values between 0-1
+        )
+    
+    def forward(self, x):
+        # Encode to latent space
+        latent = self.encoder(x)
+        # Decode back to original space
+        reconstructed = self.decoder(latent)
+        return reconstructed, latent
+
+# Variational Autoencoder
+class VAE(nn.Module):
+    def __init__(self, input_dim=784, latent_dim=32):
+        super(VAE, self).__init__()
+        
+        # Encoder
+        self.fc1 = nn.Linear(input_dim, 400)
+        self.fc_mean = nn.Linear(400, latent_dim)
+        self.fc_logvar = nn.Linear(400, latent_dim)
+        
+        # Decoder
+        self.fc3 = nn.Linear(latent_dim, 400)
+        self.fc4 = nn.Linear(400, input_dim)
+    
+    def encode(self, x):
+        h = F.relu(self.fc1(x))
+        return self.fc_mean(h), self.fc_logvar(h)
+    
+    def reparameterize(self, mu, logvar):
+        std = torch.exp(0.5 * logvar)
+        eps = torch.randn_like(std)
+        return mu + eps * std
+    
+    def decode(self, z):
+        h = F.relu(self.fc3(z))
+        return torch.sigmoid(self.fc4(h))
+    
+    def forward(self, x):
+        mu, logvar = self.encode(x.view(-1, 784))
+        z = self.reparameterize(mu, logvar)
+        return self.decode(z), mu, logvar
+
+# Loss function for VAE
+def vae_loss(recon_x, x, mu, logvar):
+    # Reconstruction loss (binary cross entropy)
+    BCE = F.binary_cross_entropy(recon_x, x.view(-1, 784), reduction='sum')
+    
+    # KL divergence loss
+    KLD = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    
+    return BCE + KLD
+
+# Training loop
+def train_vae(model, train_loader, epochs=10):
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    
+    for epoch in range(epochs):
+        total_loss = 0
+        for batch_idx, (data, _) in enumerate(train_loader):
+            optimizer.zero_grad()
+            recon_batch, mu, logvar = model(data)
+            loss = vae_loss(recon_batch, data, mu, logvar)
+            loss.backward()
+            optimizer.step()
+            
+            total_loss += loss.item()
+        
+        print(f'Epoch {epoch+1}, Loss: {total_loss/len(train_loader.dataset):.4f}')
+
+# Generate new samples
+def generate_samples(model, num_samples=10):
+    model.eval()
+    with torch.no_grad():
+        # Sample from standard normal distribution
+        z = torch.randn(num_samples, model.latent_dim)
+        samples = model.decode(z)
+    return samples</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="latent-space">
+                            <h4>Latent Space Visualization</h4>
+                            <p>The compressed representation where similar data points cluster together</p>
+                            <div class="space-visual" id="latentVisual">
+                                <!-- Points will be generated by JavaScript -->
+                            </div>
+                            <button onclick="generateLatentPoints()" class="btn">
+                                <i class="fas fa-sync-alt"></i> Generate New Points
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 36: GANs -->
+                <section id="gans" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 36</span>
+                        <h2>Generative Adversarial Networks (GANs)</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>GANs consist of two neural networks: a Generator that creates fake data, and a Discriminator that tries to distinguish real from fake data.</p>
+                        
+                        <div class="gan-architecture">
+                            <div class="gan-component">
+                                <div class="component-icon">
+                                    <i class="fas fa-random"></i>
+                                </div>
+                                <h5>Random Noise</h5>
+                                <p>Input vector z ~ p(z)</p>
+                            </div>
+                            
+                            <div class="gan-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            
+                            <div class="gan-component">
+                                <div class="component-icon" style="background: #FF6B6B;">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <h5>Generator G(z)</h5>
+                                <p>Creates fake samples</p>
+                            </div>
+                            
+                            <div class="gan-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            
+                            <div class="gan-component">
+                                <div class="component-icon" style="background: #36D1DC;">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h5>Discriminator D(x)</h5>
+                                <p>Real or Fake?</p>
+                            </div>
+                        </div>
+                        
+                        <div class="math-equation">
+                            <h4>GAN Objective Function</h4>
+                            <p>min<sub>G</sub> max<sub>D</sub> V(D, G) = 𝔼<sub>x∼p<sub>data</sub>(x)</sub>[log D(x)] + 𝔼<sub>z∼p(z)</sub>[log(1 − D(G(z)))]</p>
+                            <p>Where D tries to maximize this function while G tries to minimize it</p>
+                        </div>
+                        
+                        <div class="training-process">
+                            <h4>Training Process</h4>
+                            <div class="training-step">
+                                <div class="step-number">1</div>
+                                <h5>Sample Noise</h5>
+                                <p>Generate random noise vector</p>
+                            </div>
+                            <div class="training-step">
+                                <div class="step-number">2</div>
+                                <h5>Generate Fake</h5>
+                                <p>Generator creates fake data</p>
+                            </div>
+                            <div class="training-step">
+                                <div class="step-number">3</div>
+                                <h5>Train Discriminator</h5>
+                                <p>Update D to distinguish real/fake</p>
+                            </div>
+                            <div class="training-step">
+                                <div class="step-number">4</div>
+                                <h5>Train Generator</h5>
+                                <p>Update G to fool D</p>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block" id="code">
+                            <div class="code-header">
+                                <span>Basic GAN Implementation</span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code>import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+
+class Generator(nn.Module):
+    def __init__(self, latent_dim=100, img_channels=1):
+        super(Generator, self).__init__()
+        self.init_size = 7  # Initial size before upsampling
+        self.l1 = nn.Sequential(
+            nn.Linear(latent_dim, 128 * self.init_size ** 2)
+        )
+        
+        self.conv_blocks = nn.Sequential(
+            nn.BatchNorm2d(128),
+            nn.Upsample(scale_factor=2),
+            nn.Conv2d(128, 128, 3, stride=1, padding=1),
+            nn.BatchNorm2d(128, 0.8),
+            nn.LeakyReLU(0.2, inplace=True),
+            nn.Upsample(scale_factor=2),
+            nn.Conv2d(128, 64, 3, stride=1, padding=1),
+            nn.BatchNorm2d(64, 0.8),
+            nn.LeakyReLU(0.2, inplace=True),
+            nn.Conv2d(64, img_channels, 3, stride=1, padding=1),
+            nn.Tanh()
+        )
+    
+    def forward(self, z):
+        out = self.l1(z)
+        out = out.view(out.shape[0], 128, self.init_size, self.init_size)
+        img = self.conv_blocks(out)
+        return img
+
+class Discriminator(nn.Module):
+    def __init__(self, img_channels=1):
+        super(Discriminator, self).__init__()
+        
+        def discriminator_block(in_filters, out_filters, bn=True):
+            block = [
+                nn.Conv2d(in_filters, out_filters, 3, 2, 1),
+                nn.LeakyReLU(0.2, inplace=True),
+                nn.Dropout2d(0.25)
+            ]
+            if bn:
+                block.append(nn.BatchNorm2d(out_filters, 0.8))
+            return block
+        
+        self.model = nn.Sequential(
+            *discriminator_block(img_channels, 16, bn=False),
+            *discriminator_block(16, 32),
+            *discriminator_block(32, 64),
+            *discriminator_block(64, 128)
+        )
+        
+        # The height and width of downsampled image
+        ds_size = 28 // 2 ** 4
+        self.adv_layer = nn.Sequential(
+            nn.Linear(128 * ds_size ** 2, 1),
+            nn.Sigmoid()
+        )
+    
+    def forward(self, img):
+        out = self.model(img)
+        out = out.view(out.shape[0], -1)
+        validity = self.adv_layer(out)
+        return validity
+
+# Initialize models
+latent_dim = 100
+generator = Generator(latent_dim)
+discriminator = Discriminator()
+
+# Loss function
+adversarial_loss = nn.BCELoss()
+
+# Optimizers
+optimizer_G = optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+optimizer_D = optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+
+# Training loop
+def train_gan(epochs, dataloader):
+    for epoch in range(epochs):
+        for i, (imgs, _) in enumerate(dataloader):
+            batch_size = imgs.shape[0]
+            
+            # Adversarial ground truths
+            valid = torch.ones(batch_size, 1)
+            fake = torch.zeros(batch_size, 1)
+            
+            # -----------------
+            #  Train Generator
+            # -----------------
+            optimizer_G.zero_grad()
+            
+            # Sample noise
+            z = torch.randn(batch_size, latent_dim)
+            
+            # Generate a batch of images
+            gen_imgs = generator(z)
+            
+            # Loss measures generator's ability to fool discriminator
+            g_loss = adversarial_loss(discriminator(gen_imgs), valid)
+            
+            g_loss.backward()
+            optimizer_G.step()
+            
+            # ---------------------
+            #  Train Discriminator
+            # ---------------------
+            optimizer_D.zero_grad()
+            
+            # Measure discriminator's ability to classify real from fake
+            real_loss = adversarial_loss(discriminator(imgs), valid)
+            fake_loss = adversarial_loss(discriminator(gen_imgs.detach()), fake)
+            d_loss = (real_loss + fake_loss) / 2
+            
+            d_loss.backward()
+            optimizer_D.step()
+            
+            # Print progress
+            if i % 100 == 0:
+                print(f"[Epoch {epoch}/{epochs}] [Batch {i}/{len(dataloader)}] "
+                      f"[D loss: {d_loss.item():.4f}] [G loss: {g_loss.item():.4f}]")
+        
+        # Save generated images
+        if epoch % 10 == 0:
+            save_image(gen_imgs.data[:25], f"images/{epoch}.png", nrow=5, normalize=True)
+
+# Generate new images
+def generate_images(num_images=25):
+    generator.eval()
+    with torch.no_grad():
+        z = torch.randn(num_images, latent_dim)
+        gen_imgs = generator(z)
+    return gen_imgs</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="interactive-slider" id="demo">
+                            <h4>GAN Parameter Explorer</h4>
+                            <p>Adjust parameters to see how they affect generation quality</p>
+                            
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>Noise Dimension</span>
+                                    <span class="slider-value" id="noiseValue">100</span>
+                                </div>
+                                <input type="range" min="10" max="200" value="100" class="slider" 
+                                       id="noiseSlider" oninput="updateGAN()">
+                            </div>
+                            
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>Learning Rate</span>
+                                    <span class="slider-value" id="lrValue">0.0002</span>
+                                </div>
+                                <input type="range" min="1" max="100" value="20" class="slider" 
+                                       id="lrSlider" oninput="updateGAN()">
+                            </div>
+                            
+                            <div class="demo-canvas">
+                                <div class="canvas-grid" id="ganGrid">
+                                    <!-- Generated grid will go here -->
+                                </div>
+                            </div>
+                            
+                            <button onclick="generateGANGrid()" class="btn">
+                                <i class="fas fa-redo"></i> Regenerate Grid
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 37: Text Generation -->
+                <section id="textgen" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 37</span>
+                        <h2>Text Generation Models</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Text generation models create coherent sequences of text based on patterns learned from training data.</p>
+                        
+                        <div class="model-comparison">
+                            <h4>Text Generation Architectures</h4>
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Key Feature</th>
+                                        <th>Use Case</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>RNN</td>
+                                        <td>Sequential processing</td>
+                                        <td>Simple text generation</td>
+                                        <td>Character-level models</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LSTM</td>
+                                        <td>Long-term memory</td>
+                                        <td>Longer sequences</td>
+                                        <td>Story generation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GRU</td>
+                                        <td>Simpler than LSTM</td>
+                                        <td>Efficient training</td>
+                                        <td>Real-time generation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Transformer</td>
+                                        <td>Attention mechanism</td>
+                                        <td>State-of-the-art</td>
+                                        <td>GPT, BERT</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="text-generation">
+                            <h4>Text Generation Demo</h4>
+                            <div class="text-output" id="textOutput">
+                                The quick brown fox jumps over the lazy dog. This is a sample text that will be used for generation. Machine learning models can learn patterns from such text and generate new content that follows similar patterns.
+                            </div>
+                            
+                            <div class="generation-controls">
+                                <div class="input-group">
+                                    <input type="text" id="promptInput" placeholder="Enter your prompt here..." 
+                                           class="text-input" value="Once upon a time">
+                                    <button onclick="generateText()" class="btn">
+                                        <i class="fas fa-magic"></i> Generate Text
+                                    </button>
+                                </div>
+                                
+                                <div class="parameter-controls">
+                                    <div class="param-slider">
+                                        <label>Temperature: <span id="tempValue">0.7</span></label>
+                                        <input type="range" min="0.1" max="2.0" step="0.1" value="0.7" 
+                                               id="tempSlider" oninput="updateTemp()">
+                                    </div>
+                                    
+                                    <div class="param-slider">
+                                        <label>Length: <span id="lengthValue">100</span> tokens</label>
+                                        <input type="range" min="10" max="500" value="100" 
+                                               id="lengthSlider" oninput="updateLength()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Transformer-based Text Generation</span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code>import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import math
+
+class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model, num_heads):
+        super(MultiHeadAttention, self).__init__()
+        assert d_model % num_heads == 0
+        
+        self.d_model = d_model
+        self.num_heads = num_heads
+        self.d_k = d_model // num_heads
+        
+        self.W_q = nn.Linear(d_model, d_model)
+        self.W_k = nn.Linear(d_model, d_model)
+        self.W_v = nn.Linear(d_model, d_model)
+        self.W_o = nn.Linear(d_model, d_model)
+    
+    def forward(self, query, key, value, mask=None):
+        batch_size = query.size(0)
+        
+        # Linear transformations and split into heads
+        Q = self.W_q(query).view(batch_size, -1, self.num_heads, self.d_k).transpose(1, 2)
+        K = self.W_k(key).view(batch_size, -1, self.num_heads, self.d_k).transpose(1, 2)
+        V = self.W_v(value).view(batch_size, -1, self.num_heads, self.d_k).transpose(1, 2)
+        
+        # Scaled dot-product attention
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.d_k)
+        
+        if mask is not None:
+            scores = scores.masked_fill(mask == 0, -1e9)
+        
+        attention = F.softmax(scores, dim=-1)
+        output = torch.matmul(attention, V)
+        
+        # Concatenate heads
+        output = output.transpose(1, 2).contiguous().view(
+            batch_size, -1, self.d_model
+        )
+        
+        return self.W_o(output)
+
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model, num_heads, ff_dim, dropout=0.1):
+        super(TransformerBlock, self).__init__()
+        
+        self.attention = MultiHeadAttention(d_model, num_heads)
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+        
+        self.feed_forward = nn.Sequential(
+            nn.Linear(d_model, ff_dim),
+            nn.ReLU(),
+            nn.Linear(ff_dim, d_model)
+        )
+        
+        self.dropout = nn.Dropout(dropout)
+    
+    def forward(self, x, mask=None):
+        # Self-attention with residual connection
+        attn_output = self.attention(x, x, x, mask)
+        x = self.norm1(x + self.dropout(attn_output))
+        
+        # Feed-forward with residual connection
+        ff_output = self.feed_forward(x)
+        x = self.norm2(x + self.dropout(ff_output))
+        
+        return x
+
+class TransformerModel(nn.Module):
+    def __init__(self, vocab_size, d_model=512, num_heads=8, 
+                 num_layers=6, ff_dim=2048, max_seq_length=1000):
+        super(TransformerModel, self).__init__()
+        
+        self.embedding = nn.Embedding(vocab_size, d_model)
+        self.positional_encoding = PositionalEncoding(d_model, max_seq_length)
+        
+        self.layers = nn.ModuleList([
+            TransformerBlock(d_model, num_heads, ff_dim)
+            for _ in range(num_layers)
+        ])
+        
+        self.fc_out = nn.Linear(d_model, vocab_size)
+        self.dropout = nn.Dropout(0.1)
+    
+    def forward(self, x, mask=None):
+        seq_len = x.size(1)
+        
+        # Add embedding and positional encoding
+        x = self.embedding(x)
+        x = self.positional_encoding(x)
+        x = self.dropout(x)
+        
+        # Pass through transformer blocks
+        for layer in self.layers:
+            x = layer(x, mask)
+        
+        # Output projection
+        output = self.fc_out(x)
+        
+        return output
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model, max_len=5000):
+        super(PositionalEncoding, self).__init__()
+        
+        pe = torch.zeros(max_len, d_model)
+        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(
+            torch.arange(0, d_model, 2).float() * 
+            (-math.log(10000.0) / d_model)
+        )
+        
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+        
+        pe = pe.unsqueeze(0)
+        self.register_buffer('pe', pe)
+    
+    def forward(self, x):
+        return x + self.pe[:, :x.size(1)]
+
+# Text generation function
+def generate_text(model, tokenizer, prompt, max_length=100, temperature=1.0):
+    model.eval()
+    tokens = tokenizer.encode(prompt)
+    generated = tokens.copy()
+    
+    with torch.no_grad():
+        for _ in range(max_length):
+            # Prepare input
+            input_tensor = torch.tensor([generated]).long()
+            
+            # Get model predictions
+            outputs = model(input_tensor)
+            predictions = outputs[0, -1, :] / temperature
+            
+            # Apply softmax to get probabilities
+            probabilities = F.softmax(predictions, dim=-1)
+            
+            # Sample from distribution
+            next_token = torch.multinomial(probabilities, num_samples=1).item()
+            generated.append(next_token)
+            
+            # Stop if we generate end token
+            if next_token == tokenizer.eos_token_id:
+                break
+    
+    return tokenizer.decode(generated)
+
+# Training function
+def train_transformer(model, train_loader, epochs=10):
+    criterion = nn.CrossEntropyLoss(ignore_index=0)  # ignore padding
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
+    
+    for epoch in range(epochs):
+        total_loss = 0
+        model.train()
+        
+        for batch in train_loader:
+            inputs, targets = batch
+            
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            
+            # Reshape for cross entropy
+            outputs = outputs.view(-1, outputs.size(-1))
+            targets = targets.view(-1)
+            
+            loss = criterion(outputs, targets)
+            loss.backward()
+            optimizer.step()
+            
+            total_loss += loss.item()
+        
+        print(f"Epoch {epoch+1}, Loss: {total_loss/len(train_loader):.4f}")</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 38: Conditional Generation -->
+                <section id="conditional" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 38</span>
+                        <h2>Conditional Generation Models</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Conditional generation models produce content based on specific input conditions, enabling controlled and targeted generation.</p>
+                        
+                        <div class="applications-grid">
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                                <h5>Text-to-Image</h5>
+                                <p>Generate images from text descriptions</p>
+                                <div class="app-tags">
+                                    <span class="tag">DALL-E</span>
+                                    <span class="tag">Stable Diffusion</span>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <h5>Text-to-Text</h5>
+                                <p>Generate text based on prompts</p>
+                                <div class="app-tags">
+                                    <span class="tag">GPT</span>
+                                    <span class="tag">T5</span>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <h5>Style Transfer</h5>
+                                <p>Generate content in specific styles</p>
+                                <div class="app-tags">
+                                    <span class="tag">CycleGAN</span>
+                                    <span class="tag">StyleGAN</span>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <h5>Image Editing</h5>
+                                <p>Modify images based on text</p>
+                                <div class="app-tags">
+                                    <span class="tag">CLIP</span>
+                                    <span class="tag">GLIDE</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="conditional-demo">
+                            <h4>Conditional Image Generation</h4>
+                            <div class="demo-controls">
+                                <div class="condition-selector">
+                                    <label for="categorySelect">Category:</label>
+                                    <select id="categorySelect" onchange="updateConditional()">
+                                        <option value="animals">Animals</option>
+                                        <option value="landscapes">Landscapes</option>
+                                        <option value="faces">Human Faces</option>
+                                        <option value="vehicles">Vehicles</option>
+                                    </select>
+                                    
+                                    <label for="styleSelect">Style:</label>
+                                    <select id="styleSelect" onchange="updateConditional()">
+                                        <option value="realistic">Realistic</option>
+                                        <option value="cartoon">Cartoon</option>
+                                        <option value="abstract">Abstract</option>
+                                        <option value="watercolor">Watercolor</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="demo-canvas" id="conditionalCanvas">
+                                    <div class="generated-image">
+                                        <i class="fas fa-image" style="font-size: 4rem; color: #ccc;"></i>
+                                        <p>Select category and style to generate image</p>
+                                    </div>
+                                </div>
+                                
+                                <button onclick="generateConditionalImage()" class="btn">
+                                    <i class="fas fa-bolt"></i> Generate Image
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-section" id="projects">
+                            <div class="progress-header">
+                                <h3>Project Progress</h3>
+                                <span class="progress-percent" id="progressPercent">0%</span>
+                            </div>
+                            
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            
+                            <div class="project-steps">
+                                <div class="project-step">
+                                    <input type="checkbox" id="step1" onchange="updateProgress()">
+                                    <label for="step1">Implement basic autoencoder</label>
+                                </div>
+                                <div class="project-step">
+                                    <input type="checkbox" id="step2" onchange="updateProgress()">
+                                    <label for="step2">Train simple GAN on MNIST</label>
+                                </div>
+                                <div class="project-step">
+                                    <input type="checkbox" id="step3" onchange="updateProgress()">
+                                    <label for="step3">Create text generator with LSTM</label>
+                                </div>
+                                <div class="project-step">
+                                    <input type="checkbox" id="step4" onchange="updateProgress()">
+                                    <label for="step4">Build conditional GAN</label>
+                                </div>
+                                <div class="project-step">
+                                    <input type="checkbox" id="step5" onchange="updateProgress()">
+                                    <label for="step5">Deploy model as web app</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resources-section" id="resources">
+                            <h4>Additional Resources</h4>
+                            <div class="resources-list">
+                                <div class="resource">
+                                    <i class="fas fa-book"></i>
+                                    <div>
+                                        <h5>Papers</h5>
+                                        <p>Original GAN paper, Attention is All You Need, VAE paper</p>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <h5>Courses</h5>
+                                        <p>Stanford CS231n, Deep Learning Specialization</p>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <i class="fab fa-github"></i>
+                                    <div>
+                                        <h5>Code Repositories</h5>
+                                        <p>PyTorch GAN Zoo, Hugging Face Transformers</p>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <i class="fas fa-users"></i>
+                                    <div>
+                                        <h5>Communities</h5>
+                                        <p>r/MachineLearning, Papers With Code, AI Discord servers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI & ML Guide</h4>
+                    <p>Master Generative AI and create amazing content</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Next Module</h4>
+                    <a href="ai-tools.html" class="next-module">
+                        <i class="fas fa-arrow-right"></i>
+                        <div>
+                            <h5>AI Tools & Technologies</h5>
+                            <p>Learn essential frameworks and libraries</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize progress bar
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.project-step input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked);
+            const progress = (checked.length / checkboxes.length) * 100;
+            
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
+        }
+        
+        // Generate latent space points
+        function generateLatentPoints() {
+            const container = document.getElementById('latentVisual');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 50; i++) {
+                const point = document.createElement('div');
+                point.className = 'latent-point';
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                point.style.left = `${x}%`;
+                point.style.top = `${y}%`;
+                
+                // Random size for variety
+                const size = 10 + Math.random() * 20;
+                point.style.width = `${size}px`;
+                point.style.height = `${size}px`;
+                
+                // Slight opacity variation
+                point.style.opacity = 0.6 + Math.random() * 0.4;
+                
+                container.appendChild(point);
+            }
+        }
+        
+        // Initialize GAN grid
+        function generateGANGrid() {
+            const grid = document.getElementById('ganGrid');
+            grid.innerHTML = '';
+            
+            for (let i = 0; i < 16; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                
+                // Random activation
+                if (Math.random() > 0.5) {
+                    cell.classList.add('active');
+                }
+                
+                grid.appendChild(cell);
+            }
+        }
+        
+        // Update GAN parameters
+        function updateGAN() {
+            const noiseValue = document.getElementById('noiseSlider').value;
+            const lrValue = document.getElementById('lrSlider').value;
+            
+            document.getElementById('noiseValue').textContent = noiseValue;
+            document.getElementById('lrValue').textContent = (lrValue / 100000).toFixed(4);
+            
+            // Update grid based on parameters
+            const gridCells = document.querySelectorAll('.grid-cell');
+            const activationProb = noiseValue / 200; // Higher noise = more activation
+            
+            gridCells.forEach(cell => {
+                cell.classList.remove('active');
+                if (Math.random() < activationProb) {
+                    cell.classList.add('active');
+                }
+            });
+        }
+        
+        // Text generation functions
+        function updateTemp() {
+            const temp = document.getElementById('tempSlider').value;
+            document.getElementById('tempValue').textContent = temp;
+        }
+        
+        function updateLength() {
+            const length = document.getElementById('lengthSlider').value;
+            document.getElementById('lengthValue').textContent = length;
+        }
+        
+        function generateText() {
+            const prompt = document.getElementById('promptInput').value;
+            const temp = parseFloat(document.getElementById('tempSlider').value);
+            const length = parseInt(document.getElementById('lengthSlider').value);
+            
+            const output = document.getElementById('textOutput');
+            output.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            
+            // Simulate generation delay
+            setTimeout(() => {
+                // Sample generated text (in real app, this would call a model)
+                const samples = [
+                    "Once upon a time in a land far away, there was a kingdom where magic flowed through the rivers and mountains spoke ancient wisdom. The people lived in harmony with nature, cultivating enchanted gardens that bloomed with flowers of every hue.",
+                    
+                    "The artificial intelligence system analyzed the data patterns and identified several key insights that could revolutionize the industry. Through machine learning algorithms, it predicted market trends with unprecedented accuracy.",
+                    
+                    "In the depths of the ocean, bioluminescent creatures created a mesmerizing light show. Their delicate forms danced through the water, leaving trails of shimmering particles that glittered like stars in the midnight sea.",
+                    
+                    "The quantum computer processed information at speeds previously thought impossible. Its qubits existed in superposition states, allowing it to solve complex problems that would take classical computers millennia to complete."
+                ];
+                
+                const generated = prompt + " " + samples[Math.floor(Math.random() * samples.length)];
+                output.textContent = generated;
+            }, 1000);
+        }
+        
+        // Conditional generation
+        function updateConditional() {
+            // This would update the UI based on selected conditions
+            console.log("Conditions updated");
+        }
+        
+        function generateConditionalImage() {
+            const category = document.getElementById('categorySelect').value;
+            const style = document.getElementById('styleSelect').value;
+            
+            const canvas = document.getElementById('conditionalCanvas');
+            canvas.innerHTML = `
+                <div class="generated-image" style="padding: 2rem; text-align: center;">
+                    <div style="font-size: 3rem; color: #8A2BE2; margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Image Generated!</h4>
+                    <p>Category: ${category.charAt(0).toUpperCase() + category.slice(1)}</p>
+                    <p>Style: ${style.charAt(0).toUpperCase() + style.slice(1)}</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: white; border-radius: 8px;">
+                        <i class="fas fa-image" style="font-size: 4rem; color: #8A2BE2;"></i>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.module-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize page
+        window.onload = function() {
+            generateLatentPoints();
+            generateGANGrid();
+            updateProgress();
+            
+            // Add scroll-based active link update
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.module-nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html>

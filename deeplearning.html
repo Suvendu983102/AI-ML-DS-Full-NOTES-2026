@@ -1,0 +1,3222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning & Neural Networks - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        /* Additional Deep Learning specific styles */
+        .neuron-visual {
+            position: relative;
+            height: 200px;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .neuron {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .neuron-inputs {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .neuron-output {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .neuron-connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform-origin: left center;
+        }
+        
+        .activation-visual {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .activation-function {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .activation-icon {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .activation-formula {
+            font-family: 'Courier New', monospace;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .cnn-architecture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .cnn-layer {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        
+        .layer-label {
+            width: 150px;
+            text-align: right;
+            padding-right: 1rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .layer-visual {
+            flex: 1;
+            height: 60px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #90caf9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conv-filter {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            border-radius: 4px;
+            animation: slideFilter 4s linear infinite;
+        }
+        
+        @keyframes slideFilter {
+            0% { left: 0; }
+            50% { left: calc(100% - 30px); }
+            100% { left: 0; }
+        }
+        
+        .rnn-cell {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .rnn-cell-visual {
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin: 0 1rem;
+            position: relative;
+        }
+        
+        .rnn-connection {
+            width: 30px;
+            height: 2px;
+            background: #4CAF50;
+            position: relative;
+        }
+        
+        .rnn-connection:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #4CAF50;
+            border-top: 2px solid #4CAF50;
+            transform: rotate(45deg);
+        }
+        
+        .dl-problem {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .problem-statement {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .problem-hint {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #ffa726;
+        }
+        
+        .framework-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .framework-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .framework-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .framework-icon {
+            font-size: 2rem;
+            color: #667eea;
+        }
+        
+        .training-progress {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        .loss-chart {
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loss-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ff6b6b;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            margin: 1rem 0;
+        }
+        
+        .grid-cell {
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+        
+        .grid-cell.active {
+            background: #667eea;
+        }
+        
+        .model-architecture {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .cnn-layer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .layer-label {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .rnn-cell {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .rnn-cell-visual {
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#topics">Topics</a> / 
+                <span>Deep Learning & Neural Networks</span>
+            </div>
+            <h1>Deep Learning & Neural Networks (Hours 25-28)</h1>
+            <p class="topic-description">Advanced neural network architectures: ANN, CNN, RNN, and practical applications</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 4 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Expert</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="topic-sidebar">
+                    <h3>In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#hour25" class="active">Hour 25: ANN Basics</a></li>
+                        <li><a href="#hour26">Hour 26: CNN</a></li>
+                        <li><a href="#hour27">Hour 27: RNN</a></li>
+                        <li><a href="#hour28">Hour 28: Practice Problem</a></li>
+                        <li><a href="#frameworks">DL Frameworks</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Neural Network Types</h4>
+                        <div class="nn-types">
+                            <div class="nn-type">
+                                <div class="type-icon ann"></div>
+                                <span>ANN</span>
+                            </div>
+                            <div class="nn-type">
+                                <div class="type-icon cnn"></div>
+                                <span>CNN</span>
+                            </div>
+                            <div class="nn-type">
+                                <div class="type-icon rnn"></div>
+                                <span>RNN</span>
+                            </div>
+                            <div class="nn-type">
+                                <div class="type-icon lstm"></div>
+                                <span>LSTM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Key Concepts</h4>
+                        <div class="concepts-list">
+                            <div class="concept">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Forward Propagation</span>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Backpropagation</span>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Gradient Descent</span>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-filter"></i>
+                                <span>Convolution</span>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-memory"></i>
+                                <span>Memory Cells</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 25: Neural Network Structure & ANN -->
+                    <section id="hour25" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">25</span> Neural Network Structure & ANN</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Artificial Neural Networks Fundamentals</h3>
+                            <p>ANNs are computational models inspired by biological neural networks, capable of learning complex patterns from data.</p>
+                            
+                            <div class="neuron-visual">
+                                <div class="neuron-inputs">
+                                    <div class="neuron-connection" style="width: 100px; transform: rotate(20deg);"></div>
+                                    <div class="neuron-connection" style="width: 100px; transform: rotate(0deg);"></div>
+                                    <div class="neuron-connection" style="width: 100px; transform: rotate(-20deg);"></div>
+                                </div>
+                                <div class="neuron">
+                                    Σ
+                                    <div class="neuron-tooltip">Neuron<br>Activation: σ(Σwx + b)</div>
+                                </div>
+                                <div class="neuron-output">
+                                    <div class="neuron-connection" style="width: 100px; transform: rotate(0deg);"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Building ANN with TensorFlow/Keras</span>
+                                </div>
+                                <pre><code>import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers, models
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Example 1: Simple ANN for Classification
+print("=== Simple ANN for Classification ===")
+
+# Create synthetic dataset
+from sklearn.datasets import make_classification
+X, y = make_classification(
+    n_samples=1000,
+    n_features=20,
+    n_informative=15,
+    n_redundant=5,
+    n_classes=2,
+    random_state=42
+)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Standardize features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Build ANN model
+model = models.Sequential([
+    # Input layer (20 features)
+    layers.Input(shape=(20,)),
+    
+    # Hidden layers
+    layers.Dense(64, activation='relu', kernel_initializer='he_normal'),
+    layers.BatchNormalization(),
+    layers.Dropout(0.3),
+    
+    layers.Dense(32, activation='relu', kernel_initializer='he_normal'),
+    layers.BatchNormalization(),
+    layers.Dropout(0.2),
+    
+    layers.Dense(16, activation='relu'),
+    
+    # Output layer
+    layers.Dense(1, activation='sigmoid')  # Binary classification
+])
+
+# Compile model
+model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='binary_crossentropy',
+    metrics=['accuracy', keras.metrics.AUC(name='auc')]
+)
+
+# Display model architecture
+print("\nModel Summary:")
+model.summary()
+
+# Train model
+history = model.fit(
+    X_train_scaled, y_train,
+    validation_split=0.2,
+    epochs=50,
+    batch_size=32,
+    verbose=1
+)
+
+# Evaluate model
+test_loss, test_accuracy, test_auc = model.evaluate(X_test_scaled, y_test, verbose=0)
+print(f"\nTest Accuracy: {test_accuracy:.4f}")
+print(f"Test AUC: {test_auc:.4f}")
+
+# Plot training history
+fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+# Plot accuracy
+axes[0].plot(history.history['accuracy'], label='Training Accuracy')
+axes[0].plot(history.history['val_accuracy'], label='Validation Accuracy')
+axes[0].set_xlabel('Epochs')
+axes[0].set_ylabel('Accuracy')
+axes[0].set_title('Accuracy over Epochs')
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
+
+# Plot loss
+axes[1].plot(history.history['loss'], label='Training Loss')
+axes[1].plot(history.history['val_loss'], label='Validation Loss')
+axes[1].set_xlabel('Epochs')
+axes[1].set_ylabel('Loss')
+axes[1].set_title('Loss over Epochs')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+
+# Plot AUC
+axes[2].plot(history.history['auc'], label='Training AUC')
+axes[2].plot(history.history['val_auc'], label='Validation AUC')
+axes[2].set_xlabel('Epochs')
+axes[2].set_ylabel('AUC')
+axes[2].set_title('AUC over Epochs')
+axes[2].legend()
+axes[2].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Example 2: ANN for Regression
+print("\n=== ANN for Regression ===")
+
+# Create regression dataset
+np.random.seed(42)
+X_reg = np.random.rand(1000, 10) * 10
+# Complex non-linear relationship
+y_reg = (X_reg[:, 0] ** 2 + 
+         np.sin(X_reg[:, 1] * np.pi) + 
+         X_reg[:, 2] * X_reg[:, 3] +
+         np.random.randn(1000) * 0.5)
+
+# Split and scale
+X_train_reg, X_test_reg, y_train_reg, y_test_reg = train_test_split(
+    X_reg, y_reg, test_size=0.2, random_state=42
+)
+
+scaler_reg = StandardScaler()
+X_train_reg_scaled = scaler_reg.fit_transform(X_train_reg)
+X_test_reg_scaled = scaler_reg.transform(X_test_reg)
+
+# Build regression model
+model_reg = models.Sequential([
+    layers.Input(shape=(10,)),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.2),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(32, activation='relu'),
+    layers.Dense(1)  # Linear activation for regression
+])
+
+model_reg.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='mse',
+    metrics=['mae', 'mse']
+)
+
+# Train
+history_reg = model_reg.fit(
+    X_train_reg_scaled, y_train_reg,
+    validation_split=0.2,
+    epochs=100,
+    batch_size=32,
+    verbose=0
+)
+
+# Evaluate
+test_mse, test_mae, _ = model_reg.evaluate(X_test_reg_scaled, y_test_reg, verbose=0)
+print(f"Test MSE: {test_mse:.4f}")
+print(f"Test MAE: {test_mae:.4f}")
+
+# Make predictions
+y_pred_reg = model_reg.predict(X_test_reg_scaled).flatten()
+
+# Visualize predictions vs actual
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test_reg, y_pred_reg, alpha=0.6)
+plt.plot([y_test_reg.min(), y_test_reg.max()], 
+         [y_test_reg.min(), y_test_reg.max()], 
+         'r--', lw=2)
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('ANN Regression: Predictions vs Actual')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Example 3: Multi-class Classification
+print("\n=== Multi-class ANN ===")
+
+from sklearn.datasets import load_digits
+digits = load_digits()
+X_multi = digits.data
+y_multi = digits.target
+
+# One-hot encode labels
+y_multi_onehot = tf.keras.utils.to_categorical(y_multi)
+
+# Split
+X_train_multi, X_test_multi, y_train_multi, y_test_multi = train_test_split(
+    X_multi, y_multi_onehot, test_size=0.2, random_state=42
+)
+
+# Build multi-class model
+model_multi = models.Sequential([
+    layers.Input(shape=(64,)),  # 8x8 images flattened
+    layers.Dense(128, activation='relu'),
+    layers.BatchNormalization(),
+    layers.Dropout(0.3),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(32, activation='relu'),
+    layers.Dense(10, activation='softmax')  # 10 classes
+])
+
+model_multi.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Train
+history_multi = model_multi.fit(
+    X_train_multi, y_train_multi,
+    validation_split=0.2,
+    epochs=50,
+    batch_size=32,
+    verbose=0
+)
+
+# Evaluate
+test_loss_multi, test_acc_multi = model_multi.evaluate(X_test_multi, y_test_multi, verbose=0)
+print(f"Test Accuracy: {test_acc_multi:.4f}")
+
+# Confusion matrix
+from sklearn.metrics import confusion_matrix, classification_report
+y_pred_multi = model_multi.predict(X_test_multi)
+y_pred_classes = np.argmax(y_pred_multi, axis=1)
+y_true_classes = np.argmax(y_test_multi, axis=1)
+
+print("\nClassification Report:")
+print(classification_report(y_true_classes, y_pred_classes))
+
+# Example 4: Custom Layer Implementation
+print("\n=== Custom Layer Example ===")
+
+class CustomDenseLayer(layers.Layer):
+    def __init__(self, units=32, activation=None):
+        super(CustomDenseLayer, self).__init__()
+        self.units = units
+        self.activation = keras.activations.get(activation)
+    
+    def build(self, input_shape):
+        # Create trainable weights
+        self.w = self.add_weight(
+            shape=(input_shape[-1], self.units),
+            initializer='random_normal',
+            trainable=True,
+            name='weights'
+        )
+        self.b = self.add_weight(
+            shape=(self.units,),
+            initializer='zeros',
+            trainable=True,
+            name='bias'
+        )
+    
+    def call(self, inputs):
+        # Forward pass
+        x = tf.matmul(inputs, self.w) + self.b
+        if self.activation is not None:
+            x = self.activation(x)
+        return x
+
+# Use custom layer in model
+custom_model = models.Sequential([
+    layers.Input(shape=(20,)),
+    CustomDenseLayer(64, activation='relu'),
+    CustomDenseLayer(32, activation='relu'),
+    CustomDenseLayer(1, activation='sigmoid')
+])
+
+custom_model.compile(
+    optimizer='adam',
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
+
+print("Custom model built successfully!")
+print(f"Number of trainable parameters: {custom_model.count_params()}")</code></pre>
+                            </div>
+                            
+                            <h4>Activation Functions</h4>
+                            <div class="activation-visual">
+                                <div class="activation-function">
+                                    <div class="activation-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h5>ReLU</h5>
+                                    <div class="activation-formula">f(x) = max(0, x)</div>
+                                    <p>Most popular, solves vanishing gradient</p>
+                                    <div class="activation-use">Hidden layers</div>
+                                </div>
+                                
+                                <div class="activation-function">
+                                    <div class="activation-icon">
+                                        <i class="fas fa-sigma"></i>
+                                    </div>
+                                    <h5>Sigmoid</h5>
+                                    <div class="activation-formula">σ(x) = 1/(1 + e⁻ˣ)</div>
+                                    <p>Smooth, outputs between 0 and 1</p>
+                                    <div class="activation-use">Binary classification output</div>
+                                </div>
+                                
+                                <div class="activation-function">
+                                    <div class="activation-icon">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <h5>Tanh</h5>
+                                    <div class="activation-formula">tanh(x) = (eˣ - e⁻ˣ)/(eˣ + e⁻ˣ)</div>
+                                    <p>Outputs between -1 and 1, zero-centered</p>
+                                    <div class="activation-use">Hidden layers (RNN)</div>
+                                </div>
+                                
+                                <div class="activation-function">
+                                    <div class="activation-icon">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                    <h5>Softmax</h5>
+                                    <div class="activation-formula">σ(z)ᵢ = eᶻⁱ/Σⱼeᶻʲ</div>
+                                    <p>Outputs probability distribution</p>
+                                    <div class="activation-use">Multi-class output</div>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Neural Network Playground</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="hidden-layers">Hidden Layers:</label>
+                                        <input type="range" id="hidden-layers" min="1" max="5" value="2">
+                                        <span id="layers-value">2</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="neurons-per-layer">Neurons per Layer:</label>
+                                        <input type="range" id="neurons-per-layer" min="8" max="128" step="8" value="32">
+                                        <span id="neurons-value">32</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="activation-type">Activation:</label>
+                                        <select id="activation-type">
+                                            <option value="relu">ReLU</option>
+                                            <option value="sigmoid">Sigmoid</option>
+                                            <option value="tanh">Tanh</option>
+                                        </select>
+                                    </div>
+                                    <button onclick="simulateANN()" class="btn">
+                                        <i class="fas fa-brain"></i> Simulate ANN
+                                    </button>
+                                </div>
+                                <div id="ann-simulation" class="demo-output">
+                                    <div class="simulation-placeholder">
+                                        <p>Adjust parameters to see ANN architecture and performance</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="training-visual">
+                                <h4>Training Process Visualization</h4>
+                                <div class="training-progress">
+                                    <h5>Epoch Progress</h5>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="epoch-progress"></div>
+                                    </div>
+                                    <div class="loss-metrics">
+                                        <div class="metric-display">
+                                            <span class="metric-label">Loss:</span>
+                                            <span class="metric-value" id="loss-value">0.0000</span>
+                                        </div>
+                                        <div class="metric-display">
+                                            <span class="metric-label">Accuracy:</span>
+                                            <span class="metric-value" id="accuracy-value">0.0000</span>
+                                        </div>
+                                    </div>
+                                    <div class="loss-chart" id="loss-chart"></div>
+                                    <button onclick="startTraining()" class="btn small">
+                                        <i class="fas fa-play"></i> Start Training Simulation
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="key-concepts">
+                                <h4>Key ANN Concepts</h4>
+                                <div class="concepts-grid">
+                                    <div class="concept-card">
+                                        <h5>Forward Propagation</h5>
+                                        <p>Data flows from input to output layer, computing predictions</p>
+                                        <div class="formula-small">a⁽ˡ⁾ = σ(W⁽ˡ⁾a⁽ˡ⁻¹⁾ + b⁽ˡ⁾)</div>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h5>Backpropagation</h5>
+                                        <p>Errors propagate backward to update weights using chain rule</p>
+                                        <div class="formula-small">∂L/∂W = ∂L/∂a * ∂a/∂z * ∂z/∂W</div>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h5>Gradient Descent</h5>
+                                        <p>Optimization algorithm to minimize loss function</p>
+                                        <div class="formula-small">W = W - η * ∇L(W)</div>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h5>Regularization</h5>
+                                        <p>Techniques to prevent overfitting</p>
+                                        <ul>
+                                            <li>L1/L2 Regularization</li>
+                                            <li>Dropout</li>
+                                            <li>Early Stopping</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 26: Convolutional Neural Network (CNN) Basics -->
+                    <section id="hour26" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">26</span> Convolutional Neural Networks (CNN)</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Architecture for Computer Vision</h3>
+                            <p>CNNs are specialized neural networks for processing grid-like data such as images, using convolutional layers to extract spatial features.</p>
+                            
+                            <div class="cnn-architecture">
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Input Image</div>
+                                    <div class="layer-visual" style="background: #e8f5e9;">
+                                        224×224×3
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Conv Layer 1</div>
+                                    <div class="layer-visual">
+                                        <div class="conv-filter"></div>
+                                        32 filters, 3×3
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Pooling Layer</div>
+                                    <div class="layer-visual" style="background: #fff3e0;">
+                                        Max Pooling 2×2
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Conv Layer 2</div>
+                                    <div class="layer-visual">
+                                        <div class="conv-filter" style="animation-delay: 1s;"></div>
+                                        64 filters, 3×3
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Flatten</div>
+                                    <div class="layer-visual" style="background: #e3f2fd;">
+                                        Vectorize features
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Dense Layers</div>
+                                    <div class="layer-visual" style="background: #f3e5f5;">
+                                        Fully connected ANN
+                                    </div>
+                                </div>
+                                
+                                <div class="cnn-layer">
+                                    <div class="layer-label">Output</div>
+                                    <div class="layer-visual" style="background: #ffebee;">
+                                        Classification
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>CNN Implementation for Image Classification</span>
+                                </div>
+                                <pre><code>import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers, models, datasets, preprocessing
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+
+# Example 1: CNN for CIFAR-10
+print("=== CNN for CIFAR-10 Image Classification ===")
+
+# Load CIFAR-10 dataset
+(X_train, y_train), (X_test, y_test) = datasets.cifar10.load_data()
+
+# Class names
+class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
+               'dog', 'frog', 'horse', 'ship', 'truck']
+
+print(f"Training data shape: {X_train.shape}")
+print(f"Training labels shape: {y_train.shape}")
+print(f"Test data shape: {X_test.shape}")
+
+# Normalize pixel values to [0, 1]
+X_train = X_train.astype('float32') / 255.0
+X_test = X_test.astype('float32') / 255.0
+
+# One-hot encode labels
+y_train_categorical = keras.utils.to_categorical(y_train, 10)
+y_test_categorical = keras.utils.to_categorical(y_test, 10)
+
+# Build CNN model
+model = models.Sequential([
+    # Convolutional layers for feature extraction
+    layers.Conv2D(32, (3, 3), activation='relu', padding='same', input_shape=(32, 32, 3)),
+    layers.BatchNormalization(),
+    layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),
+    
+    layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+    layers.BatchNormalization(),
+    layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),
+    
+    layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+    layers.BatchNormalization(),
+    layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),
+    
+    # Flatten and dense layers for classification
+    layers.Flatten(),
+    layers.Dense(256, activation='relu'),
+    layers.BatchNormalization(),
+    layers.Dropout(0.5),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.3),
+    layers.Dense(10, activation='softmax')
+])
+
+# Compile model
+model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Display model architecture
+print("\nModel Summary:")
+model.summary()
+
+# Data augmentation
+datagen = preprocessing.image.ImageDataGenerator(
+    rotation_range=15,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    zoom_range=0.1
+)
+datagen.fit(X_train)
+
+# Train model
+history = model.fit(
+    datagen.flow(X_train, y_train_categorical, batch_size=64),
+    validation_data=(X_test, y_test_categorical),
+    epochs=30,
+    verbose=1
+)
+
+# Evaluate model
+test_loss, test_accuracy = model.evaluate(X_test, y_test_categorical, verbose=0)
+print(f"\nTest Accuracy: {test_accuracy:.4f}")
+print(f"Test Loss: {test_loss:.4f}")
+
+# Plot training history
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+axes[0].plot(history.history['accuracy'], label='Training Accuracy')
+axes[0].plot(history.history['val_accuracy'], label='Validation Accuracy')
+axes[0].set_xlabel('Epochs')
+axes[0].set_ylabel('Accuracy')
+axes[0].set_title('Training and Validation Accuracy')
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
+
+axes[1].plot(history.history['loss'], label='Training Loss')
+axes[1].plot(history.history['val_loss'], label='Validation Loss')
+axes[1].set_xlabel('Epochs')
+axes[1].set_ylabel('Loss')
+axes[1].set_title('Training and Validation Loss')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Make predictions
+y_pred = model.predict(X_test)
+y_pred_classes = np.argmax(y_pred, axis=1)
+y_true_classes = np.argmax(y_test_categorical, axis=1)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(y_true_classes, y_pred_classes, target_names=class_names))
+
+# Confusion matrix
+cm = confusion_matrix(y_true_classes, y_pred_classes)
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+            xticklabels=class_names, yticklabels=class_names)
+plt.title('Confusion Matrix')
+plt.ylabel('True Label')
+plt.xlabel('Predicted Label')
+plt.show()
+
+# Visualize sample predictions
+fig, axes = plt.subplots(3, 5, figsize=(15, 9))
+axes = axes.ravel()
+
+for i in range(15):
+    axes[i].imshow(X_test[i])
+    axes[i].axis('off')
+    
+    true_label = class_names[y_true_classes[i]]
+    pred_label = class_names[y_pred_classes[i]]
+    confidence = np.max(y_pred[i])
+    
+    color = 'green' if true_label == pred_label else 'red'
+    axes[i].set_title(f"True: {true_label}\nPred: {pred_label}\nConf: {confidence:.2f}", 
+                      color=color, fontsize=9)
+
+plt.tight_layout()
+plt.show()
+
+# Example 2: CNN Feature Visualization
+print("\n=== CNN Feature Visualization ===")
+
+# Get feature maps from first convolutional layer
+layer_outputs = [layer.output for layer in model.layers[:8]]
+activation_model = models.Model(inputs=model.input, outputs=layer_outputs)
+
+# Get activations for a sample image
+sample_image = X_test[0:1]
+activations = activation_model.predict(sample_image)
+
+# Visualize feature maps
+layer_names = [layer.name for layer in model.layers[:8]]
+
+fig, axes = plt.subplots(len(layer_names), 4, figsize=(15, 3*len(layer_names)))
+
+for i, (layer_name, layer_activation) in enumerate(zip(layer_names, activations)):
+    # Number of features in the feature map
+    n_features = layer_activation.shape[-1]
+    
+    # Display first 4 feature maps
+    for j in range(min(4, n_features)):
+        ax = axes[i, j]
+        if layer_activation.ndim == 4:  # Conv layer output
+            feature_map = layer_activation[0, :, :, j]
+            ax.imshow(feature_map, cmap='viridis')
+        elif layer_activation.ndim == 2:  # Dense layer output
+            # Reshape for visualization
+            size = int(np.sqrt(layer_activation.shape[1]))
+            if size * size == layer_activation.shape[1]:
+                feature_map = layer_activation[0].reshape(size, size)
+                ax.imshow(feature_map, cmap='viridis')
+            else:
+                ax.bar(range(len(layer_activation[0])), layer_activation[0])
+                ax.set_xlim(0, 100)
+        
+        ax.axis('off')
+        if j == 0:
+            ax.set_title(f'{layer_name}\n({layer_activation.shape})', fontsize=10)
+
+plt.tight_layout()
+plt.show()
+
+# Example 3: Transfer Learning with Pre-trained CNN
+print("\n=== Transfer Learning with VGG16 ===")
+
+# Load pre-trained VGG16 model (without top layers)
+base_model = keras.applications.VGG16(
+    weights='imagenet',
+    include_top=False,
+    input_shape=(224, 224, 3)
+)
+
+# Freeze base model layers
+base_model.trainable = False
+
+print(f"Base model: {base_model.name}")
+print(f"Number of layers in base model: {len(base_model.layers)}")
+print(f"Input shape: {base_model.input_shape}")
+print(f"Output shape: {base_model.output.shape}")
+
+# Build custom model on top
+inputs = keras.Input(shape=(224, 224, 3))
+x = base_model(inputs, training=False)
+x = layers.GlobalAveragePooling2D()(x)
+x = layers.Dense(256, activation='relu')(x)
+x = layers.Dropout(0.5)(x)
+outputs = layers.Dense(10, activation='softmax')(x)
+
+transfer_model = keras.Model(inputs, outputs)
+
+transfer_model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+print("\nTransfer Learning Model Summary:")
+transfer_model.summary()
+
+# Note: For actual training, you would need to preprocess your images to 224x224
+# and use appropriate dataset
+
+print("\nReady for transfer learning! This model can be fine-tuned on your custom dataset.")
+
+# Example 4: CNN for Object Detection (YOLO-like)
+print("\n=== Object Detection CNN Architecture ===")
+
+# Simplified version of object detection CNN
+def build_object_detection_cnn():
+    inputs = layers.Input(shape=(416, 416, 3))
+    
+    # Backbone (Darknet-like)
+    x = layers.Conv2D(32, (3, 3), strides=2, padding='same')(inputs)
+    x = layers.BatchNormalization()(x)
+    x = layers.LeakyReLU(alpha=0.1)(x)
+    
+    x = layers.Conv2D(64, (3, 3), strides=2, padding='same')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.LeakyReLU(alpha=0.1)(x)
+    
+    # Multiple convolutional blocks
+    for filters in [128, 256, 512]:
+        x = layers.Conv2D(filters, (3, 3), strides=2, padding='same')(x)
+        x = layers.BatchNormalization()(x)
+        x = layers.LeakyReLU(alpha=0.1)(x)
+        
+        # Residual block
+        shortcut = x
+        x = layers.Conv2D(filters//2, (1, 1), padding='same')(x)
+        x = layers.BatchNormalization()(x)
+        x = layers.LeakyReLU(alpha=0.1)(x)
+        
+        x = layers.Conv2D(filters, (3, 3), padding='same')(x)
+        x = layers.BatchNormalization()(x)
+        x = layers.LeakyReLU(alpha=0.1)(x)
+        
+        x = layers.Add()([shortcut, x])
+    
+    # Detection heads
+    # For simplicity, we'll output classification + bounding boxes
+    classes = layers.Conv2D(20, (1, 1), activation='sigmoid', name='classes')(x)
+    boxes = layers.Conv2D(4, (1, 1), activation='linear', name='boxes')(x)
+    
+    model = keras.Model(inputs=inputs, outputs=[classes, boxes])
+    return model
+
+detection_model = build_object_detection_cnn()
+print("\nObject Detection Model Summary:")
+detection_model.summary()</code></pre>
+                            </div>
+                            
+                            <h4>CNN Layer Types</h4>
+                            <div class="layer-types">
+                                <div class="layer-type-grid">
+                                    <div class="layer-type">
+                                        <h5>Convolutional Layer</h5>
+                                        <p>Applies filters to extract features</p>
+                                        <div class="formula-small">Output = Input * Filter + Bias</div>
+                                    </div>
+                                    
+                                    <div class="layer-type">
+                                        <h5>Pooling Layer</h5>
+                                        <p>Reduces spatial dimensions, maintains important features</p>
+                                        <div class="formula-small">Max/Average Pooling</div>
+                                    </div>
+                                    
+                                    <div class="layer-type">
+                                        <h5>Padding</h5>
+                                        <p>Preserves spatial dimensions</p>
+                                        <div class="formula-small">Same/Valid Padding</div>
+                                    </div>
+                                    
+                                    <div class="layer-type">
+                                        <h5>Stride</h5>
+                                        <p>Controls filter movement</p>
+                                        <div class="formula-small">Output size = (W-F+2P)/S + 1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>CNN Filter Visualization</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="filter-size">Filter Size:</label>
+                                        <select id="filter-size">
+                                            <option value="3">3×3</option>
+                                            <option value="5">5×5</option>
+                                            <option value="7">7×7</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="filter-type">Filter Type:</label>
+                                        <select id="filter-type">
+                                            <option value="edge">Edge Detection</option>
+                                            <option value="blur">Blur</option>
+                                            <option value="sharpen">Sharpen</option>
+                                            <option value="sobel">Sobel</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="stride-value">Stride:</label>
+                                        <input type="range" id="stride-value" min="1" max="3" value="1">
+                                        <span id="stride-display">1</span>
+                                    </div>
+                                    <button onclick="visualizeCNN()" class="btn">
+                                        <i class="fas fa-eye"></i> Apply Filter
+                                    </button>
+                                </div>
+                                <div id="cnn-visualization" class="demo-output">
+                                    <div class="visualization-area">
+                                        <h5>Input Grid</h5>
+                                        <div class="grid-container" id="input-grid"></div>
+                                        <h5>Output Grid</h5>
+                                        <div class="grid-container" id="output-grid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cnn-architectures">
+                                <h4>Popular CNN Architectures</h4>
+                                <div class="architectures-grid">
+                                    <div class="architecture">
+                                        <h5>LeNet-5 (1998)</h5>
+                                        <p>First successful CNN, digit recognition</p>
+                                        <div class="architecture-stats">5 layers, 60K params</div>
+                                    </div>
+                                    
+                                    <div class="architecture">
+                                        <h5>AlexNet (2012)</h5>
+                                        <p>Won ImageNet, started deep learning boom</p>
+                                        <div class="architecture-stats">8 layers, 60M params</div>
+                                    </div>
+                                    
+                                    <div class="architecture">
+                                        <h5>VGG16 (2014)</h5>
+                                        <p>Simple architecture, 3×3 convs</p>
+                                        <div class="architecture-stats">16 layers, 138M params</div>
+                                    </div>
+                                    
+                                    <div class="architecture">
+                                        <h5>ResNet (2015)</h5>
+                                        <p>Residual connections, very deep</p>
+                                        <div class="architecture-stats">152 layers, 60M params</div>
+                                    </div>
+                                    
+                                    <div class="architecture">
+                                        <h5>Inception (2014)</h5>
+                                        <p>Multiple filter sizes in parallel</p>
+                                        <div class="architecture-stats">22 layers, 5M params</div>
+                                    </div>
+                                    
+                                    <div class="architecture">
+                                        <h5>EfficientNet (2019)</h5>
+                                        <p>Compound scaling, state-of-art</p>
+                                        <div class="architecture-stats">Various sizes</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 27: Recurrent Neural Network (RNN) -->
+                    <section id="hour27" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">27</span> Recurrent Neural Networks (RNN)</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Sequence Modeling and Time Series</h3>
+                            <p>RNNs are designed to process sequential data by maintaining internal state (memory) of previous inputs.</p>
+                            
+                            <div class="rnn-sequence">
+                                <div class="rnn-cell">
+                                    <div class="rnn-input">x₁</div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-cell-visual">
+                                        RNN Cell
+                                        <div class="hidden-state">h₀</div>
+                                    </div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-output">y₁</div>
+                                </div>
+                                
+                                <div class="rnn-cell">
+                                    <div class="rnn-input">x₂</div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-cell-visual">
+                                        RNN Cell
+                                        <div class="hidden-state">h₁</div>
+                                    </div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-output">y₂</div>
+                                </div>
+                                
+                                <div class="rnn-cell">
+                                    <div class="rnn-input">x₃</div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-cell-visual">
+                                        RNN Cell
+                                        <div class="hidden-state">h₂</div>
+                                    </div>
+                                    <div class="rnn-connection"></div>
+                                    <div class="rnn-output">y₃</div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>RNN Implementation for Sequence Processing</span>
+                                </div>
+                                <pre><code>import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers, models
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+
+# Example 1: Simple RNN for Time Series Prediction
+print("=== RNN for Time Series Prediction ===")
+
+# Generate synthetic time series data
+np.random.seed(42)
+time = np.arange(0, 1000, 0.1)
+series = np.sin(0.1 * time) + np.sin(0.05 * time) + np.random.randn(len(time)) * 0.1
+
+# Prepare data for RNN
+def create_sequences(data, seq_length):
+    X, y = [], []
+    for i in range(len(data) - seq_length):
+        X.append(data[i:i + seq_length])
+        y.append(data[i + seq_length])
+    return np.array(X), np.array(y)
+
+seq_length = 20
+X, y = create_sequences(series, seq_length)
+
+# Reshape for RNN [samples, time steps, features]
+X = X.reshape((X.shape[0], X.shape[1], 1))
+
+# Split data
+split = int(0.8 * len(X))
+X_train, X_test = X[:split], X[split:]
+y_train, y_test = y[:split], y[split:]
+
+print(f"Training data shape: {X_train.shape}")
+print(f"Testing data shape: {X_test.shape}")
+
+# Build RNN model
+model = models.Sequential([
+    layers.SimpleRNN(50, activation='tanh', return_sequences=True, 
+                     input_shape=(seq_length, 1)),
+    layers.Dropout(0.2),
+    layers.SimpleRNN(50, activation='tanh', return_sequences=False),
+    layers.Dropout(0.2),
+    layers.Dense(25, activation='relu'),
+    layers.Dense(1)
+])
+
+model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='mse',
+    metrics=['mae']
+)
+
+print("\nRNN Model Summary:")
+model.summary()
+
+# Train model
+history = model.fit(
+    X_train, y_train,
+    validation_split=0.2,
+    epochs=50,
+    batch_size=32,
+    verbose=1
+)
+
+# Evaluate
+test_loss, test_mae = model.evaluate(X_test, y_test, verbose=0)
+print(f"\nTest MSE: {test_loss:.4f}")
+print(f"Test MAE: {test_mae:.4f}")
+
+# Make predictions
+y_pred = model.predict(X_test).flatten()
+
+# Plot results
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Plot training history
+axes[0, 0].plot(history.history['loss'], label='Training Loss')
+axes[0, 0].plot(history.history['val_loss'], label='Validation Loss')
+axes[0, 0].set_xlabel('Epochs')
+axes[0, 0].set_ylabel('Loss (MSE)')
+axes[0, 0].set_title('Training History')
+axes[0, 0].legend()
+axes[0, 0].grid(True, alpha=0.3)
+
+# Plot predictions vs actual
+axes[0, 1].plot(y_test[:200], label='Actual', alpha=0.7)
+axes[0, 1].plot(y_pred[:200], label='Predicted', alpha=0.7)
+axes[0, 1].set_xlabel('Time Steps')
+axes[0, 1].set_ylabel('Value')
+axes[0, 1].set_title('Predictions vs Actual (First 200 points)')
+axes[0, 1].legend()
+axes[0, 1].grid(True, alpha=0.3)
+
+# Plot error distribution
+error = y_test - y_pred
+axes[1, 0].hist(error, bins=50, edgecolor='black')
+axes[1, 0].set_xlabel('Prediction Error')
+axes[1, 0].set_ylabel('Frequency')
+axes[1, 0].set_title('Error Distribution')
+axes[1, 0].grid(True, alpha=0.3)
+
+# Plot scatter of predictions vs actual
+axes[1, 1].scatter(y_test, y_pred, alpha=0.3)
+axes[1, 1].plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 
+                'r--', lw=2)
+axes[1, 1].set_xlabel('Actual Values')
+axes[1, 1].set_ylabel('Predicted Values')
+axes[1, 1].set_title('Predictions vs Actual Scatter')
+axes[1, 1].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Example 2: LSTM for Sequence Classification
+print("\n=== LSTM for Text Classification ===")
+
+# Load IMDB dataset
+max_features = 10000  # Vocabulary size
+max_length = 200      # Maximum sequence length
+
+(X_train_imdb, y_train_imdb), (X_test_imdb, y_test_imdb) = keras.datasets.imdb.load_data(
+    num_words=max_features
+)
+
+# Pad sequences to have same length
+X_train_imdb = keras.preprocessing.sequence.pad_sequences(X_train_imdb, maxlen=max_length)
+X_test_imdb = keras.preprocessing.sequence.pad_sequences(X_test_imdb, maxlen=max_length)
+
+print(f"Training data shape: {X_train_imdb.shape}")
+print(f"Testing data shape: {X_test_imdb.shape}")
+
+# Build LSTM model
+lstm_model = models.Sequential([
+    layers.Embedding(max_features, 128, input_length=max_length),
+    layers.Bidirectional(layers.LSTM(64, return_sequences=True)),
+    layers.Dropout(0.5),
+    layers.Bidirectional(layers.LSTM(32)),
+    layers.Dropout(0.5),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+
+lstm_model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
+
+print("\nLSTM Model Summary:")
+lstm_model.summary()
+
+# Train
+lstm_history = lstm_model.fit(
+    X_train_imdb, y_train_imdb,
+    validation_split=0.2,
+    epochs=10,
+    batch_size=64,
+    verbose=1
+)
+
+# Evaluate
+test_loss_lstm, test_acc_lstm = lstm_model.evaluate(X_test_imdb, y_test_imdb, verbose=0)
+print(f"\nTest Accuracy: {test_acc_lstm:.4f}")
+print(f"Test Loss: {test_loss_lstm:.4f}")
+
+# Example 3: GRU for Sequence Generation
+print("\n=== GRU for Text Generation ===")
+
+# Load Shakespeare text
+path_to_file = tf.keras.utils.get_file(
+    'shakespeare.txt',
+    'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt'
+)
+
+text = open(path_to_file, 'rb').read().decode(encoding='utf-8')
+vocab = sorted(set(text))
+char2idx = {char: idx for idx, char in enumerate(vocab)}
+idx2char = np.array(vocab)
+text_as_int = np.array([char2idx[char] for char in text])
+
+print(f"Text length: {len(text)} characters")
+print(f"Vocabulary size: {len(vocab)}")
+
+# Create training examples
+seq_length = 100
+examples_per_epoch = len(text) // (seq_length + 1)
+
+char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
+sequences = char_dataset.batch(seq_length + 1, drop_remainder=True)
+
+def split_input_target(chunk):
+    input_text = chunk[:-1]
+    target_text = chunk[1:]
+    return input_text, target_text
+
+dataset = sequences.map(split_input_target)
+dataset = dataset.batch(64, drop_remainder=True).prefetch(tf.data.experimental.AUTOTUNE)
+
+# Build GRU model for text generation
+vocab_size = len(vocab)
+embedding_dim = 256
+rnn_units = 1024
+
+gru_model = models.Sequential([
+    layers.Embedding(vocab_size, embedding_dim, batch_input_shape=[64, None]),
+    layers.GRU(rnn_units, return_sequences=True, stateful=True,
+               recurrent_initializer='glorot_uniform'),
+    layers.Dropout(0.2),
+    layers.GRU(rnn_units, return_sequences=True, stateful=True,
+               recurrent_initializer='glorot_uniform'),
+    layers.Dropout(0.2),
+    layers.Dense(vocab_size)
+])
+
+gru_model.compile(
+    optimizer=keras.optimizers.Adam(),
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+)
+
+print("\nGRU Model Summary:")
+gru_model.summary()
+
+# Text generation function
+def generate_text(model, start_string, num_generate=1000):
+    input_eval = [char2idx[char] for char in start_string]
+    input_eval = tf.expand_dims(input_eval, 0)
+    
+    text_generated = []
+    temperature = 1.0
+    
+    model.reset_states()
+    for _ in range(num_generate):
+        predictions = model(input_eval)
+        predictions = tf.squeeze(predictions, 0)
+        predictions = predictions / temperature
+        predicted_id = tf.random.categorical(predictions, num_samples=1)[-1, 0].numpy()
+        
+        input_eval = tf.expand_dims([predicted_id], 0)
+        text_generated.append(idx2char[predicted_id])
+    
+    return start_string + ''.join(text_generated)
+
+print("\nModel ready for text generation!")
+print("Example of text generation (after training):")
+print(generate_text.__doc__)
+
+# Example 4: Advanced RNN Architectures
+print("\n=== Advanced RNN Architectures ===")
+
+# Build different RNN variants
+def build_rnn_variant(variant='simple'):
+    inputs = layers.Input(shape=(None, 128))  # Variable length sequences
+    
+    if variant == 'simple':
+        x = layers.SimpleRNN(64, return_sequences=True)(inputs)
+    elif variant == 'lstm':
+        x = layers.LSTM(64, return_sequences=True)(inputs)
+    elif variant == 'gru':
+        x = layers.GRU(64, return_sequences=True)(inputs)
+    elif variant == 'bidirectional':
+        x = layers.Bidirectional(layers.LSTM(32, return_sequences=True))(inputs)
+    elif variant == 'stacked':
+        x = layers.LSTM(64, return_sequences=True)(inputs)
+        x = layers.LSTM(32, return_sequences=True)(x)
+    
+    outputs = layers.Dense(10, activation='softmax')(x)
+    model = keras.Model(inputs=inputs, outputs=outputs)
+    return model
+
+# Compare different variants
+variants = ['simple', 'lstm', 'gru', 'bidirectional', 'stacked']
+for variant in variants:
+    model_variant = build_rnn_variant(variant)
+    params = model_variant.count_params()
+    print(f"{variant.capitalize()} RNN: {params:,} parameters")
+
+# Example 5: Attention Mechanism
+print("\n=== Attention Mechanism ===")
+
+class AttentionLayer(layers.Layer):
+    def __init__(self, units):
+        super(AttentionLayer, self).__init__()
+        self.W1 = layers.Dense(units)
+        self.W2 = layers.Dense(units)
+        self.V = layers.Dense(1)
+    
+    def call(self, query, values):
+        # Expand dimensions for broadcasting
+        query_with_time_axis = tf.expand_dims(query, 1)
+        
+        # Calculate attention scores
+        score = self.V(tf.nn.tanh(self.W1(query_with_time_axis) + self.W2(values)))
+        
+        # Attention weights
+        attention_weights = tf.nn.softmax(score, axis=1)
+        
+        # Context vector
+        context_vector = attention_weights * values
+        context_vector = tf.reduce_sum(context_vector, axis=1)
+        
+        return context_vector, attention_weights
+
+# Build model with attention
+def build_attention_model():
+    inputs = layers.Input(shape=(None, 128))
+    
+    # Encoder (BiLSTM)
+    encoder_outputs = layers.Bidirectional(layers.LSTM(64, return_sequences=True))(inputs)
+    
+    # Decoder LSTM
+    decoder_lstm = layers.LSTM(64, return_sequences=True, return_state=True)
+    decoder_outputs, state_h, state_c = decoder_lstm(encoder_outputs)
+    
+    # Attention
+    attention_layer = AttentionLayer(64)
+    context_vector, attention_weights = attention_layer(state_h, encoder_outputs)
+    
+    # Concatenate context vector with decoder output
+    decoder_combined_context = layers.Concatenate(axis=-1)([context_vector, state_h])
+    
+    # Output
+    outputs = layers.Dense(10, activation='softmax')(decoder_combined_context)
+    
+    model = keras.Model(inputs=inputs, outputs=outputs)
+    return model
+
+attention_model = build_attention_model()
+print("\nAttention Model Summary:")
+attention_model.summary()</code></pre>
+                            </div>
+                            
+                            <h4>RNN Variants and Architectures</h4>
+                            <div class="rnn-variants">
+                                <div class="variants-grid">
+                                    <div class="variant">
+                                        <h5>Simple RNN</h5>
+                                        <p>Basic recurrent cell, suffers from vanishing gradient</p>
+                                        <div class="formula-small">hₜ = tanh(Wᵢxₜ + Wₕhₜ₋₁ + b)</div>
+                                    </div>
+                                    
+                                    <div class="variant">
+                                        <h5>LSTM</h5>
+                                        <p>Long Short-Term Memory, handles long dependencies</p>
+                                        <div class="formula-small">Gates: Input, Forget, Output</div>
+                                    </div>
+                                    
+                                    <div class="variant">
+                                        <h5>GRU</h5>
+                                        <p>Gated Recurrent Unit, simpler than LSTM</p>
+                                        <div class="formula-small">Update & Reset gates</div>
+                                    </div>
+                                    
+                                    <div class="variant">
+                                        <h5>Bidirectional</h5>
+                                        <p>Processes sequence in both directions</p>
+                                        <div class="formula-small">Forward + Backward</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>RNN Sequence Processor</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="sequence-type">Sequence Type:</label>
+                                        <select id="sequence-type">
+                                            <option value="sine">Sine Wave</option>
+                                            <option value="trend">Trend + Noise</option>
+                                            <option value="seasonal">Seasonal</option>
+                                            <option value="random">Random Walk</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="rnn-type">RNN Type:</label>
+                                        <select id="rnn-type">
+                                            <option value="simple">Simple RNN</option>
+                                            <option value="lstm">LSTM</option>
+                                            <option value="gru">GRU</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="sequence-length">Sequence Length:</label>
+                                        <input type="range" id="sequence-length" min="10" max="100" value="50">
+                                        <span id="seq-length-value">50</span>
+                                    </div>
+                                    <button onclick="simulateRNN()" class="btn">
+                                        <i class="fas fa-wave-square"></i> Process Sequence
+                                    </button>
+                                </div>
+                                <div id="rnn-simulation" class="demo-output">
+                                    <div class="simulation-placeholder">
+                                        <p>Generate and process different sequence types</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="rnn-applications">
+                                <h4>RNN Applications</h4>
+                                <div class="applications-grid">
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-language"></i>
+                                        </div>
+                                        <h5>Natural Language Processing</h5>
+                                        <p>Machine translation, sentiment analysis, text generation</p>
+                                    </div>
+                                    
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <h5>Time Series Forecasting</h5>
+                                        <p>Stock prediction, weather forecasting, demand prediction</p>
+                                    </div>
+                                    
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <h5>Speech Recognition</h5>
+                                        <p>Voice commands, transcription, speaker identification</p>
+                                    </div>
+                                    
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <h5>Video Analysis</h5>
+                                        <p>Action recognition, video captioning, anomaly detection</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 28: Practice Problem (ANN/CNN/RNN) -->
+                    <section id="hour28" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">28</span> Deep Learning Practice Problem</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Hands-on Neural Network Implementation</h3>
+                            <p>Apply your knowledge of ANN, CNN, and RNN to solve a comprehensive deep learning problem.</p>
+                            
+                            <div class="dl-problem">
+                                <h4><i class="fas fa-tasks"></i> Multi-part Deep Learning Challenge</h4>
+                                
+                                <div class="problem-statement">
+                                    <h5>Problem Statement:</h5>
+                                    <p>You are tasked with developing a comprehensive system for analyzing social media content. The system should:</p>
+                                    <ol>
+                                        <li>Classify images posted (CNN)</li>
+                                        <li>Analyze sentiment of text captions (RNN/LSTM)</li>
+                                        <li>Predict engagement metrics (ANN)</li>
+                                        <li>Combine all three for a final recommendation score</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="problem-hint">
+                                    <h5><i class="fas fa-lightbulb"></i> Dataset Information:</h5>
+                                    <p>You'll be working with a synthetic social media dataset containing:</p>
+                                    <ul>
+                                        <li>10,000 images (32×32 pixels, RGB)</li>
+                                        <li>Corresponding text captions (max 100 words)</li>
+                                        <li>Engagement metrics (likes, shares, comments)</li>
+                                        <li>Image categories: 10 classes</li>
+                                        <li>Sentiment labels: Positive, Neutral, Negative</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-parts">
+                                <div class="problem-part">
+                                    <h5>Part 1: CNN for Image Classification</h5>
+                                    <div class="model-architecture">
+# CNN Architecture for Image Classification
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 32, 32, 32)        896       
+batch_normalization (BatchNo (None, 32, 32, 32)        128       
+conv2d_1 (Conv2D)            (None, 32, 32, 32)        9248      
+max_pooling2d (MaxPooling2D) (None, 16, 16, 32)        0         
+dropout (Dropout)            (None, 16, 16, 32)        0         
+conv2d_2 (Conv2D)            (None, 16, 16, 64)        18496     
+...
+flatten (Flatten)            (None, 1024)              0         
+dense (Dense)                (None, 256)               262400    
+dense_1 (Dense)              (None, 10)                2570      
+=================================================================
+Total params: 342,826
+Trainable params: 342,698
+Non-trainable params: 128
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="example-header">
+                                            <span>Your Task: Implement the CNN Model</span>
+                                        </div>
+                                        <pre><code>import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers, models
+import numpy as np
+
+# TODO: Implement CNN model for image classification
+def build_cnn_model(input_shape=(32, 32, 3), num_classes=10):
+    """
+    Build a CNN model for image classification.
+    
+    Requirements:
+    1. At least 3 convolutional layers
+    2. Use batch normalization
+    3. Include dropout for regularization
+    4. Use appropriate pooling layers
+    5. End with dense layers for classification
+    
+    Return: Compiled Keras model
+    """
+    model = models.Sequential()
+    
+    # YOUR CODE HERE
+    # Add convolutional layers
+    # Add pooling layers
+    # Add dense layers
+    
+    # Compile the model
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    return model
+
+# TODO: Implement data augmentation
+def create_data_augmentation():
+    """
+    Create ImageDataGenerator with augmentation.
+    
+    Should include:
+    - Rotation
+    - Width/height shift
+    - Horizontal flip
+    - Zoom
+    """
+    # YOUR CODE HERE
+    return data_gen
+
+# TODO: Implement training function
+def train_cnn_model(model, X_train, y_train, X_val, y_val, epochs=30):
+    """
+    Train the CNN model with early stopping and checkpointing.
+    """
+    # YOUR CODE HERE
+    # Add callbacks (early stopping, model checkpoint)
+    # Train the model
+    # Return history object
+    return history</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="problem-part">
+                                    <h5>Part 2: RNN/LSTM for Sentiment Analysis</h5>
+                                    <div class="model-architecture">
+# LSTM Architecture for Sentiment Analysis
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding (Embedding)        (None, 100, 128)          1280000   
+bidirectional (Bidirectional (None, 100, 128)          98816     
+dropout (Dropout)            (None, 100, 128)          0         
+lstm_1 (LSTM)                (None, 64)                49408     
+dropout_1 (Dropout)          (None, 64)                0         
+dense (Dense)                (None, 32)                2080      
+dense_1 (Dense)              (None, 3)                 99        
+=================================================================
+Total params: 1,430,403
+Trainable params: 1,430,403
+Non-trainable params: 0
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="example-header">
+                                            <span>Your Task: Implement the LSTM Model</span>
+                                        </div>
+                                        <pre><code># TODO: Implement LSTM model for sentiment analysis
+def build_lstm_model(vocab_size=10000, max_length=100, embedding_dim=128):
+    """
+    Build an LSTM model for sentiment analysis.
+    
+    Requirements:
+    1. Use embedding layer
+    2. Use Bidirectional LSTM
+    3. Include dropout for regularization
+    4. Output 3 classes (Positive, Neutral, Negative)
+    """
+    model = models.Sequential()
+    
+    # YOUR CODE HERE
+    # Add embedding layer
+    # Add LSTM layers
+    # Add dense layers
+    
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    return model
+
+# TODO: Implement text preprocessing
+def preprocess_text(texts, vocab_size=10000, max_length=100):
+    """
+    Preprocess text data for LSTM.
+    
+    Steps:
+    1. Tokenization
+    2. Padding/truncating to max_length
+    3. Convert to sequences
+    """
+    # YOUR CODE HERE
+    return sequences
+
+# TODO: Implement attention mechanism (Bonus)
+class AttentionLayer(layers.Layer):
+    """
+    Implement attention mechanism for better performance.
+    """
+    def __init__(self, units):
+        super(AttentionLayer, self).__init__()
+        # YOUR CODE HERE
+    
+    def call(self, inputs):
+        # YOUR CODE HERE
+        return context_vector</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="problem-part">
+                                    <h5>Part 3: ANN for Engagement Prediction</h5>
+                                    <div class="model-architecture">
+# ANN Architecture for Regression
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dense (Dense)                (None, 128)               384       
+batch_normalization (BatchNo (None, 128)               512       
+dropout (Dropout)            (None, 128)               0         
+dense_1 (Dense)              (None, 64)                8256      
+dense_2 (Dense)              (None, 32)                2080      
+dense_3 (Dense)              (None, 1)                 33        
+=================================================================
+Total params: 11,265
+Trainable params: 11,009
+Non-trainable params: 256
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="example-header">
+                                            <span>Your Task: Implement the ANN Model</span>
+                                        </div>
+                                        <pre><code># TODO: Implement ANN model for engagement prediction
+def build_ann_model(input_dim, output_dim=1):
+    """
+    Build an ANN model for regression (engagement prediction).
+    
+    Input features:
+    - CNN features (flattened)
+    - LSTM features (sentiment scores)
+    - Metadata (time posted, user stats, etc.)
+    
+    Output: Engagement score (continuous value)
+    """
+    model = models.Sequential()
+    
+    # YOUR CODE HERE
+    # Add dense layers
+    # Add batch normalization
+    # Add dropout
+    
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='mse',
+        metrics=['mae', 'mse']
+    )
+    
+    return model
+
+# TODO: Implement feature engineering
+def create_features(cnn_features, lstm_features, metadata):
+    """
+    Combine features from CNN, LSTM, and metadata.
+    
+    Steps:
+    1. Extract CNN features (use intermediate layer outputs)
+    2. Extract LSTM features (sentiment probabilities)
+    3. Combine with metadata
+    4. Normalize features
+    """
+    # YOUR CODE HERE
+    return combined_features</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="problem-part">
+                                    <h5>Part 4: Integrated System</h5>
+                                    <div class="code-example">
+                                        <div class="example-header">
+                                            <span>Your Task: Build the Complete Pipeline</span>
+                                        </div>
+                                        <pre><code># TODO: Implement complete social media analysis system
+class SocialMediaAnalyzer:
+    def __init__(self):
+        self.cnn_model = None
+        self.lstm_model = None
+        self.ann_model = None
+        
+    def build_complete_system(self):
+        """
+        Build and compile all three models.
+        """
+        # YOUR CODE HERE
+        # Build CNN model
+        # Build LSTM model
+        # Build ANN model
+    
+    def train_system(self, images, texts, metadata, labels):
+        """
+        Train all models in the system.
+        
+        Steps:
+        1. Train CNN on images
+        2. Train LSTM on texts
+        3. Extract features from trained models
+        4. Train ANN on combined features
+        """
+        # YOUR CODE HERE
+    
+    def predict(self, image, text, metadata):
+        """
+        Make predictions using the complete system.
+        
+        Returns:
+        - Image category
+        - Sentiment
+        - Predicted engagement
+        - Overall recommendation score
+        """
+        # YOUR CODE HERE
+        # Process image through CNN
+        # Process text through LSTM
+        # Combine features and predict engagement
+        # Calculate recommendation score
+        
+        return {
+            'image_category': image_class,
+            'sentiment': sentiment,
+            'engagement_score': engagement,
+            'recommendation': recommendation
+        }
+    
+    def evaluate_system(self, test_data):
+        """
+        Evaluate the complete system.
+        
+        Calculate:
+        - CNN accuracy
+        - LSTM accuracy
+        - ANN MAE/MSE
+        - Overall system performance
+        """
+        # YOUR CODE HERE
+        return metrics</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="solution-section">
+                                    <button class="solution-toggle" onclick="toggleSolution('dl-solution')">
+                                        <i class="fas fa-code"></i> Show Solution Hints
+                                    </button>
+                                    <div id="dl-solution" class="solution-content">
+                                        <h5>Solution Hints and Guidelines:</h5>
+                                        
+                                        <div class="hint-section">
+                                            <h6>Part 1: CNN Implementation Hints</h6>
+                                            <pre><code># CNN Architecture Example
+def build_cnn_model(input_shape=(32, 32, 3), num_classes=10):
+    model = models.Sequential([
+        # First Conv Block
+        layers.Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=input_shape),
+        layers.BatchNormalization(),
+        layers.Conv2D(32, (3, 3), padding='same', activation='relu'),
+        layers.MaxPooling2D((2, 2)),
+        layers.Dropout(0.25),
+        
+        # Second Conv Block
+        layers.Conv2D(64, (3, 3), padding='same', activation='relu'),
+        layers.BatchNormalization(),
+        layers.Conv2D(64, (3, 3), padding='same', activation='relu'),
+        layers.MaxPooling2D((2, 2)),
+        layers.Dropout(0.25),
+        
+        # Third Conv Block
+        layers.Conv2D(128, (3, 3), padding='same', activation='relu'),
+        layers.BatchNormalization(),
+        layers.Conv2D(128, (3, 3), padding='same', activation='relu'),
+        layers.MaxPooling2D((2, 2)),
+        layers.Dropout(0.25),
+        
+        # Dense Layers
+        layers.Flatten(),
+        layers.Dense(256, activation='relu'),
+        layers.Dropout(0.5),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+    
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    return model</code></pre>
+                                        </div>
+                                        
+                                        <div class="hint-section">
+                                            <h6>Part 2: LSTM Implementation Hints</h6>
+                                            <pre><code># LSTM Architecture Example
+def build_lstm_model(vocab_size=10000, max_length=100, embedding_dim=128):
+    model = models.Sequential([
+        layers.Embedding(vocab_size, embedding_dim, input_length=max_length),
+        layers.Bidirectional(layers.LSTM(64, return_sequences=True)),
+        layers.Dropout(0.5),
+        layers.Bidirectional(layers.LSTM(32)),
+        layers.Dropout(0.5),
+        layers.Dense(32, activation='relu'),
+        layers.Dense(3, activation='softmax')  # 3 sentiment classes
+    ])
+    
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    
+    return model</code></pre>
+                                        </div>
+                                        
+                                        <div class="hint-section">
+                                            <h6>Part 3: ANN Implementation Hints</h6>
+                                            <pre><code># ANN Architecture Example
+def build_ann_model(input_dim):
+    model = models.Sequential([
+        layers.Input(shape=(input_dim,)),
+        layers.Dense(128, activation='relu'),
+        layers.BatchNormalization(),
+        layers.Dropout(0.3),
+        layers.Dense(64, activation='relu'),
+        layers.Dense(32, activation='relu'),
+        layers.Dense(1)  # Regression output
+    ])
+    
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.001),
+        loss='mse',
+        metrics=['mae', 'mse']
+    )
+    
+    return model</code></pre>
+                                        </div>
+                                        
+                                        <div class="hint-section">
+                                            <h6>Part 4: Integration Hints</h6>
+                                            <pre><code># Feature Extraction Example
+def extract_features(cnn_model, lstm_model, images, texts):
+    # Extract CNN features (from layer before final classification)
+    feature_extractor = models.Model(
+        inputs=cnn_model.input,
+        outputs=cnn_model.layers[-3].output  # Layer before final dense
+    )
+    cnn_features = feature_extractor.predict(images)
+    
+    # Extract LSTM features (sentiment probabilities)
+    lstm_features = lstm_model.predict(texts)
+    
+    # Combine features
+    cnn_features_flat = cnn_features.reshape(cnn_features.shape[0], -1)
+    combined_features = np.concatenate([cnn_features_flat, lstm_features], axis=1)
+    
+    return combined_features</code></pre>
+                                        </div>
+                                        
+                                        <div class="pro-tip">
+                                            <h6><i class="fas fa-lightbulb"></i> Pro Tips:</h6>
+                                            <ol>
+                                                <li>Use transfer learning (VGG16, ResNet) for CNN to improve accuracy</li>
+                                                <li>Implement early stopping to prevent overfitting</li>
+                                                <li>Use learning rate scheduling for better convergence</li>
+                                                <li>Implement data augmentation for both images and text</li>
+                                                <li>Use cross-validation for reliable evaluation</li>
+                                                <li>Monitor training with TensorBoard</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- DL Frameworks -->
+                    <section id="frameworks" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-tools"></i> Deep Learning Frameworks</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Popular DL Libraries and Tools</h3>
+                            <p>Choose the right framework for your deep learning projects based on your needs and expertise.</p>
+                            
+                            <div class="framework-comparison">
+                                <div class="framework-card">
+                                    <div class="framework-header">
+                                        <div class="framework-icon">
+                                            <i class="fab fa-python"></i>
+                                        </div>
+                                        <h4>TensorFlow/Keras</h4>
+                                    </div>
+                                    <div class="framework-details">
+                                        <h5>Best For:</h5>
+                                        <ul>
+                                            <li>Production deployment</li>
+                                            <li>Research and experimentation</li>
+                                            <li>Large-scale distributed training</li>
+                                            <li>Mobile and web deployment</li>
+                                        </ul>
+                                        
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>High-level Keras API</li>
+                                            <li>TensorBoard for visualization</li>
+                                            <li>TPU support</li>
+                                            <li>Extensive ecosystem</li>
+                                        </ul>
+                                        
+                                        <div class="code-snippet">
+                                            <pre><code>import tensorflow as tf
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
+])</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="framework-card">
+                                    <div class="framework-header">
+                                        <div class="framework-icon">
+                                            <i class="fab fa-facebook"></i>
+                                        </div>
+                                        <h4>PyTorch</h4>
+                                    </div>
+                                    <div class="framework-details">
+                                        <h5>Best For:</h5>
+                                        <ul>
+                                            <li>Research and academia</li>
+                                            <li>Dynamic computational graphs</li>
+                                            <li>Fast prototyping</li>
+                                            <li>Custom layer development</li>
+                                        </ul>
+                                        
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>Pythonic and intuitive</li>
+                                            <li>Strong GPU acceleration</li>
+                                            <li>TorchScript for deployment</li>
+                                            <li>Active research community</li>
+                                        </ul>
+                                        
+                                        <div class="code-snippet">
+                                            <pre><code>import torch
+import torch.nn as nn
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(784, 64)
+        self.fc2 = nn.Linear(64, 10)</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="framework-card">
+                                    <div class="framework-header">
+                                        <div class="framework-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <h4>Fast.ai</h4>
+                                    </div>
+                                    <div class="framework-details">
+                                        <h5>Best For:</h5>
+                                        <ul>
+                                            <li>Quick prototyping</li>
+                                            <li>Transfer learning</li>
+                                            <li>Beginner friendly</li>
+                                            <li>Competitions and Kaggle</li>
+                                        </ul>
+                                        
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>High-level abstractions</li>
+                                            <li>State-of-art defaults</li>
+                                            <li>Built on PyTorch</li>
+                                            <li>Excellent tutorials</li>
+                                        </ul>
+                                        
+                                        <div class="code-snippet">
+                                            <pre><code>from fastai.vision.all import *
+learn = cnn_learner(dls, resnet34,
+                    metrics=accuracy)
+learn.fine_tune(5)</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="framework-card">
+                                    <div class="framework-header">
+                                        <div class="framework-icon">
+                                            <i class="fab fa-microsoft"></i>
+                                        </div>
+                                        <h4>MXNet/Gluon</h4>
+                                    </div>
+                                    <div class="framework-details">
+                                        <h5>Best For:</h5>
+                                        <ul>
+                                            <li>Multi-language support</li>
+                                            <li>Distributed training</li>
+                                            <li>Efficient inference</li>
+                                            <li>Scalable applications</li>
+                                        </ul>
+                                        
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>Hybrid programming</li>
+                                            <li>Multiple API levels</li>
+                                            <li>Efficient memory usage</li>
+                                            <li>Amazon AWS support</li>
+                                        </ul>
+                                        
+                                        <div class="code-snippet">
+                                            <pre><code>from mxnet import gluon
+net = gluon.nn.Sequential()
+net.add(gluon.nn.Dense(64))
+net.add(gluon.nn.Dense(10))</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="framework-selection">
+                                <h4>How to Choose a Framework?</h4>
+                                <div class="selection-guide">
+                                    <div class="guide-item">
+                                        <h5>For Beginners</h5>
+                                        <p><strong>Keras (TensorFlow):</strong> Easy to learn, great documentation, high-level API</p>
+                                    </div>
+                                    
+                                    <div class="guide-item">
+                                        <h5>For Researchers</h5>
+                                        <p><strong>PyTorch:</strong> Dynamic graphs, easy debugging, strong research community</p>
+                                    </div>
+                                    
+                                    <div class="guide-item">
+                                        <h5>For Production</h5>
+                                        <p><strong>TensorFlow:</strong> Production-ready, mobile support, TensorFlow Serving</p>
+                                    </div>
+                                    
+                                    <div class="guide-item">
+                                        <h5>For Rapid Prototyping</h5>
+                                        <p><strong>Fast.ai:</strong> Quick results, state-of-art models with few lines of code</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="best-practices">
+                                <h4>Deep Learning Best Practices</h4>
+                                <div class="practices-grid">
+                                    <div class="practice">
+                                        <h5>Data Preparation</h5>
+                                        <ul>
+                                            <li>Always normalize/standardize input data</li>
+                                            <li>Use data augmentation</li>
+                                            <li>Balance your dataset</li>
+                                            <li>Create proper train/val/test splits</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="practice">
+                                        <h5>Model Architecture</h5>
+                                        <ul>
+                                            <li>Start with simple models</li>
+                                            <li>Use transfer learning when possible</li>
+                                            <li>Implement batch normalization</li>
+                                            <li>Use appropriate activation functions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="practice">
+                                        <h5>Training</h5>
+                                        <ul>
+                                            <li>Use learning rate scheduling</li>
+                                            <li>Implement early stopping</li>
+                                            <li>Monitor with TensorBoard</li>
+                                            <li>Use gradient clipping for RNNs</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="practice">
+                                        <h5>Evaluation</h5>
+                                        <ul>
+                                            <li>Use multiple metrics</li>
+                                            <li>Cross-validate your results</li>
+                                            <li>Analyze confusion matrices</li>
+                                            <li>Test on out-of-distribution data</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Resources -->
+                    <section id="resources" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-book"></i> Additional Resources</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Further Deep Learning Learning</h3>
+                            
+                            <div class="resource-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h4>Recommended Books</h4>
+                                    <ul>
+                                        <li>Deep Learning (Goodfellow et al.)</li>
+                                        <li>Neural Networks and Deep Learning</li>
+                                        <li>Deep Learning with Python (Chollet)</li>
+                                        <li>Hands-On Machine Learning</li>
+                                        <li>Pattern Recognition and ML</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h4>Online Courses</h4>
+                                    <ul>
+                                        <li>Deep Learning Specialization (Andrew Ng)</li>
+                                        <li>Fast.ai Practical Deep Learning</li>
+                                        <li>TensorFlow Developer Certificate</li>
+                                        <li>PyTorch Deep Learning</li>
+                                        <li>Stanford CS231n (CNNs)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>Practice Platforms</h4>
+                                    <ul>
+                                        <li>Kaggle Deep Learning Competitions</li>
+                                        <li>TensorFlow Playground</li>
+                                        <li>Google Colab with free GPUs</li>
+                                        <li>Papers With Code</li>
+                                        <li>Hugging Face Models</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Project Ideas</h4>
+                                    <ul>
+                                        <li>Image Style Transfer</li>
+                                        <li>Chatbot with Seq2Seq</li>
+                                        <li>Object Detection System</li>
+                                        <li>Time Series Forecasting</li>
+                                        <li>GAN for Image Generation</li>
+                                        <li>Neural Style Transfer</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="dl-cheatsheet">
+                                <h4><i class="fas fa-scroll"></i> Deep Learning Cheat Sheet</h4>
+                                <div class="cheatsheet-grid">
+                                    <div class="cheatsheet-section">
+                                        <h5>Neural Network Types</h5>
+                                        <ul>
+                                            <li><strong>ANN:</strong> Fully connected, general purpose</li>
+                                            <li><strong>CNN:</strong> Spatial data, images, feature extraction</li>
+                                            <li><strong>RNN:</strong> Sequential data, time series, NLP</li>
+                                            <li><strong>GAN:</strong> Generative models, data creation</li>
+                                            <li><strong>Autoencoder:</strong> Dimensionality reduction</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Hyperparameter Guidelines</h5>
+                                        <ul>
+                                            <li><strong>Learning Rate:</strong> 0.001 (Adam), 0.01 (SGD)</li>
+                                            <li><strong>Batch Size:</strong> 32, 64, 128 (power of 2)</li>
+                                            <li><strong>Hidden Units:</strong> 64, 128, 256, 512</li>
+                                            <li><strong>Dropout:</strong> 0.2-0.5 (input), 0.5 (hidden)</li>
+                                            <li><strong>Optimizer:</strong> Adam (general), SGD (finetuning)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Common Issues & Solutions</h5>
+                                        <ul>
+                                            <li><strong>Overfitting:</strong> Dropout, regularization, more data</li>
+                                            <li><strong>Vanishing Gradient:</strong> ReLU, batch norm, residual connections</li>
+                                            <li><strong>Exploding Gradient:</strong> Gradient clipping, weight regularization</li>
+                                            <li><strong>Slow Training:</strong> Increase batch size, use momentum</li>
+                                            <li><strong>Poor Convergence:</strong> Adjust learning rate, check initialization</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Performance Metrics</h5>
+                                        <ul>
+                                            <li><strong>Classification:</strong> Accuracy, Precision, Recall, F1, AUC</li>
+                                            <li><strong>Regression:</strong> MSE, MAE, R²</li>
+                                            <li><strong>Object Detection:</strong> mAP, IoU</li>
+                                            <li><strong>Generation:</strong> FID, Inception Score</li>
+                                            <li><strong>Segmentation:</strong> Dice coefficient, IoU</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pro-tip">
+                                <h4><i class="fas fa-lightbulb"></i> Pro Tip: Deep Learning Workflow</h4>
+                                <ol>
+                                    <li><strong>Understand the Problem:</strong> Is it classification, regression, or generation?</li>
+                                    <li><strong>Choose Architecture:</strong> CNN for images, RNN for sequences, ANN for tabular data</li>
+                                    <li><strong>Prepare Data:</strong> Normalize, augment, create proper splits</li>
+                                    <li><strong>Start Simple:</strong> Begin with baseline model, then increase complexity</li>
+                                    <li><strong>Train Systematically:</strong> Use callbacks, monitor metrics, save checkpoints</li>
+                                    <li><strong>Evaluate Thoroughly:</strong> Test on validation set, analyze errors</li>
+                                    <li><strong>Iterate:</strong> Tune hyperparameters, try different architectures</li>
+                                    <li><strong>Deploy:</strong> Convert to optimized format, test inference speed</li>
+                                </ol>
+                                <p>Remember: Deep learning is both an art and science - experiment, learn from failures, and keep iterating!</p>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4><i class="fas fa-arrow-right"></i> Next Steps in Curriculum</h4>
+                                <div class="next-topics">
+                                    <div class="topic-preview">
+                                        <h5>Module 9: Advanced DL Topics</h5>
+                                        <p>GANs, Transformers, Reinforcement Learning, AutoML.</p>
+                                        <span class="duration">6 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 10: MLOps & Deployment</h5>
+                                        <p>Model serving, monitoring, scaling, CI/CD for ML.</p>
+                                        <span class="duration">4 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 11: Capstone Project</h5>
+                                        <p>End-to-end deep learning project implementation.</p>
+                                        <span class="duration">12 hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Comprehensive learning resource for BCA students</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#topics">All Topics</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: aiguide@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide for BCA Students. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Deep Learning JavaScript
+        
+        // ANN Simulation
+        function simulateANN() {
+            const hiddenLayers = parseInt(document.getElementById('hidden-layers').value);
+            const neuronsPerLayer = parseInt(document.getElementById('neurons-per-layer').value);
+            const activationType = document.getElementById('activation-type').value;
+            
+            // Calculate parameters
+            const inputNeurons = 20; // Assuming 20 input features
+            const outputNeurons = 1; // Binary classification
+            
+            // Calculate total parameters
+            let totalParams = 0;
+            let currentLayerSize = inputNeurons;
+            
+            for (let i = 0; i < hiddenLayers; i++) {
+                totalParams += (currentLayerSize * neuronsPerLayer) + neuronsPerLayer; // weights + biases
+                currentLayerSize = neuronsPerLayer;
+            }
+            
+            totalParams += (currentLayerSize * outputNeurons) + outputNeurons;
+            
+            // Simulate performance
+            const baseAccuracy = 0.85;
+            const accuracy = Math.min(0.95, baseAccuracy + (hiddenLayers - 2) * 0.02);
+            const trainingTime = hiddenLayers * neuronsPerLayer * 0.1;
+            
+            const results = `
+                <div class="ann-simulation">
+                    <h5>ANN Architecture Simulation</h5>
+                    <div class="architecture-diagram">
+                        <div class="arch-layer input">Input (20)</div>
+                        ${Array.from({length: hiddenLayers}, (_, i) => `
+                            <div class="arch-layer hidden">Hidden ${i+1} (${neuronsPerLayer})<br>${activationType}</div>
+                        `).join('')}
+                        <div class="arch-layer output">Output (1)<br>Sigmoid</div>
+                    </div>
+                    
+                    <div class="simulation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Total Parameters:</span>
+                            <span class="stat-value">${totalParams.toLocaleString()}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Estimated Accuracy:</span>
+                            <span class="stat-value">${(accuracy * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Training Time (rel.):</span>
+                            <span class="stat-value">${trainingTime.toFixed(1)}x</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Activation:</span>
+                            <span class="stat-value">${activationType}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ann-recommendation">
+                        <h6>Recommendations:</h6>
+                        <ul>
+                            <li>${hiddenLayers > 3 ? '⚠️ Many hidden layers - risk of overfitting' : 
+                                 hiddenLayers < 2 ? '⚠️ Few hidden layers - may underfit' :
+                                 '✅ Good number of hidden layers'}</li>
+                            <li>${neuronsPerLayer > 64 ? '⚠️ Many neurons per layer - may overfit' :
+                                 neuronsPerLayer < 16 ? '⚠️ Few neurons - limited capacity' :
+                                 '✅ Good neuron count'}</li>
+                            <li>${activationType === 'relu' ? '✅ ReLU - good for hidden layers' :
+                                 '⚠️ Consider ReLU for better performance'}</li>
+                        </ul>
+                        <p>For better results: Add dropout (0.2-0.5), use batch normalization, and try different optimizers.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('ann-simulation').innerHTML = results;
+        }
+        
+        // Update layer value display
+        document.getElementById('hidden-layers').addEventListener('input', function() {
+            document.getElementById('layers-value').textContent = this.value;
+        });
+        
+        // Update neuron value display
+        document.getElementById('neurons-per-layer').addEventListener('input', function() {
+            document.getElementById('neurons-value').textContent = this.value;
+        });
+        
+        // Training Simulation
+        function startTraining() {
+            const progressBar = document.getElementById('epoch-progress');
+            const lossValue = document.getElementById('loss-value');
+            const accuracyValue = document.getElementById('accuracy-value');
+            const lossChart = document.getElementById('loss-chart');
+            
+            // Reset
+            progressBar.style.width = '0%';
+            lossValue.textContent = '0.0000';
+            accuracyValue.textContent = '0.0000';
+            lossChart.innerHTML = '';
+            
+            // Simulate training
+            let epoch = 0;
+            const totalEpochs = 50;
+            let loss = 0.8;
+            let accuracy = 0.1;
+            
+            const trainingInterval = setInterval(() => {
+                epoch++;
+                const progress = (epoch / totalEpochs) * 100;
+                
+                // Update progress
+                progressBar.style.width = `${progress}%`;
+                
+                // Simulate improving metrics
+                loss = Math.max(0.05, loss * 0.95);
+                accuracy = Math.min(0.95, accuracy + 0.02);
+                
+                // Update values
+                lossValue.textContent = loss.toFixed(4);
+                accuracyValue.textContent = accuracy.toFixed(4);
+                
+                // Update loss chart
+                const lossLine = document.createElement('div');
+                lossLine.className = 'loss-line';
+                lossLine.style.height = `${loss * 250}px`;
+                lossLine.style.left = `${(epoch / totalEpochs) * 100}%`;
+                lossChart.appendChild(lossLine);
+                
+                // Stop after total epochs
+                if (epoch >= totalEpochs) {
+                    clearInterval(trainingInterval);
+                    lossValue.textContent = '0.0543';
+                    accuracyValue.textContent = '0.9521';
+                    
+                    // Add conclusion
+                    const conclusion = document.createElement('div');
+                    conclusion.className = 'training-conclusion';
+                    conclusion.innerHTML = `
+                        <h6>Training Complete!</h6>
+                        <p>Final Accuracy: 95.21%</p>
+                        <p>Final Loss: 0.0543</p>
+                        <p>Model converged successfully.</p>
+                    `;
+                    document.querySelector('.training-progress').appendChild(conclusion);
+                }
+            }, 100);
+        }
+        
+        // CNN Visualization
+        function visualizeCNN() {
+            const filterSize = parseInt(document.getElementById('filter-size').value);
+            const filterType = document.getElementById('filter-type').value;
+            const stride = parseInt(document.getElementById('stride-value').value);
+            
+            // Create input grid
+            const inputGrid = document.getElementById('input-grid');
+            const outputGrid = document.getElementById('output-grid');
+            
+            // Clear previous grids
+            inputGrid.innerHTML = '';
+            outputGrid.innerHTML = '';
+            
+            // Create input grid (8x8)
+            const gridSize = 8;
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                
+                // Create a pattern
+                const row = Math.floor(i / gridSize);
+                const col = i % gridSize;
+                
+                // Different patterns based on filter type
+                let isActive = false;
+                if (filterType === 'edge') {
+                    // Edge pattern
+                    isActive = (row === col) || (row === gridSize - col - 1);
+                } else if (filterType === 'blur') {
+                    // Random pattern for blur
+                    isActive = Math.random() > 0.7;
+                } else if (filterType === 'sharpen') {
+                    // Checkerboard pattern
+                    isActive = (row + col) % 2 === 0;
+                } else { // sobel
+                    // Gradient pattern
+                    isActive = row > 2 && row < 6 && col > 2 && col < 6;
+                }
+                
+                if (isActive) {
+                    cell.classList.add('active');
+                    cell.style.opacity = `${0.3 + (row / gridSize) * 0.7}`;
+                }
+                
+                inputGrid.appendChild(cell);
+            }
+            
+            // Calculate output grid size
+            const outputSize = Math.floor((gridSize - filterSize) / stride) + 1;
+            
+            // Create output grid with filter effect
+            for (let i = 0; i < outputSize * outputSize; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-cell';
+                
+                // Calculate position in input
+                const outRow = Math.floor(i / outputSize);
+                const outCol = i % outputSize;
+                
+                // Simulate convolution
+                let sum = 0;
+                for (let fr = 0; fr < filterSize; fr++) {
+                    for (let fc = 0; fc < filterSize; fc++) {
+                        const inRow = outRow * stride + fr;
+                        const inCol = outCol * stride + fc;
+                        const inputCell = inputGrid.children[inRow * gridSize + inCol];
+                        
+                        if (inputCell.classList.contains('active')) {
+                            // Different weights based on filter type
+                            if (filterType === 'edge') {
+                                sum += (fr === fc) ? 1 : -0.5;
+                            } else if (filterType === 'blur') {
+                                sum += 0.11; // 1/9 for 3x3 blur
+                            } else if (filterType === 'sharpen') {
+                                sum += (fr === 1 && fc === 1) ? 5 : -1;
+                            } else { // sobel
+                                sum += fr - fc; // Simple gradient
+                            }
+                        }
+                    }
+                }
+                
+                // Apply activation (ReLU)
+                if (sum > 0.5) {
+                    cell.classList.add('active');
+                    cell.style.opacity = `${Math.min(1, sum / 3)}`;
+                }
+                
+                outputGrid.appendChild(cell);
+            }
+            
+            // Update stride display
+            document.getElementById('stride-display').textContent = stride;
+            
+            // Add explanation
+            const explanation = document.createElement('div');
+            explanation.className = 'cnn-explanation';
+            explanation.innerHTML = `
+                <h6>Convolution Operation:</h6>
+                <p>Filter: ${filterType} (${filterSize}×${filterSize})</p>
+                <p>Stride: ${stride}</p>
+                <p>Input: 8×8 → Output: ${outputSize}×${outputSize}</p>
+                <p>Formula: Output = ReLU(Input * Filter + Bias)</p>
+            `;
+            
+            document.getElementById('cnn-visualization').appendChild(explanation);
+        }
+        
+        // Update stride display
+        document.getElementById('stride-value').addEventListener('input', function() {
+            document.getElementById('stride-display').textContent = this.value;
+        });
+        
+        // RNN Simulation
+        function simulateRNN() {
+            const sequenceType = document.getElementById('sequence-type').value;
+            const rnnType = document.getElementById('rnn-type').value;
+            const seqLength = parseInt(document.getElementById('sequence-length').value);
+            
+            // Generate sequence
+            let sequence = [];
+            let labels = [];
+            
+            switch(sequenceType) {
+                case 'sine':
+                    for (let i = 0; i < seqLength; i++) {
+                        sequence.push(Math.sin(i * 0.2) + Math.random() * 0.1);
+                    }
+                    labels = ['Sine Wave + Noise'];
+                    break;
+                    
+                case 'trend':
+                    for (let i = 0; i < seqLength; i++) {
+                        sequence.push(i * 0.05 + Math.random() * 0.5);
+                    }
+                    labels = ['Linear Trend + Noise'];
+                    break;
+                    
+                case 'seasonal':
+                    for (let i = 0; i < seqLength; i++) {
+                        sequence.push(Math.sin(i * 0.3) * Math.sin(i * 0.1) + Math.random() * 0.2);
+                    }
+                    labels = ['Seasonal Pattern'];
+                    break;
+                    
+                case 'random':
+                    let value = 0;
+                    for (let i = 0; i < seqLength; i++) {
+                        value += (Math.random() - 0.5) * 0.5;
+                        sequence.push(value);
+                    }
+                    labels = ['Random Walk'];
+                    break;
+            }
+            
+            // Simulate RNN processing
+            let processed = [];
+            let hiddenStates = [];
+            let currentState = 0;
+            
+            for (let i = 0; i < seqLength; i++) {
+                // Simple RNN simulation: output = tanh(input + previous_state)
+                let output;
+                if (rnnType === 'simple') {
+                    output = Math.tanh(sequence[i] + currentState * 0.5);
+                } else if (rnnType === 'lstm') {
+                    // Simulated LSTM behavior (more memory retention)
+                    output = Math.tanh(sequence[i] + currentState * 0.8);
+                } else { // gru
+                    // Simulated GRU behavior
+                    output = Math.tanh(sequence[i] + currentState * 0.7);
+                }
+                
+                processed.push(output);
+                hiddenStates.push(currentState);
+                currentState = output;
+            }
+            
+            // Create visualization
+            const results = `
+                <div class="rnn-simulation">
+                    <h5>${rnnType.toUpperCase()} Processing ${sequenceType} Sequence</h5>
+                    
+                    <div class="sequence-visualization">
+                        <div class="sequence-plot">
+                            <h6>Input Sequence</h6>
+                            <div class="plot-container" style="height: 100px; margin: 1rem 0;">
+                                ${sequence.map((val, i) => `
+                                    <div class="data-point" style="left: ${(i/seqLength)*100}%; bottom: ${50 + val*40}%;"></div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="sequence-plot">
+                            <h6>Processed Output (${rnnType})</h6>
+                            <div class="plot-container" style="height: 100px; margin: 1rem 0;">
+                                ${processed.map((val, i) => `
+                                    <div class="data-point processed" style="left: ${(i/seqLength)*100}%; bottom: ${50 + val*40}%;"></div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rnn-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Sequence Length:</span>
+                            <span class="metric-value">${seqLength}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">RNN Type:</span>
+                            <span class="metric-value">${rnnType.toUpperCase()}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Final Hidden State:</span>
+                            <span class="metric-value">${currentState.toFixed(4)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Sequence Type:</span>
+                            <span class="metric-value">${labels[0]}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="rnn-insights">
+                        <h6>Insights:</h6>
+                        <ul>
+                            <li>${rnnType === 'lstm' ? '✅ LSTM - Good for long sequences, handles vanishing gradient' :
+                                 rnnType === 'gru' ? '✅ GRU - Efficient, good performance' :
+                                 '⚠️ Simple RNN - May struggle with long sequences'}</li>
+                            <li>${sequenceType === 'seasonal' ? '✅ Seasonal patterns well-suited for RNNs' :
+                                 sequenceType === 'trend' ? '📊 Trend detection possible with proper training' :
+                                 '✅ All sequence types can be processed by RNNs'}</li>
+                            <li>${seqLength > 50 ? '⚠️ Long sequence - consider attention mechanism' :
+                                 seqLength < 20 ? '✅ Short sequence - RNN handles well' :
+                                 '✅ Optimal sequence length'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="rnn-recommendation">
+                        <h6>Recommendations:</h6>
+                        <p>For better sequence processing:</p>
+                        <ul>
+                            <li>Use Bidirectional RNN for context from both directions</li>
+                            <li>Implement attention mechanism for long sequences</li>
+                            <li>Use proper sequence padding and masking</li>
+                            <li>Consider Transformer architecture for very long sequences</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('rnn-simulation').innerHTML = results;
+            
+            // Add CSS for plots
+            const style = document.createElement('style');
+            style.textContent = `
+                .plot-container {
+                    position: relative;
+                    background: #f5f5f5;
+                    border-radius: 4px;
+                    border: 1px solid #ddd;
+                }
+                .data-point {
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: #667eea;
+                    border-radius: 50%;
+                    transform: translate(-50%, 50%);
+                }
+                .data-point.processed {
+                    background: #4CAF50;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Update sequence length display
+        document.getElementById('sequence-length').addEventListener('input', function() {
+            document.getElementById('seq-length-value').textContent = this.value;
+        });
+        
+        // Toggle solution visibility
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize CNN grid
+            visualizeCNN();
+            
+            // Add copy buttons to code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                if (!pre.parentElement.classList.contains('code-example')) return;
+                
+                const button = document.createElement('button');
+                button.className = 'copy-code';
+                button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                button.onclick = function() {
+                    const code = pre.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                };
+                
+                if (!pre.parentElement.querySelector('.example-header')) {
+                    const header = document.createElement('div');
+                    header.className = 'example-header';
+                    header.innerHTML = '<span>Code Example</span>';
+                    header.appendChild(button);
+                    pre.parentElement.insertBefore(header, pre);
+                } else {
+                    pre.parentElement.querySelector('.example-header').appendChild(button);
+                }
+            });
+            
+            // Mark as complete functionality
+            const completeBtn = document.querySelector('.completed');
+            if (completeBtn) {
+                completeBtn.addEventListener('click', function() {
+                    const isComplete = this.classList.contains('completed-active');
+                    this.classList.toggle('completed-active');
+                    this.innerHTML = isComplete ? 
+                        '<i class="far fa-check-circle"></i> Mark Complete' : 
+                        '<i class="fas fa-check-circle"></i> Completed!';
+                    
+                    localStorage.setItem('deep-learning-complete', !isComplete);
+                    
+                    if (!isComplete) {
+                        alert('🎉 Congratulations! You have completed Deep Learning & Neural Networks module!');
+                    }
+                });
+                
+                if (localStorage.getItem('deep-learning-complete') === 'true') {
+                    completeBtn.classList.add('completed-active');
+                    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed!';
+                }
+            }
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

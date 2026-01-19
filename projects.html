@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML Projects - AI & ML Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="#projects" class="active">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1>10 Practical AI/ML Projects</h1>
+            <p class="subtitle">Hands-on projects to apply what you've learned. Each project includes complete code and step-by-step guidance.</p>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid-section">
+        <div class="container">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="beginner">Beginner</button>
+                <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                <button class="filter-btn" data-filter="advanced">Advanced</button>
+                <button class="filter-btn" data-filter="capstone">Capstone</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-level="beginner" data-hours="1">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Weather">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-level beginner">Beginner</span>
+                        <span class="project-time">1 Hour</span>
+                        <h3>Weather Data Classification</h3>
+                        <p>Predict weather type (Sunny/Rainy/Cloudy) based on temperature, humidity, and pressure.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Decision Trees</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#project1-details" class="btn small">View Details</a>
+                            <a href="#" class="btn small outline">
+                                <i class="fas fa-download"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-level="beginner" data-hours="1">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Advertising">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-level beginner">Beginner</span>
+                        <span class="project-time">1 Hour</span>
+                        <h3>Car Advertising Analysis</h3>
+                        <p>Analyze which advertising channel (TV, Radio, Newspaper) drives most sales using linear regression.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Linear Regression</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Data Analysis</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#project2-details" class="btn small">View Details</a>
+                            <a href="#" class="btn small outline">
+                                <i class="fas fa-download"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more project cards -->
+                
+                <!-- Project 10: Capstone -->
+                <div class="project-card" data-level="capstone" data-hours="4">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Churn">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-level capstone">Capstone</span>
+                        <span class="project-time">4 Hours</span>
+                        <h3>Customer Churn Prediction</h3>
+                        <p>End-to-end ML project to predict which customers will leave a service.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag">Model Deployment</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#project10-details" class="btn small">View Details</a>
+                            <a href="#" class="btn small outline">
+                                <i class="fas fa-download"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Project Details</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Dynamic content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI & ML Guide for BCA Students</p>
+        </div>
+    </footer>
+
+    <script src="projects.js"></script>
+</body>
+</html>

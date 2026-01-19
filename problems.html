@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Problems - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="problems.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>ML Problem Types</h1>
+                <p class="subtitle">Master Classification, Regression, Clustering & More</p>
+                <p class="description">
+                    Dive deep into different types of machine learning problems with hands-on projects, 
+                    real-world examples, and practical implementations.
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>5 Hours</span>
+                        <p>Total Duration</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <span>10 Lessons</span>
+                        <p>Topics Covered</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>6 Projects</span>
+                        <p>Hands-on Practice</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Beginner to Advanced</span>
+                        <p>Difficulty Level</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Topic Cards Grid -->
+            <section class="topics-grid">
+                <h2 class="section-title">Problem Categories</h2>
+                <p class="section-subtitle">Explore different types of ML problems and their applications</p>
+                
+                <div class="cards-container">
+                    <!-- Classification Card -->
+                    <a href="#classification" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #4a6de5, #6c8eff);">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Classification</h3>
+                            <p>Categorize data into predefined classes or labels</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 2 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 3 Projects</span>
+                                <span class="difficulty easy"><i class="fas fa-signal"></i> Easy</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Regression Card -->
+                    <a href="#regression" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #20c997, #3ce0af);">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Regression</h3>
+                            <p>Predict continuous numerical values</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 1.5 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty easy"><i class="fas fa-signal"></i> Easy</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Clustering Card -->
+                    <a href="#clustering" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #ff6b6b, #ff8e8e);">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Clustering</h3>
+                            <p>Group similar data points together</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 1 Hour</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty medium"><i class="fas fa-signal"></i> Medium</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Dimensionality Reduction Card -->
+                    <a href="#dimensionality" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #ffc107, #ffd65c);">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Dimensionality Reduction</h3>
+                            <p>Reduce number of features while preserving information</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 1 Hour</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 1 Project</span>
+                                <span class="difficulty medium"><i class="fas fa-signal"></i> Medium</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Anomaly Detection Card -->
+                    <a href="#anomaly" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #9c27b0, #ba68c8);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Anomaly Detection</h3>
+                            <p>Identify unusual patterns or outliers</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 1.5 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty hard"><i class="fas fa-signal"></i> Hard</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Recommendation Systems Card -->
+                    <a href="#recommendation" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #2196f3, #64b5f6);">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Recommendation Systems</h3>
+                            <p>Suggest items based on user preferences</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 2 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty hard"><i class="fas fa-signal"></i> Hard</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Time Series Analysis Card -->
+                    <a href="#timeseries" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #f44336, #ef9a9a);">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Time Series Analysis</h3>
+                            <p>Analyze and forecast time-dependent data</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 2 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty medium"><i class="fas fa-signal"></i> Medium</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+
+                    <!-- Reinforcement Learning Card -->
+                    <a href="#reinforcement" class="topic-card">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #4caf50, #81c784);">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3>Reinforcement Learning</h3>
+                            <p>Learn through interaction and rewards</p>
+                            <div class="topic-meta">
+                                <span class="hours"><i class="far fa-clock"></i> 3 Hours</span>
+                                <span class="projects"><i class="fas fa-project-diagram"></i> 2 Projects</span>
+                                <span class="difficulty hard"><i class="fas fa-signal"></i> Hard</span>
+                            </div>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Start Learning</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Detailed Sections -->
+            <section id="classification" class="problem-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tags"></i> Classification Problems</h2>
+                    <div class="section-meta">
+                        <span class="badge easy">Easy</span>
+                        <span class="duration"><i class="far fa-clock"></i> 2 Hours</span>
+                        <span class="projects"><i class="fas fa-project-diagram"></i> 3 Projects</span>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="problem-overview">
+                        <h3>Overview</h3>
+                        <p>Classification is a supervised learning technique where the goal is to predict categorical class labels (discrete, unordered values).</p>
+                        
+                        <div class="concepts-grid">
+                            <div class="concept">
+                                <i class="fas fa-bullseye"></i>
+                                <h4>Binary Classification</h4>
+                                <p>Two possible classes (Yes/No, Spam/Ham, Fraud/Not Fraud)</p>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-list-ol"></i>
+                                <h4>Multi-class Classification</h4>
+                                <p>More than two classes (Animal types, News categories)</p>
+                            </div>
+                            <div class="concept">
+                                <i class="fas fa-tags"></i>
+                                <h4>Multi-label Classification</h4>
+                                <p>Multiple labels per instance (Movie genres, Product tags)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="applications">
+                        <h3>Real-world Applications</h3>
+                        <div class="apps-grid">
+                            <div class="app">
+                                <i class="fas fa-envelope"></i>
+                                <h5>Spam Detection</h5>
+                                <p>Classify emails as spam or not spam</p>
+                            </div>
+                            <div class="app">
+                                <i class="fas fa-heartbeat"></i>
+                                <h5>Medical Diagnosis</h5>
+                                <p>Predict disease presence based on symptoms</p>
+                            </div>
+                            <div class="app">
+                                <i class="fas fa-image"></i>
+                                <h5>Image Recognition</h5>
+                                <p>Identify objects in images</p>
+                            </div>
+                            <div class="app">
+                                <i class="fas fa-comment"></i>
+                                <h5>Sentiment Analysis</h5>
+                                <p>Classify text as positive/negative/neutral</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="algorithms">
+                        <h3>Common Algorithms</h3>
+                        <div class="algo-grid">
+                            <div class="algo">
+                                <div class="algo-icon" style="background: #4a6de5;">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <h5>Decision Trees</h5>
+                                <p>Tree-based classification</p>
+                            </div>
+                            <div class="algo">
+                                <div class="algo-icon" style="background: #20c997;">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <h5>Random Forest</h5>
+                                <p>Ensemble of decision trees</p>
+                            </div>
+                            <div class="algo">
+                                <div class="algo-icon" style="background: #ff6b6b;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h5>Logistic Regression</h5>
+                                <p>Probabilistic classification</p>
+                            </div>
+                            <div class="algo">
+                                <div class="algo-icon" style="background: #ffc107;">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <h5>Support Vector Machines</h5>
+                                <p>Maximum margin classifier</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projects">
+                        <h3>Hands-on Projects</h3>
+                        <div class="projects-list">
+                            <div class="project">
+                                <div class="project-header">
+                                    <h4>Iris Flower Classification</h4>
+                                    <span class="level easy">Beginner</span>
+                                </div>
+                                <p>Classify iris flowers into three species based on petal and sepal measurements</p>
+                                <div class="project-meta">
+                                    <span><i class="far fa-clock"></i> 30 min</span>
+                                    <span><i class="fas fa-code"></i> Python</span>
+                                    <span><i class="fas fa-database"></i> Iris Dataset</span>
+                                </div>
+                                <button class="btn start-project">
+                                    <i class="fas fa-play"></i> Start Project
+                                </button>
+                            </div>
+
+                            <div class="project">
+                                <div class="project-header">
+                                    <h4>Breast Cancer Detection</h4>
+                                    <span class="level medium">Intermediate</span>
+                                </div>
+                                <p>Predict whether a tumor is malignant or benign based on features</p>
+                                <div class="project-meta">
+                                    <span><i class="far fa-clock"></i> 1 hour</span>
+                                    <span><i class="fas fa-code"></i> Python</span>
+                                    <span><i class="fas fa-database"></i> Breast Cancer Dataset</span>
+                                </div>
+                                <button class="btn start-project">
+                                    <i class="fas fa-play"></i> Start Project
+                                </button>
+                            </div>
+
+                            <div class="project">
+                                <div class="project-header">
+                                    <h4>Handwritten Digit Recognition</h4>
+                                    <span class="level hard">Advanced</span>
+                                </div>
+                                <p>Classify handwritten digits (0-9) using neural networks</p>
+                                <div class="project-meta">
+                                    <span><i class="far fa-clock"></i> 1.5 hours</span>
+                                    <span><i class="fas fa-code"></i> Python</span>
+                                    <span><i class="fas fa-database"></i> MNIST Dataset</span>
+                                </div>
+                                <button class="btn start-project">
+                                    <i class="fas fa-play"></i> Start Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resources">
+                        <h3>Learning Resources</h3>
+                        <div class="resources-grid">
+                            <div class="resource">
+                                <i class="fas fa-video"></i>
+                                <h5>Video Tutorial</h5>
+                                <p>Complete classification guide</p>
+                                <a href="#" class="btn-small">Watch Now</a>
+                            </div>
+                            <div class="resource">
+                                <i class="fas fa-file-code"></i>
+                                <h5>Code Examples</h5>
+                                <p>Python implementation</p>
+                                <a href="#" class="btn-small">View Code</a>
+                            </div>
+                            <div class="resource">
+                                <i class="fas fa-book"></i>
+                                <h5>Documentation</h5>
+                                <p>Scikit-learn guide</p>
+                                <a href="#" class="btn-small">Read Docs</a>
+                            </div>
+                            <div class="resource">
+                                <i class="fas fa-download"></i>
+                                <h5>Dataset</h5>
+                                <p>Sample datasets</p>
+                                <a href="#" class="btn-small">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- More sections for other problem types would follow similar structure -->
+
+            <!-- Progress Tracker -->
+            <section class="progress-tracker">
+                <h2>Your Progress</h2>
+                <div class="progress-overview">
+                    <div class="overall-progress">
+                        <div class="progress-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" stroke="#e2e8f0" stroke-width="8" fill="none"></circle>
+                                <circle cx="60" cy="60" r="54" stroke="#4a6de5" stroke-width="8" fill="none" 
+                                        stroke-dasharray="339" stroke-dashoffset="271" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="percentage">20%</span>
+                                <span class="label">Complete</span>
+                            </div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="number">2</span>
+                                <span class="text">Topics Started</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">1</span>
+                                <span class="text">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">3</span>
+                                <span class="text">Hours Spent</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-progress">
+                        <h3>Topic-wise Progress</h3>
+                        <div class="progress-items">
+                            <div class="progress-item">
+                                <span class="topic-name">Classification</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 50%"></div>
+                                </div>
+                                <span class="progress-percent">50%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="topic-name">Regression</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 30%"></div>
+                                </div>
+                                <span class="progress-percent">30%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="topic-name">Clustering</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 10%"></div>
+                                </div>
+                                <span class="progress-percent">10%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="topic-name">Anomaly Detection</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Master Machine Learning through practical projects and real-world applications</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#topics">All Topics</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: mlproblems@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Progress Tracking
+        const progressCards = document.querySelectorAll('.topic-card');
+        
+        progressCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!this.getAttribute('href').startsWith('#')) return;
+                
+                const topicName = this.querySelector('h3').textContent;
+                const progressBar = this.querySelector('.progress');
+                const progressText = this.querySelector('.progress-text');
+                
+                // Get current progress from localStorage or default to 0
+                const storageKey = `ml-progress-${topicName}`;
+                let currentProgress = parseInt(localStorage.getItem(storageKey)) || 0;
+                
+                // Update progress (for demo - in real app this would come from backend)
+                if (currentProgress < 100) {
+                    currentProgress += 25;
+                    if (currentProgress > 100) currentProgress = 100;
+                    localStorage.setItem(storageKey, currentProgress);
+                    
+                    // Update UI
+                    progressBar.style.width = `${currentProgress}%`;
+                    progressText.textContent = `${currentProgress}% Complete`;
+                    
+                    // Update color based on progress
+                    if (currentProgress === 100) {
+                        progressBar.style.background = '#20c997';
+                        progressText.innerHTML = '<i class="fas fa-check"></i> Completed';
+                    }
+                    
+                    // Update overall progress
+                    updateOverallProgress();
+                }
+                
+                e.preventDefault(); // Prevent navigation for demo
+            });
+        });
+
+        // Update overall progress
+        function updateOverallProgress() {
+            const topics = ['Classification', 'Regression', 'Clustering', 'Dimensionality Reduction', 
+                           'Anomaly Detection', 'Recommendation Systems', 'Time Series Analysis', 'Reinforcement Learning'];
+            
+            let totalProgress = 0;
+            topics.forEach(topic => {
+                const progress = parseInt(localStorage.getItem(`ml-progress-${topic}`)) || 0;
+                totalProgress += progress;
+            });
+            
+            const overallProgress = Math.round(totalProgress / topics.length);
+            
+            // Update circle progress
+            const circle = document.querySelector('.progress-circle circle:last-child');
+            const percentageText = document.querySelector('.progress-text .percentage');
+            
+            if (circle && percentageText) {
+                const circumference = 339; // 2 * π * r (r=54)
+                const offset = circumference - (circumference * overallProgress) / 100;
+                circle.style.strokeDashoffset = offset;
+                percentageText.textContent = `${overallProgress}%`;
+            }
+        }
+
+        // Initialize overall progress on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateOverallProgress();
+            
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Project buttons
+        document.querySelectorAll('.start-project').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectName = this.closest('.project').querySelector('h4').textContent;
+                alert(`Starting project: ${projectName}\n\nProject environment loading...`);
+                
+                // In a real application, this would:
+                // 1. Open a coding environment
+                // 2. Load starter code
+                // 3. Set up the dataset
+                // 4. Start tutorial mode
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basics - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="topics.css">
+    <link rel="stylesheet" href="python-basics.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics" class="active">Topics</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#topics">Topics</a> / 
+                <span>Python Basics</span>
+            </div>
+            <h1>Python Basics (Hours 1-4)</h1>
+            <p class="topic-description">Master the fundamentals of Python programming - the essential first step for AI and Machine Learning</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 4 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Beginner</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar Navigation -->
+                <aside class="topic-sidebar">
+                    <h3><i class="fas fa-list"></i> In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#hour1" class="active"><i class="fas fa-play-circle"></i> Hour 1: Variables & Data Types</a></li>
+                        <li><a href="#hour2"><i class="fas fa-play-circle"></i> Hour 2: Lists & Tuples</a></li>
+                        <li><a href="#hour3"><i class="fas fa-play-circle"></i> Hour 3: Sets & Dictionaries</a></li>
+                        <li><a href="#hour4"><i class="fas fa-play-circle"></i> Hour 4: Basic Programs</a></li>
+                        <li><a href="#quiz"><i class="fas fa-question-circle"></i> Quick Quiz</a></li>
+                        <li><a href="#exercises"><i class="fas fa-code"></i> Practice Exercises</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-key"></i> Key Concepts</h4>
+                        <div class="concept-tags">
+                            <span class="tag">Variables</span>
+                            <span class="tag">Data Types</span>
+                            <span class="tag">Lists</span>
+                            <span class="tag">Tuples</span>
+                            <span class="tag">Sets</span>
+                            <span class="tag">Dictionaries</span>
+                            <span class="tag">If-Else</span>
+                            <span class="tag">Loops</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4><i class="fas fa-bullseye"></i> Learning Objectives</h4>
+                        <ul class="objectives">
+                            <li><i class="fas fa-check"></i> Understand Python variables</li>
+                            <li><i class="fas fa-check"></i> Master data structures</li>
+                            <li><i class="fas fa-check"></i> Write basic programs</li>
+                            <li><i class="fas fa-check"></i> Solve simple problems</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 1 -->
+                    <section id="hour1" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 1</span> Variables, Data Types, Input/Output</h2>
+                            <div class="hour-progress">
+                                <div class="progress-circle" data-progress="100">
+                                    <span>✓</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="python-highlight">
+                                <h3><i class="fab fa-python"></i> Why Python for AI/ML?</h3>
+                                <p>Python is the most popular language for AI and Machine Learning because of its simple syntax and powerful libraries.</p>
+                            </div>
+                            
+                            <h3>What are Variables?</h3>
+                            <p>Variables are containers that store data values. In Python, you don't need to declare the type - Python figures it out automatically.</p>
+                            
+                            <div class="concept-box">
+                                <h4><i class="fas fa-lightbulb"></i> Key Concept: Dynamic Typing</h4>
+                                <p>Python is dynamically typed, meaning you don't need to specify data types. The interpreter figures it out at runtime.</p>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span><i class="fas fa-code"></i> Example: Creating Variables</span>
+                                    <button class="copy-code">
+                                        <i class="far fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <pre><code># String variable - for text
+name = "John"
+print(name)  # Output: John
+
+# Integer variable - for whole numbers
+age = 20
+print(age)   # Output: 20
+
+# Float variable - for decimal numbers
+height = 5.8
+print(height)  # Output: 5.8
+
+# Boolean variable - True/False
+is_student = True
+print(is_student)  # Output: True
+
+# Multiple assignment
+x, y, z = 10, 20, 30
+print(x, y, z)  # Output: 10 20 30</code></pre>
+                            </div>
+                            
+                            <h3>Data Types in Python</h3>
+                            <div class="concept-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Data Type</th>
+                                            <th>Example</th>
+                                            <th>Description</th>
+                                            <th>Use in AI/ML</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>int</code></td>
+                                            <td><code>10, -5, 0</code></td>
+                                            <td>Whole numbers (no decimals)</td>
+                                            <td>Counting, indices</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>float</code></td>
+                                            <td><code>3.14, -2.5</code></td>
+                                            <td>Decimal numbers</td>
+                                            <td>ML model weights</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>str</code></td>
+                                            <td><code>"Hello", 'Python'</code></td>
+                                            <td>Text (string of characters)</td>
+                                            <td>NLP, text data</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>bool</code></td>
+                                            <td><code>True, False</code></td>
+                                            <td>Boolean values</td>
+                                            <td>Conditions, flags</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <h3>Interactive Example</h3>
+                            <div class="interactive-demo">
+                                <div class="input-section">
+                                    <label><i class="fas fa-edit"></i> Try it yourself:</label>
+                                    <textarea id="python-code" placeholder="Write Python code here..." rows="8"># Python Interactive Playground
+# Try changing these values
+
+name = "BCA Student"
+age = 20
+cgpa = 8.5
+is_ai_student = True
+
+print("=== Student Information ===")
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"CGPA: {cgpa}")
+print(f"AI Student: {is_ai_student}")
+
+# Calculate
+next_year_age = age + 1
+print(f"\nNext year, I will be {next_year_age} years old")</textarea>
+                                    <button id="run-code" class="btn primary">
+                                        <i class="fas fa-play"></i> Run Code
+                                    </button>
+                                    <button id="reset-code" class="btn secondary">
+                                        <i class="fas fa-redo"></i> Reset
+                                    </button>
+                                </div>
+                                <div class="output-section">
+                                    <label><i class="fas fa-terminal"></i> Output:</label>
+                                    <div id="python-output" class="output-area">
+                                        <p class="output-placeholder">Click "Run Code" to see output here...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 2 -->
+                    <section id="hour2" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 2</span> Lists and Tuples</h2>
+                            <div class="hour-progress">
+                                <div class="progress-circle" data-progress="75">
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="python-highlight">
+                                <h3><i class="fas fa-database"></i> Data Structures for AI</h3>
+                                <p>Lists and tuples are essential for organizing data in AI projects - datasets, model parameters, results.</p>
+                            </div>
+                            
+                            <h3>Lists vs Tuples</h3>
+                            <div class="comparison">
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-list"></i> Lists (Mutable)</h4>
+                                    <ul>
+                                        <li>Can be changed after creation</li>
+                                        <li>Use square brackets <code>[]</code></li>
+                                        <li>Ideal for data that changes</li>
+                                        <li>AI Use: Training data, model predictions</li>
+                                    </ul>
+                                    <pre><code># Creating a list
+fruits = ["apple", "banana", "mango"]
+print(f"Original: {fruits}")
+
+# Add item
+fruits.append("orange")
+print(f"After append: {fruits}")
+
+# Remove item
+fruits.remove("banana")
+print(f"After remove: {fruits}")
+
+# Access elements
+print(f"First fruit: {fruits[0]}")
+print(f"Last fruit: {fruits[-1]}")
+
+# List length
+print(f"Total fruits: {len(fruits)}")</code></pre>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-lock"></i> Tuples (Immutable)</h4>
+                                    <ul>
+                                        <li>Cannot be changed after creation</li>
+                                        <li>Use parentheses <code>()</code></li>
+                                        <li>Ideal for fixed data</li>
+                                        <li>AI Use: Model hyperparameters, constants</li>
+                                    </ul>
+                                    <pre><code># Creating a tuple
+coordinates = (10, 20, 30)
+print(f"Coordinates: {coordinates}")
+
+# Access elements (same as lists)
+print(f"X coordinate: {coordinates[0]}")
+print(f"Y coordinate: {coordinates[1]}")
+
+# This will cause ERROR - tuples are immutable
+# coordinates[0] = 15  # ERROR!
+
+# Tuple unpacking
+x, y, z = coordinates
+print(f"X={x}, Y={y}, Z={z}")
+
+# Single element tuple (comma is required)
+single = (42,)
+print(f"Single: {single}")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <h3>List Operations for AI</h3>
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span><i class="fas fa-cogs"></i> Common List Operations</span>
+                                </div>
+                                <pre><code># AI Dataset example
+dataset = [85, 90, 78, 92, 88, 76, 95]
+
+# Basic statistics (like in ML)
+max_score = max(dataset)
+min_score = min(dataset)
+avg_score = sum(dataset) / len(dataset)
+
+print(f"Dataset: {dataset}")
+print(f"Maximum: {max_score}")
+print(f"Minimum: {min_score}")
+print(f"Average: {avg_score:.2f}")
+
+# List comprehension (Pythonic way)
+squared_scores = [score**2 for score in dataset]
+print(f"Squared scores: {squared_scores}")
+
+# Filtering (like data preprocessing)
+passed = [score for score in dataset if score >= 80]
+print(f"Passed scores: {passed}")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 3 -->
+                    <section id="hour3" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 3</span> Sets and Dictionaries</h2>
+                            <div class="hour-progress">
+                                <div class="progress-circle" data-progress="50">
+                                    <span>50%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="python-highlight">
+                                <h3><i class="fas fa-project-diagram"></i> Advanced Data Structures</h3>
+                                <p>Sets and dictionaries are crucial for handling unique data and key-value pairs in AI applications.</p>
+                            </div>
+                            
+                            <div class="comparison">
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-bullseye"></i> Sets (Unique Elements)</h4>
+                                    <ul>
+                                        <li>No duplicate elements</li>
+                                        <li>Unordered collection</li>
+                                        <li>Use curly braces <code>{}</code></li>
+                                        <li>AI Use: Unique labels, vocabulary</li>
+                                    </ul>
+                                    <pre><code># Creating a set
+numbers = {1, 2, 3, 3, 4, 4, 5}
+print(f"Set (duplicates removed): {numbers}")
+
+# Set operations
+set_a = {1, 2, 3, 4, 5}
+set_b = {4, 5, 6, 7, 8}
+
+print(f"Set A: {set_a}")
+print(f"Set B: {set_b}")
+print(f"Union (A ∪ B): {set_a.union(set_b)}")
+print(f"Intersection (A ∩ B): {set_a.intersection(set_b)}")
+print(f"Difference (A - B): {set_a.difference(set_b)}")
+
+# AI Application: Unique words in text
+text = "apple banana apple orange banana mango"
+words = set(text.split())
+print(f"\nUnique words: {words}")
+print(f"Vocabulary size: {len(words)}")</code></pre>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-book"></i> Dictionaries (Key-Value Pairs)</h4>
+                                    <ul>
+                                        <li>Key-value pairs</li>
+                                        <li>Fast lookups</li>
+                                        <li>Use curly braces with colons <code>{key: value}</code></li>
+                                        <li>AI Use: Model configurations, feature mapping</li>
+                                    </ul>
+                                    <pre><code># Creating a dictionary
+student = {
+    "name": "Amit Sharma",
+    "roll_no": 101,
+    "course": "BCA",
+    "subjects": ["Python", "ML", "Statistics"],
+    "cgpa": 8.5
+}
+
+print(f"Student: {student}")
+print(f"Name: {student['name']}")
+print(f"Course: {student.get('course')}")
+
+# Add new key
+student["year"] = 3
+print(f"With year: {student}")
+
+# Update value
+student["cgpa"] = 8.7
+print(f"Updated CGPA: {student['cgpa']}")
+
+# Dictionary methods
+print(f"\nKeys: {student.keys()}")
+print(f"Values: {student.values()}")
+print(f"Items: {student.items()}")
+
+# AI Application: Model configuration
+model_config = {
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "epochs": 100,
+    "optimizer": "adam"
+}
+print(f"\nModel Config: {model_config}")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <h3>Dictionary Comprehension</h3>
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span><i class="fas fa-magic"></i> Pythonic Dictionary Creation</span>
+                                </div>
+                                <pre><code># Create dictionary from lists (common in AI)
+features = ["age", "income", "education", "experience"]
+values = [25, 50000, 16, 3]
+
+# Using zip
+data_dict = dict(zip(features, values))
+print(f"Data Dictionary: {data_dict}")
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(1, 6)}
+print(f"Squares: {squares}")
+
+# Conditional dictionary comprehension
+even_squares = {x: x**2 for x in range(1, 11) if x % 2 == 0}
+print(f"Even Squares: {even_squares}")
+
+# Nested dictionaries (common in complex AI models)
+ai_model = {
+    "model": {
+        "name": "Neural Network",
+        "layers": 3,
+        "activation": "relu"
+    },
+    "training": {
+        "data_size": 10000,
+        "test_split": 0.2
+    }
+}
+print(f"\nAI Model Structure: {ai_model}")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 4 -->
+                    <section id="hour4" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">Hour 4</span> Basic Programs & Control Flow</h2>
+                            <div class="hour-progress">
+                                <div class="progress-circle" data-progress="25">
+                                    <span>25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="python-highlight">
+                                <h3><i class="fas fa-code-branch"></i> Control Flow in AI</h3>
+                                <p>Conditionals and loops are fundamental for implementing AI algorithms and data processing pipelines.</p>
+                            </div>
+                            
+                            <h3>Conditional Statements (if-elif-else)</h3>
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span><i class="fas fa-sitemap"></i> Decision Making in AI</span>
+                                </div>
+                                <pre><code># AI Model Performance Evaluation
+accuracy = 85.5
+
+if accuracy >= 90:
+    grade = "Excellent"
+    status = "Production Ready"
+elif accuracy >= 80:
+    grade = "Good"
+    status = "Needs Fine-tuning"
+elif accuracy >= 70:
+    grade = "Average"
+    status = "Needs Improvement"
+else:
+    grade = "Poor"
+    status = "Retrain Required"
+
+print(f"Model Accuracy: {accuracy}%")
+print(f"Grade: {grade}")
+print(f"Status: {status}")
+
+# Multiple conditions (common in AI rules)
+temperature = 25
+humidity = 60
+
+if temperature > 30 and humidity > 70:
+    weather = "Hot and Humid"
+elif temperature < 10 or humidity < 30:
+    weather = "Cold and Dry"
+else:
+    weather = "Pleasant"
+
+print(f"\nTemperature: {temperature}°C, Humidity: {humidity}%")
+print(f"Weather: {weather}")</code></pre>
+                            </div>
+                            
+                            <h3>Loops in Python</h3>
+                            <div class="comparison">
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-redo"></i> For Loops</h4>
+                                    <p>Iterate over sequences (lists, tuples, strings)</p>
+                                    <pre><code># Iterate through list
+ai_topics = ["Neural Networks", "Computer Vision", "NLP", "Reinforcement Learning"]
+
+print("AI Topics:")
+for topic in ai_topics:
+    print(f"- {topic}")
+
+# With enumerate (get index)
+print("\nTopics with index:")
+for idx, topic in enumerate(ai_topics, 1):
+    print(f"{idx}. {topic}")
+
+# Range function
+print("\nTraining epochs:")
+for epoch in range(1, 6):
+    print(f"Epoch {epoch}: Training...")
+    
+# Loop through dictionary
+model_params = {"lr": 0.001, "batch": 32, "epochs": 100}
+print("\nModel Parameters:")
+for key, value in model_params.items():
+    print(f"{key}: {value}")</code></pre>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4><i class="fas fa-infinity"></i> While Loops</h4>
+                                    <p>Execute while condition is true</p>
+                                    <pre><code># AI Training simulation
+epoch = 1
+target_accuracy = 95
+current_accuracy = 75
+
+print("Training Model...")
+while current_accuracy < target_accuracy:
+    print(f"Epoch {epoch}: Accuracy = {current_accuracy}%")
+    current_accuracy += 5  # Simulate improvement
+    epoch += 1
+    
+    if epoch > 10:  # Safety check
+        print("Maximum epochs reached!")
+        break
+
+print(f"\nTraining completed!")
+print(f"Final Accuracy: {current_accuracy}%")
+print(f"Total Epochs: {epoch-1}")
+
+# Infinite loop with break (common in AI training)
+data_points = [10, 20, 30, 40, 50]
+idx = 0
+while True:
+    if idx >= len(data_points):
+        print("\nAll data processed!")
+        break
+    print(f"Processing data point {data_points[idx]}...")
+    idx += 1</code></pre>
+                                </div>
+                            </div>
+                            
+                            <h3>Complete Program Examples</h3>
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span><i class="fas fa-laptop-code"></i> Real AI-inspired Programs</span>
+                                </div>
+                                <pre><code># Program 1: Student Grade Calculator (Like ML Classification)
+def calculate_grade(marks):
+    if marks >= 90:
+        return "A+"
+    elif marks >= 80:
+        return "A"
+    elif marks >= 70:
+        return "B"
+    elif marks >= 60:
+        return "C"
+    else:
+        return "F"
+
+# Test the function
+students = [("Amit", 85), ("Priya", 92), ("Rohan", 78), ("Ananya", 65)]
+print("Student Grades:")
+for name, marks in students:
+    grade = calculate_grade(marks)
+    print(f"{name}: {marks} → {grade}")
+
+# Program 2: Data Analyzer (Like Simple ML)
+data = [23, 45, 67, 89, 12, 34, 56, 78, 90, 21]
+print(f"\nData Analysis:")
+print(f"Dataset: {data}")
+print(f"Count: {len(data)}")
+print(f"Sum: {sum(data)}")
+print(f"Average: {sum(data)/len(data):.2f}")
+print(f"Maximum: {max(data)}")
+print(f"Minimum: {min(data)}")
+
+# Find outliers (like anomaly detection)
+threshold = 50
+outliers = [x for x in data if x > threshold]
+print(f"Values above {threshold}: {outliers}")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quiz Section -->
+                    <section id="quiz" class="quiz-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-question-circle"></i> Quick Quiz</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Test Your Python Knowledge</h3>
+                            <p>Answer these questions to check your understanding of Python basics.</p>
+                            
+                            <div class="quiz-container">
+                                <!-- Question 1 -->
+                                <div class="quiz-question">
+                                    <p><strong>1. Which of these is a valid variable name in Python?</strong></p>
+                                    <div class="quiz-options">
+                                        <label>
+                                            <input type="radio" name="q1" value="a">
+                                            <code>1st_name</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q1" value="b">
+                                            <code>first-name</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q1" value="c">
+                                            <code>first_name</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q1" value="d">
+                                            <code>@name</code>
+                                        </label>
+                                    </div>
+                                    <div id="answer1" class="quiz-answer">
+                                        <p><i class="fas fa-check-circle text-success"></i> <strong>Correct Answer:</strong> <code>first_name</code></p>
+                                        <p><strong>Explanation:</strong> Python variable names can contain letters, numbers, and underscores, but cannot start with a number or contain special characters like @ or -.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Question 2 -->
+                                <div class="quiz-question">
+                                    <p><strong>2. What is the output of this code?</strong></p>
+                                    <pre><code>numbers = [1, 2, 3, 4, 5]
+print(numbers[1:4])</code></pre>
+                                    <div class="quiz-options">
+                                        <label>
+                                            <input type="radio" name="q2" value="a">
+                                            <code>[1, 2, 3]</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q2" value="b">
+                                            <code>[2, 3, 4]</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q2" value="c">
+                                            <code>[1, 2, 3, 4]</code>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q2" value="d">
+                                            <code>[2, 3, 4, 5]</code>
+                                        </label>
+                                    </div>
+                                    <div id="answer2" class="quiz-answer">
+                                        <p><i class="fas fa-check-circle text-success"></i> <strong>Correct Answer:</strong> <code>[2, 3, 4]</code></p>
+                                        <p><strong>Explanation:</strong> Python slicing uses <code>[start:stop]</code> where start is inclusive and stop is exclusive. So <code>[1:4]</code> gives elements at indices 1, 2, and 3.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Question 3 -->
+                                <div class="quiz-question">
+                                    <p><strong>3. Which data structure removes duplicates automatically?</strong></p>
+                                    <div class="quiz-options">
+                                        <label>
+                                            <input type="radio" name="q3" value="a">
+                                            List
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q3" value="b">
+                                            Tuple
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q3" value="c">
+                                            Set
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="q3" value="d">
+                                            Dictionary
+                                        </label>
+                                    </div>
+                                    <div id="answer3" class="quiz-answer">
+                                        <p><i class="fas fa-check-circle text-success"></i> <strong>Correct Answer:</strong> Set</p>
+                                        <p><strong>Explanation:</strong> Sets only store unique elements. If you try to add duplicate values, they are automatically removed.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="quiz-actions">
+                                    <button id="submit-quiz" class="btn primary">
+                                        <i class="fas fa-check-square"></i> Submit Answers
+                                    </button>
+                                    <button id="reset-quiz" class="btn secondary">
+                                        <i class="fas fa-redo"></i> Try Again
+                                    </button>
+                                </div>
+                                
+                                <div id="quiz-result" class="quiz-result"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Practice Exercises -->
+                    <section id="exercises" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-code"></i> Practice Exercises</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Hands-on Practice Problems</h3>
+                            <p>Solve these exercises to strengthen your Python skills. These are designed with AI/ML applications in mind.</p>
+                            
+                            <div class="practice-exercise">
+                                <h4><i class="fas fa-star"></i> Exercise 1: Student Data Management</h4>
+                                <p>Create a program that stores student information and calculates statistics:</p>
+                                <ul>
+                                    <li>Create a dictionary for 5 students with name, marks, and grade</li>
+                                    <li>Calculate average marks of all students</li>
+                                    <li>Find student with highest marks</li>
+                                    <li>Count how many students have marks above 80</li>
+                                </ul>
+                                <button id="show-solution1" class="btn small">
+                                    <i class="fas fa-eye"></i> Show Solution
+                                </button>
+                                <div id="solution1" class="solution-box"></div>
+                            </div>
+                            
+                            <div class="practice-exercise">
+                                <h4><i class="fas fa-chart-line"></i> Exercise 2: Data Analysis for AI</h4>
+                                <p>Write a program to analyze a dataset:</p>
+                                <ul>
+                                    <li>Create a list of 10 numbers (representing AI model accuracies)</li>
+                                    <li>Calculate mean, median (sort and find middle), and range</li>
+                                    <li>Find accuracies above a threshold (e.g., 85%)</li>
+                                    <li>Create a new list with squared values of all accuracies</li>
+                                </ul>
+                                <button id="show-solution2" class="btn small">
+                                    <i class="fas fa-eye"></i> Show Solution
+                                </button>
+                                <div id="solution2" class="solution-box"></div>
+                            </div>
+                            
+                            <div class="practice-exercise">
+                                <h4><i class="fas fa-robot"></i> Exercise 3: Simple AI Classifier</h4>
+                                <p>Create a basic rule-based classifier:</p>
+                                <ul>
+                                    <li>Take temperature and humidity as input</li>
+                                    <li>Classify as:
+                                        <ul>
+                                            <li>"Ideal for AI Training" if temp between 20-30°C and humidity 40-60%</li>
+                                            <li>"Needs Cooling" if temp > 30°C</li>
+                                            <li>"Needs Humidifier" if humidity < 40%</li>
+                                            <li>"Needs Dehumidifier" if humidity > 60%</li>
+                                        </ul>
+                                    </li>
+                                    <li>Test with different input values</li>
+                                </ul>
+                                <button id="show-solution3" class="btn small">
+                                    <i class="fas fa-eye"></i> Show Solution
+                                </button>
+                                <div id="solution3" class="solution-box"></div>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4><i class="fas fa-arrow-right"></i> Next Steps</h4>
+                                <p>Great job completing Python Basics! You're now ready to:</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Move to <strong>NumPy & Pandas</strong> for data manipulation</li>
+                                    <li><i class="fas fa-check"></i> Start building <strong>ML Models</strong> with scikit-learn</li>
+                                    <li><i class="fas fa-check"></i> Work on <strong>AI Projects</strong> from the Projects section</li>
+                                </ul>
+                                <a href="libraries.html" class="btn primary">
+                                    <i class="fas fa-arrow-right"></i> Continue to ML Libraries
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-brain"></i> AI & ML Guide
+                    </a>
+                    <p>Master AI & ML in 60 hours. Designed for BCA students.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Python Basics</h3>
+                    <ul>
+                        <li><a href="#hour1">Hour 1: Variables</a></li>
+                        <li><a href="#hour2">Hour 2: Lists & Tuples</a></li>
+                        <li><a href="#hour3">Hour 3: Sets & Dictionaries</a></li>
+                        <li><a href="#hour4">Hour 4: Control Flow</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="copyright">© 2023 AI & ML Guide. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="python-basics.js"></script>
+</body>
+</html>

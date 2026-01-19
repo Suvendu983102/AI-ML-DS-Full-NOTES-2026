@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude Series - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* Aptitude Series Specific Styles */
+        :root {
+            --aptitude-blue: #4285F4;
+            --aptitude-green: #34A853;
+            --aptitude-yellow: #FBBC05;
+            --aptitude-red: #EA4335;
+            --aptitude-purple: #8A2BE2;
+        }
+        
+        .aptitude-header {
+            background: linear-gradient(135deg, #4285F4 0%, #8A2BE2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .topic-card.series {
+            border-top-color: var(--aptitude-blue);
+        }
+        
+        .topic-card.relations {
+            border-top-color: var(--aptitude-green);
+        }
+        
+        .topic-card.directions {
+            border-top-color: var(--aptitude-yellow);
+        }
+        
+        .topic-card.time {
+            border-top-color: var(--aptitude-red);
+        }
+        
+        .topic-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .icon-series {
+            background: linear-gradient(135deg, #4285F4, #6699FF);
+        }
+        
+        .icon-relations {
+            background: linear-gradient(135deg, #34A853, #2E7D32);
+        }
+        
+        .icon-directions {
+            background: linear-gradient(135deg, #FBBC05, #FFD700);
+        }
+        
+        .icon-time {
+            background: linear-gradient(135deg, #EA4335, #F44336);
+        }
+        
+        .practice-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--aptitude-blue);
+        }
+        
+        .problem-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .problem-statement {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .option {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .option:hover {
+            border-color: var(--aptitude-blue);
+            background: #f8f9fa;
+        }
+        
+        .option.correct {
+            border-color: var(--aptitude-green);
+            background: rgba(52, 168, 83, 0.1);
+        }
+        
+        .option.wrong {
+            border-color: var(--aptitude-red);
+            background: rgba(234, 67, 53, 0.1);
+        }
+        
+        .solution-box {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--aptitude-green);
+            display: none;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .compass-diagram {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 2rem auto;
+        }
+        
+        .compass-circle {
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--aptitude-yellow);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .compass-direction {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .north { top: 10px; left: 50%; transform: translateX(-50%); color: var(--aptitude-red); }
+        .south { bottom: 10px; left: 50%; transform: translateX(-50%); color: var(--aptitude-blue); }
+        .east { top: 50%; right: 10px; transform: translateY(-50%); color: var(--aptitude-green); }
+        .west { top: 50%; left: 10px; transform: translateY(-50%); color: var(--aptitude-purple); }
+        
+        .clock-diagram {
+            width: 150px;
+            height: 150px;
+            border: 4px solid #333;
+            border-radius: 50%;
+            position: relative;
+            margin: 2rem auto;
+            background: white;
+        }
+        
+        .clock-center {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        
+        .hour-hand {
+            position: absolute;
+            width: 4px;
+            height: 40px;
+            background: #333;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%) rotate(0deg);
+        }
+        
+        .minute-hand {
+            position: absolute;
+            width: 3px;
+            height: 60px;
+            background: #666;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%) rotate(90deg);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 1rem 0;
+            max-width: 400px;
+        }
+        
+        .calendar-day {
+            padding: 10px;
+            text-align: center;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-day:hover {
+            background: #f8f9fa;
+            border-color: var(--aptitude-blue);
+        }
+        
+        .calendar-day.today {
+            background: var(--aptitude-blue);
+            color: white;
+            border-color: var(--aptitude-blue);
+        }
+        
+        .calendar-day.weekend {
+            background: #f8f9fa;
+            color: #666;
+        }
+        
+        .speed-distance-chart {
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .chart-line {
+            position: absolute;
+            bottom: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: #e0e0e0;
+        }
+        
+        .chart-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--aptitude-blue);
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            transform: translateX(-50%);
+        }
+        
+        .work-progress {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .progress-bar-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-track {
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4285F4, #8A2BE2);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: var(--aptitude-blue);
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .test-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--aptitude-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        
+        .badge-easy {
+            background: rgba(52, 168, 83, 0.1);
+            color: var(--aptitude-green);
+        }
+        
+        .badge-medium {
+            background: rgba(251, 188, 5, 0.1);
+            color: var(--aptitude-yellow);
+        }
+        
+        .badge-hard {
+            background: rgba(234, 67, 53, 0.1);
+            color: var(--aptitude-red);
+        }
+        
+        .quick-tips {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--aptitude-purple);
+        }
+        
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tip-icon {
+            color: var(--aptitude-purple);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-progress {
+                flex-direction: column;
+            }
+            
+            .progress-bar-container {
+                min-width: 100%;
+            }
+            
+            .test-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .test-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-display {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="aptitude-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#curriculum">Curriculum</a> / 
+                <span>Aptitude Series</span>
+            </div>
+            <h1>Aptitude Series (Hours 45-50)</h1>
+            <p class="subtitle">Master reasoning, quantitative, and analytical skills</p>
+            <div class="header-meta">
+                <span class="meta-item"><i class="far fa-clock"></i> 6 Hours</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Intermediate</span>
+                <span class="meta-item"><i class="fas fa-graduation-cap"></i> Exam Prep</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Topics Covered</h3>
+                    <ul class="module-nav">
+                        <li><a href="#series-relations" class="active">Hour 45: Series & Relations</a></li>
+                        <li><a href="#directions-clocks">Hour 46: Directions & Clocks</a></li>
+                        <li><a href="#calendars">Hour 47: Calendars</a></li>
+                        <li><a href="#time-distance">Hour 48: Time & Distance</a></li>
+                        <li><a href="#time-work">Hour 49: Time & Work</a></li>
+                        <li><a href="#charts-practice">Hour 50: Charts & Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Quick Practice</h4>
+                    <div class="quick-practice">
+                        <button class="practice-btn" onclick="startQuickTest()">
+                            <i class="fas fa-bolt"></i>
+                            <span>Quick Test (5 min)</span>
+                        </button>
+                        <button class="practice-btn" onclick="showFormulas()">
+                            <i class="fas fa-calculator"></i>
+                            <span>Formulas Sheet</span>
+                        </button>
+                        <button class="practice-btn" onclick="resetProgress()">
+                            <i class="fas fa-redo"></i>
+                            <span>Reset Progress</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Difficulty Level</h4>
+                    <div class="difficulty-levels">
+                        <div class="level-item">
+                            <div class="level-dot easy"></div>
+                            <div>
+                                <strong>Easy</strong>
+                                <small>Basic concepts</small>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-dot medium"></div>
+                            <div>
+                                <strong>Medium</strong>
+                                <small>Mixed problems</small>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-dot hard"></div>
+                            <div>
+                                <strong>Hard</strong>
+                                <small>Advanced problems</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Hour 45: Series & Relations -->
+                <section id="series-relations" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 45</span>
+                        <h2>Series Filling & Blood Relations</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Master pattern recognition in number/letter series and solve complex family relationship problems.</p>
+                        
+                        <div class="topic-grid">
+                            <div class="topic-card series">
+                                <div class="topic-icon icon-series">
+                                    <i class="fas fa-sort-numeric-down"></i>
+                                </div>
+                                <h3>Series Filling</h3>
+                                <p>Identify patterns and complete sequences</p>
+                                <div class="topic-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Number Series</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Letter Series</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Mixed Series</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Pattern Recognition</span>
+                                    </div>
+                                </div>
+                                <div class="topic-tags">
+                                    <span class="difficulty-badge badge-easy">Easy</span>
+                                    <span class="difficulty-badge badge-medium">Medium</span>
+                                </div>
+                            </div>
+                            
+                            <div class="topic-card relations">
+                                <div class="topic-icon icon-relations">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Blood Relations</h3>
+                                <p>Solve complex family relationship problems</p>
+                                <div class="topic-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Family Trees</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Coded Relations</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Mixed Relations</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Complex Puzzles</span>
+                                    </div>
+                                </div>
+                                <div class="topic-tags">
+                                    <span class="difficulty-badge badge-medium">Medium</span>
+                                    <span class="difficulty-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Series Filling Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 1:</strong> Complete the series: 2, 6, 12, 20, 30, ?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '42')">42</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '36')">36</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '44')">44</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '40')">40</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('series1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="series1">
+                                    <h5>Solution:</h5>
+                                    <p>Pattern: Add consecutive even numbers</p>
+                                    <p>2 + 4 = 6</p>
+                                    <p>6 + 6 = 12</p>
+                                    <p>12 + 8 = 20</p>
+                                    <p>20 + 10 = 30</p>
+                                    <p>30 + 12 = <strong>42</strong></p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 2:</strong> Complete the series: A, C, F, J, O, ?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'S')">S</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', 'U')">U</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'T')">T</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'V')">V</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('series2')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="series2">
+                                    <h5>Solution:</h5>
+                                    <p>Pattern: Add increasing numbers</p>
+                                    <p>A (+2) → C</p>
+                                    <p>C (+3) → F</p>
+                                    <p>F (+4) → J</p>
+                                    <p>J (+5) → O</p>
+                                    <p>O (+6) → <strong>U</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Blood Relations Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem:</strong> Pointing to a photograph, a man said, "I have no brother or sister but that man's father is my father's son." Who is in the photograph?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'His father')">His father</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', 'His son')">His son</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Himself')">Himself</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'His nephew')">His nephew</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('relation1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="relation1">
+                                    <h5>Solution:</h5>
+                                    <p>"My father's son" = Himself (since he has no brothers)</p>
+                                    <p>"That man's father is myself"</p>
+                                    <p>Therefore, the man in the photograph is <strong>his son</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h4>Quick Tips</h4>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h5>Series Patterns</h5>
+                                    <p>Look for arithmetic, geometric, square, or cube patterns in number series</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h5>Family Relations</h5>
+                                    <p>Draw family trees for complex relations. Use gender-specific terms carefully</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 46: Directions & Clocks -->
+                <section id="directions-clocks" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 46</span>
+                        <h2>Directions & Clocks</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Master direction sense problems and clock-based reasoning questions.</p>
+                        
+                        <div class="topic-grid">
+                            <div class="topic-card directions">
+                                <div class="topic-icon icon-directions">
+                                    <i class="fas fa-compass"></i>
+                                </div>
+                                <h3>Direction Sense</h3>
+                                <p>Solve problems involving directions and distances</p>
+                                <div class="topic-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Cardinal Directions</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Right/Left Turns</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Distance Calculation</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Shadow Problems</span>
+                                    </div>
+                                </div>
+                                <div class="topic-tags">
+                                    <span class="difficulty-badge badge-easy">Easy</span>
+                                    <span class="difficulty-badge badge-medium">Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="compass-diagram">
+                            <div class="compass-circle">
+                                <div class="compass-direction north">N</div>
+                                <div class="compass-direction south">S</div>
+                                <div class="compass-direction east">E</div>
+                                <div class="compass-direction west">W</div>
+                                <div style="position: absolute; top: 50%; left: 50%; width: 2px; height: 80%; background: #e0e0e0; transform: translate(-50%, -50%) rotate(45deg);"></div>
+                                <div style="position: absolute; top: 50%; left: 50%; width: 2px; height: 80%; background: #e0e0e0; transform: translate(-50%, -50%) rotate(-45deg);"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Direction Sense Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem:</strong> Ravi walks 10 meters south from his house, turns left and walks 25 meters, then turns right and walks 5 meters, and finally turns left and walks 10 meters. In which direction is he from his starting point?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'correct', 'South-East')">South-East</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'South-West')">South-West</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'North-East')">North-East</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'North-West')">North-West</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('direction1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="direction1">
+                                    <h5>Solution:</h5>
+                                    <p>Let's trace the path:</p>
+                                    <p>1. Start at origin, go 10m South → (0, -10)</p>
+                                    <p>2. Turn left (East), walk 25m → (25, -10)</p>
+                                    <p>3. Turn right (South), walk 5m → (25, -15)</p>
+                                    <p>4. Turn left (East), walk 10m → (35, -15)</p>
+                                    <p>Final position is 35m East and 15m South from start → <strong>South-East</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="clock-diagram">
+                            <div class="clock-center"></div>
+                            <div class="hour-hand" id="hourHand"></div>
+                            <div class="minute-hand" id="minuteHand"></div>
+                            <!-- Clock numbers -->
+                            <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-weight: bold;">12</div>
+                            <div style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-weight: bold;">3</div>
+                            <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-weight: bold;">6</div>
+                            <div style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-weight: bold;">9</div>
+                        </div>
+                        
+                        <div class="formula-box">
+                            <h4>Clock Formulas</h4>
+                            <p><strong>Minute Hand:</strong> 360° in 60 minutes = 6° per minute</p>
+                            <p><strong>Hour Hand:</strong> 360° in 12 hours = 30° per hour = 0.5° per minute</p>
+                            <p><strong>Relative Speed:</strong> 6° - 0.5° = 5.5° per minute</p>
+                            <p><strong>Angle between hands:</strong> |30H - 5.5M|</p>
+                            <p><strong>Time to coincide:</strong> 65⁵⁄₁₁ minutes (every 65.4545 minutes)</p>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Clock Problems Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem:</strong> At what time between 4 and 5 will the hands of a clock be at right angles?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '4:05:27')">4:05:27</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '4:05:27 and 4:38:11')">4:05:27 & 4:38:11</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '4:38:11 only')">4:38:11 only</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '4:21:49')">4:21:49</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('clock1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="clock1">
+                                    <h5>Solution:</h5>
+                                    <p>Using formula: Time = (5H ± 15) × ¹²⁄₁₁ minutes</p>
+                                    <p>When minute hand is 15 minutes ahead:</p>
+                                    <p>Time = (5×4 + 15) × ¹²⁄₁₁ = (20+15)×¹²⁄₁₁ = 35×¹²⁄₁₁ = 420/11 = 38.18 minutes</p>
+                                    <p>When minute hand is 15 minutes behind:</p>
+                                    <p>Time = (5×4 - 15) × ¹²⁄₁₁ = (20-15)×¹²⁄₁₁ = 5×¹²⁄₁₁ = 60/11 = 5.45 minutes</p>
+                                    <p>Convert to minutes:seconds:</p>
+                                    <p>38.18 minutes = 38 minutes 11 seconds → <strong>4:38:11</strong></p>
+                                    <p>5.45 minutes = 5 minutes 27 seconds → <strong>4:05:27</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 47: Calendars -->
+                <section id="calendars" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 47</span>
+                        <h2>Calendar Problems</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Solve calendar-based reasoning questions involving days, dates, and years.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Calendar Formulas</h4>
+                            <p><strong>Odd Days:</strong> Extra days after complete weeks</p>
+                            <p><strong>Ordinary Year:</strong> 365 days = 52 weeks + 1 odd day</p>
+                            <p><strong>Leap Year:</strong> 366 days = 52 weeks + 2 odd days</p>
+                            <p><strong>Century Years:</strong> Only divisible by 400 are leap years</p>
+                            <p><strong>Day Codes:</strong> Sunday=0, Monday=1, Tuesday=2, Wednesday=3, Thursday=4, Friday=5, Saturday=6</p>
+                        </div>
+                        
+                        <div class="calendar-grid">
+                            <!-- Calendar header -->
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Sun</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Mon</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Tue</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Wed</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Thu</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Fri</div>
+                            <div class="calendar-day" style="background: #f0f0f0; font-weight: bold;">Sat</div>
+                            
+                            <!-- Calendar days -->
+                            <div class="calendar-day">28</div>
+                            <div class="calendar-day">29</div>
+                            <div class="calendar-day">30</div>
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day weekend">4</div>
+                            <div class="calendar-day weekend">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day weekend">11</div>
+                            <div class="calendar-day weekend">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div>
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day weekend">18</div>
+                            <div class="calendar-day weekend">19</div>
+                            <div class="calendar-day today">20</div>
+                            <div class="calendar-day">21</div>
+                            <div class="calendar-day">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day weekend">25</div>
+                            <div class="calendar-day weekend">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div>
+                            <div class="calendar-day">29</div>
+                            <div class="calendar-day">30</div>
+                            <div class="calendar-day">31</div>
+                            <div class="calendar-day">1</div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Calendar Problems Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 1:</strong> If today is Monday, what day will it be after 100 days?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Monday')">Monday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Tuesday')">Tuesday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', 'Wednesday')">Wednesday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Thursday')">Thursday</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('calendar1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="calendar1">
+                                    <h5>Solution:</h5>
+                                    <p>100 days = 14 weeks + 2 days</p>
+                                    <p>14 weeks = Monday (back to same day)</p>
+                                    <p>Monday + 2 days = Wednesday</p>
+                                    <p>Therefore, after 100 days it will be <strong>Wednesday</strong>.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 2:</strong> What was the day on 15th August, 1947?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Thursday')">Thursday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Saturday')">Saturday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', 'Friday')">Friday</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', 'Sunday')">Sunday</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('calendar2')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="calendar2">
+                                    <h5>Solution:</h5>
+                                    <p>Calculate odd days from 1900 to 1947:</p>
+                                    <p>1900-2000: 0 odd days (century not divisible by 400)</p>
+                                    <p>1901-1947: 47 years = 11 leap years + 36 ordinary years</p>
+                                    <p>Odd days = (11×2 + 36×1) = 58 days = 8 weeks + 2 odd days</p>
+                                    <p>Days in 1947 till Aug 15: Jan(31)+Feb(28)+Mar(31)+Apr(30)+May(31)+Jun(30)+Jul(31)+Aug(15) = 227 days</p>
+                                    <p>227 days = 32 weeks + 3 odd days</p>
+                                    <p>Total odd days = 2 + 3 = 5</p>
+                                    <p>Day code 5 = Friday</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h4>Calendar Tips</h4>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h5>Odd Days Calculation</h5>
+                                    <p>Remember: 100 years = 5 odd days, 200 years = 3 odd days, 300 years = 1 odd day, 400 years = 0 odd days</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h5>Month Codes</h5>
+                                    <p>Remember codes: January(0), February(3), March(3), April(6), May(1), June(4), July(6), August(2), September(5), October(0), November(3), December(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 48: Time & Distance -->
+                <section id="time-distance" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 48</span>
+                        <h2>Time and Distance Problems</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Solve problems involving speed, distance, and time relationships.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Time & Distance Formulas</h4>
+                            <p><strong>Speed = Distance ÷ Time</strong></p>
+                            <p><strong>Distance = Speed × Time</strong></p>
+                            <p><strong>Time = Distance ÷ Speed</strong></p>
+                            <p><strong>Average Speed = Total Distance ÷ Total Time</strong></p>
+                            <p><strong>Relative Speed:</strong></p>
+                            <p>• Same direction: |Speed1 - Speed2|</p>
+                            <p>• Opposite direction: Speed1 + Speed2</p>
+                            <p><strong>km/h to m/s:</strong> Multiply by ⁵⁄₁₈</p>
+                            <p><strong>m/s to km/h:</strong> Multiply by ¹⁸⁄₅</p>
+                        </div>
+                        
+                        <div class="speed-distance-chart">
+                            <div class="chart-line"></div>
+                            <div class="chart-point" style="left: 20%;"></div>
+                            <div class="chart-point" style="left: 50%;"></div>
+                            <div class="chart-point" style="left: 80%;"></div>
+                            <div class="chart-label" style="left: 20%;">10 km</div>
+                            <div class="chart-label" style="left: 50%;">25 km</div>
+                            <div class="chart-label" style="left: 80%;">40 km</div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Time & Distance Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 1:</strong> A train covers a distance of 360 km in 5 hours. What is its speed in m/s?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '20 m/s')">20 m/s</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '25 m/s')">25 m/s</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '18 m/s')">18 m/s</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '22 m/s')">22 m/s</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('speed1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="speed1">
+                                    <h5>Solution:</h5>
+                                    <p>Speed in km/h = 360 ÷ 5 = 72 km/h</p>
+                                    <p>Convert to m/s: 72 × ⁵⁄₁₈ = 4 × 5 = 20 m/s</p>
+                                    <p>Therefore, the speed is <strong>20 m/s</strong>.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 2:</strong> Two trains start at the same time from stations 300 km apart and travel towards each other at 40 km/h and 60 km/h respectively. When will they meet?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '2 hours')">2 hours</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '2.5 hours')">2.5 hours</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '3 hours')">3 hours</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '3.5 hours')">3.5 hours</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('speed2')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="speed2">
+                                    <h5>Solution:</h5>
+                                    <p>Relative speed = 40 + 60 = 100 km/h</p>
+                                    <p>Distance = 300 km</p>
+                                    <p>Time = Distance ÷ Relative Speed = 300 ÷ 100 = 3 hours</p>
+                                    <p>Therefore, they will meet after <strong>3 hours</strong>.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 3:</strong> A person travels from A to B at 30 km/h and returns at 40 km/h. What is the average speed for the entire journey?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '35 km/h')">35 km/h</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '34.29 km/h')">34.29 km/h</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '32 km/h')">32 km/h</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '33.33 km/h')">33.33 km/h</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('speed3')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="speed3">
+                                    <h5>Solution:</h5>
+                                    <p>Let distance = d km</p>
+                                    <p>Time from A to B = d/30 hours</p>
+                                    <p>Time from B to A = d/40 hours</p>
+                                    <p>Total time = d/30 + d/40 = (4d + 3d)/120 = 7d/120 hours</p>
+                                    <p>Total distance = 2d km</p>
+                                    <p>Average speed = Total distance ÷ Total time = 2d ÷ (7d/120) = 2d × 120/7d = 240/7 ≈ 34.29 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 49: Time & Work -->
+                <section id="time-work" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 49</span>
+                        <h2>Time and Work Problems</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Solve problems involving work efficiency, collaborative work, and work distribution.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Time & Work Formulas</h4>
+                            <p><strong>Work = Efficiency × Time</strong></p>
+                            <p><strong>Efficiency = Work ÷ Time</strong></p>
+                            <p><strong>Time = Work ÷ Efficiency</strong></p>
+                            <p><strong>If A can do work in 'a' days, efficiency = 1/a</strong></p>
+                            <p><strong>Combined work: 1/(1/a + 1/b) days</strong></p>
+                            <p><strong>Work done = (Efficiency) × (Time worked)</strong></p>
+                            <p><strong>Remaining work = 1 - (Work done)</strong></p>
+                        </div>
+                        
+                        <div class="work-progress">
+                            <div class="progress-bar-container">
+                                <h5>Work Progress Simulation</h5>
+                                <div class="progress-label">
+                                    <span>Work Completion</span>
+                                    <span id="workPercent">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="workFill"></div>
+                                </div>
+                                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                    <button class="btn small" onclick="startWork()">
+                                        <i class="fas fa-play"></i> Start Work
+                                    </button>
+                                    <button class="btn small" onclick="resetWork()">
+                                        <i class="fas fa-redo"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 300px;">
+                                <h5>Work Distribution</h5>
+                                <div style="background: white; padding: 1rem; border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Person A</span>
+                                        <span>5 units/day</span>
+                                    </div>
+                                    <div style="height: 10px; background: #e0e0e0; border-radius: 5px; margin-bottom: 1rem;">
+                                        <div style="height: 100%; width: 40%; background: var(--aptitude-blue); border-radius: 5px;"></div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Person B</span>
+                                        <span>3 units/day</span>
+                                    </div>
+                                    <div style="height: 10px; background: #e0e0e0; border-radius: 5px; margin-bottom: 1rem;">
+                                        <div style="height: 100%; width: 24%; background: var(--aptitude-green); border-radius: 5px;"></div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Person C</span>
+                                        <span>2 units/day</span>
+                                    </div>
+                                    <div style="height: 10px; background: #e0e0e0; border-radius: 5px;">
+                                        <div style="height: 100%; width: 16%; background: var(--aptitude-red); border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Time & Work Practice</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 1:</strong> A can complete a work in 12 days, and B can complete it in 18 days. In how many days will they complete the work together?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '6 days')">6 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '8 days')">8 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '7.2 days')">7.2 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '9 days')">9 days</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('work1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="work1">
+                                    <h5>Solution:</h5>
+                                    <p>A's 1 day work = 1/12</p>
+                                    <p>B's 1 day work = 1/18</p>
+                                    <p>Combined 1 day work = 1/12 + 1/18 = (3 + 2)/36 = 5/36</p>
+                                    <p>Time taken together = 1 ÷ (5/36) = 36/5 = 7.2 days</p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 2:</strong> A and B together can do a piece of work in 6 days. A alone can do it in 10 days. In how many days can B alone do it?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '12 days')">12 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '14 days')">14 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '13 days')">13 days</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '15 days')">15 days</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('work2')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="work2">
+                                    <h5>Solution:</h5>
+                                    <p>(A+B)'s 1 day work = 1/6</p>
+                                    <p>A's 1 day work = 1/10</p>
+                                    <p>B's 1 day work = 1/6 - 1/10 = (5 - 3)/30 = 2/30 = 1/15</p>
+                                    <p>B alone can complete in 15 days</p>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Problem 3:</strong> 10 men can complete a work in 15 days. How many men are needed to complete the work in 6 days?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '20 men')">20 men</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '22 men')">22 men</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '25 men')">25 men</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '24 men')">24 men</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('work3')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="work3">
+                                    <h5>Solution:</h5>
+                                    <p>Total work = 10 men × 15 days = 150 man-days</p>
+                                    <p>To complete in 6 days: 150 man-days ÷ 6 days = 25 men</p>
+                                    <p>Therefore, <strong>25 men</strong> are needed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 50: Charts & Practice -->
+                <section id="charts-practice" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 50</span>
+                        <h2>Charts & Comprehensive Practice</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Master data interpretation from charts and graphs, with comprehensive practice tests.</p>
+                        
+                        <div class="chart-container">
+                            <h4>Data Interpretation - Bar Chart</h4>
+                            <div class="chart-placeholder">
+                                <div style="width: 90%; height: 80%; display: flex; align-items: flex-end; gap: 20px; justify-content: center;">
+                                    <div style="width: 40px; height: 70%; background: var(--aptitude-blue); position: relative;">
+                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.8rem;">Q1</div>
+                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.9rem;">200</div>
+                                    </div>
+                                    <div style="width: 40px; height: 85%; background: var(--aptitude-green); position: relative;">
+                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.8rem;">Q2</div>
+                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.9rem;">240</div>
+                                    </div>
+                                    <div style="width: 40px; height: 60%; background: var(--aptitude-yellow); position: relative;">
+                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.8rem;">Q3</div>
+                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.9rem;">170</div>
+                                    </div>
+                                    <div style="width: 40px; height: 95%; background: var(--aptitude-red); position: relative;">
+                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.8rem;">Q4</div>
+                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.9rem;">270</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Based on the chart above:</strong> What is the average sales across all quarters?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '210')">210</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '215')">215</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct', '220')">220</div>
+                                    <div class="option" onclick="checkAnswer(this, 'wrong', '225')">225</div>
+                                </div>
+                                <button class="btn small" onclick="showSolution('chart1')">
+                                    <i class="fas fa-lightbulb"></i> Show Solution
+                                </button>
+                                <div class="solution-box" id="chart1">
+                                    <h5>Solution:</h5>
+                                    <p>Total sales = 200 + 240 + 170 + 270 = 880</p>
+                                    <p>Number of quarters = 4</p>
+                                    <p>Average = 880 ÷ 4 = 220</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timer-display" id="testTimer">
+                            05:00
+                        </div>
+                        
+                        <div class="test-stats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="questionsAttempted">0</div>
+                                <div class="stat-label">Questions Attempted</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value" id="correctAnswers">0</div>
+                                <div class="stat-label">Correct Answers</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value" id="accuracyRate">0%</div>
+                                <div class="stat-label">Accuracy Rate</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value" id="timeLeft">5:00</div>
+                                <div class="stat-label">Time Left</div>
+                            </div>
+                        </div>
+                        
+                        <div class="practice-box">
+                            <h4>Comprehensive Practice Test</h4>
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Mixed Problem 1:</strong> If 3, 8, 13, 18, ... is a series, what is the 10th term?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="updateTestStats(this, 'correct')">48</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">43</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">53</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">58</div>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Mixed Problem 2:</strong> A man walks 5 km North, turns right and walks 3 km, then turns right again and walks 5 km. How far is he from his starting point?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">8 km</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">10 km</div>
+                                    <div class="option" onclick="updateTestStats(this, 'correct')">3 km</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">5 km</div>
+                                </div>
+                            </div>
+                            
+                            <div class="problem-container">
+                                <div class="problem-statement">
+                                    <strong>Mixed Problem 3:</strong> A train 150m long passes a pole in 15 seconds. What is its speed in km/h?
+                                </div>
+                                <div class="options-grid">
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">30 km/h</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">40 km/h</div>
+                                    <div class="option" onclick="updateTestStats(this, 'correct')">36 km/h</div>
+                                    <div class="option" onclick="updateTestStats(this, 'wrong')">45 km/h</div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 2rem;">
+                                <button class="btn" onclick="submitTest()">
+                                    <i class="fas fa-paper-plane"></i> Submit Test
+                                </button>
+                                <button class="btn secondary" onclick="resetTest()" style="margin-left: 1rem;">
+                                    <i class="fas fa-redo"></i> Reset Test
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h4>Test-Taking Strategies</h4>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h5>Time Management</h5>
+                                    <p>Spend about 1 minute per question. Skip difficult ones and return later.</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h5>Answer Elimination</h5>
+                                    <p>Eliminate obviously wrong answers first to increase your chances.</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <h5>Mental Math</h5>
+                                    <p>Practice mental calculations to save time on simple arithmetic.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resources-section">
+                            <h4>Additional Resources</h4>
+                            <div class="resources-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <h5>Aptitude Formulas PDF</h5>
+                                    <p>Complete formula sheet for quick revision</p>
+                                    <button class="download-link" onclick="downloadResource('formulas')">Download</button>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-question-circle"></i>
+                                    </div>
+                                    <h5>Practice Questions</h5>
+                                    <p>500+ solved aptitude questions</p>
+                                    <button class="download-link" onclick="downloadResource('questions')">Download</button>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h5>Mock Tests</h5>
+                                    <p>Full-length aptitude tests</p>
+                                    <button class="download-link" onclick="downloadResource('tests')">Download</button>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h5>Video Solutions</h5>
+                                    <p>Step-by-step problem solving videos</p>
+                                    <button class="download-link" onclick="watchVideos()">Watch Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI & ML Guide</h4>
+                    <p>Master aptitude skills for AI and machine learning careers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Next Module</h4>
+                    <a href="sql-tableau-powerbi.html" class="next-module">
+                        <i class="fas fa-arrow-right"></i>
+                        <div>
+                            <h5>SQL, Tableau & Power BI</h5>
+                            <p>Data tools for analytics</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>Aptitude Topics</h4>
+                    <div class="topic-tags">
+                        <span class="topic-tag">Quantitative</span>
+                        <span class="topic-tag">Logical</span>
+                        <span class="topic-tag">Verbal</span>
+                        <span class="topic-tag">Analytical</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let testTimer;
+        let timeLeft = 300; // 5 minutes in seconds
+        let questionsAttempted = 0;
+        let correctAnswers = 0;
+        let testStarted = false;
+        
+        // Check answer function
+        function checkAnswer(element, result, correctValue) {
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+                if (opt.textContent === correctValue) {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            if (result === 'correct') {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('wrong');
+            }
+        }
+        
+        // Show solution function
+        function showSolution(id) {
+            const solutionBox = document.getElementById(id);
+            solutionBox.style.display = 'block';
+        }
+        
+        // Work progress simulation
+        function startWork() {
+            const fill = document.getElementById('workFill');
+            const percent = document.getElementById('workPercent');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += 2;
+                fill.style.width = `${progress}%`;
+                percent.textContent = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    percent.textContent = 'Completed!';
+                }
+            }, 100);
+        }
+        
+        function resetWork() {
+            document.getElementById('workFill').style.width = '0%';
+            document.getElementById('workPercent').textContent = '0%';
+        }
+        
+        // Test timer functions
+        function startTestTimer() {
+            if (testStarted) return;
+            testStarted = true;
+            
+            testTimer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(testTimer);
+                    submitTest();
+                }
+            }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const timerDisplay = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            document.getElementById('testTimer').textContent = timerDisplay;
+            document.getElementById('timeLeft').textContent = timerDisplay;
+        }
+        
+        // Test statistics
+        function updateTestStats(element, result) {
+            if (!testStarted) startTestTimer();
+            
+            questionsAttempted++;
+            if (result === 'correct') {
+                correctAnswers++;
+                element.classList.add('correct');
+            } else {
+                element.classList.add('wrong');
+                
+                // Show correct answer
+                const options = element.parentElement.querySelectorAll('.option');
+                options.forEach(opt => {
+                    if (opt.classList.contains('correct') || opt.textContent.includes('48') || opt.textContent.includes('3 km') || opt.textContent.includes('36 km/h')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            updateStatsDisplay();
+        }
+        
+        function updateStatsDisplay() {
+            document.getElementById('questionsAttempted').textContent = questionsAttempted;
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            
+            const accuracy = questionsAttempted > 0 ? Math.round((correctAnswers / questionsAttempted) * 100) : 0;
+            document.getElementById('accuracyRate').textContent = `${accuracy}%`;
+        }
+        
+        function submitTest() {
+            clearInterval(testTimer);
+            
+            const accuracy = questionsAttempted > 0 ? Math.round((correctAnswers / questionsAttempted) * 100) : 0;
+            
+            alert(`Test Submitted!\n\nResults:\n- Questions Attempted: ${questionsAttempted}\n- Correct Answers: ${correctAnswers}\n- Accuracy: ${accuracy}%\n- Time Taken: ${300 - timeLeft} seconds`);
+            
+            // Show performance summary
+            document.getElementById('testTimer').innerHTML = `
+                <div style="font-size: 1.5rem; color: ${accuracy >= 70 ? 'var(--aptitude-green)' : accuracy >= 50 ? 'var(--aptitude-yellow)' : 'var(--aptitude-red)'}">
+                    Score: ${correctAnswers}/${questionsAttempted}
+                </div>
+                <div style="font-size: 1rem; margin-top: 0.5rem;">
+                    Accuracy: ${accuracy}%
+                </div>
+            `;
+        }
+        
+        function resetTest() {
+            clearInterval(testTimer);
+            timeLeft = 300;
+            questionsAttempted = 0;
+            correctAnswers = 0;
+            testStarted = false;
+            
+            updateTimerDisplay();
+            updateStatsDisplay();
+            
+            document.getElementById('testTimer').textContent = '05:00';
+            
+            // Reset all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+            });
+        }
+        
+        // Quick test functions
+        function startQuickTest() {
+            alert('Starting 5-minute quick test!\n\nYou will have 5 minutes to answer as many questions as possible.\nThe test will automatically submit when time is up.\n\nGood luck!');
+            resetTest();
+            startTestTimer();
+            
+            // Scroll to practice section
+            document.querySelector('#charts-practice').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function showFormulas() {
+            const formulas = `
+            ===== APTITUDE FORMULAS =====
+
+            TIME & DISTANCE:
+            • Speed = Distance ÷ Time
+            • Distance = Speed × Time
+            • Time = Distance ÷ Speed
+            • Average Speed = Total Distance ÷ Total Time
+            • km/h to m/s: × 5/18
+            • m/s to km/h: × 18/5
+
+            TIME & WORK:
+            • Work = Efficiency × Time
+            • Combined work: 1/(1/a + 1/b)
+            • Work done = Efficiency × Time worked
+
+            CLOCKS:
+            • Minute hand: 6° per minute
+            • Hour hand: 0.5° per minute
+            • Relative speed: 5.5° per minute
+            • Angle = |30H - 5.5M|
+
+            CALENDARS:
+            • Ordinary year: 365 days = 52 weeks + 1 odd day
+            • Leap year: 366 days = 52 weeks + 2 odd days
+            • Century leap year: Divisible by 400
+            • 100 years = 5 odd days
+
+            SERIES PATTERNS:
+            • Arithmetic: a, a+d, a+2d, ...
+            • Geometric: a, ar, ar², ...
+            • Square: n²
+            • Cube: n³
+            `;
+            
+            alert(formulas);
+        }
+        
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress?')) {
+                resetTest();
+                resetWork();
+                alert('All progress has been reset!');
+            }
+        }
+        
+        // Resource functions
+        function downloadResource(type) {
+            const resources = {
+                formulas: 'Aptitude_Formulas_Sheet.pdf',
+                questions: '500_Aptitude_Questions.pdf',
+                tests: 'Mock_Aptitude_Tests.pdf'
+            };
+            
+            alert(`Downloading ${resources[type]}...\n\n(In a real implementation, this would download the file)`);
+        }
+        
+        function watchVideos() {
+            alert('Opening video tutorials...\n\nCheck the resources section for complete video courses.');
+        }
+        
+        // Initialize clock hands
+        function initializeClock() {
+            // Set clock to 4:05:27 (first right angle time)
+            const hourAngle = (4 * 30) + (5 * 0.5) + (27 * 0.5/60);
+            const minuteAngle = (5 * 6) + (27 * 0.1);
+            
+            document.getElementById('hourHand').style.transform = `translate(-50%, -100%) rotate(${hourAngle}deg)`;
+            document.getElementById('minuteHand').style.transform = `translate(-50%, -100%) rotate(${minuteAngle}deg)`;
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.module-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize on load
+        window.onload = function() {
+            initializeClock();
+            updateTimerDisplay();
+            updateStatsDisplay();
+            
+            // Add scroll-based active link update
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.module-nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools & Technologies - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        /* Additional AI Tools specific styles */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .tool-card.cv {
+            border-top-color: #4CAF50;
+        }
+        
+        .tool-card.nlp {
+            border-top-color: #2196F3;
+        }
+        
+        .tool-card.dl {
+            border-top-color: #FF9800;
+        }
+        
+        .tool-card.vis {
+            border-top-color: #9C27B0;
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .tool-icon.cv {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+        
+        .tool-icon.nlp {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+        }
+        
+        .tool-icon.dl {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+        
+        .tool-icon.vis {
+            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+        }
+        
+        .tool-features {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+        
+        .tool-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .tool-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .opencv-demo {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .image-processing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .processing-step {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .processing-icon {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nlp-pipeline {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .pipeline-step {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: #2196F3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        
+        .pytorch-tensor {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tensor-visual {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tensor-dim {
+            padding: 0.5rem 1rem;
+            background: #FF9800;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .end-to-end-project {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .project-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+        
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        
+        .badge.python {
+            background: #3776AB;
+            color: white;
+        }
+        
+        .badge.cpp {
+            background: #00599C;
+            color: white;
+        }
+        
+        .badge.cuda {
+            background: #76B900;
+            color: white;
+        }
+        
+        .badge.gpu {
+            background: #FF6B00;
+            color: white;
+        }
+        
+        .tool-ecosystem {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .ecosystem-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .ecosystem-icon {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .example-header {
+            background: #2d2d30;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .code-example pre {
+            margin: 0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        
+        .hour-section {
+            margin-bottom: 4rem;
+        }
+        
+        .hour-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .hour-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .topic-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            color: white;
+        }
+        
+        .topic-description {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            opacity: 0.9;
+        }
+        
+        .topic-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .topic-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .topic-sidebar {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .topic-main {
+            min-width: 0;
+        }
+        
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .demo-output {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .tensor-visual {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topic-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#curriculum">Curriculum</a> / 
+                <span>AI Tools & Technologies</span>
+            </div>
+            <h1>AI Tools & Technologies (Hours 29-33)</h1>
+            <p class="topic-description">Essential AI frameworks and libraries: OpenCV, NLP tools, PyTorch, and end-to-end AI projects</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 5 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="topic-sidebar">
+                    <h3>In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#introduction" class="active">Hour 29: AI Tools Overview</a></li>
+                        <li><a href="#computervision">Hour 30: Computer Vision</a></li>
+                        <li><a href="#nlp">Hour 31: NLP Basics</a></li>
+                        <li><a href="#pytorch">Hour 32: PyTorch</a></li>
+                        <li><a href="#endtoend">Hour 33: End-to-End Project</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Tool Categories</h4>
+                        <div class="tool-categories">
+                            <div class="category" style="display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; background: rgba(76, 175, 80, 0.1); border-radius: 6px;">
+                                <div class="category-icon" style="width: 20px; height: 20px; background: #4CAF50; border-radius: 4px;"></div>
+                                <span>Computer Vision</span>
+                            </div>
+                            <div class="category" style="display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 6px;">
+                                <div class="category-icon" style="width: 20px; height: 20px; background: #2196F3; border-radius: 4px;"></div>
+                                <span>NLP</span>
+                            </div>
+                            <div class="category" style="display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; background: rgba(255, 152, 0, 0.1); border-radius: 6px;">
+                                <div class="category-icon" style="width: 20px; height: 20px; background: #FF9800; border-radius: 4px;"></div>
+                                <span>Deep Learning</span>
+                            </div>
+                            <div class="category" style="display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; padding: 0.5rem; background: rgba(156, 39, 176, 0.1); border-radius: 6px;">
+                                <div class="category-icon" style="width: 20px; height: 20px; background: #9C27B0; border-radius: 4px;"></div>
+                                <span>Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Popular Frameworks</h4>
+                        <div class="frameworks-list">
+                            <div class="framework" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 6px; margin: 0.5rem 0;">
+                                <i class="fab fa-python" style="color: #3776AB; font-size: 1.2rem;"></i>
+                                <span>OpenCV</span>
+                            </div>
+                            <div class="framework" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 6px; margin: 0.5rem 0;">
+                                <i class="fab fa-python" style="color: #EE4C2C; font-size: 1.2rem;"></i>
+                                <span>PyTorch</span>
+                            </div>
+                            <div class="framework" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 6px; margin: 0.5rem 0;">
+                                <i class="fab fa-python" style="color: #09A3D5; font-size: 1.2rem;"></i>
+                                <span>spaCy</span>
+                            </div>
+                            <div class="framework" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 6px; margin: 0.5rem 0;">
+                                <i class="fab fa-python" style="color: #1B9E77; font-size: 1.2rem;"></i>
+                                <span>NLTK</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 29: Introduction to AI Tools -->
+                    <section id="introduction" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">29</span> Introduction to AI Tools</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Essential AI Frameworks and Libraries</h3>
+                            <p>Modern AI development relies on powerful frameworks and libraries that abstract complex mathematical operations and provide efficient implementations.</p>
+                            
+                            <div class="tools-grid">
+                                <div class="tool-card cv">
+                                    <div class="tool-header">
+                                        <div class="tool-icon cv">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Computer Vision</h4>
+                                            <p>OpenCV, PIL, scikit-image</p>
+                                        </div>
+                                    </div>
+                                    <p>Tools for image and video processing, object detection, and facial recognition.</p>
+                                    <ul class="tool-features">
+                                        <li>Image manipulation</li>
+                                        <li>Feature detection</li>
+                                        <li>Object tracking</li>
+                                        <li>Video analysis</li>
+                                    </ul>
+                                    <div class="tool-tags">
+                                        <span class="badge python">Python</span>
+                                        <span class="badge cpp">C++</span>
+                                        <span class="badge cuda">CUDA</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tool-card nlp">
+                                    <div class="tool-header">
+                                        <div class="tool-icon nlp">
+                                            <i class="fas fa-language"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Natural Language Processing</h4>
+                                            <p>spaCy, NLTK, Transformers</p>
+                                        </div>
+                                    </div>
+                                    <p>Libraries for text processing, sentiment analysis, and language understanding.</p>
+                                    <ul class="tool-features">
+                                        <li>Tokenization</li>
+                                        <li>Named Entity Recognition</li>
+                                        <li>Sentiment analysis</li>
+                                        <li>Text classification</li>
+                                    </ul>
+                                    <div class="tool-tags">
+                                        <span class="badge python">Python</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tool-card dl">
+                                    <div class="tool-header">
+                                        <div class="tool-icon dl">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Deep Learning</h4>
+                                            <p>PyTorch, TensorFlow, Keras</p>
+                                        </div>
+                                    </div>
+                                    <p>Frameworks for building and training neural networks.</p>
+                                    <ul class="tool-features">
+                                        <li>Automatic differentiation</li>
+                                        <li>GPU acceleration</li>
+                                        <li>Model deployment</li>
+                                        <li>Transfer learning</li>
+                                    </ul>
+                                    <div class="tool-tags">
+                                        <span class="badge python">Python</span>
+                                        <span class="badge gpu">GPU</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tool-card vis">
+                                    <div class="tool-header">
+                                        <div class="tool-icon vis">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Visualization</h4>
+                                            <p>Matplotlib, Seaborn, Plotly</p>
+                                        </div>
+                                    </div>
+                                    <p>Tools for data visualization and model interpretation.</p>
+                                    <ul class="tool-features">
+                                        <li>Data plotting</li>
+                                        <li>Model visualization</li>
+                                        <li>Interactive plots</li>
+                                        <li>Dashboard creation</li>
+                                    </ul>
+                                    <div class="tool-tags">
+                                        <span class="badge python">Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Installing Essential AI Tools</span>
+                                </div>
+                                <pre><code># Install all essential AI tools with pip
+pip install opencv-python           # Computer Vision
+pip install numpy                    # Numerical computing
+pip install pandas                   # Data manipulation
+pip install matplotlib seaborn       # Visualization
+pip install scikit-learn             # Machine learning
+pip install torch torchvision        # PyTorch
+pip install tensorflow               # TensorFlow
+pip install spacy                    # NLP
+pip install nltk                     # NLP toolkit
+pip install transformers             # Hugging Face Transformers
+pip install pillow                   # Image processing
+pip install scikit-image             # Image processing
+
+# For CUDA support with PyTorch (if you have NVIDIA GPU)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Install spaCy language model
+python -m spacy download en_core_web_sm
+
+# Download NLTK data
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+
+# Verify installations
+import cv2
+print(f"OpenCV version: {cv2.__version__}")
+
+import torch
+print(f"PyTorch version: {torch.__version__}")
+print(f"CUDA available: {torch.cuda.is_available()}")
+
+import tensorflow as tf
+print(f"TensorFlow version: {tf.__version__}")
+
+import spacy
+print(f"spaCy version: {spacy.__version__}")</code></pre>
+                            </div>
+                            
+                            <div class="comparison-table">
+                                <h4>Framework Comparison: PyTorch vs TensorFlow</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>PyTorch</th>
+                                            <th>TensorFlow</th>
+                                            <th>When to Choose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Ease of Use</strong></td>
+                                            <td>⭐⭐⭐⭐⭐<br>Pythonic, intuitive</td>
+                                            <td>⭐⭐⭐⭐<br>More verbose</td>
+                                            <td>PyTorch for beginners</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Debugging</strong></td>
+                                            <td>⭐⭐⭐⭐⭐<br>Dynamic graphs</td>
+                                            <td>⭐⭐⭐<br>Static graphs</td>
+                                            <td>PyTorch for research</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Production</strong></td>
+                                            <td>⭐⭐⭐⭐<br>TorchScript</td>
+                                            <td>⭐⭐⭐⭐⭐<br>TF Serving</td>
+                                            <td>TensorFlow for production</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Community</strong></td>
+                                            <td>⭐⭐⭐⭐<br>Growing fast</td>
+                                            <td>⭐⭐⭐⭐⭐<br>Established</td>
+                                            <td>TensorFlow for enterprise</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Mobile</strong></td>
+                                            <td>⭐⭐⭐<br>PyTorch Mobile</td>
+                                            <td>⭐⭐⭐⭐⭐<br>TFLite</td>
+                                            <td>TensorFlow for mobile</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="tool-ecosystem">
+                                <h4>AI Development Ecosystem</h4>
+                                <div class="ecosystem-grid">
+                                    <div class="ecosystem-item">
+                                        <div class="ecosystem-icon">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        <h5>Development</h5>
+                                        <p>VS Code, Jupyter, PyCharm</p>
+                                    </div>
+                                    <div class="ecosystem-item">
+                                        <div class="ecosystem-icon">
+                                            <i class="fas fa-cloud"></i>
+                                        </div>
+                                        <h5>Cloud Platforms</h5>
+                                        <p>AWS SageMaker, Google Colab</p>
+                                    </div>
+                                    <div class="ecosystem-item">
+                                        <div class="ecosystem-icon">
+                                            <i class="fas fa-server"></i>
+                                        </div>
+                                        <h5>Deployment</h5>
+                                        <p>Docker, Kubernetes, FastAPI</p>
+                                    </div>
+                                    <div class="ecosystem-item">
+                                        <div class="ecosystem-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <h5>Monitoring</h5>
+                                        <p>MLflow, TensorBoard</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 30: Computer Vision Basics (OpenCV) -->
+                    <section id="computervision" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">30</span> Computer Vision with OpenCV</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Image Processing and Computer Vision</h3>
+                            <p>OpenCV (Open Source Computer Vision Library) is the most popular library for real-time computer vision.</p>
+                            
+                            <div class="opencv-demo">
+                                <h4>OpenCV Image Processing Pipeline</h4>
+                                <div class="image-processing-grid">
+                                    <div class="processing-step">
+                                        <div class="processing-icon">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                        <h5>Load Image</h5>
+                                        <p>Read and display images</p>
+                                    </div>
+                                    <div class="processing-step">
+                                        <div class="processing-icon">
+                                            <i class="fas fa-crop"></i>
+                                        </div>
+                                        <h5>Preprocess</h5>
+                                        <p>Resize, convert colors</p>
+                                    </div>
+                                    <div class="processing-step">
+                                        <div class="processing-icon">
+                                            <i class="fas fa-filter"></i>
+                                        </div>
+                                        <h5>Filter</h5>
+                                        <p>Apply filters and transformations</p>
+                                    </div>
+                                    <div class="processing-step">
+                                        <div class="processing-icon">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <h5>Detect</h5>
+                                        <p>Find edges, corners, features</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>OpenCV Fundamentals</span>
+                                </div>
+                                <pre><code>import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Read image
+img = cv2.imread('sample.jpg')
+print(f"Image shape: {img.shape}")
+
+# Convert BGR to RGB
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# Convert to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Apply Gaussian blur
+blurred = cv2.GaussianBlur(img, (5, 5), 0)
+
+# Edge detection (Canny)
+edges = cv2.Canny(img, 100, 200)
+
+# Display images
+fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+axes[0, 0].imshow(img_rgb)
+axes[0, 0].set_title('Original')
+axes[0, 0].axis('off')
+
+axes[0, 1].imshow(gray, cmap='gray')
+axes[0, 1].set_title('Grayscale')
+axes[0, 1].axis('off')
+
+axes[1, 0].imshow(cv2.cvtColor(blurred, cv2.COLOR_BGR2RGB))
+axes[1, 0].set_title('Gaussian Blur')
+axes[1, 0].axis('off')
+
+axes[1, 1].imshow(edges, cmap='gray')
+axes[1, 1].set_title('Canny Edges')
+axes[1, 1].axis('off')
+
+plt.tight_layout()
+plt.show()</code></pre>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>OpenCV Playground</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="opencv-operation">Operation:</label>
+                                        <select id="opencv-operation">
+                                            <option value="blur">Blur</option>
+                                            <option value="edge">Edge Detection</option>
+                                            <option value="threshold">Threshold</option>
+                                            <option value="morphology">Morphology</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="kernel-size">Kernel Size:</label>
+                                        <input type="range" id="kernel-size" min="3" max="21" step="2" value="5">
+                                        <span id="kernel-value">5</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="threshold-value">Threshold:</label>
+                                        <input type="range" id="threshold-value" min="0" max="255" value="127">
+                                        <span id="thresh-value">127</span>
+                                    </div>
+                                    <button onclick="simulateOpenCV()" class="btn">
+                                        <i class="fas fa-play"></i> Apply Operation
+                                    </button>
+                                </div>
+                                <div id="opencv-results" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Select an operation and adjust parameters to see OpenCV effects</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-applications">
+                                <h4>Computer Vision Applications</h4>
+                                <div class="applications-grid">
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <h5>Autonomous Vehicles</h5>
+                                        <p>Object detection, lane tracking</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <h5>Surveillance</h5>
+                                        <p>Motion detection, facial recognition</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-medkit"></i>
+                                        </div>
+                                        <h5>Medical Imaging</h5>
+                                        <p>Tumor detection, cell analysis</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <h5>Robotics</h5>
+                                        <p>Object manipulation, navigation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 31: NLP Basics -->
+                    <section id="nlp" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">31</span> Natural Language Processing Basics</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>NLP Libraries and Tools</h3>
+                            <p>Natural Language Processing involves processing and analyzing human language data using computational techniques.</p>
+                            
+                            <div class="nlp-pipeline">
+                                <h4>NLP Pipeline Example</h4>
+                                <div class="pipeline-step">
+                                    <div class="step-number">1</div>
+                                    <div>
+                                        <h5>Text Preprocessing</h5>
+                                        <p>Tokenization, stemming, lemmatization</p>
+                                    </div>
+                                </div>
+                                <div class="pipeline-step">
+                                    <div class="step-number">2</div>
+                                    <div>
+                                        <h5>Feature Extraction</h5>
+                                        <p>Bag of Words, TF-IDF, Word Embeddings</p>
+                                    </div>
+                                </div>
+                                <div class="pipeline-step">
+                                    <div class="step-number">3</div>
+                                    <div>
+                                        <h5>Model Training</h5>
+                                        <p>Classification, sentiment analysis</p>
+                                    </div>
+                                </div>
+                                <div class="pipeline-step">
+                                    <div class="step-number">4</div>
+                                    <div>
+                                        <h5>Evaluation</h5>
+                                        <p>Accuracy, precision, recall metrics</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>NLP with spaCy and NLTK</span>
+                                </div>
+                                <pre><code>import spacy
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Load spaCy model
+nlp = spacy.load("en_core_web_sm")
+
+# Sample text
+text = "Apple is looking at buying U.K. startup for $1 billion."
+
+# Process text with spaCy
+doc = nlp(text)
+
+print("=== spaCy Analysis ===")
+print(f"Text: {text}")
+print("\nNamed Entities:")
+for ent in doc.ents:
+    print(f"  {ent.text}: {ent.label_}")
+
+print("\nDependency Parsing:")
+for token in doc:
+    print(f"  {token.text:<10} {token.pos_:<10} {token.dep_:<10}")
+
+print("\n=== NLTK Sentiment Analysis ===")
+# Download required NLTK data
+nltk.download('vader_lexicon')
+
+# Initialize sentiment analyzer
+sia = SentimentIntensityAnalyzer()
+
+# Analyze sentiment
+sentiments = [
+    "I love this product! It's amazing!",
+    "This is the worst experience ever.",
+    "The product is okay, nothing special."
+]
+
+for sentence in sentiments:
+    scores = sia.polarity_scores(sentence)
+    print(f"\nSentence: {sentence}")
+    print(f"  Positive: {scores['pos']:.2f}")
+    print(f"  Negative: {scores['neg']:.2f}")
+    print(f"  Neutral: {scores['neu']:.2f}")
+    print(f"  Compound: {scores['compound']:.2f}")
+
+print("\n=== TF-IDF Vectorization ===")
+# Sample documents
+documents = [
+    "The cat sat on the mat",
+    "The dog chased the cat",
+    "The cat ran from the dog",
+    "The mat is comfortable"
+]
+
+# Create TF-IDF vectorizer
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(documents)
+
+print("Vocabulary:")
+print(vectorizer.get_feature_names_out())
+print("\nTF-IDF Matrix:")
+print(tfidf_matrix.toarray())
+
+print("\n=== Text Similarity ===")
+# Calculate cosine similarity between documents
+from sklearn.metrics.pairwise import cosine_similarity
+
+similarity_matrix = cosine_similarity(tfidf_matrix)
+print("Document Similarity Matrix:")
+for i, row in enumerate(similarity_matrix):
+    print(f"Doc {i}: {row}")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 32: PyTorch Introduction -->
+                    <section id="pytorch" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">32</span> Deep Learning with PyTorch</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>PyTorch Fundamentals</h3>
+                            <p>PyTorch is a powerful deep learning framework that provides tensor computation and automatic differentiation.</p>
+                            
+                            <div class="pytorch-tensor">
+                                <h4>PyTorch Tensors</h4>
+                                <p>Tensors are the fundamental data structure in PyTorch, similar to NumPy arrays but with GPU support.</p>
+                                <div class="tensor-visual">
+                                    <div class="tensor-dim">[3, 224, 224]</div>
+                                    <div class="tensor-dim">[64, 3, 3, 3]</div>
+                                    <div class="tensor-dim">[1000]</div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>PyTorch Basics</span>
+                                </div>
+                                <pre><code>import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, TensorDataset
+
+print(f"PyTorch version: {torch.__version__}")
+print(f"CUDA available: {torch.cuda.is_available()}")
+
+# Create tensors
+print("\n=== Tensor Operations ===")
+x = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
+y = torch.tensor([[5, 6], [7, 8]], dtype=torch.float32)
+
+print(f"Tensor x:\n{x}")
+print(f"Tensor y:\n{y}")
+print(f"\nAddition:\n{x + y}")
+print(f"\nMatrix multiplication:\n{torch.matmul(x, y)}")
+
+# Automatic differentiation
+print("\n=== Automatic Differentiation ===")
+x = torch.tensor([2.0], requires_grad=True)
+y = x ** 2 + 3 * x + 1
+y.backward()
+print(f"x = {x.item()}")
+print(f"y = x² + 3x + 1 = {y.item()}")
+print(f"dy/dx = {x.grad.item()}")
+
+# Define a neural network
+print("\n=== Neural Network Definition ===")
+
+class SimpleNN(nn.Module):
+    def __init__(self):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(784, 128)  # Input: 784, Output: 128
+        self.fc2 = nn.Linear(128, 64)
+        self.fc3 = nn.Linear(64, 10)   # 10 classes for MNIST
+    
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+# Create model instance
+model = SimpleNN()
+print(model)
+
+# Training loop example
+print("\n=== Training Loop Example ===")
+
+def train_model(model, train_loader, epochs=5):
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    
+    model.train()
+    for epoch in range(epochs):
+        total_loss = 0
+        for batch_idx, (data, target) in enumerate(train_loader):
+            optimizer.zero_grad()
+            output = model(data)
+            loss = criterion(output, target)
+            loss.backward()
+            optimizer.step()
+            total_loss += loss.item()
+        
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {total_loss/len(train_loader):.4f}")
+
+# Create synthetic data for demonstration
+print("\n=== Creating Synthetic Dataset ===")
+X = torch.randn(1000, 784)  # 1000 samples, 784 features
+y = torch.randint(0, 10, (1000,))  # 1000 labels (0-9)
+
+dataset = TensorDataset(X, y)
+train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
+
+print(f"Dataset size: {len(dataset)}")
+print(f"Batch size: 32")
+print(f"Number of batches: {len(train_loader)}")
+
+# Train the model
+train_model(model, train_loader, epochs=3)
+
+print("\n=== Model Evaluation ===")
+# Switch to evaluation mode
+model.eval()
+
+# Create test data
+X_test = torch.randn(100, 784)
+with torch.no_grad():
+    predictions = model(X_test)
+    predicted_classes = torch.argmax(predictions, dim=1)
+    print(f"Predictions shape: {predictions.shape}")
+    print(f"Sample predictions: {predicted_classes[:10]}")
+
+print("\n=== GPU Acceleration ===")
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    model = model.to(device)
+    print("Model moved to GPU")
+else:
+    print("GPU not available, using CPU")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 33: End-to-End Project -->
+                    <section id="endtoend" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">33</span> End-to-End AI Project</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="end-to-end-project">
+                                <h3>Complete AI Project Workflow</h3>
+                                <p>From data collection to model deployment</p>
+                                
+                                <div class="project-steps">
+                                    <div class="project-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-database"></i>
+                                        </div>
+                                        <h5>Data Collection</h5>
+                                        <p>Gather and prepare training data</p>
+                                    </div>
+                                    <div class="project-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <h5>Preprocessing</h5>
+                                        <p>Clean, normalize, augment data</p>
+                                    </div>
+                                    <div class="project-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+                                        <h5>Model Training</h5>
+                                        <p>Train and validate models</p>
+                                    </div>
+                                    <div class="project-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <h5>Deployment</h5>
+                                        <p>Deploy model to production</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Complete Image Classification Project</span>
+                                </div>
+                                <pre><code># Complete AI Project: Image Classification
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, Dataset
+from torchvision import transforms, datasets
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+
+print("=== Image Classification Project ===")
+
+# 1. Data Preparation
+print("\n1. Loading and Preparing Data...")
+
+# Define transformations
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+                         std=[0.229, 0.224, 0.225])
+])
+
+# Load CIFAR-10 dataset (for demonstration)
+train_dataset = datasets.CIFAR10(
+    root='./data',
+    train=True,
+    download=True,
+    transform=transform
+)
+
+test_dataset = datasets.CIFAR10(
+    root='./data',
+    train=False,
+    download=True,
+    transform=transform
+)
+
+# Create data loaders
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+print(f"Training samples: {len(train_dataset)}")
+print(f"Test samples: {len(test_dataset)}")
+
+# 2. Define Model Architecture
+print("\n2. Defining CNN Model...")
+
+class CNNClassifier(nn.Module):
+    def __init__(self, num_classes=10):
+        super(CNNClassifier, self).__init__()
+        self.conv_layers = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(64, 128, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
+        )
+        self.fc_layers = nn.Sequential(
+            nn.Linear(128 * 28 * 28, 512),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(512, num_classes)
+        )
+    
+    def forward(self, x):
+        x = self.conv_layers(x)
+        x = x.view(x.size(0), -1)  # Flatten
+        x = self.fc_layers(x)
+        return x
+
+# Create model
+model = CNNClassifier(num_classes=10)
+print(model)
+
+# 3. Training Function
+print("\n3. Training Model...")
+
+def train_model(model, train_loader, test_loader, epochs=10):
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    
+    train_losses = []
+    test_accuracies = []
+    
+    for epoch in range(epochs):
+        model.train()
+        running_loss = 0.0
+        
+        for batch_idx, (data, target) in enumerate(train_loader):
+            optimizer.zero_grad()
+            output = model(data)
+            loss = criterion(output, target)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+        
+        avg_loss = running_loss / len(train_loader)
+        train_losses.append(avg_loss)
+        
+        # Evaluate on test set
+        model.eval()
+        correct = 0
+        total = 0
+        with torch.no_grad():
+            for data, target in test_loader:
+                output = model(data)
+                _, predicted = torch.max(output.data, 1)
+                total += target.size(0)
+                correct += (predicted == target).sum().item()
+        
+        accuracy = 100 * correct / total
+        test_accuracies.append(accuracy)
+        
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}, Accuracy: {accuracy:.2f}%")
+    
+    return train_losses, test_accuracies
+
+# Train the model
+train_losses, test_accuracies = train_model(model, train_loader, test_loader, epochs=5)
+
+# 4. Visualization
+print("\n4. Visualizing Results...")
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+# Plot training loss
+ax1.plot(train_losses)
+ax1.set_title('Training Loss')
+ax1.set_xlabel('Epoch')
+ax1.set_ylabel('Loss')
+
+# Plot test accuracy
+ax2.plot(test_accuracies)
+ax2.set_title('Test Accuracy')
+ax2.set_xlabel('Epoch')
+ax2.set_ylabel('Accuracy (%)')
+
+plt.tight_layout()
+plt.show()
+
+# 5. Model Evaluation
+print("\n5. Detailed Evaluation...")
+
+def evaluate_model(model, test_loader):
+    model.eval()
+    all_predictions = []
+    all_targets = []
+    
+    with torch.no_grad():
+        for data, target in test_loader:
+            output = model(data)
+            _, predicted = torch.max(output, 1)
+            all_predictions.extend(predicted.cpu().numpy())
+            all_targets.extend(target.cpu().numpy())
+    
+    return all_targets, all_predictions
+
+# Get predictions
+true_labels, predictions = evaluate_model(model, test_loader)
+
+# Classification report
+print("\nClassification Report:")
+print(classification_report(true_labels, predictions))
+
+# Confusion matrix
+cm = confusion_matrix(true_labels, predictions)
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.title('Confusion Matrix')
+plt.ylabel('True Label')
+plt.xlabel('Predicted Label')
+plt.show()
+
+# 6. Model Saving and Loading
+print("\n6. Saving Model...")
+
+# Save model
+torch.save(model.state_dict(), 'image_classifier.pth')
+print("Model saved as 'image_classifier.pth'")
+
+# Load model for inference
+loaded_model = CNNClassifier(num_classes=10)
+loaded_model.load_state_dict(torch.load('image_classifier.pth'))
+loaded_model.eval()
+print("Model loaded successfully!")
+
+# 7. Inference on Single Image
+print("\n7. Running Inference...")
+
+def predict_single_image(model, image_path):
+    from PIL import Image
+    
+    # Load and preprocess image
+    image = Image.open(image_path).convert('RGB')
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+                           std=[0.229, 0.224, 0.225])
+    ])
+    
+    image_tensor = transform(image).unsqueeze(0)  # Add batch dimension
+    
+    # Make prediction
+    with torch.no_grad():
+        output = model(image_tensor)
+        probabilities = torch.softmax(output, dim=1)
+        confidence, predicted_class = torch.max(probabilities, 1)
+    
+    return predicted_class.item(), confidence.item()
+
+# Example usage (with placeholder image path)
+# predicted_class, confidence = predict_single_image(model, 'test_image.jpg')
+# print(f"Predicted class: {predicted_class}, Confidence: {confidence:.2f}")
+
+print("\n=== Project Completed Successfully! ===")</code></pre>
+                            </div>
+                            
+                            <div class="project-checklist">
+                                <h4>Project Checklist</h4>
+                                <ul class="tool-features">
+                                    <li>✅ Data collection and preparation</li>
+                                    <li>✅ Model architecture design</li>
+                                    <li>✅ Training and validation</li>
+                                    <li>✅ Model evaluation</li>
+                                    <li>✅ Visualization of results</li>
+                                    <li>✅ Model saving and loading</li>
+                                    <li>✅ Inference pipeline</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Resources -->
+                    <section id="resources" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">34</span> Additional Resources</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Learning Resources and References</h3>
+                            
+                            <div class="resources-grid">
+                                <div class="resource-card">
+                                    <div class="resource-header">
+                                        <i class="fas fa-book" style="color: #667eea;"></i>
+                                        <h4>Documentation</h4>
+                                    </div>
+                                    <ul>
+                                        <li><a href="https://docs.opencv.org/">OpenCV Documentation</a></li>
+                                        <li><a href="https://pytorch.org/docs/">PyTorch Docs</a></li>
+                                        <li><a href="https://spacy.io/usage">spaCy Documentation</a></li>
+                                        <li><a href="https://www.tensorflow.org/api_docs">TensorFlow API</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-header">
+                                        <i class="fas fa-graduation-cap" style="color: #FF9800;"></i>
+                                        <h4>Tutorials</h4>
+                                    </div>
+                                    <ul>
+                                        <li><a href="https://pytorch.org/tutorials/">PyTorch Tutorials</a></li>
+                                        <li><a href="https://docs.opencv.org/master/d9/df8/tutorial_root.html">OpenCV Tutorials</a></li>
+                                        <li><a href="https://course.fast.ai/">Fast.ai Practical Deep Learning</a></li>
+                                        <li><a href="https://huggingface.co/learn">Hugging Face Course</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-header">
+                                        <i class="fab fa-github" style="color: #333;"></i>
+                                        <h4>GitHub Repositories</h4>
+                                    </div>
+                                    <ul>
+                                        <li><a href="https://github.com/opencv/opencv">OpenCV GitHub</a></li>
+                                        <li><a href="https://github.com/pytorch/pytorch">PyTorch GitHub</a></li>
+                                        <li><a href="https://github.com/explosion/spaCy">spaCy GitHub</a></li>
+                                        <li><a href="https://github.com/huggingface/transformers">Transformers GitHub</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-header">
+                                        <i class="fas fa-video" style="color: #FF0000;"></i>
+                                        <h4>Video Courses</h4>
+                                    </div>
+                                    <ul>
+                                        <li><a href="https://www.youtube.com/c/PyTorch">PyTorch YouTube</a></li>
+                                        <li><a href="https://www.youtube.com/c/OpenCV">OpenCV YouTube</a></li>
+                                        <li><a href="https://www.youtube.com/c/Sentdex">Sentdex ML Tutorials</a></li>
+                                        <li><a href="https://www.youtube.com/c/AndrejKarpathy">Andrej Karpathy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4>Next Steps</h4>
+                                <div class="steps-grid">
+                                    <div class="step">
+                                        <div class="step-number">1</div>
+                                        <div>
+                                            <h5>Practice Projects</h5>
+                                            <p>Build small projects using each tool</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">2</div>
+                                        <div>
+                                            <h5>Join Communities</h5>
+                                            <p>Participate in forums and discussions</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">3</div>
+                                        <div>
+                                            <h5>Contribute to Open Source</h5>
+                                            <p>Find beginner-friendly issues to fix</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">4</div>
+                                        <div>
+                                            <h5>Build Portfolio</h5>
+                                            <p>Create and showcase complete projects</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI & ML Guide</h4>
+                    <p>Comprehensive learning platform for Artificial Intelligence and Machine Learning</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools Covered</h4>
+                    <ul>
+                        <li>OpenCV</li>
+                        <li>PyTorch</li>
+                        <li>TensorFlow</li>
+                        <li>spaCy</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple OpenCV simulation
+        function simulateOpenCV() {
+            const operation = document.getElementById('opencv-operation').value;
+            const kernelSize = document.getElementById('kernel-size').value;
+            const threshold = document.getElementById('threshold-value').value;
+            
+            const resultsDiv = document.getElementById('opencv-results');
+            
+            const operations = {
+                'blur': `Applied Gaussian Blur with kernel size ${kernelSize}x${kernelSize}`,
+                'edge': `Applied Canny Edge Detection with thresholds (${threshold}, ${threshold * 2})`,
+                'threshold': `Applied Binary Threshold at value ${threshold}`,
+                'morphology': `Applied Morphological Operation with kernel ${kernelSize}`
+            };
+            
+            resultsDiv.innerHTML = `
+                <div class="demo-result">
+                    <h4>Operation Applied: ${operation.charAt(0).toUpperCase() + operation.slice(1)}</h4>
+                    <p>${operations[operation]}</p>
+                    <div class="image-placeholder" style="background: #f0f0f0; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 1rem 0;">
+                        <i class="fas fa-image" style="font-size: 3rem; color: #666;"></i>
+                    </div>
+                    <p>Parameters: Kernel Size = ${kernelSize}, Threshold = ${threshold}</p>
+                </div>
+            `;
+        }
+        
+        // Update slider values
+        document.getElementById('kernel-size').addEventListener('input', function(e) {
+            document.getElementById('kernel-value').textContent = e.target.value;
+        });
+        
+        document.getElementById('threshold-value').addEventListener('input', function(e) {
+            document.getElementById('thresh-value').textContent = e.target.value;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state in sidebar
+                    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.hour-section');
+            const scrollPosition = window.scrollY + 150;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if(scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                        link.classList.remove('active');
+                        if(link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

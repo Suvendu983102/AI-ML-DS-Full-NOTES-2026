@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML/DL Projects - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        /* Projects Page Specific Styles */
+        :root {
+            --project-blue: #4285F4;
+            --project-green: #34A853;
+            --project-yellow: #FBBC05;
+            --project-red: #EA4335;
+            --project-purple: #8A2BE2;
+            --project-teal: #20B2AA;
+        }
+        
+        .projects-header {
+            background: linear-gradient(135deg, #4285F4 0%, #8A2BE2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .project-card.weather {
+            border-top-color: var(--project-blue);
+        }
+        
+        .project-card.car {
+            border-top-color: var(--project-green);
+        }
+        
+        .project-card.marriage {
+            border-top-color: var(--project-purple);
+        }
+        
+        .project-card.divorce {
+            border-top-color: var(--project-red);
+        }
+        
+        .project-card.recommendation {
+            border-top-color: var(--project-yellow);
+        }
+        
+        .project-card.capstone {
+            border-top-color: var(--project-teal);
+        }
+        
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .icon-weather {
+            background: linear-gradient(135deg, #4285F4, #6699FF);
+        }
+        
+        .icon-car {
+            background: linear-gradient(135deg, #34A853, #2E7D32);
+        }
+        
+        .icon-marriage {
+            background: linear-gradient(135deg, #8A2BE2, #9C27B0);
+        }
+        
+        .icon-divorce {
+            background: linear-gradient(135deg, #EA4335, #F44336);
+        }
+        
+        .icon-recommendation {
+            background: linear-gradient(135deg, #FBBC05, #FFD700);
+        }
+        
+        .icon-capstone {
+            background: linear-gradient(135deg, #20B2AA, #009688);
+        }
+        
+        .project-complexity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .complexity-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .dot-easy { background: var(--project-green); }
+        .dot-medium { background: var(--project-yellow); }
+        .dot-hard { background: var(--project-red); }
+        
+        .project-demo {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .demo-controls {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .input-group select,
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-group select:focus,
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--project-blue);
+        }
+        
+        .prediction-result {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            border-left: 5px solid var(--project-green);
+        }
+        
+        .prediction-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--project-blue);
+            margin: 1rem 0;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .editor-header {
+            background: #2d2d30;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .editor-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .editor-tab {
+            padding: 0.5rem 1rem;
+            background: #3e3e42;
+            color: #d4d4d4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .editor-tab.active {
+            background: #007acc;
+            color: white;
+        }
+        
+        .editor-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .code-block {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        
+        .model-architecture {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .architecture-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .layer {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .layer:hover {
+            border-color: var(--project-blue);
+            transform: translateY(-5px);
+        }
+        
+        .layer-connector {
+            font-size: 1.5rem;
+            color: var(--project-blue);
+        }
+        
+        .dataset-preview {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .metrics-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .project-timeline {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .timeline-step {
+            display: flex;
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--project-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .step-content {
+            flex: 1;
+            padding-top: 1rem;
+        }
+        
+        .project-checklist {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            background: #e3f2fd;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--project-green);
+        }
+        
+        .checklist-item label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .checklist-item.completed label {
+            text-decoration: line-through;
+            color: #666;
+        }
+        
+        .project-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        
+        .badge-ml {
+            background: rgba(66, 133, 244, 0.1);
+            color: var(--project-blue);
+        }
+        
+        .badge-dl {
+            background: rgba(234, 67, 53, 0.1);
+            color: var(--project-red);
+        }
+        
+        .badge-nlp {
+            background: rgba(52, 168, 83, 0.1);
+            color: var(--project-green);
+        }
+        
+        .badge-cv {
+            background: rgba(251, 188, 5, 0.1);
+            color: var(--project-yellow);
+        }
+        
+        .integration-diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .integration-component {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .integration-component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .component-icon {
+            font-size: 2rem;
+            color: var(--project-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .component-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--project-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .architecture-diagram {
+                flex-direction: column;
+            }
+            
+            .layer-connector {
+                transform: rotate(90deg);
+            }
+            
+            .timeline-steps::before {
+                left: 20px;
+            }
+            
+            .timeline-step {
+                gap: 1rem;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .integration-diagram {
+                grid-template-columns: 1fr;
+            }
+            
+            .component-connector {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="projects-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#curriculum">Curriculum</a> / 
+                <span>Projects (AI, ML, DL)</span>
+            </div>
+            <h1>AI/ML/DL Projects (Hours 51-60)</h1>
+            <p class="subtitle">Hands-on projects applying AI, Machine Learning, and Deep Learning concepts</p>
+            <div class="header-meta">
+                <span class="meta-item"><i class="far fa-clock"></i> 10 Hours</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="meta-item"><i class="fas fa-laptop-code"></i> Hands-on</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Projects</h3>
+                    <ul class="module-nav">
+                        <li><a href="#weather-classification" class="active">Hour 51: Weather Classification</a></li>
+                        <li><a href="#car-ad-analysis">Hour 52: Car Ad Analysis</a></li>
+                        <li><a href="#marriage-prediction">Hour 53: Marriage Prediction</a></li>
+                        <li><a href="#divorce-prediction">Hour 54: Divorce Prediction</a></li>
+                        <li><a href="#recommendation-system">Hour 55-56: Recommendation System</a></li>
+                        <li><a href="#capstone-project">Hour 57-60: Capstone Project</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Project Tools</h4>
+                    <div class="project-tools">
+                        <div class="tool-item">
+                            <i class="fab fa-python"></i>
+                            <div>
+                                <strong>Python</strong>
+                                <small>Primary Language</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>Scikit-learn</strong>
+                                <small>ML Algorithms</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-brain"></i>
+                            <div>
+                                <strong>TensorFlow</strong>
+                                <small>Deep Learning</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-database"></i>
+                            <div>
+                                <strong>Pandas</strong>
+                                <small>Data Processing</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Quick Actions</h4>
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="downloadDataset()">
+                            <i class="fas fa-download"></i>
+                            <span>Download Datasets</span>
+                        </button>
+                        <button class="action-btn" onclick="openColab()">
+                            <i class="fab fa-google"></i>
+                            <span>Open in Colab</span>
+                        </button>
+                        <button class="action-btn" onclick="runAllCode()">
+                            <i class="fas fa-play"></i>
+                            <span>Run All Code</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Hour 51: Weather Classification -->
+                <section id="weather-classification" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 51</span>
+                        <h2>Weather Data Classification</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Build a machine learning model to classify weather patterns based on meteorological data.</p>
+                        
+                        <div class="project-card weather">
+                            <div class="project-icon icon-weather">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <h3>Weather Classification Project</h3>
+                            <p>Classify weather conditions into categories like Sunny, Rainy, Cloudy, Snowy</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-easy"></div>
+                                <div class="complexity-dot dot-easy"></div>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot"></div>
+                                <div class="complexity-dot"></div>
+                                <span style="margin-left: auto;">Medium</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Machine Learning</span>
+                                <span class="project-badge badge-ml">Classification</span>
+                                <span class="project-badge">Scikit-learn</span>
+                            </div>
+                        </div>
+                        
+                        <div class="dataset-preview">
+                            <h4>Weather Dataset Preview</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Temperature</th>
+                                        <th>Humidity</th>
+                                        <th>Wind Speed</th>
+                                        <th>Pressure</th>
+                                        <th>Precipitation</th>
+                                        <th>Weather Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>25.6</td>
+                                        <td>65</td>
+                                        <td>12.3</td>
+                                        <td>1013</td>
+                                        <td>0.0</td>
+                                        <td>Sunny</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18.2</td>
+                                        <td>85</td>
+                                        <td>8.7</td>
+                                        <td>1008</td>
+                                        <td>5.2</td>
+                                        <td>Rainy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22.1</td>
+                                        <td>72</td>
+                                        <td>15.4</td>
+                                        <td>1010</td>
+                                        <td>0.0</td>
+                                        <td>Cloudy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-2.5</td>
+                                        <td>45</td>
+                                        <td>20.1</td>
+                                        <td>1020</td>
+                                        <td>8.7</td>
+                                        <td>Snowy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28.4</td>
+                                        <td>55</td>
+                                        <td>10.2</td>
+                                        <td>1012</td>
+                                        <td>0.0</td>
+                                        <td>Sunny</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="demo-container">
+                            <div class="demo-controls">
+                                <h4>Weather Prediction Demo</h4>
+                                <div class="input-group">
+                                    <label>Temperature (°C):</label>
+                                    <input type="range" id="tempInput" min="-10" max="40" value="25" oninput="updateWeatherPrediction()">
+                                    <span id="tempValue">25°C</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Humidity (%):</label>
+                                    <input type="range" id="humidityInput" min="0" max="100" value="65" oninput="updateWeatherPrediction()">
+                                    <span id="humidityValue">65%</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Wind Speed (km/h):</label>
+                                    <input type="range" id="windInput" min="0" max="50" value="12" oninput="updateWeatherPrediction()">
+                                    <span id="windValue">12 km/h</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Precipitation (mm):</label>
+                                    <input type="range" id="precipInput" min="0" max="20" value="0" oninput="updateWeatherPrediction()">
+                                    <span id="precipValue">0 mm</span>
+                                </div>
+                            </div>
+                            
+                            <div class="demo-output">
+                                <h4>Prediction Result</h4>
+                                <div id="weatherPrediction" class="prediction-result">
+                                    <div id="weatherIcon" style="font-size: 3rem; color: #FBBC05; margin-bottom: 1rem;">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <div class="prediction-value" id="predictedWeather">Sunny</div>
+                                    <div id="confidenceLevel">Confidence: 92%</div>
+                                </div>
+                                
+                                <div style="margin-top: 2rem;">
+                                    <h5>Feature Importance</h5>
+                                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                <span>Precipitation</span>
+                                                <span>35%</span>
+                                            </div>
+                                            <div style="height: 8px; background: #e0e0e0; border-radius: 4px;">
+                                                <div style="height: 100%; width: 35%; background: var(--project-blue); border-radius: 4px;"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                <span>Temperature</span>
+                                                <span>28%</span>
+                                            </div>
+                                            <div style="height: 8px; background: #e0e0e0; border-radius: 4px;">
+                                                <div style="height: 100%; width: 28%; background: var(--project-green); border-radius: 4px;"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                <span>Humidity</span>
+                                                <span>22%</span>
+                                            </div>
+                                            <div style="height: 8px; background: #e0e0e0; border-radius: 4px;">
+                                                <div style="height: 100%; width: 22%; background: var(--project-yellow); border-radius: 4px;"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                <span>Wind Speed</span>
+                                                <span>15%</span>
+                                            </div>
+                                            <div style="height: 8px; background: #e0e0e0; border-radius: 4px;">
+                                                <div style="height: 100%; width: 15%; background: var(--project-red); border-radius: 4px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <div class="editor-tabs">
+                                    <button class="editor-tab active" onclick="showCode('weatherCode')">weather_classification.py</button>
+                                    <button class="editor-tab" onclick="showCode('weatherModel')">model_training.py</button>
+                                    <button class="editor-tab" onclick="showCode('weatherUtils')">utils.py</button>
+                                </div>
+                                <button class="btn small" onclick="copyCode()">
+                                    <i class="fas fa-copy"></i> Copy Code
+                                </button>
+                            </div>
+                            
+                            <div class="editor-content">
+                                <div id="weatherCode" class="code-block">
+<pre><code># Weather Classification Project
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import joblib
+
+class WeatherClassifier:
+    def __init__(self):
+        self.model = RandomForestClassifier(n_estimators=100, random_state=42)
+        self.scaler = StandardScaler()
+        self.classes = ['Sunny', 'Rainy', 'Cloudy', 'Snowy']
+    
+    def load_data(self, filepath):
+        """Load weather dataset"""
+        df = pd.read_csv(filepath)
+        print(f"Dataset shape: {df.shape}")
+        print(f"Columns: {df.columns.tolist()}")
+        return df
+    
+    def preprocess_data(self, df):
+        """Preprocess the weather data"""
+        # Select features and target
+        features = ['temperature', 'humidity', 'wind_speed', 'pressure', 'precipitation']
+        target = 'weather_type'
+        
+        X = df[features]
+        y = df[target]
+        
+        # Split data
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42, stratify=y
+        )
+        
+        # Scale features
+        X_train_scaled = self.scaler.fit_transform(X_train)
+        X_test_scaled = self.scaler.transform(X_test)
+        
+        return X_train_scaled, X_test_scaled, y_train, y_test
+    
+    def train(self, X_train, y_train):
+        """Train the model"""
+        self.model.fit(X_train, y_train)
+        print("Model training completed!")
+    
+    def evaluate(self, X_test, y_test):
+        """Evaluate model performance"""
+        y_pred = self.model.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        report = classification_report(y_test, y_pred)
+        
+        print(f"Accuracy: {accuracy:.2%}")
+        print("\nClassification Report:")
+        print(report)
+        
+        return accuracy, report
+    
+    def predict(self, features):
+        """Predict weather type for new data"""
+        # Scale features
+        features_scaled = self.scaler.transform([features])
+        
+        # Make prediction
+        prediction = self.model.predict(features_scaled)[0]
+        probabilities = self.model.predict_proba(features_scaled)[0]
+        
+        return prediction, probabilities
+    
+    def save_model(self, filename='weather_classifier.pkl'):
+        """Save trained model"""
+        joblib.dump({
+            'model': self.model,
+            'scaler': self.scaler,
+            'classes': self.classes
+        }, filename)
+        print(f"Model saved as {filename}")
+    
+    def load_model(self, filename='weather_classifier.pkl'):
+        """Load trained model"""
+        data = joblib.load(filename)
+        self.model = data['model']
+        self.scaler = data['scaler']
+        self.classes = data['classes']
+        print(f"Model loaded from {filename}")
+
+# Main execution
+if __name__ == "__main__":
+    # Initialize classifier
+    classifier = WeatherClassifier()
+    
+    # Load data
+    print("Loading weather data...")
+    df = classifier.load_data('weather_data.csv')
+    
+    # Preprocess data
+    print("Preprocessing data...")
+    X_train, X_test, y_train, y_test = classifier.preprocess_data(df)
+    
+    # Train model
+    print("Training model...")
+    classifier.train(X_train, y_train)
+    
+    # Evaluate model
+    print("Evaluating model...")
+    accuracy, report = classifier.evaluate(X_test, y_test)
+    
+    # Save model
+    classifier.save_model()
+    
+    # Example prediction
+    print("\nExample Prediction:")
+    example_features = [25.0, 65, 12.0, 1013, 0.0]  # temperature, humidity, wind_speed, pressure, precipitation
+    prediction, probabilities = classifier.predict(example_features)
+    
+    print(f"Input Features: {example_features}")
+    print(f"Predicted Weather: {prediction}")
+    print("Probabilities:")
+    for cls, prob in zip(classifier.classes, probabilities):
+        print(f"  {cls}: {prob:.2%}")</code></pre>
+                                </div>
+                                
+                                <div id="weatherModel" class="code-block" style="display: none;">
+<pre><code># Model Training and Evaluation
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import cross_val_score, GridSearchCV
+
+def plot_feature_importance(model, feature_names):
+    """Plot feature importance"""
+    importances = model.feature_importances_
+    indices = np.argsort(importances)[::-1]
+    
+    plt.figure(figsize=(10, 6))
+    plt.title("Feature Importances")
+    plt.bar(range(len(feature_names)), importances[indices])
+    plt.xticks(range(len(feature_names)), 
+               [feature_names[i] for i in indices], rotation=45)
+    plt.tight_layout()
+    plt.show()
+    
+    return importances
+
+def tune_hyperparameters(X_train, y_train):
+    """Tune hyperparameters using GridSearchCV"""
+    param_grid = {
+        'n_estimators': [50, 100, 200],
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': [2, 5, 10],
+        'min_samples_leaf': [1, 2, 4]
+    }
+    
+    rf = RandomForestClassifier(random_state=42)
+    grid_search = GridSearchCV(rf, param_grid, cv=5, 
+                               scoring='accuracy', n_jobs=-1)
+    grid_search.fit(X_train, y_train)
+    
+    print("Best parameters:", grid_search.best_params_)
+    print("Best cross-validation score:", grid_search.best_score_)
+    
+    return grid_search.best_estimator_
+
+def plot_confusion_matrix(y_true, y_pred, classes):
+    """Plot confusion matrix"""
+    from sklearn.metrics import confusion_matrix
+    
+    cm = confusion_matrix(y_true, y_pred)
+    
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                xticklabels=classes, yticklabels=classes)
+    plt.title('Confusion Matrix')
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+if __name__ == "__main__":
+    # ... (previous code for loading and preprocessing)
+    
+    # Hyperparameter tuning
+    print("Tuning hyperparameters...")
+    best_model = tune_hyperparameters(X_train, y_train)
+    
+    # Plot feature importance
+    features = ['temperature', 'humidity', 'wind_speed', 'pressure', 'precipitation']
+    importances = plot_feature_importance(best_model, features)
+    
+    # Cross-validation
+    cv_scores = cross_val_score(best_model, X_train, y_train, cv=5)
+    print(f"Cross-validation scores: {cv_scores}")
+    print(f"Mean CV score: {cv_scores.mean():.2%} (+/- {cv_scores.std() * 2:.2%})")</code></pre>
+                                </div>
+                                
+                                <div id="weatherUtils" class="code-block" style="display: none;">
+<pre><code># Utility Functions for Weather Classification
+import pandas as pd
+import numpy as np
+from datetime import datetime
+
+def generate_synthetic_data(n_samples=1000):
+    """Generate synthetic weather data for demonstration"""
+    np.random.seed(42)
+    
+    data = {
+        'temperature': np.random.normal(20, 10, n_samples),
+        'humidity': np.random.uniform(30, 100, n_samples),
+        'wind_speed': np.random.exponential(5, n_samples),
+        'pressure': np.random.normal(1013, 10, n_samples),
+        'precipitation': np.random.exponential(2, n_samples)
+    }
+    
+    df = pd.DataFrame(data)
+    
+    # Create weather type based on conditions
+    def determine_weather_type(row):
+        if row['precipitation'] > 5:
+            return 'Rainy' if row['temperature'] > 0 else 'Snowy'
+        elif row['humidity'] > 80:
+            return 'Cloudy'
+        else:
+            return 'Sunny'
+    
+    df['weather_type'] = df.apply(determine_weather_type, axis=1)
+    
+    # Add some noise
+    noise_indices = np.random.choice(n_samples, size=n_samples//10, replace=False)
+    df.loc[noise_indices, 'weather_type'] = np.random.choice(
+        ['Sunny', 'Rainy', 'Cloudy', 'Snowy'], size=len(noise_indices)
+    )
+    
+    return df
+
+def calculate_weather_metrics(df):
+    """Calculate various weather metrics"""
+    metrics = {
+        'avg_temperature': df['temperature'].mean(),
+        'avg_humidity': df['humidity'].mean(),
+        'total_precipitation': df['precipitation'].sum(),
+        'weather_distribution': df['weather_type'].value_counts().to_dict(),
+        'extreme_conditions': {
+            'hottest': df['temperature'].max(),
+            'coldest': df['temperature'].min(),
+            'windiest': df['wind_speed'].max(),
+            'wettest': df['precipitation'].max()
+        }
+    }
+    
+    return metrics
+
+def prepare_for_deployment(model, scaler, classes):
+    """Prepare model for deployment"""
+    deployment_data = {
+        'model_info': {
+            'model_type': 'RandomForestClassifier',
+            'n_estimators': model.n_estimators,
+            'n_features': model.n_features_in_,
+            'classes': classes.tolist(),
+            'training_date': datetime.now().strftime('%Y-%m-%d')
+        },
+        'preprocessing': {
+            'scaler_mean': scaler.mean_.tolist(),
+            'scaler_scale': scaler.scale_.tolist()
+        },
+        'feature_importance': dict(zip(
+            model.feature_names_in_,
+            model.feature_importances_.tolist()
+        ))
+    }
+    
+    return deployment_data
+
+def validate_input(features_dict):
+    """Validate input features for prediction"""
+    required_features = ['temperature', 'humidity', 'wind_speed', 'pressure', 'precipitation']
+    
+    # Check all features are present
+    for feature in required_features:
+        if feature not in features_dict:
+            raise ValueError(f"Missing required feature: {feature}")
+    
+    # Validate ranges
+    validations = {
+        'temperature': (-50, 60),  # Celsius
+        'humidity': (0, 100),      # Percentage
+        'wind_speed': (0, 150),    # km/h
+        'pressure': (870, 1080),   # hPa
+        'precipitation': (0, 1000)  # mm
+    }
+    
+    for feature, (min_val, max_val) in validations.items():
+        value = features_dict[feature]
+        if not (min_val <= value <= max_val):
+            raise ValueError(f"{feature} value {value} out of range [{min_val}, {max_val}]")
+    
+    return True
+
+# Example usage
+if __name__ == "__main__":
+    # Generate synthetic data
+    df = generate_synthetic_data(1000)
+    print(f"Generated {len(df)} samples")
+    print(df.head())
+    
+    # Calculate metrics
+    metrics = calculate_weather_metrics(df)
+    print("\nWeather Metrics:")
+    for key, value in metrics.items():
+        print(f"{key}: {value}")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-timeline">
+                            <h4>Project Timeline</h4>
+                            <div class="timeline-steps">
+                                <div class="timeline-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h5>Data Collection</h5>
+                                        <p>Gather weather data from meteorological sources or generate synthetic data</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h5>Exploratory Analysis</h5>
+                                        <p>Analyze data distributions, correlations, and visualize patterns</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h5>Preprocessing</h5>
+                                        <p>Handle missing values, scale features, encode categorical variables</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h5>Model Training</h5>
+                                        <p>Train multiple classifiers and select the best performing one</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h5>Evaluation</h5>
+                                        <p>Evaluate model using cross-validation and test set</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">6</div>
+                                    <div class="step-content">
+                                        <h5>Deployment</h5>
+                                        <p>Create API endpoint or web interface for predictions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 52: Car Advertising Analysis -->
+                <section id="car-ad-analysis" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 52</span>
+                        <h2>Car Advertising Analysis</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Analyze car advertisement data to identify trends, pricing patterns, and market insights.</p>
+                        
+                        <div class="project-card car">
+                            <div class="project-icon icon-car">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3>Car Advertising Analysis Project</h3>
+                            <p>Analyze used car market trends and predict optimal pricing</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-easy"></div>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot"></div>
+                                <div class="complexity-dot"></div>
+                                <span style="margin-left: auto;">Medium</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Data Analysis</span>
+                                <span class="project-badge badge-ml">Regression</span>
+                                <span class="project-badge">EDA</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics-dashboard">
+                            <div class="metric-card">
+                                <div class="metric-value">$23,456</div>
+                                <div class="metric-label">Average Price</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">42%</div>
+                                <div class="metric-label">SUVs</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">3.8</div>
+                                <div class="metric-label">Avg Year Old</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">87%</div>
+                                <div class="metric-label">Automatic</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <div class="editor-tabs">
+                                    <button class="editor-tab active" onclick="showCode('carAnalysis')">car_analysis.py</button>
+                                    <button class="editor-tab" onclick="showCode('carViz')">visualization.py</button>
+                                    <button class="editor-tab" onclick="showCode('carPredict')">price_prediction.py</button>
+                                </div>
+                                <button class="btn small" onclick="copyCode()">
+                                    <i class="fas fa-copy"></i> Copy Code
+                                </button>
+                            </div>
+                            
+                            <div class="editor-content">
+                                <div id="carAnalysis" class="code-block">
+<pre><code># Car Advertising Analysis
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import warnings
+warnings.filterwarnings('ignore')
+
+class CarAdAnalyzer:
+    def __init__(self):
+        self.df = None
+        self.models = {}
+        self.results = {}
+    
+    def load_data(self, filepath):
+        """Load car advertisement data"""
+        self.df = pd.read_csv(filepath)
+        print(f"Dataset loaded: {self.df.shape[0]} rows, {self.df.shape[1]} columns")
+        print(f"\nColumns: {self.df.columns.tolist()}")
+        return self.df
+    
+    def explore_data(self):
+        """Perform exploratory data analysis"""
+        print("=== Data Exploration ===")
+        
+        # Basic info
+        print(f"\n1. Dataset Info:")
+        print(self.df.info())
+        
+        print(f"\n2. Missing Values:")
+        missing = self.df.isnull().sum()
+        print(missing[missing > 0])
+        
+        print(f"\n3. Statistical Summary:")
+        print(self.df.describe())
+        
+        print(f"\n4. Unique Values per Column:")
+        for col in self.df.columns:
+            unique_count = self.df[col].nunique()
+            if unique_count < 20:
+                print(f"{col}: {unique_count} unique values")
+                print(f"   Values: {self.df[col].unique()}")
+    
+    def clean_data(self):
+        """Clean and preprocess data"""
+        print("\n=== Data Cleaning ===")
+        
+        # Handle missing values
+        if self.df.isnull().sum().any():
+            print("Handling missing values...")
+            # Fill numerical columns with median
+            numerical_cols = self.df.select_dtypes(include=[np.number]).columns
+            for col in numerical_cols:
+                if self.df[col].isnull().any():
+                    self.df[col].fillna(self.df[col].median(), inplace=True)
+            
+            # Fill categorical columns with mode
+            categorical_cols = self.df.select_dtypes(include=['object']).columns
+            for col in categorical_cols:
+                if self.df[col].isnull().any():
+                    self.df[col].fillna(self.df[col].mode()[0], inplace=True)
+        
+        # Convert data types
+        self.df['year'] = pd.to_datetime(self.df['year'], format='%Y').dt.year
+        self.df['mileage'] = pd.to_numeric(self.df['mileage'].str.replace(',', ''))
+        self.df['price'] = pd.to_numeric(self.df['price'].str.replace('$', '').str.replace(',', ''))
+        
+        # Create new features
+        current_year = pd.Timestamp.now().year
+        self.df['car_age'] = current_year - self.df['year']
+        self.df['price_per_mile'] = self.df['price'] / (self.df['mileage'] + 1)  # +1 to avoid division by zero
+        
+        print("Data cleaning completed!")
+        return self.df
+    
+    def analyze_trends(self):
+        """Analyze market trends"""
+        print("\n=== Market Trends Analysis ===")
+        
+        trends = {}
+        
+        # Price trends by brand
+        trends['price_by_brand'] = self.df.groupby('brand')['price'].agg(['mean', 'median', 'count']).sort_values('mean', ascending=False)
+        
+        # Price trends by year
+        trends['price_by_year'] = self.df.groupby('year')['price'].mean().sort_index()
+        
+        # Most common fuel types
+        trends['fuel_distribution'] = self.df['fuel_type'].value_counts()
+        
+        # Transmission preferences
+        trends['transmission_distribution'] = self.df['transmission'].value_counts()
+        
+        # Price correlation with mileage
+        trends['price_mileage_corr'] = self.df[['price', 'mileage']].corr().iloc[0, 1]
+        
+        return trends
+    
+    def visualize_data(self):
+        """Create visualizations"""
+        fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+        
+        # 1. Price distribution
+        axes[0, 0].hist(self.df['price'], bins=30, edgecolor='black', alpha=0.7)
+        axes[0, 0].set_title('Price Distribution')
+        axes[0, 0].set_xlabel('Price ($)')
+        axes[0, 0].set_ylabel('Frequency')
+        
+        # 2. Price by brand (top 10)
+        top_brands = self.df.groupby('brand')['price'].mean().sort_values(ascending=False).head(10)
+        axes[0, 1].barh(range(len(top_brands)), top_brands.values)
+        axes[0, 1].set_yticks(range(len(top_brands)))
+        axes[0, 1].set_yticklabels(top_brands.index)
+        axes[0, 1].set_title('Average Price by Brand (Top 10)')
+        axes[0, 1].set_xlabel('Average Price ($)')
+        
+        # 3. Mileage vs Price scatter
+        axes[0, 2].scatter(self.df['mileage'], self.df['price'], alpha=0.5)
+        axes[0, 2].set_title('Mileage vs Price')
+        axes[0, 2].set_xlabel('Mileage')
+        axes[0, 2].set_ylabel('Price ($)')
+        
+        # 4. Car age distribution
+        axes[1, 0].hist(self.df['car_age'], bins=20, edgecolor='black', alpha=0.7)
+        axes[1, 0].set_title('Car Age Distribution')
+        axes[1, 0].set_xlabel('Age (years)')
+        axes[1, 0].set_ylabel('Frequency')
+        
+        # 5. Fuel type distribution
+        fuel_counts = self.df['fuel_type'].value_counts()
+        axes[1, 1].pie(fuel_counts.values, labels=fuel_counts.index, autopct='%1.1f%%')
+        axes[1, 1].set_title('Fuel Type Distribution')
+        
+        # 6. Price trend over years
+        price_by_year = self.df.groupby('year')['price'].mean()
+        axes[1, 2].plot(price_by_year.index, price_by_year.values, marker='o')
+        axes[1, 2].set_title('Price Trend Over Years')
+        axes[1, 2].set_xlabel('Year')
+        axes[1, 2].set_ylabel('Average Price ($)')
+        axes[1, 2].grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        plt.show()
+    
+    def prepare_for_modeling(self):
+        """Prepare data for machine learning models"""
+        # Select features and target
+        features = ['year', 'mileage', 'car_age', 'engine_size', 'fuel_type', 'transmission', 'brand']
+        target = 'price'
+        
+        # Create feature matrix
+        X = self.df[features].copy()
+        y = self.df[target]
+        
+        # Encode categorical variables
+        categorical_cols = ['fuel_type', 'transmission', 'brand']
+        encoders = {}
+        
+        for col in categorical_cols:
+            le = LabelEncoder()
+            X[col] = le.fit_transform(X[col])
+            encoders[col] = le
+        
+        # Split data
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
+        
+        # Scale features
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        X_test_scaled = scaler.transform(X_test)
+        
+        return X_train_scaled, X_test_scaled, y_train, y_test, encoders, scaler
+    
+    def train_models(self, X_train, y_train):
+        """Train multiple regression models"""
+        print("\n=== Training Models ===")
+        
+        models = {
+            'Linear Regression': LinearRegression(),
+            'Ridge Regression': Ridge(alpha=1.0),
+            'Lasso Regression': Lasso(alpha=1.0),
+            'Random Forest': RandomForestRegressor(n_estimators=100, random_state=42),
+            'Gradient Boosting': GradientBoostingRegressor(n_estimators=100, random_state=42)
+        }
+        
+        for name, model in models.items():
+            print(f"Training {name}...")
+            model.fit(X_train, y_train)
+            self.models[name] = model
+        
+        print("All models trained successfully!")
+        return self.models
+    
+    def evaluate_models(self, X_test, y_test):
+        """Evaluate all trained models"""
+        print("\n=== Model Evaluation ===")
+        
+        results = {}
+        for name, model in self.models.items():
+            y_pred = model.predict(X_test)
+            
+            mae = mean_absolute_error(y_test, y_pred)
+            rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+            r2 = r2_score(y_test, y_pred)
+            
+            results[name] = {
+                'MAE': mae,
+                'RMSE': rmse,
+                'R2': r2
+            }
+            
+            print(f"\n{name}:")
+            print(f"  MAE: ${mae:,.2f}")
+            print(f"  RMSE: ${rmse:,.2f}")
+            print(f"  R² Score: {r2:.3f}")
+        
+        self.results = results
+        return results
+    
+    def predict_price(self, features_dict, encoders, scaler):
+        """Predict car price based on features"""
+        # Prepare feature array in correct order
+        feature_order = ['year', 'mileage', 'car_age', 'engine_size', 'fuel_type', 'transmission', 'brand']
+        
+        features = []
+        for feature in feature_order:
+            if feature in encoders:
+                # Encode categorical feature
+                le = encoders[feature]
+                encoded_value = le.transform([features_dict[feature]])[0]
+                features.append(encoded_value)
+            else:
+                # Numerical feature
+                features.append(features_dict[feature])
+        
+        # Scale features
+        features_scaled = scaler.transform([features])
+        
+        # Make prediction with best model
+        best_model_name = max(self.results, key=lambda x: self.results[x]['R2'])
+        best_model = self.models[best_model_name]
+        
+        predicted_price = best_model.predict(features_scaled)[0]
+        
+        return predicted_price, best_model_name
+
+# Main execution
+if __name__ == "__main__":
+    # Initialize analyzer
+    analyzer = CarAdAnalyzer()
+    
+    # Load data
+    print("Loading car advertisement data...")
+    df = analyzer.load_data('car_ads.csv')
+    
+    # Explore data
+    analyzer.explore_data()
+    
+    # Clean data
+    df_clean = analyzer.clean_data()
+    
+    # Analyze trends
+    trends = analyzer.analyze_trends()
+    print("\nKey Trends:")
+    print(f"Average price by top brand: ${trends['price_by_brand'].iloc[0]['mean']:,.2f}")
+    print(f"Price-mileage correlation: {trends['price_mileage_corr']:.3f}")
+    
+    # Visualize data
+    analyzer.visualize_data()
+    
+    # Prepare for modeling
+    X_train, X_test, y_train, y_test, encoders, scaler = analyzer.prepare_for_modeling()
+    
+    # Train models
+    models = analyzer.train_models(X_train, y_train)
+    
+    # Evaluate models
+    results = analyzer.evaluate_models(X_test, y_test)
+    
+    # Example prediction
+    print("\n=== Example Prediction ===")
+    example_car = {
+        'year': 2018,
+        'mileage': 45000,
+        'car_age': 6,
+        'engine_size': 2.0,
+        'fuel_type': 'Petrol',
+        'transmission': 'Automatic',
+        'brand': 'Toyota'
+    }
+    
+    predicted_price, best_model = analyzer.predict_price(example_car, encoders, scaler)
+    print(f"\nCar Details:")
+    for key, value in example_car.items():
+        print(f"  {key}: {value}")
+    print(f"\nPredicted Price (using {best_model}): ${predicted_price:,.2f}")</code></pre>
+                                </div>
+                                
+                                <div id="carViz" class="code-block" style="display: none;">
+<pre><code># Advanced Visualization for Car Analysis
+import plotly.graph_objects as go
+import plotly.express as px
+from plotly.subplots import make_subplots
+
+class CarVisualizer:
+    def __init__(self, df):
+        self.df = df
+    
+    def create_interactive_dashboard(self):
+        """Create interactive dashboard with Plotly"""
+        fig = make_subplots(
+            rows=3, cols=3,
+            subplot_titles=(
+                'Price Distribution', 'Price by Brand', 'Mileage vs Price',
+                'Car Age Distribution', 'Fuel Types', 'Price Trend',
+                'Engine Size vs Price', 'Transmission Types', 'Top Models'
+            ),
+            specs=[
+                [{"type": "histogram"}, {"type": "bar"}, {"type": "scatter"}],
+                [{"type": "histogram"}, {"type": "pie"}, {"type": "scatter"}],
+                [{"type": "box"}, {"type": "bar"}, {"type": "bar"}]
+            ]
+        )
+        
+        # 1. Price distribution
+        fig.add_trace(
+            go.Histogram(x=self.df['price'], name='Price Distribution',
+                        marker_color='blue', opacity=0.7),
+            row=1, col=1
+        )
+        
+        # 2. Price by brand (top 10)
+        top_brands = self.df.groupby('brand')['price'].mean().sort_values(ascending=False).head(10)
+        fig.add_trace(
+            go.Bar(x=top_brands.values, y=top_brands.index,
+                  orientation='h', marker_color='green', name='Price by Brand'),
+            row=1, col=2
+        )
+        
+        # 3. Mileage vs Price scatter
+        fig.add_trace(
+            go.Scatter(x=self.df['mileage'], y=self.df['price'],
+                      mode='markers', marker=dict(size=5, opacity=0.5, color='red'),
+                      name='Mileage vs Price'),
+            row=1, col=3
+        )
+        
+        # 4. Car age distribution
+        fig.add_trace(
+            go.Histogram(x=self.df['car_age'], name='Car Age',
+                        marker_color='orange', opacity=0.7),
+            row=2, col=1
+        )
+        
+        # 5. Fuel type distribution
+        fuel_counts = self.df['fuel_type'].value_counts()
+        fig.add_trace(
+            go.Pie(labels=fuel_counts.index, values=fuel_counts.values,
+                  name='Fuel Types'),
+            row=2, col=2
+        )
+        
+        # 6. Price trend over years
+        price_by_year = self.df.groupby('year')['price'].mean()
+        fig.add_trace(
+            go.Scatter(x=price_by_year.index, y=price_by_year.values,
+                      mode='lines+markers', name='Price Trend',
+                      line=dict(color='purple', width=2)),
+            row=2, col=3
+        )
+        
+        # 7. Engine size vs Price box plot
+        fig.add_trace(
+            go.Box(x=self.df['engine_size'], y=self.df['price'],
+                  name='Engine Size vs Price'),
+            row=3, col=1
+        )
+        
+        # 8. Transmission distribution
+        trans_counts = self.df['transmission'].value_counts()
+        fig.add_trace(
+            go.Bar(x=trans_counts.index, y=trans_counts.values,
+                  name='Transmission Types', marker_color='brown'),
+            row=3, col=2
+        )
+        
+        # 9. Top models by count
+        top_models = self.df['model'].value_counts().head(10)
+        fig.add_trace(
+            go.Bar(x=top_models.index, y=top_models.values,
+                  name='Top Models', marker_color='teal'),
+            row=3, col=3
+        )
+        
+        # Update layout
+        fig.update_layout(
+            height=1000,
+            showlegend=False,
+            title_text="Car Advertisement Analysis Dashboard"
+        )
+        
+        # Update axis labels
+        fig.update_xaxes(title_text="Price ($)", row=1, col=1)
+        fig.update_xaxes(title_text="Average Price ($)", row=1, col=2)
+        fig.update_xaxes(title_text="Mileage", row=1, col=3)
+        fig.update_xaxes(title_text="Car Age (years)", row=2, col=1)
+        fig.update_xaxes(title_text="Year", row=2, col=3)
+        fig.update_xaxes(title_text="Engine Size", row=3, col=1)
+        fig.update_xaxes(title_text="Transmission Type", row=3, col=2)
+        fig.update_xaxes(title_text="Model", row=3, col=3)
+        
+        fig.update_yaxes(title_text="Frequency", row=1, col=1)
+        fig.update_yaxes(title_text="Brand", row=1, col=2)
+        fig.update_yaxes(title_text="Price ($)", row=1, col=3)
+        fig.update_yaxes(title_text="Frequency", row=2, col=1)
+        fig.update_yaxes(title_text="Average Price ($)", row=2, col=3)
+        fig.update_yaxes(title_text="Price ($)", row=3, col=1)
+        fig.update_yaxes(title_text="Count", row=3, col=2)
+        fig.update_yaxes(title_text="Count", row=3, col=3)
+        
+        fig.show()
+        
+        return fig
+    
+    def create_price_heatmap(self):
+        """Create heatmap of price correlations"""
+        numerical_cols = self.df.select_dtypes(include=[np.number]).columns
+        corr_matrix = self.df[numerical_cols].corr()
+        
+        fig = go.Figure(data=go.Heatmap(
+            z=corr_matrix.values,
+            x=corr_matrix.columns,
+            y=corr_matrix.columns,
+            colorscale='RdBu',
+            zmid=0,
+            text=corr_matrix.round(2).values,
+            texttemplate='%{text}',
+            textfont={"size": 10},
+            hoverongaps=False
+        ))
+        
+        fig.update_layout(
+            title='Feature Correlation Heatmap',
+            xaxis_title='Features',
+            yaxis_title='Features',
+            height=600
+        )
+        
+        fig.show()
+        return fig
+    
+    def create_geographic_analysis(self, location_data):
+        """Create geographic analysis if location data is available"""
+        if 'city' in self.df.columns and 'state' in self.df.columns:
+            # Aggregate price by location
+            location_prices = self.df.groupby(['city', 'state'])['price'].agg(['mean', 'count']).reset_index()
+            location_prices = location_prices.merge(location_data, on=['city', 'state'], how='left')
+            
+            fig = px.scatter_geo(location_prices,
+                                lat='latitude',
+                                lon='longitude',
+                                size='count',
+                                color='mean',
+                                hover_name='city',
+                                size_max=50,
+                                color_continuous_scale='Viridis',
+                                title='Car Prices by Location')
+            
+            fig.update_layout(geo_scope='usa')
+            fig.show()
+            return fig
+        
+        return None
+
+# Example usage
+if __name__ == "__main__":
+    # Load data
+    df = pd.read_csv('car_ads.csv')
+    
+    # Create visualizer
+    visualizer = CarVisualizer(df)
+    
+    # Create dashboard
+    dashboard = visualizer.create_interactive_dashboard()
+    
+    # Create heatmap
+    heatmap = visualizer.create_price_heatmap()</code></pre>
+                                </div>
+                                
+                                <div id="carPredict" class="code-block" style="display: none;">
+<pre><code># Price Prediction API
+from flask import Flask, request, jsonify
+import joblib
+import numpy as np
+import pandas as pd
+
+app = Flask(__name__)
+
+class CarPricePredictor:
+    def __init__(self, model_path='best_car_model.pkl'):
+        """Initialize predictor with trained model"""
+        self.model_data = joblib.load(model_path)
+        self.model = self.model_data['model']
+        self.scaler = self.model_data['scaler']
+        self.encoders = self.model_data['encoders']
+        self.feature_order = self.model_data['feature_order']
+    
+    def preprocess_input(self, input_data):
+        """Preprocess input data for prediction"""
+        processed_features = []
+        
+        for feature in self.feature_order:
+            if feature in self.encoders:
+                # Encode categorical feature
+                le = self.encoders[feature]
+                try:
+                    encoded = le.transform([input_data[feature]])[0]
+                except ValueError:
+                    # Handle unseen categories
+                    encoded = -1  # Use -1 for unknown categories
+                processed_features.append(encoded)
+            else:
+                # Numerical feature
+                processed_features.append(input_data[feature])
+        
+        return np.array([processed_features])
+    
+    def predict(self, input_data):
+        """Make price prediction"""
+        # Preprocess input
+        features_array = self.preprocess_input(input_data)
+        
+        # Scale features
+        features_scaled = self.scaler.transform(features_array)
+        
+        # Make prediction
+        predicted_price = self.model.predict(features_scaled)[0]
+        
+        # Calculate confidence interval (simplified)
+        confidence = 0.95
+        # In practice, you would calculate prediction intervals
+        # For demo, using a fixed percentage of prediction
+        lower_bound = predicted_price * 0.85  # 15% below
+        upper_bound = predicted_price * 1.15  # 15% above
+        
+        return {
+            'predicted_price': float(predicted_price),
+            'confidence_interval': {
+                'lower_bound': float(lower_bound),
+                'upper_bound': float(upper_bound),
+                'confidence_level': confidence
+            },
+            'input_features': input_data
+        }
+    
+    def get_feature_importance(self):
+        """Get feature importance from model"""
+        if hasattr(self.model, 'feature_importances_'):
+            importance = dict(zip(self.feature_order, self.model.feature_importances_))
+            return sorted(importance.items(), key=lambda x: x[1], reverse=True)
+        elif hasattr(self.model, 'coef_'):
+            importance = dict(zip(self.feature_order, self.model.coef_))
+            return sorted(importance.items(), key=lambda x: abs(x[1]), reverse=True)
+        else:
+            return None
+
+# Initialize predictor
+predictor = CarPricePredictor()
+
+@app.route('/predict', methods=['POST'])
+def predict_price():
+    """API endpoint for price prediction"""
+    try:
+        # Get input data
+        data = request.json
+        
+        # Validate required fields
+        required_fields = ['year', 'mileage', 'engine_size', 'fuel_type', 
+                          'transmission', 'brand']
+        
+        for field in required_fields:
+            if field not in data:
+                return jsonify({
+                    'error': f'Missing required field: {field}'
+                }), 400
+        
+        # Add calculated fields
+        current_year = pd.Timestamp.now().year
+        data['car_age'] = current_year - data['year']
+        
+        # Make prediction
+        result = predictor.predict(data)
+        
+        return jsonify(result)
+    
+    except Exception as e:
+        return jsonify({
+            'error': str(e)
+        }), 500
+
+@app.route('/feature_importance', methods=['GET'])
+def get_feature_importance():
+    """Get feature importance"""
+    importance = predictor.get_feature_importance()
+    
+    if importance:
+        return jsonify({
+            'feature_importance': importance
+        })
+    else:
+        return jsonify({
+            'error': 'Feature importance not available for this model'
+        }), 400
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint"""
+    return jsonify({
+        'status': 'healthy',
+        'model_type': type(predictor.model).__name__,
+        'features': predictor.feature_order
+    })
+
+@app.route('/batch_predict', methods=['POST'])
+def batch_predict():
+    """Batch prediction endpoint"""
+    try:
+        data = request.json
+        
+        if not isinstance(data, list):
+            return jsonify({
+                'error': 'Expected a list of car data'
+            }), 400
+        
+        results = []
+        for item in data:
+            try:
+                result = predictor.predict(item)
+                results.append(result)
+            except Exception as e:
+                results.append({
+                    'error': str(e),
+                    'input': item
+                })
+        
+        return jsonify({
+            'predictions': results,
+            'total_predictions': len(results),
+            'successful_predictions': sum(1 for r in results if 'error' not in r)
+        })
+    
+    except Exception as e:
+        return jsonify({
+            'error': str(e)
+        }), 500
+
+# Example client code
+def example_client():
+    """Example of how to use the API"""
+    import requests
+    
+    # Single prediction
+    car_data = {
+        'year': 2020,
+        'mileage': 30000,
+        'engine_size': 2.5,
+        'fuel_type': 'Petrol',
+        'transmission': 'Automatic',
+        'brand': 'Honda'
+    }
+    
+    response = requests.post('http://localhost:5000/predict', json=car_data)
+    
+    if response.status_code == 200:
+        result = response.json()
+        print(f"Predicted Price: ${result['predicted_price']:,.2f}")
+        print(f"Confidence Interval: ${result['confidence_interval']['lower_bound']:,.2f} - ${result['confidence_interval']['upper_bound']:,.2f}")
+    else:
+        print(f"Error: {response.json()}")
+    
+    # Batch prediction
+    batch_data = [
+        {
+            'year': 2018,
+            'mileage': 45000,
+            'engine_size': 2.0,
+            'fuel_type': 'Diesel',
+            'transmission': 'Manual',
+            'brand': 'Toyota'
+        },
+        {
+            'year': 2022,
+            'mileage': 15000,
+            'engine_size': 3.0,
+            'fuel_type': 'Petrol',
+            'transmission': 'Automatic',
+            'brand': 'BMW'
+        }
+    ]
+    
+    response = requests.post('http://localhost:5000/batch_predict', json=batch_data)
+    
+    if response.status_code == 200:
+        results = response.json()
+        print(f"\nBatch Results:")
+        for i, pred in enumerate(results['predictions']):
+            if 'error' not in pred:
+                print(f"Car {i+1}: ${pred['predicted_price']:,.2f}")
+
+if __name__ == "__main__":
+    print("Starting Car Price Prediction API...")
+    print("API Endpoints:")
+    print("  POST /predict - Predict price for a single car")
+    print("  GET /feature_importance - Get feature importance")
+    print("  POST /batch_predict - Predict prices for multiple cars")
+    print("  GET /health - Health check")
+    print("\nExample usage:")
+    example_client()
+    
+    # Run the Flask app
+    app.run(debug=True, host='0.0.0.0', port=5000)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-checklist">
+                            <h4>Project Checklist</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check1" onchange="updateChecklist()">
+                                <label for="check1">Load and explore car advertisement dataset</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check2" onchange="updateChecklist()">
+                                <label for="check2">Clean and preprocess data (handle missing values, outliers)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check3" onchange="updateChecklist()">
+                                <label for="check3">Perform exploratory data analysis (EDA)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check4" onchange="updateChecklist()">
+                                <label for="check4">Create visualizations and dashboards</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check5" onchange="updateChecklist()">
+                                <label for="check5">Train multiple regression models for price prediction</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check6" onchange="updateChecklist()">
+                                <label for="check6">Evaluate models and select the best performing one</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check7" onchange="updateChecklist()">
+                                <label for="check7">Create API endpoint for price predictions</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check8" onchange="updateChecklist()">
+                                <label for="check8">Deploy model and create documentation</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 53: Marriage Prediction -->
+                <section id="marriage-prediction" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 53</span>
+                        <h2>Marriage Prediction</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Predict marriage compatibility and success factors using machine learning.</p>
+                        
+                        <div class="project-card marriage">
+                            <div class="project-icon icon-marriage">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Marriage Prediction Project</h3>
+                            <p>Analyze factors affecting marriage success and predict compatibility</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot"></div>
+                                <div class="complexity-dot"></div>
+                                <span style="margin-left: auto;">Hard</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Classification</span>
+                                <span class="project-badge badge-nlp">NLP</span>
+                                <span class="project-badge">Psychology</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Due to character limit, the rest of the projects are structured similarly -->
+                        <!-- The complete file would continue with Marriage Prediction, Divorce Prediction, -->
+                        <!-- Recommendation System, and Capstone Project sections -->
+                        
+                        <div class="demo-container">
+                            <div class="demo-controls">
+                                <h4>Marriage Compatibility Demo</h4>
+                                <div class="input-group">
+                                    <label>Age Difference (years):</label>
+                                    <input type="range" id="ageDiff" min="-20" max="20" value="2" oninput="updateMarriagePrediction()">
+                                    <span id="ageDiffValue">2 years</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Education Match:</label>
+                                    <select id="educationMatch" onchange="updateMarriagePrediction()">
+                                        <option value="high">High</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Communication Score (1-10):</label>
+                                    <input type="range" id="commScore" min="1" max="10" value="7" oninput="updateMarriagePrediction()">
+                                    <span id="commScoreValue">7</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Shared Interests:</label>
+                                    <input type="range" id="sharedInterests" min="0" max="10" value="6" oninput="updateMarriagePrediction()">
+                                    <span id="sharedInterestsValue">6</span>
+                                </div>
+                            </div>
+                            
+                            <div class="demo-output">
+                                <div id="marriagePrediction" class="prediction-result">
+                                    <div style="font-size: 3rem; color: #8A2BE2; margin-bottom: 1rem;">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="prediction-value" id="compatibilityScore">82%</div>
+                                    <div>Compatibility Score</div>
+                                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                        <strong>Prediction:</strong> High chance of successful marriage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h4>Key Factors in Marriage Prediction</h4>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h5>Communication</h5>
+                                    <p>Effective communication is the strongest predictor of marriage success</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <h5>Conflict Resolution</h5>
+                                    <p>How couples handle conflicts matters more than frequency of conflicts</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <div>
+                                    <h5>Shared Values</h5>
+                                    <p>Alignment on core values and life goals is crucial for long-term compatibility</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 54: Divorce Prediction -->
+                <section id="divorce-prediction" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 54</span>
+                        <h2>Divorce Prediction</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Machine learning model to predict divorce based on psychological and behavioral factors.</p>
+                        
+                        <div class="project-card divorce">
+                            <div class="project-icon icon-divorce">
+                                <i class="fas fa-heart-broken"></i>
+                            </div>
+                            <h3>Divorce Prediction Project</h3>
+                            <p>Predict divorce likelihood using psychological assessment data</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-medium"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot"></div>
+                                <div class="complexity-dot"></div>
+                                <span style="margin-left: auto;">Hard</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Binary Classification</span>
+                                <span class="project-badge badge-ml">Psychology</span>
+                                <span class="project-badge">Ethical AI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="model-architecture">
+                            <h4>Model Architecture</h4>
+                            <div class="architecture-diagram">
+                                <div class="layer">
+                                    <h5>Input Layer</h5>
+                                    <p>54 Features</p>
+                                </div>
+                                <div class="layer-connector">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="layer">
+                                    <h5>Dense Layer 1</h5>
+                                    <p>128 neurons</p>
+                                    <p>ReLU activation</p>
+                                </div>
+                                <div class="layer-connector">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="layer">
+                                    <h5>Dropout Layer</h5>
+                                    <p>0.5 rate</p>
+                                </div>
+                                <div class="layer-connector">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="layer">
+                                    <h5>Dense Layer 2</h5>
+                                    <p>64 neurons</p>
+                                    <p>ReLU activation</p>
+                                </div>
+                                <div class="layer-connector">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="layer">
+                                    <h5>Output Layer</h5>
+                                    <p>1 neuron</p>
+                                    <p>Sigmoid activation</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics-dashboard">
+                            <div class="metric-card">
+                                <div class="metric-value">94.2%</div>
+                                <div class="metric-label">Accuracy</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">92.8%</div>
+                                <div class="metric-label">Precision</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">95.1%</div>
+                                <div class="metric-label">Recall</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-value">93.9%</div>
+                                <div class="metric-label">F1-Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 55-56: Recommendation System -->
+                <section id="recommendation-system" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 55-56</span>
+                        <h2>Recommendation System</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Build a two-part recommendation engine using collaborative and content-based filtering.</p>
+                        
+                        <div class="project-card recommendation">
+                            <div class="project-icon icon-recommendation">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Recommendation System Project</h3>
+                            <p>Build movie/product recommendation engine with multiple algorithms</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot"></div>
+                                <div class="complexity-dot"></div>
+                                <span style="margin-left: auto;">Advanced</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Recommendation</span>
+                                <span class="project-badge badge-dl">Matrix Factorization</span>
+                                <span class="project-badge">NLP</span>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-diagram">
+                            <div class="integration-component">
+                                <div class="component-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h5>Collaborative Filtering</h5>
+                                <p>User-based recommendations</p>
+                            </div>
+                            
+                            <div class="component-connector">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            
+                            <div class="integration-component">
+                                <div class="component-icon">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <h5>Content-Based Filtering</h5>
+                                <p>Item similarity recommendations</p>
+                            </div>
+                            
+                            <div class="component-connector">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            
+                            <div class="integration-component">
+                                <div class="component-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h5>Hybrid Model</h5>
+                                <p>Combined approach</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 57-60: Capstone Project -->
+                <section id="capstone-project" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 57-60</span>
+                        <h2>Mini Capstone Project</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Comprehensive project integrating AI, ML, and DL concepts into a complete solution.</p>
+                        
+                        <div class="project-card capstone">
+                            <div class="project-icon icon-capstone">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Mini Capstone Project</h3>
+                            <p>End-to-end AI system integrating multiple ML/DL techniques</p>
+                            
+                            <div class="project-complexity">
+                                <span>Complexity:</span>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <div class="complexity-dot dot-hard"></div>
+                                <span style="margin-left: auto;">Expert</span>
+                            </div>
+                            
+                            <div class="project-tags">
+                                <span class="project-badge badge-ml">Full Stack</span>
+                                <span class="project-badge badge-dl">Deep Learning</span>
+                                <span class="project-badge badge-cv">Computer Vision</span>
+                                <span class="project-badge badge-nlp">NLP</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-timeline">
+                            <h4>Capstone Project Timeline (4 Hours)</h4>
+                            <div class="timeline-steps">
+                                <div class="timeline-step">
+                                    <div class="step-number">H57</div>
+                                    <div class="step-content">
+                                        <h5>Problem Definition & Data Collection</h5>
+                                        <p>Define project scope, gather datasets, and set up development environment</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">H58</div>
+                                    <div class="step-content">
+                                        <h5>Model Development</h5>
+                                        <p>Implement multiple ML/DL models and conduct experiments</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">H59</div>
+                                    <div class="step-content">
+                                        <h5>System Integration</h5>
+                                        <p>Integrate models, create APIs, and build user interface</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step">
+                                    <div class="step-number">H60</div>
+                                    <div class="step-content">
+                                        <h5>Deployment & Presentation</h5>
+                                        <p>Deploy solution, create documentation, and prepare presentation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-checklist">
+                            <h4>Capstone Project Requirements</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap1" onchange="updateChecklist()">
+                                <label for="cap1">Clear problem statement and business case</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap2" onchange="updateChecklist()">
+                                <label for="cap2">Data collection and preprocessing pipeline</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap3" onchange="updateChecklist()">
+                                <label for="cap3">Multiple ML/DL model implementations</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap4" onchange="updateChecklist()">
+                                <label for="cap4">Model evaluation and comparison</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap5" onchange="updateChecklist()">
+                                <label for="cap5">End-to-end working solution</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap6" onchange="updateChecklist()">
+                                <label for="cap6">API endpoints or web interface</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap7" onchange="updateChecklist()">
+                                <label for="cap7">Documentation and code quality</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="cap8" onchange="updateChecklist()">
+                                <label for="cap8">Presentation of results and insights</label>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h4>Capstone Project Ideas</h4>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                                <div>
+                                    <h5>Healthcare Diagnosis System</h5>
+                                    <p>Combine medical imaging (CV) with patient records (NLP) for diagnosis</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div>
+                                    <h5>E-commerce Recommendation Engine</h5>
+                                    <p>Hybrid system with product images (CV) and reviews (NLP)</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div>
+                                    <h5>Autonomous Vehicle Simulation</h5>
+                                    <p>Object detection, path planning, and decision making system</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI & ML Guide</h4>
+                    <p>Hands-on projects for AI, Machine Learning, and Deep Learning</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Previous Module</h4>
+                    <a href="aptitude-series.html" class="next-module">
+                        <i class="fas fa-arrow-left"></i>
+                        <div>
+                            <h5>Aptitude Series</h5>
+                            <p>Reasoning and quantitative skills</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>Project Categories</h4>
+                    <div class="topic-tags">
+                        <span class="topic-tag">Classification</span>
+                        <span class="topic-tag">Regression</span>
+                        <span class="topic-tag">Recommendation</span>
+                        <span class="topic-tag">Prediction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Weather prediction demo
+        function updateWeatherPrediction() {
+            const temp = document.getElementById('tempInput').value;
+            const humidity = document.getElementById('humidityInput').value;
+            const wind = document.getElementById('windInput').value;
+            const precip = document.getElementById('precipInput').value;
+            
+            document.getElementById('tempValue').textContent = temp + '°C';
+            document.getElementById('humidityValue').textContent = humidity + '%';
+            document.getElementById('windValue').textContent = wind + ' km/h';
+            document.getElementById('precipValue').textContent = precip + ' mm';
+            
+            // Simple prediction logic
+            let prediction = 'Sunny';
+            let icon = 'fa-sun';
+            let color = '#FBBC05';
+            let confidence = 92;
+            
+            if (precip > 8) {
+                prediction = temp < 2 ? 'Snowy' : 'Rainy';
+                icon = temp < 2 ? 'fa-snowflake' : 'fa-cloud-rain';
+                color = temp < 2 ? '#4285F4' : '#34A853';
+                confidence = 88;
+            } else if (humidity > 75) {
+                prediction = 'Cloudy';
+                icon = 'fa-cloud';
+                color = '#666';
+                confidence = 85;
+            } else if (wind > 25) {
+                prediction = 'Windy';
+                icon = 'fa-wind';
+                color = '#8A2BE2';
+                confidence = 82;
+            }
+            
+            document.getElementById('weatherIcon').innerHTML = `<i class="fas ${icon}"></i>`;
+            document.getElementById('predictedWeather').textContent = prediction;
+            document.getElementById('predictedWeather').style.color = color;
+            document.getElementById('confidenceLevel').textContent = `Confidence: ${confidence}%`;
+        }
+        
+        // Marriage prediction demo
+        function updateMarriagePrediction() {
+            const ageDiff = Math.abs(document.getElementById('ageDiff').value);
+            const education = document.getElementById('educationMatch').value;
+            const commScore = parseInt(document.getElementById('commScore').value);
+            const shared = parseInt(document.getElementById('sharedInterests').value);
+            
+            document.getElementById('ageDiffValue').textContent = Math.abs(ageDiff) + ' years';
+            document.getElementById('commScoreValue').textContent = commScore;
+            document.getElementById('sharedInterestsValue').textContent = shared;
+            
+            // Calculate compatibility score
+            let score = 70; // Base score
+            
+            // Adjust based on factors
+            if (ageDiff <= 5) score += 10;
+            else if (ageDiff <= 10) score += 5;
+            
+            if (education === 'high') score += 15;
+            else if (education === 'medium') score += 10;
+            
+            score += (commScore - 5) * 3; // Communication is important
+            score += (shared - 5) * 2;
+            
+            // Cap score between 0-100
+            score = Math.max(0, Math.min(100, score));
+            
+            document.getElementById('compatibilityScore').textContent = Math.round(score) + '%';
+            
+            // Update color based on score
+            let color = '#EA4335'; // Red
+            if (score >= 70) color = '#34A853'; // Green
+            else if (score >= 50) color = '#FBBC05'; // Yellow
+            
+            document.getElementById('compatibilityScore').style.color = color;
+        }
+        
+        // Code editor functions
+        function showCode(tabId) {
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.editor-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(tabId).style.display = 'block';
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function copyCode() {
+            const activeTab = document.querySelector('.editor-tab.active');
+            const tabId = activeTab.getAttribute('onclick').match(/'(.*?)'/)[1];
+            const codeBlock = document.getElementById(tabId);
+            const codeText = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert('Code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+            });
+        }
+        
+        // Checklist functions
+        function updateChecklist() {
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked);
+            
+            checkboxes.forEach(cb => {
+                const item = cb.closest('.checklist-item');
+                if (cb.checked) {
+                    item.classList.add('completed');
+                } else {
+                    item.classList.remove('completed');
+                }
+            });
+            
+            console.log(`${checked.length} items completed`);
+        }
+        
+        // Quick action functions
+        function downloadDataset() {
+            alert('Downloading project datasets...\n\nThis would download all required datasets for the projects.');
+        }
+        
+        function openColab() {
+            alert('Opening Google Colab notebook...\n\nIn a real implementation, this would open the notebook in Google Colab.');
+        }
+        
+        function runAllCode() {
+            alert('Running all code examples...\n\nThis would execute all the Python code in the background.');
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.module-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize on load
+        window.onload = function() {
+            updateWeatherPrediction();
+            updateMarriagePrediction();
+            updateChecklist();
+            
+            // Add scroll-based active link update
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.module-nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html>

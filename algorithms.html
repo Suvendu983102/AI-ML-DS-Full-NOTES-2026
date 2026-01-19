@@ -1,0 +1,2909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Algorithms - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="topics1.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#topics">Topics</a> / 
+                <span>Machine Learning Algorithms</span>
+            </div>
+            <h1>Machine Learning Algorithms (Hours 15-19)</h1>
+            <p class="topic-description">Core ML algorithms: Decision Trees, Linear & Logistic Regression, SVM, and Clustering</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 5 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="topic-sidebar">
+                    <h3>In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#hour15" class="active">Hour 15: Decision Trees</a></li>
+                        <li><a href="#hour16">Hour 16: Linear Regression</a></li>
+                        <li><a href="#hour17">Hour 17: Logistic Regression</a></li>
+                        <li><a href="#hour18">Hour 18: Support Vector Machines</a></li>
+                        <li><a href="#hour19">Hour 19: Clustering</a></li>
+                        <li><a href="#practice">Practice Exercises</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Algorithm Types</h4>
+                        <div class="algorithm-types">
+                            <div class="algorithm-type">
+                                <div class="type-icon supervised"></div>
+                                <span>Supervised</span>
+                            </div>
+                            <div class="algorithm-type">
+                                <div class="type-icon unsupervised"></div>
+                                <span>Unsupervised</span>
+                            </div>
+                            <div class="algorithm-type">
+                                <div class="type-icon regression"></div>
+                                <span>Regression</span>
+                            </div>
+                            <div class="algorithm-type">
+                                <div class="type-icon classification"></div>
+                                <span>Classification</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4>ML Pipeline</h4>
+                        <div class="pipeline-steps">
+                            <div class="pipeline-step">
+                                <div class="step-number">1</div>
+                                <span>Data Prep</span>
+                            </div>
+                            <div class="pipeline-step">
+                                <div class="step-number">2</div>
+                                <span>Model Select</span>
+                            </div>
+                            <div class="pipeline-step">
+                                <div class="step-number">3</div>
+                                <span>Train</span>
+                            </div>
+                            <div class="pipeline-step">
+                                <div class="step-number">4</div>
+                                <span>Evaluate</span>
+                            </div>
+                            <div class="pipeline-step">
+                                <div class="step-number">5</div>
+                                <span>Deploy</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 15: Decision Trees -->
+                    <section id="hour15" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">15</span> Decision Trees</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Tree-based Learning</h3>
+                            <p>Decision trees create a model that predicts the value of a target variable by learning simple decision rules inferred from data features.</p>
+                            
+                            <div class="algorithm-overview">
+                                <div class="algorithm-visual">
+                                    <div class="tree-diagram">
+                                        <div class="tree-node root">
+                                            <span>Root Node<br>All Data</span>
+                                        </div>
+                                        <div class="tree-branch">
+                                            <div class="tree-node decision">
+                                                <span>Decision<br>Feature ≤ 2.5</span>
+                                            </div>
+                                            <div class="tree-sub-branches">
+                                                <div class="tree-node leaf">
+                                                    <span>Leaf Node<br>Class A</span>
+                                                </div>
+                                                <div class="tree-node decision">
+                                                    <span>Decision<br>Feature ≤ 4.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="algorithm-details">
+                                    <h4>Key Concepts</h4>
+                                    <ul>
+                                        <li><strong>Root Node:</strong> Entire dataset</li>
+                                        <li><strong>Decision Node:</strong> Splits data based on feature</li>
+                                        <li><strong>Leaf Node:</strong> Final prediction/class</li>
+                                        <li><strong>Splitting Criteria:</strong> Gini, Entropy, Information Gain</li>
+                                        <li><strong>Pruning:</strong> Prevents overfitting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Decision Tree Implementation in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, mean_squared_error
+import matplotlib.pyplot as plt
+
+# Example 1: Classification Tree
+print("=== Decision Tree Classifier ===")
+
+# Create sample dataset
+from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+feature_names = iris.feature_names
+target_names = iris.target_names
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train classifier
+clf = DecisionTreeClassifier(
+    criterion='gini',      # or 'entropy' for information gain
+    max_depth=3,          # control tree depth
+    min_samples_split=2,
+    min_samples_leaf=1,
+    random_state=42
+)
+
+clf.fit(X_train, y_train)
+
+# Make predictions
+y_pred = clf.predict(X_test)
+
+# Evaluate
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2%}")
+print(f"Number of features: {clf.n_features_in_}")
+print(f"Tree depth: {clf.get_depth()}")
+print(f"Number of leaves: {clf.get_n_leaves()}")
+
+# Feature importance
+print("\nFeature Importance:")
+for name, importance in zip(feature_names, clf.feature_importances_):
+    print(f"{name}: {importance:.3f}")
+
+# Visualize the tree
+plt.figure(figsize=(12, 8))
+plot_tree(clf, 
+          feature_names=feature_names,
+          class_names=target_names,
+          filled=True,
+          rounded=True)
+plt.title("Decision Tree Visualization")
+plt.show()
+
+# Example 2: Regression Tree
+print("\n=== Decision Tree Regressor ===")
+
+# Create regression data
+np.random.seed(42)
+X_reg = np.random.rand(100, 1) * 10
+y_reg = np.sin(X_reg).ravel() + np.random.randn(100) * 0.1
+
+# Create and train regressor
+reg = DecisionTreeRegressor(
+    max_depth=4,
+    min_samples_split=5,
+    random_state=42
+)
+
+reg.fit(X_reg, y_reg)
+
+# Predict and evaluate
+y_pred_reg = reg.predict(X_reg)
+mse = mean_squared_error(y_reg, y_pred_reg)
+print(f"Mean Squared Error: {mse:.4f}")
+
+# Visualize predictions
+X_test_reg = np.linspace(0, 10, 100).reshape(-1, 1)
+y_test_reg = reg.predict(X_test_reg)
+
+plt.figure(figsize=(10, 6))
+plt.scatter(X_reg, y_reg, alpha=0.5, label='Training data')
+plt.plot(X_test_reg, y_test_reg, color='red', linewidth=2, label='Tree predictions')
+plt.xlabel('Feature')
+plt.ylabel('Target')
+plt.title('Decision Tree Regression')
+plt.legend()
+plt.show()</code></pre>
+                            </div>
+                            
+                            <h4>Splitting Criteria Comparison</h4>
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Criterion</th>
+                                            <th>Formula</th>
+                                            <th>Advantages</th>
+                                            <th>Disadvantages</th>
+                                            <th>Best for</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Gini Index</strong></td>
+                                            <td>1 - Σ(pᵢ²)</td>
+                                            <td>Computationally efficient</td>
+                                            <td>Tends to isolate most frequent class</td>
+                                            <td>General classification</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Entropy</strong></td>
+                                            <td>-Σ(pᵢ log₂ pᵢ)</td>
+                                            <td>Produces more balanced trees</td>
+                                            <td>Slower computation</td>
+                                            <td>When balance is important</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Information Gain</strong></td>
+                                            <td>Entropy(parent) - Σ(wᵢ × Entropy(childᵢ))</td>
+                                            <td>Reduces uncertainty</td>
+                                            <td>Biased towards features with many levels</td>
+                                            <td>Feature selection</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Decision Tree Playground</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="tree-depth">Max Depth:</label>
+                                        <input type="range" id="tree-depth" min="1" max="10" value="3">
+                                        <span id="depth-value">3</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="criterion">Criterion:</label>
+                                        <select id="criterion">
+                                            <option value="gini">Gini Index</option>
+                                            <option value="entropy">Entropy</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="min-samples">Min Samples Split:</label>
+                                        <input type="number" id="min-samples" value="2" min="2" max="20">
+                                    </div>
+                                    <button onclick="simulateDecisionTree()" class="btn">
+                                        <i class="fas fa-play"></i> Train Tree
+                                    </button>
+                                </div>
+                                <div id="tree-results" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Adjust parameters and click "Train Tree" to see results</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pros-cons">
+                                <h4>Pros and Cons of Decision Trees</h4>
+                                <div class="pros-cons-grid">
+                                    <div class="pros">
+                                        <h5><i class="fas fa-check-circle"></i> Advantages</h5>
+                                        <ul>
+                                            <li>Easy to understand and interpret</li>
+                                            <li>Requires little data preprocessing</li>
+                                            <li>Handles both numerical and categorical data</li>
+                                            <li>Non-parametric (no assumptions about data distribution)</li>
+                                            <li>Can handle multi-output problems</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cons">
+                                        <h5><i class="fas fa-times-circle"></i> Disadvantages</h5>
+                                        <ul>
+                                            <li>Prone to overfitting (needs pruning)</li>
+                                            <li>Can be unstable (small changes in data can cause different trees)</li>
+                                            <li>Biased towards features with more levels</li>
+                                            <li>Not suitable for extrapolation</li>
+                                            <li>Performance worse than other algorithms on some tasks</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 16: Linear Regression -->
+                    <section id="hour16" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">16</span> Linear Regression</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Predicting Continuous Values</h3>
+                            <p>Linear regression models the relationship between a dependent variable and one or more independent variables using a linear approach.</p>
+                            
+                            <div class="regression-visual">
+                                <div class="regression-equation">
+                                    <h4>Linear Regression Equation</h4>
+                                    <div class="equation">
+                                        <div class="simple-eq">y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε</div>
+                                        <div class="eq-components">
+                                            <span class="component">y = Target variable</span>
+                                            <span class="component">β₀ = Intercept</span>
+                                            <span class="component">β₁...βₙ = Coefficients</span>
+                                            <span class="component">x₁...xₙ = Features</span>
+                                            <span class="component">ε = Error term</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cost-function">
+                                    <h4>Cost Function (Mean Squared Error)</h4>
+                                    <div class="equation">
+                                        <div class="simple-eq">MSE = (1/n) Σ(yᵢ - ŷᵢ)²</div>
+                                        <p>Minimized using Gradient Descent</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Linear Regression Implementation</span>
+                                </div>
+                                <pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.pipeline import make_pipeline
+
+# Example 1: Simple Linear Regression
+print("=== Simple Linear Regression ===")
+
+# Generate synthetic data
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)
+y = 4 + 3 * X + np.random.randn(100, 1)  # y = 4 + 3x + noise
+
+# Create and fit model
+lin_reg = LinearRegression()
+lin_reg.fit(X, y)
+
+# Get parameters
+print(f"Intercept (β₀): {lin_reg.intercept_[0]:.4f}")
+print(f"Coefficient (β₁): {lin_reg.coef_[0][0]:.4f}")
+print(f"Equation: y = {lin_reg.intercept_[0]:.4f} + {lin_reg.coef_[0][0]:.4f}x")
+
+# Make predictions
+X_new = np.array([[0], [2]])
+y_pred = lin_reg.predict(X_new)
+print(f"\nPredictions:")
+for i in range(len(X_new)):
+    print(f"  x={X_new[i][0]}: ŷ={y_pred[i][0]:.4f}")
+
+# Visualize
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, alpha=0.7, label='Data points')
+plt.plot(X_new, y_pred, 'r-', linewidth=2, label=f'y = {lin_reg.intercept_[0]:.2f} + {lin_reg.coef_[0][0]:.2f}x')
+plt.xlabel('Feature (x)')
+plt.ylabel('Target (y)')
+plt.title('Simple Linear Regression')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Example 2: Multiple Linear Regression
+print("\n=== Multiple Linear Regression ===")
+
+# Create dataset with 3 features
+np.random.seed(42)
+X_multi = np.random.randn(100, 3)
+true_coeffs = np.array([2.5, -1.0, 0.5])
+y_multi = 1.5 + X_multi.dot(true_coeffs) + np.random.randn(100) * 0.5
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X_multi, y_multi, test_size=0.2, random_state=42)
+
+# Fit model
+multi_reg = LinearRegression()
+multi_reg.fit(X_train, y_train)
+
+# Evaluate
+y_pred_multi = multi_reg.predict(X_test)
+mse = mean_squared_error(y_test, y_pred_multi)
+r2 = r2_score(y_test, y_pred_multi)
+
+print(f"True coefficients: {true_coeffs}")
+print(f"Estimated coefficients: {multi_reg.coef_}")
+print(f"Intercept: {multi_reg.intercept_:.4f}")
+print(f"Mean Squared Error: {mse:.4f}")
+print(f"R² Score: {r2:.4f}")
+
+# Feature importance
+print("\nFeature Importance (coefficient magnitude):")
+for i, coef in enumerate(multi_reg.coef_):
+    print(f"  Feature {i+1}: {coef:.4f}")
+
+# Example 3: Regularized Regression (Ridge & Lasso)
+print("\n=== Regularized Regression ===")
+
+# Generate data with high dimensionality
+np.random.seed(42)
+X_high = np.random.randn(50, 20)
+# Only first 5 features are actually important
+true_coeffs_high = np.zeros(20)
+true_coeffs_high[:5] = [1.5, -0.8, 0.6, -1.2, 0.9]
+y_high = 2.0 + X_high.dot(true_coeffs_high) + np.random.randn(50) * 0.5
+
+# Standardize features
+scaler = StandardScaler()
+X_high_scaled = scaler.fit_transform(X_high)
+
+# Ridge Regression (L2 regularization)
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_high_scaled, y_high)
+
+# Lasso Regression (L1 regularization)
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_high_scaled, y_high)
+
+print("Ridge Coefficients (first 10):")
+print(ridge.coef_[:10])
+print(f"\nLasso Coefficients (first 10):")
+print(lasso.coef_[:10])
+print(f"\nNumber of non-zero Lasso coefficients: {np.sum(lasso.coef_ != 0)}")
+
+# Compare performance with cross-validation
+print("\n=== Cross-Validation Comparison ===")
+models = {
+    'Linear': LinearRegression(),
+    'Ridge': Ridge(alpha=1.0),
+    'Lasso': Lasso(alpha=0.1)
+}
+
+for name, model in models.items():
+    scores = cross_val_score(model, X_high_scaled, y_high, 
+                            scoring='neg_mean_squared_error', cv=5)
+    print(f"{name} Regression - MSE: {-scores.mean():.4f} (+/- {scores.std()*2:.4f})")</code></pre>
+                            </div>
+                            
+                            <h4>Linear Regression Assumptions</h4>
+                            <div class="assumptions-grid">
+                                <div class="assumption">
+                                    <div class="assumption-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h5>Linearity</h5>
+                                    <p>Relationship between features and target is linear</p>
+                                </div>
+                                <div class="assumption">
+                                    <div class="assumption-icon">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <h5>Normality</h5>
+                                    <p>Residuals are normally distributed</p>
+                                </div>
+                                <div class="assumption">
+                                    <div class="assumption-icon">
+                                        <i class="fas fa-ruler-combined"></i>
+                                    </div>
+                                    <h5>Homoscedasticity</h5>
+                                    <p>Constant variance of residuals</p>
+                                </div>
+                                <div class="assumption">
+                                    <div class="assumption-icon">
+                                        <i class="fas fa-unlink"></i>
+                                    </div>
+                                    <h5>No Multicollinearity</h5>
+                                    <p>Features are not highly correlated</p>
+                                </div>
+                                <div class="assumption">
+                                    <div class="assumption-icon">
+                                        <i class="fas fa-random"></i>
+                                    </div>
+                                    <h5>Independence</h5>
+                                    <p>Observations are independent of each other</p>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Regression Visualizer</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="noise-level">Noise Level:</label>
+                                        <input type="range" id="noise-level" min="0" max="2" step="0.1" value="1">
+                                        <span id="noise-value">1.0</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="outliers">Add Outliers:</label>
+                                        <input type="checkbox" id="outliers">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="reg-type">Regression Type:</label>
+                                        <select id="reg-type">
+                                            <option value="linear">Linear</option>
+                                            <option value="ridge">Ridge (L2)</option>
+                                            <option value="lasso">Lasso (L1)</option>
+                                        </select>
+                                    </div>
+                                    <button onclick="simulateRegression()" class="btn">
+                                        <i class="fas fa-chart-line"></i> Run Regression
+                                    </button>
+                                </div>
+                                <div id="regression-results" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Adjust parameters to see regression effects</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="evaluation-metrics">
+                                <h4>Regression Evaluation Metrics</h4>
+                                <div class="metrics-grid">
+                                    <div class="metric">
+                                        <h5>Mean Squared Error (MSE)</h5>
+                                        <div class="formula">(1/n) Σ(yᵢ - ŷᵢ)²</div>
+                                        <p>Average squared difference</p>
+                                    </div>
+                                    <div class="metric">
+                                        <h5>Root MSE (RMSE)</h5>
+                                        <div class="formula">√MSE</div>
+                                        <p>In original units</p>
+                                    </div>
+                                    <div class="metric">
+                                        <h5>Mean Absolute Error (MAE)</h5>
+                                        <div class="formula">(1/n) Σ|yᵢ - ŷᵢ|</div>
+                                        <p>Average absolute difference</p>
+                                    </div>
+                                    <div class="metric">
+                                        <h5>R² Score</h5>
+                                        <div class="formula">1 - (SS_res/SS_tot)</div>
+                                        <p>Proportion of variance explained</p>
+                                    </div>
+                                    <div class="metric">
+                                        <h5>Adjusted R²</h5>
+                                        <div class="formula">1 - [(1-R²)(n-1)/(n-p-1)]</div>
+                                        <p>Accounts for number of predictors</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 17: Logistic Regression -->
+                    <section id="hour17" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">17</span> Logistic Regression</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Binary Classification</h3>
+                            <p>Logistic regression models the probability of a binary outcome using the logistic (sigmoid) function.</p>
+                            
+                            <div class="logistic-visual">
+                                <div class="sigmoid-explain">
+                                    <h4>Sigmoid Function</h4>
+                                    <div class="equation">
+                                        <div class="main-eq">σ(z) = 1 / (1 + e⁻ᶻ)</div>
+                                        <p>where z = β₀ + β₁x₁ + ... + βₙxₙ</p>
+                                    </div>
+                                    <div class="sigmoid-graph">
+                                        <div class="graph-labels">
+                                            <span class="label-left">0</span>
+                                            <span class="label-center">0.5</span>
+                                            <span class="label-right">1</span>
+                                        </div>
+                                        <div class="sigmoid-curve"></div>
+                                        <div class="decision-boundary">
+                                            <span>Decision Boundary (z=0)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="odds-ratio">
+                                    <h4>Odds and Log-Odds</h4>
+                                    <div class="conversion">
+                                        <div class="step">
+                                            <span>Probability → Odds</span>
+                                            <div class="formula">p/(1-p)</div>
+                                        </div>
+                                        <div class="step">
+                                            <span>Odds → Log-Odds</span>
+                                            <div class="formula">log(p/(1-p))</div>
+                                        </div>
+                                        <div class="step">
+                                            <span>Log-Odds = Linear Equation</span>
+                                            <div class="formula">log(p/(1-p)) = β₀ + β₁x</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Logistic Regression Implementation</span>
+                                </div>
+                                <pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, 
+                           f1_score, confusion_matrix, classification_report,
+                           roc_curve, roc_auc_score, precision_recall_curve)
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_classification
+
+# Example 1: Binary Classification
+print("=== Binary Logistic Regression ===")
+
+# Create synthetic binary classification dataset
+X, y = make_classification(
+    n_samples=1000,
+    n_features=2,
+    n_informative=2,
+    n_redundant=0,
+    n_classes=2,
+    random_state=42,
+    class_sep=1.5  # Separation between classes
+)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Standardize features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Create and train logistic regression
+log_reg = LogisticRegression(
+    penalty='l2',          # L2 regularization
+    C=1.0,                 # Inverse of regularization strength
+    solver='lbfgs',        # Optimization algorithm
+    max_iter=1000,
+    random_state=42
+)
+
+log_reg.fit(X_train_scaled, y_train)
+
+# Get parameters
+print(f"Intercept (β₀): {log_reg.intercept_[0]:.4f}")
+print(f"Coefficients: {log_reg.coef_[0]}")
+
+# Make predictions
+y_pred = log_reg.predict(X_test_scaled)
+y_pred_proba = log_reg.predict_proba(X_test_scaled)[:, 1]  # Probability of class 1
+
+# Evaluate model
+print("\n=== Model Evaluation ===")
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+print(f"Precision: {precision_score(y_test, y_pred):.4f}")
+print(f"Recall: {recall_score(y_test, y_pred):.4f}")
+print(f"F1-Score: {f1_score(y_test, y_pred):.4f}")
+print(f"AUC-ROC: {roc_auc_score(y_test, y_pred_proba):.4f}")
+
+# Confusion Matrix
+print("\n=== Confusion Matrix ===")
+cm = confusion_matrix(y_test, y_pred)
+print(f"True Negatives: {cm[0,0]}")
+print(f"False Positives: {cm[0,1]}")
+print(f"False Negatives: {cm[1,0]}")
+print(f"True Positives: {cm[1,1]}")
+
+# Detailed classification report
+print("\n=== Classification Report ===")
+print(classification_report(y_test, y_pred, target_names=['Class 0', 'Class 1']))
+
+# Visualize decision boundary
+plt.figure(figsize=(12, 5))
+
+# Plot 1: Data points with decision boundary
+plt.subplot(1, 2, 1)
+xx, yy = np.mgrid[-3:3:.01, -3:3:.01]
+grid = np.c_[xx.ravel(), yy.ravel()]
+probs = log_reg.predict_proba(scaler.transform(grid))[:, 1].reshape(xx.shape)
+
+contour = plt.contourf(xx, yy, probs, 25, cmap="RdBu", alpha=0.8)
+plt.colorbar(contour)
+plt.scatter(X_test_scaled[:, 0], X_test_scaled[:, 1], c=y_test, 
+            edgecolors="k", cmap="coolwarm", s=50)
+plt.xlabel("Feature 1 (standardized)")
+plt.ylabel("Feature 2 (standardized)")
+plt.title("Logistic Regression Decision Boundary")
+
+# Plot 2: ROC Curve
+plt.subplot(1, 2, 2)
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba)
+plt.plot(fpr, tpr, 'b-', label=f'Logistic Regression (AUC = {roc_auc_score(y_test, y_pred_proba):.2f})')
+plt.plot([0, 1], [0, 1], 'k--', label='Random Classifier')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.legend(loc='lower right')
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Example 2: Multinomial Logistic Regression (Multi-class)
+print("\n=== Multinomial Logistic Regression ===")
+
+# Create multi-class dataset
+X_multi, y_multi = make_classification(
+    n_samples=1500,
+    n_features=4,
+    n_informative=4,
+    n_redundant=0,
+    n_classes=3,
+    random_state=42
+)
+
+# Split data
+X_train_multi, X_test_multi, y_train_multi, y_test_multi = train_test_split(
+    X_multi, y_multi, test_size=0.3, random_state=42
+)
+
+# Standardize
+scaler_multi = StandardScaler()
+X_train_multi_scaled = scaler_multi.fit_transform(X_train_multi)
+X_test_multi_scaled = scaler_multi.transform(X_test_multi)
+
+# Create multinomial logistic regression
+multi_log_reg = LogisticRegression(
+    multi_class='multinomial',  # Use softmax for multi-class
+    solver='lbfgs',
+    max_iter=1000,
+    random_state=42
+)
+
+multi_log_reg.fit(X_train_multi_scaled, y_train_multi)
+
+# Evaluate
+y_pred_multi = multi_log_reg.predict(X_test_multi_scaled)
+accuracy_multi = accuracy_score(y_test_multi, y_pred_multi)
+
+print(f"Multi-class Accuracy: {accuracy_multi:.4f}")
+print(f"Number of classes: {len(multi_log_reg.classes_)}")
+
+# Get probabilities for each class
+y_pred_proba_multi = multi_log_reg.predict_proba(X_test_multi_scaled)
+print(f"\nProbability predictions (first 5 samples):")
+for i in range(min(5, len(y_pred_proba_multi))):
+    print(f"  Sample {i}: {y_pred_proba_multi[i].round(4)}")
+
+# Feature importance (coefficient magnitude)
+print("\n=== Feature Importance ===")
+for i, class_coef in enumerate(multi_log_reg.coef_):
+    print(f"\nClass {i} coefficients:")
+    for j, coef in enumerate(class_coef):
+        print(f"  Feature {j}: {coef:.4f}")
+
+# Cross-validation
+cv_scores = cross_val_score(multi_log_reg, X_train_multi_scaled, y_train_multi, 
+                           cv=5, scoring='accuracy')
+print(f"\nCross-validation scores: {cv_scores.round(4)}")
+print(f"Mean CV accuracy: {cv_scores.mean():.4f} (+/- {cv_scores.std()*2:.4f})")</code></pre>
+                            </div>
+                            
+                            <h4>Classification Metrics</h4>
+                            <div class="classification-metrics">
+                                <div class="metrics-grid-2">
+                                    <div class="metric-card">
+                                        <h5>Accuracy</h5>
+                                        <div class="formula">(TP+TN)/(TP+TN+FP+FN)</div>
+                                        <p>Overall correctness</p>
+                                    </div>
+                                    <div class="metric-card">
+                                        <h5>Precision</h5>
+                                        <div class="formula">TP/(TP+FP)</div>
+                                        <p>How many selected are relevant</p>
+                                    </div>
+                                    <div class="metric-card">
+                                        <h5>Recall (Sensitivity)</h5>
+                                        <div class="formula">TP/(TP+FN)</div>
+                                        <p>How many relevant are selected</p>
+                                    </div>
+                                    <div class="metric-card">
+                                        <h5>F1-Score</h5>
+                                        <div class="formula">2×(P×R)/(P+R)</div>
+                                        <p>Harmonic mean of precision & recall</p>
+                                    </div>
+                                    <div class="metric-card">
+                                        <h5>AUC-ROC</h5>
+                                        <div class="formula">Area under ROC curve</div>
+                                        <p>Overall performance across thresholds</p>
+                                    </div>
+                                    <div class="metric-card">
+                                        <h5>Log Loss</h5>
+                                        <div class="formula">-1/n Σ[y log(ŷ)+(1-y)log(1-ŷ)]</div>
+                                        <p>Penalizes confident wrong predictions</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Logistic Regression Threshold Adjuster</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="threshold">Classification Threshold:</label>
+                                        <input type="range" id="threshold" min="0" max="1" step="0.05" value="0.5">
+                                        <span id="threshold-value">0.5</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="class-separation">Class Separation:</label>
+                                        <select id="class-separation">
+                                            <option value="easy">Easy</option>
+                                            <option value="medium" selected>Medium</option>
+                                            <option value="hard">Hard</option>
+                                        </select>
+                                    </div>
+                                    <button onclick="simulateLogisticRegression()" class="btn">
+                                        <i class="fas fa-sliders-h"></i> Update Model
+                                    </button>
+                                </div>
+                                <div id="logistic-results" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Adjust threshold to see impact on metrics</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="use-cases">
+                                <h4>Common Use Cases</h4>
+                                <div class="use-cases-grid">
+                                    <div class="use-case">
+                                        <div class="use-case-icon">
+                                            <i class="fas fa-heartbeat"></i>
+                                        </div>
+                                        <h5>Medical Diagnosis</h5>
+                                        <p>Disease prediction from symptoms</p>
+                                    </div>
+                                    <div class="use-case">
+                                        <div class="use-case-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <h5>Fraud Detection</h5>
+                                        <p>Identify fraudulent transactions</p>
+                                    </div>
+                                    <div class="use-case">
+                                        <div class="use-case-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <h5>Spam Detection</h5>
+                                        <p>Classify emails as spam/ham</p>
+                                    </div>
+                                    <div class="use-case">
+                                        <div class="use-case-icon">
+                                            <i class="fas fa-thumbs-up"></i>
+                                        </div>
+                                        <h5>Customer Churn</h5>
+                                        <p>Predict which customers will leave</p>
+                                    </div>
+                                    <div class="use-case">
+                                        <div class="use-case-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <h5>Admission Prediction</h5>
+                                        <p>Predict college admission chances</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 18: Support Vector Machines (SVM) -->
+                    <section id="hour18" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">18</span> Support Vector Machines (SVM)</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Maximum Margin Classifier</h3>
+                            <p>SVM finds the optimal hyperplane that separates classes with the maximum margin.</p>
+                            
+                            <div class="svm-visual">
+                                <div class="svm-concepts">
+                                    <div class="concept-item">
+                                        <h5>Support Vectors</h5>
+                                        <p>Data points closest to the decision boundary</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h5>Margin</h5>
+                                        <p>Distance between decision boundary and support vectors</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h5>Hyperplane</h5>
+                                        <p>Decision boundary (n-1 dimensional)</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h5>Kernel Trick</h5>
+                                        <p>Projects data to higher dimensions</p>
+                                    </div>
+                                </div>
+                                <div class="svm-diagram">
+                                    <div class="margin-visual">
+                                        <div class="hyperplane"></div>
+                                        <div class="margin-boundary upper"></div>
+                                        <div class="margin-boundary lower"></div>
+                                        <div class="support-vector"></div>
+                                        <div class="data-point class1"></div>
+                                        <div class="data-point class2"></div>
+                                    </div>
+                                    <div class="diagram-labels">
+                                        <span class="label-margin">Margin</span>
+                                        <span class="label-hyperplane">Hyperplane</span>
+                                        <span class="label-support">Support Vector</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>SVM Implementation in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.svm import SVC, SVR, LinearSVC
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_classification, make_circles, make_moons
+from sklearn.inspection import DecisionBoundaryDisplay
+
+# Example 1: Linear SVM
+print("=== Linear SVM ===")
+
+# Create linearly separable data
+X_linear, y_linear = make_classification(
+    n_samples=200,
+    n_features=2,
+    n_informative=2,
+    n_redundant=0,
+    n_classes=2,
+    random_state=42,
+    class_sep=2.0  # Good separation for linear SVM
+)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X_linear, y_linear, test_size=0.3, random_state=42
+)
+
+# Standardize
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Create and train linear SVM
+linear_svm = SVC(kernel='linear', C=1.0, random_state=42)
+linear_svm.fit(X_train_scaled, y_train)
+
+# Evaluate
+y_pred = linear_svm.predict(X_test_scaled)
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"Accuracy: {accuracy:.4f}")
+print(f"Number of support vectors: {linear_svm.n_support_}")
+print(f"Support vectors per class: {linear_svm.n_support_}")
+
+# Get decision function values
+decision_values = linear_svm.decision_function(X_test_scaled)
+print(f"\nDecision function values (first 5): {decision_values[:5].round(4)}")
+
+# Visualize decision boundary
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Plot decision boundary and margins
+DecisionBoundaryDisplay.from_estimator(
+    linear_svm,
+    X_train_scaled,
+    ax=ax,
+    grid_resolution=50,
+    plot_method="contour",
+    colors="k",
+    levels=[-1, 0, 1],  # -1 and 1 for margin boundaries, 0 for decision boundary
+    alpha=0.5,
+    linestyles=["--", "-", "--"]
+)
+
+# Plot support vectors
+ax.scatter(
+    linear_svm.support_vectors_[:, 0],
+    linear_svm.support_vectors_[:, 1],
+    s=100,
+    linewidth=1,
+    facecolors="none",
+    edgecolors="k",
+    label="Support Vectors"
+)
+
+# Plot data points
+scatter = ax.scatter(
+    X_train_scaled[:, 0],
+    X_train_scaled[:, 1],
+    c=y_train,
+    cmap="coolwarm",
+    edgecolors="k",
+    s=50,
+    alpha=0.8
+)
+
+plt.xlabel("Feature 1 (standardized)")
+plt.ylabel("Feature 2 (standardized)")
+plt.title("Linear SVM Decision Boundary with Margins")
+plt.legend()
+plt.colorbar(scatter)
+plt.show()
+
+# Example 2: Non-linear SVM with RBF Kernel
+print("\n=== Non-linear SVM (RBF Kernel) ===")
+
+# Create non-linear data (concentric circles)
+X_circles, y_circles = make_circles(n_samples=200, factor=0.5, noise=0.1, random_state=42)
+
+# Split
+X_train_c, X_test_c, y_train_c, y_test_c = train_test_split(
+    X_circles, y_circles, test_size=0.3, random_state=42
+)
+
+# Standardize
+scaler_c = StandardScaler()
+X_train_c_scaled = scaler_c.fit_transform(X_train_c)
+X_test_c_scaled = scaler_c.transform(X_test_c)
+
+# Create SVM with RBF kernel
+rbf_svm = SVC(kernel='rbf', C=1.0, gamma='scale', random_state=42)
+rbf_svm.fit(X_train_c_scaled, y_train_c)
+
+# Evaluate
+y_pred_c = rbf_svm.predict(X_test_c_scaled)
+accuracy_c = accuracy_score(y_test_c, y_pred_c)
+
+print(f"Accuracy (RBF kernel): {accuracy_c:.4f}")
+print(f"Number of support vectors: {rbf_svm.n_support_}")
+print(f"Gamma parameter: {rbf_svm.gamma:.4f}")
+
+# Visualize
+fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+
+# Plot with linear kernel (for comparison)
+linear_svm_c = SVC(kernel='linear', C=1.0, random_state=42)
+linear_svm_c.fit(X_train_c_scaled, y_train_c)
+
+DecisionBoundaryDisplay.from_estimator(
+    linear_svm_c,
+    X_train_c_scaled,
+    ax=axes[0],
+    grid_resolution=50,
+    plot_method="contour",
+    cmap="coolwarm",
+    alpha=0.8
+)
+
+axes[0].scatter(
+    X_train_c_scaled[:, 0],
+    X_train_c_scaled[:, 1],
+    c=y_train_c,
+    cmap="coolwarm",
+    edgecolors="k",
+    s=50
+)
+axes[0].set_title("Linear Kernel (unsuitable for circles)")
+axes[0].set_xlabel("Feature 1")
+axes[0].set_ylabel("Feature 2")
+
+# Plot with RBF kernel
+DecisionBoundaryDisplay.from_estimator(
+    rbf_svm,
+    X_train_c_scaled,
+    ax=axes[1],
+    grid_resolution=50,
+    plot_method="contour",
+    cmap="coolwarm",
+    alpha=0.8
+)
+
+axes[1].scatter(
+    X_train_c_scaled[:, 0],
+    X_train_c_scaled[:, 1],
+    c=y_train_c,
+    cmap="coolwarm",
+    edgecolors="k",
+    s=50
+)
+axes[1].scatter(
+    rbf_svm.support_vectors_[:, 0],
+    rbf_svm.support_vectors_[:, 1],
+    s=100,
+    linewidth=1,
+    facecolors="none",
+    edgecolors="k",
+    label="Support Vectors"
+)
+axes[1].set_title("RBF Kernel (handles non-linearity)")
+axes[1].set_xlabel("Feature 1")
+axes[1].set_ylabel("Feature 2")
+axes[1].legend()
+
+plt.tight_layout()
+plt.show()
+
+# Example 3: SVM for Regression (SVR)
+print("\n=== Support Vector Regression (SVR) ===")
+
+# Create regression data
+np.random.seed(42)
+X_reg_svm = np.sort(5 * np.random.rand(100, 1), axis=0)
+y_reg_svm = np.sin(X_reg_svm).ravel() + np.random.randn(100) * 0.1
+
+# Create SVR models with different kernels
+svr_rbf = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=0.1)
+svr_linear = SVR(kernel='linear', C=100, epsilon=0.1)
+svr_poly = SVR(kernel='poly', C=100, degree=3, gamma='auto', epsilon=0.1)
+
+# Fit models
+svr_rbf.fit(X_reg_svm, y_reg_svm)
+svr_linear.fit(X_reg_svm, y_reg_svm)
+svr_poly.fit(X_reg_svm, y_reg_svm)
+
+# Predict
+X_test_svr = np.linspace(0, 5, 100)[:, np.newaxis]
+y_rbf = svr_rbf.predict(X_test_svr)
+y_linear = svr_linear.predict(X_test_svr)
+y_poly = svr_poly.predict(X_test_svr)
+
+print(f"Number of support vectors (RBF): {len(svr_rbf.support_)}")
+print(f"Number of support vectors (Linear): {len(svr_linear.support_)}")
+print(f"Number of support vectors (Poly): {len(svr_poly.support_)}")
+
+# Visualize
+plt.figure(figsize=(12, 4))
+
+kernels = ['RBF', 'Linear', 'Polynomial (degree=3)']
+predictions = [y_rbf, y_linear, y_poly]
+
+for i, (kernel_name, y_pred) in enumerate(zip(kernels, predictions)):
+    plt.subplot(1, 3, i+1)
+    plt.scatter(X_reg_svm, y_reg_svm, color='darkorange', alpha=0.5, label='data')
+    plt.plot(X_test_svr, y_pred, color='navy', lw=2, label='SVR prediction')
+    plt.scatter(X_reg_svm[svr_rbf.support_], y_reg_svm[svr_rbf.support_], 
+                facecolors="none", edgecolors="k", s=80, label='Support Vectors')
+    plt.xlabel('Feature')
+    plt.ylabel('Target')
+    plt.title(f'SVR with {kernel_name} Kernel')
+    plt.legend(loc='lower left')
+    plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Example 4: Hyperparameter Tuning with Grid Search
+print("\n=== SVM Hyperparameter Tuning ===")
+
+# Create moons dataset (non-linear, challenging)
+X_moons, y_moons = make_moons(n_samples=200, noise=0.2, random_state=42)
+
+# Define parameter grid for GridSearchCV
+param_grid = {
+    'C': [0.1, 1, 10, 100],
+    'gamma': ['scale', 'auto', 0.1, 1, 10],
+    'kernel': ['rbf', 'poly', 'sigmoid']
+}
+
+# Create GridSearchCV
+grid_search = GridSearchCV(
+    SVC(random_state=42),
+    param_grid,
+    cv=5,
+    scoring='accuracy',
+    n_jobs=-1,
+    verbose=1
+)
+
+grid_search.fit(X_moons, y_moons)
+
+print(f"Best parameters: {grid_search.best_params_}")
+print(f"Best cross-validation score: {grid_search.best_score_:.4f}")
+print(f"Best estimator: {grid_search.best_estimator_}")</code></pre>
+                            </div>
+                            
+                            <h4>SVM Kernels Comparison</h4>
+                            <div class="kernels-comparison">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Kernel</th>
+                                            <th>Function</th>
+                                            <th>Parameters</th>
+                                            <th>Best For</th>
+                                            <th>Complexity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Linear</strong></td>
+                                            <td>K(x,y) = x·y</td>
+                                            <td>C</td>
+                                            <td>Linearly separable data</td>
+                                            <td>Low</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Polynomial</strong></td>
+                                            <td>K(x,y) = (γx·y + r)^d</td>
+                                            <td>C, γ, d, r</td>
+                                            <td>Non-linear, moderate complexity</td>
+                                            <td>Medium</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>RBF</strong></td>
+                                            <td>K(x,y) = exp(-γ||x-y||²)</td>
+                                            <td>C, γ</td>
+                                            <td>Complex non-linear patterns</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sigmoid</strong></td>
+                                            <td>K(x,y) = tanh(γx·y + r)</td>
+                                            <td>C, γ, r</td>
+                                            <td>Neural network-like behavior</td>
+                                            <td>Medium</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>SVM Kernel Visualizer</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="kernel-type">Kernel Type:</label>
+                                        <select id="kernel-type">
+                                            <option value="linear">Linear</option>
+                                            <option value="rbf">RBF</option>
+                                            <option value="poly">Polynomial</option>
+                                            <option value="sigmoid">Sigmoid</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="c-param">C (Regularization):</label>
+                                        <input type="range" id="c-param" min="-2" max="3" step="0.5" value="0">
+                                        <span id="c-value">1.0</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="gamma-param">Gamma:</label>
+                                        <input type="range" id="gamma-param" min="-2" max="2" step="0.5" value="0" disabled>
+                                        <span id="gamma-value">scale</span>
+                                    </div>
+                                    <button onclick="visualizeSVM()" class="btn">
+                                        <i class="fas fa-eye"></i> Visualize
+                                    </button>
+                                </div>
+                                <div id="svm-visualization" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Select kernel type and adjust parameters</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="svm-tips">
+                                <h4>SVM Tips and Best Practices</h4>
+                                <div class="tips-grid">
+                                    <div class="tip">
+                                        <h5>Data Scaling</h5>
+                                        <p>Always scale features before SVM (SVM is distance-based)</p>
+                                    </div>
+                                    <div class="tip">
+                                        <h5>Parameter C</h5>
+                                        <p>Small C: wider margin, more misclassifications. Large C: narrower margin, fewer misclassifications</p>
+                                    </div>
+                                    <div class="tip">
+                                        <h5>Kernel Choice</h5>
+                                        <p>Try linear first, then RBF. Polynomial kernels often overfit</p>
+                                    </div>
+                                    <div class="tip">
+                                        <h5>Gamma (RBF)</h5>
+                                        <p>Small gamma: far influence. Large gamma: close influence</p>
+                                    </div>
+                                    <div class="tip">
+                                        <h5>Large Datasets</h5>
+                                        <p>SVM is memory-intensive. Use LinearSVC for large datasets</p>
+                                    </div>
+                                    <div class="tip">
+                                        <h5>Class Imbalance</h5>
+                                        <p>Use class_weight parameter to handle imbalance</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 19: Clustering -->
+                    <section id="hour19" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">19</span> Clustering Algorithms</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Unsupervised Learning for Pattern Discovery</h3>
+                            <p>Clustering groups similar data points together without predefined labels.</p>
+                            
+                            <div class="clustering-overview">
+                                <div class="clustering-types">
+                                    <div class="clustering-type">
+                                        <div class="type-icon centroid"></div>
+                                        <h5>Centroid-based</h5>
+                                        <p>K-Means, K-Medoids</p>
+                                    </div>
+                                    <div class="clustering-type">
+                                        <div class="type-icon hierarchical"></div>
+                                        <h5>Hierarchical</h5>
+                                        <p>Agglomerative, Divisive</p>
+                                    </div>
+                                    <div class="clustering-type">
+                                        <div class="type-icon density"></div>
+                                        <h5>Density-based</h5>
+                                        <p>DBSCAN, OPTICS</p>
+                                    </div>
+                                    <div class="clustering-type">
+                                        <div class="type-icon distribution"></div>
+                                        <h5>Distribution-based</h5>
+                                        <p>Gaussian Mixture</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Clustering Algorithms Implementation</span>
+                                </div>
+                                <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
+from sklearn.mixture import GaussianMixture
+from sklearn.datasets import make_blobs, make_moons, make_circles
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+# Example 1: K-Means Clustering
+print("=== K-Means Clustering ===")
+
+# Create synthetic data with 3 clusters
+X_blobs, y_true = make_blobs(
+    n_samples=300,
+    centers=3,
+    cluster_std=0.8,
+    random_state=42
+)
+
+# Visualize true clusters
+plt.figure(figsize=(15, 10))
+
+# Plot 1: True clusters
+plt.subplot(2, 3, 1)
+plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_true, cmap='viridis', alpha=0.7)
+plt.title("True Clusters")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+
+# Plot 2: K-Means with different k values
+for i, k in enumerate([2, 3, 4], start=2):
+    plt.subplot(2, 3, i)
+    
+    # Apply K-Means
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    y_pred = kmeans.fit_predict(X_blobs)
+    
+    # Plot clusters
+    plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_pred, cmap='viridis', alpha=0.7)
+    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],
+                s=200, c='red', marker='X', label='Centroids')
+    plt.title(f"K-Means (k={k})")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+    plt.legend()
+
+# Plot 3: Elbow Method
+plt.subplot(2, 3, 5)
+inertias = []
+K_range = range(1, 11)
+
+for k in K_range:
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(X_blobs)
+    inertias.append(kmeans.inertia_)
+
+plt.plot(K_range, inertias, 'bo-')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method')
+plt.grid(True, alpha=0.3)
+
+# Plot 4: Silhouette Scores
+plt.subplot(2, 3, 6)
+silhouette_scores = []
+
+for k in range(2, 11):
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    y_pred = kmeans.fit_predict(X_blobs)
+    silhouette_scores.append(silhouette_score(X_blobs, y_pred))
+
+plt.plot(range(2, 11), silhouette_scores, 'go-')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Silhouette Score')
+plt.title('Silhouette Analysis')
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Evaluate K-Means
+kmeans_best = KMeans(n_clusters=3, random_state=42, n_init=10)
+y_pred_best = kmeans_best.fit_predict(X_blobs)
+
+print(f"Number of clusters: {kmeans_best.n_clusters}")
+print(f"Inertia: {kmeans_best.inertia_:.2f}")
+print(f"Number of iterations: {kmeans_best.n_iter_}")
+print(f"Silhouette Score: {silhouette_score(X_blobs, y_pred_best):.3f}")
+print(f"Calinski-Harabasz Score: {calinski_harabasz_score(X_blobs, y_pred_best):.2f}")
+print(f"Davies-Bouldin Score: {davies_bouldin_score(X_blobs, y_pred_best):.3f}")
+
+# Example 2: DBSCAN (Density-Based Clustering)
+print("\n=== DBSCAN Clustering ===")
+
+# Create data with varying density and noise
+X_moons, _ = make_moons(n_samples=300, noise=0.05, random_state=42)
+X_circles, _ = make_circles(n_samples=300, factor=0.5, noise=0.05, random_state=42)
+X_blobs_noise, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.8, random_state=42)
+X_noise = np.random.randn(50, 2) * 0.5 + np.array([2, 2])
+X_dbscan = np.vstack([X_moons, X_circles, X_blobs_noise, X_noise])
+
+# Standardize
+scaler = StandardScaler()
+X_dbscan_scaled = scaler.fit_transform(X_dbscan)
+
+# Apply DBSCAN
+dbscan = DBSCAN(eps=0.3, min_samples=5)
+y_dbscan = dbscan.fit_predict(X_dbscan_scaled)
+
+# Count clusters (excluding noise points labeled as -1)
+n_clusters = len(set(y_dbscan)) - (1 if -1 in y_dbscan else 0)
+n_noise = list(y_dbscan).count(-1)
+
+print(f"Number of clusters found: {n_clusters}")
+print(f"Number of noise points: {n_noise}")
+print(f"Core sample indices shape: {dbscan.core_sample_indices_.shape}")
+print(f"Components with labels: {dbscan.components_.shape}")
+
+# Visualize DBSCAN results
+plt.figure(figsize=(10, 8))
+
+# Create unique colors for clusters
+unique_labels = set(y_dbscan)
+colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
+
+for k, col in zip(unique_labels, colors):
+    if k == -1:
+        # Black used for noise
+        col = [0, 0, 0, 1]
+        label = 'Noise'
+    else:
+        label = f'Cluster {k}'
+    
+    class_member_mask = (y_dbscan == k)
+    xy = X_dbscan_scaled[class_member_mask]
+    plt.scatter(xy[:, 0], xy[:, 1], s=50, c=[col], alpha=0.7, edgecolors='k', label=label)
+
+plt.title(f'DBSCAN Clustering\nEstimated number of clusters: {n_clusters}')
+plt.xlabel('Feature 1 (standardized)')
+plt.ylabel('Feature 2 (standardized)')
+plt.legend(loc='upper right')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Example 3: Hierarchical Clustering
+print("\n=== Hierarchical Clustering ===")
+
+# Use smaller dataset for hierarchical clustering
+X_hier, _ = make_blobs(n_samples=50, centers=3, cluster_std=0.8, random_state=42)
+
+# Perform hierarchical clustering
+linkage_matrix = linkage(X_hier, method='ward')
+
+# Plot dendrogram
+plt.figure(figsize=(12, 5))
+plt.subplot(1, 2, 1)
+dendrogram(linkage_matrix, truncate_mode='level', p=5)
+plt.title('Dendrogram')
+plt.xlabel('Sample index')
+plt.ylabel('Distance')
+
+# Apply Agglomerative Clustering
+agg_clustering = AgglomerativeClustering(n_clusters=3, linkage='ward')
+y_agg = agg_clustering.fit_predict(X_hier)
+
+# Plot clusters
+plt.subplot(1, 2, 2)
+plt.scatter(X_hier[:, 0], X_hier[:, 1], c=y_agg, cmap='viridis', alpha=0.7)
+plt.title('Agglomerative Clustering (k=3)')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+
+plt.tight_layout()
+plt.show()
+
+print(f"Number of clusters: {agg_clustering.n_clusters_}")
+print(f"Number of leaves: {agg_clustering.n_leaves_}")
+print(f"Children shape: {agg_clustering.children_.shape}")
+
+# Example 4: Gaussian Mixture Models (GMM)
+print("\n=== Gaussian Mixture Models ===")
+
+# Create data with overlapping clusters
+X_gmm, y_gmm_true = make_blobs(n_samples=300, centers=3, cluster_std=1.5, random_state=42)
+
+# Apply GMM
+gmm = GaussianMixture(n_components=3, random_state=42)
+y_gmm_pred = gmm.fit_predict(X_gmm)
+
+# Get probabilities
+proba = gmm.predict_proba(X_gmm)
+
+print(f"Number of components: {gmm.n_components}")
+print(f"Converged: {gmm.converged_}")
+print(f"Number of iterations: {gmm.n_iter_}")
+print(f"Weights: {gmm.weights_.round(3)}")
+print(f"Means:\n{gmm.means_.round(3)}")
+print(f"Covariances shape: {gmm.covariances_.shape}")
+
+# BIC and AIC scores
+print(f"BIC: {gmm.bic(X_gmm):.2f}")
+print(f"AIC: {gmm.aic(X_gmm):.2f}")
+
+# Visualize GMM results
+plt.figure(figsize=(12, 5))
+
+# Plot 1: True labels
+plt.subplot(1, 2, 1)
+plt.scatter(X_gmm[:, 0], X_gmm[:, 1], c=y_gmm_true, cmap='viridis', alpha=0.7)
+plt.title("True Clusters")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+
+# Plot 2: GMM predictions
+plt.subplot(1, 2, 2)
+plt.scatter(X_gmm[:, 0], X_gmm[:, 1], c=y_gmm_pred, cmap='viridis', alpha=0.7)
+
+# Plot ellipses for each component
+from matplotlib.patches import Ellipse
+
+for i in range(gmm.n_components):
+    # Get covariance matrix
+    covariances = gmm.covariances_[i][:2, :2]
+    
+    # Get eigenvalues and eigenvectors
+    eigvals, eigvecs = np.linalg.eigh(covariances)
+    
+    # Calculate ellipse parameters
+    order = eigvals.argsort()[::-1]
+    eigvals, eigvecs = eigvals[order], eigvecs[:, order]
+    vx, vy = eigvecs[:, 0][0], eigvecs[:, 0][1]
+    angle = np.arctan2(vy, vx)
+    angle = np.degrees(angle)
+    
+    # 95% confidence ellipse
+    width, height = 2 * np.sqrt(5.991 * eigvals)
+    ellipse = Ellipse(gmm.means_[i, :2], width, height, angle=angle,
+                     edgecolor='red', facecolor='none', linewidth=2)
+    plt.gca().add_patch(ellipse)
+
+plt.title("GMM Clusters with 95% Confidence Ellipses")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+
+plt.tight_layout()
+plt.show()
+
+# Compare different clustering algorithms
+print("\n=== Clustering Algorithms Comparison ===")
+
+# Prepare data for comparison
+X_compare, _ = make_blobs(n_samples=500, centers=4, cluster_std=1.0, random_state=42)
+X_compare_scaled = StandardScaler().fit_transform(X_compare)
+
+# Define algorithms to compare
+algorithms = {
+    'K-Means (k=4)': KMeans(n_clusters=4, random_state=42, n_init=10),
+    'DBSCAN': DBSCAN(eps=0.3, min_samples=10),
+    'Agglomerative (k=4)': AgglomerativeClustering(n_clusters=4),
+    'GMM (k=4)': GaussianMixture(n_components=4, random_state=42)
+}
+
+results = []
+
+for name, algorithm in algorithms.items():
+    # Fit algorithm
+    if name == 'DBSCAN':
+        labels = algorithm.fit_predict(X_compare_scaled)
+        # For DBSCAN, exclude noise from evaluation
+        mask = labels != -1
+        if np.sum(mask) > 0:
+            silhouette = silhouette_score(X_compare_scaled[mask], labels[mask])
+            n_clusters = len(set(labels[mask]))
+        else:
+            silhouette = -1
+            n_clusters = 0
+    else:
+        if hasattr(algorithm, 'fit_predict'):
+            labels = algorithm.fit_predict(X_compare_scaled)
+        else:
+            algorithm.fit(X_compare_scaled)
+            labels = algorithm.predict(X_compare_scaled)
+        
+        if len(set(labels)) > 1:
+            silhouette = silhouette_score(X_compare_scaled, labels)
+        else:
+            silhouette = -1
+        n_clusters = len(set(labels))
+    
+    results.append({
+        'Algorithm': name,
+        'Clusters': n_clusters,
+        'Silhouette': silhouette
+    })
+
+# Display comparison
+print("\nComparison of Clustering Algorithms:")
+print("-" * 50)
+print(f"{'Algorithm':<20} {'Clusters':<10} {'Silhouette':<10}")
+print("-" * 50)
+for result in results:
+    print(f"{result['Algorithm']:<20} {result['Clusters']:<10} {result['Silhouette']:.4f}")</code></pre>
+                            </div>
+                            
+                            <h4>Choosing the Right Clustering Algorithm</h4>
+                            <div class="algorithm-selection">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Algorithm</th>
+                                            <th>When to Use</th>
+                                            <th>Pros</th>
+                                            <th>Cons</th>
+                                            <th>Complexity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>K-Means</strong></td>
+                                            <td>Spherical clusters, similar size</td>
+                                            <td>Fast, scalable, simple</td>
+                                            <td>Requires k, sensitive to outliers</td>
+                                            <td>O(nk)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>DBSCAN</strong></td>
+                                            <td>Arbitrary shapes, noise present</td>
+                                            <td>No need for k, handles noise</td>
+                                            <td>Sensitive to parameters, not for varying density</td>
+                                            <td>O(n log n)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Hierarchical</strong></td>
+                                            <td>Hierarchical structure needed</td>
+                                            <td>Visual dendrogram, no need for k</td>
+                                            <td>Computationally expensive</td>
+                                            <td>O(n²)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>GMM</strong></td>
+                                            <td>Overlapping clusters</td>
+                                            <td>Soft clustering, probabilistic</td>
+                                            <td>Slow, sensitive to initialization</td>
+                                            <td>O(nk²)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Clustering Playground</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="dataset-type">Dataset Type:</label>
+                                        <select id="dataset-type">
+                                            <option value="blobs">Blobs</option>
+                                            <option value="moons">Moons</option>
+                                            <option value="circles">Circles</option>
+                                            <option value="anisotropic">Anisotropic</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="algorithm">Algorithm:</label>
+                                        <select id="algorithm">
+                                            <option value="kmeans">K-Means</option>
+                                            <option value="dbscan">DBSCAN</option>
+                                            <option value="hierarchical">Hierarchical</option>
+                                            <option value="gmm">GMM</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="n-clusters">Clusters (k):</label>
+                                        <input type="number" id="n-clusters" value="3" min="2" max="10">
+                                    </div>
+                                    <button onclick="runClustering()" class="btn">
+                                        <i class="fas fa-project-diagram"></i> Cluster Data
+                                    </button>
+                                </div>
+                                <div id="clustering-results" class="demo-output">
+                                    <div class="results-placeholder">
+                                        <p>Select dataset and algorithm to visualize clustering</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="clustering-metrics">
+                                <h4>Clustering Evaluation Metrics</h4>
+                                <div class="metrics-grid-3">
+                                    <div class="metric-item">
+                                        <h5>Silhouette Score</h5>
+                                        <div class="formula">(b-a)/max(a,b)</div>
+                                        <p>Measures cohesion and separation</p>
+                                        <p><strong>Range:</strong> -1 to 1</p>
+                                    </div>
+                                    <div class="metric-item">
+                                        <h5>Calinski-Harabasz</h5>
+                                        <div class="formula">SSB/(k-1) / SSW/(n-k)</div>
+                                        <p>Between vs within cluster dispersion</p>
+                                        <p><strong>Higher is better</strong></p>
+                                    </div>
+                                    <div class="metric-item">
+                                        <h5>Davies-Bouldin</h5>
+                                        <div class="formula">(1/k) Σ max[(sᵢ+sⱼ)/d(cᵢ,cⱼ)]</div>
+                                        <p>Average similarity between clusters</p>
+                                        <p><strong>Lower is better</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="clustering-applications">
+                                <h4>Real-world Applications</h4>
+                                <div class="applications-grid">
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h5>Customer Segmentation</h5>
+                                        <p>Group customers by purchasing behavior</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                        <h5>Image Segmentation</h5>
+                                        <p>Group pixels with similar characteristics</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-dna"></i>
+                                        </div>
+                                        <h5>Gene Expression</h5>
+                                        <p>Cluster genes with similar expression</p>
+                                    </div>
+                                    <div class="application">
+                                        <div class="app-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <h5>Anomaly Detection</h5>
+                                        <p>Identify outliers as separate clusters</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Practice Exercises -->
+                    <section id="practice" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-laptop-code"></i> Practice Exercises</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Apply ML Algorithms</h3>
+                            <p>Solve these exercises to practice implementing machine learning algorithms.</p>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 1: Decision Tree Analysis</h4>
+                                    <span class="difficulty-badge medium">Medium</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Use the Iris dataset to:</p>
+                                    <ol>
+                                        <li>Train a decision tree classifier with different max_depth values (1-10)</li>
+                                        <li>Plot accuracy vs tree depth for both training and test sets</li>
+                                        <li>Find the optimal depth that prevents overfitting</li>
+                                        <li>Visualize the tree with the optimal depth</li>
+                                        <li>Analyze feature importance and explain which features are most discriminative</li>
+                                        <li>Compare Gini vs Entropy criteria</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('ml-solution1')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="ml-solution1" class="solution-content">
+                                            <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load data
+iris = load_iris()
+X, y = iris.data, iris.target
+feature_names = iris.feature_names
+target_names = iris.target_names
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Experiment with different depths
+depths = range(1, 11)
+train_scores = []
+test_scores = []
+
+for depth in depths:
+    # Train decision tree
+    clf = DecisionTreeClassifier(max_depth=depth, random_state=42)
+    clf.fit(X_train, y_train)
+    
+    # Evaluate
+    train_pred = clf.predict(X_train)
+    test_pred = clf.predict(X_test)
+    
+    train_scores.append(accuracy_score(y_train, train_pred))
+    test_scores.append(accuracy_score(y_test, test_pred))
+
+# Plot results
+plt.figure(figsize=(10, 6))
+plt.plot(depths, train_scores, 'bo-', label='Training Accuracy')
+plt.plot(depths, test_scores, 'ro-', label='Test Accuracy')
+plt.xlabel('Tree Depth')
+plt.ylabel('Accuracy')
+plt.title('Decision Tree Performance vs Depth')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Find optimal depth (where test accuracy peaks)
+optimal_depth = depths[np.argmax(test_scores)]
+print(f"Optimal tree depth: {optimal_depth}")
+print(f"Test accuracy at optimal depth: {test_scores[optimal_depth-1]:.4f}")
+
+# Train with optimal depth
+optimal_clf = DecisionTreeClassifier(max_depth=optimal_depth, random_state=42)
+optimal_clf.fit(X_train, y_train)
+
+# Visualize tree
+plt.figure(figsize=(12, 8))
+plot_tree(optimal_clf, 
+          feature_names=feature_names,
+          class_names=target_names,
+          filled=True,
+          rounded=True)
+plt.title(f"Decision Tree (Depth={optimal_depth})")
+plt.show()
+
+# Feature importance
+print("\nFeature Importance:")
+for name, importance in zip(feature_names, optimal_clf.feature_importances_):
+    print(f"{name}: {importance:.4f}")
+
+# Compare criteria
+print("\n=== Gini vs Entropy Comparison ===")
+criteria = ['gini', 'entropy']
+for criterion in criteria:
+    clf_crit = DecisionTreeClassifier(criterion=criterion, max_depth=optimal_depth, random_state=42)
+    clf_crit.fit(X_train, y_train)
+    accuracy = accuracy_score(y_test, clf_crit.predict(X_test))
+    print(f"{criterion.capitalize()} criterion - Accuracy: {accuracy:.4f}")
+    print(f"Feature importance: {clf_crit.feature_importances_.round(4)}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 2: Regression Model Comparison</h4>
+                                    <span class="difficulty-badge hard">Hard</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Compare different regression models on the Boston Housing dataset:</p>
+                                    <ol>
+                                        <li>Load and preprocess the Boston Housing dataset</li>
+                                        <li>Implement Linear Regression, Ridge, and Lasso regression</li>
+                                        <li>Use cross-validation to tune hyperparameters</li>
+                                        <li>Compare models using MSE, R², and MAE</li>
+                                        <li>Analyze feature importance for each model</li>
+                                        <li>Visualize predictions vs actual values</li>
+                                        <li>Discuss when to use each type of regression</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('ml-solution2')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="ml-solution2" class="solution-content">
+                                            <pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import fetch_california_housing
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+# Load California Housing dataset (Boston dataset is deprecated)
+housing = fetch_california_housing()
+X, y = housing.data, housing.target
+feature_names = housing.feature_names
+
+print(f"Dataset shape: {X.shape}")
+print(f"Features: {feature_names}")
+print(f"Target: Median house value")
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create pipelines for different models
+pipelines = {
+    'Linear': Pipeline([
+        ('scaler', StandardScaler()),
+        ('model', LinearRegression())
+    ]),
+    'Ridge': Pipeline([
+        ('scaler', StandardScaler()),
+        ('model', Ridge())
+    ]),
+    'Lasso': Pipeline([
+        ('scaler', StandardScaler()),
+        ('model', Lasso())
+    ])
+}
+
+# Hyperparameter grids
+param_grids = {
+    'Ridge': {'model__alpha': [0.01, 0.1, 1, 10, 100]},
+    'Lasso': {'model__alpha': [0.001, 0.01, 0.1, 1, 10]}
+}
+
+results = []
+
+# Train and evaluate each model
+for name, pipeline in pipelines.items():
+    print(f"\n=== {name} Regression ===")
+    
+    if name in param_grids:
+        # Use GridSearchCV for hyperparameter tuning
+        grid_search = GridSearchCV(
+            pipeline,
+            param_grids[name],
+            cv=5,
+            scoring='neg_mean_squared_error',
+            n_jobs=-1
+        )
+        grid_search.fit(X_train, y_train)
+        best_model = grid_search.best_estimator_
+        print(f"Best parameters: {grid_search.best_params_}")
+    else:
+        # Linear regression has no hyperparameters
+        pipeline.fit(X_train, y_train)
+        best_model = pipeline
+    
+    # Make predictions
+    y_pred = best_model.predict(X_test)
+    
+    # Calculate metrics
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    mae = mean_absolute_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    
+    # Cross-validation scores
+    cv_scores = cross_val_score(best_model, X_train, y_train, 
+                               cv=5, scoring='neg_mean_squared_error')
+    cv_mean = -cv_scores.mean()
+    cv_std = cv_scores.std()
+    
+    # Store results
+    results.append({
+        'Model': name,
+        'MSE': mse,
+        'RMSE': rmse,
+        'MAE': mae,
+        'R²': r2,
+        'CV MSE': cv_mean,
+        'CV Std': cv_std
+    })
+    
+    print(f"MSE: {mse:.4f}")
+    print(f"RMSE: {rmse:.4f}")
+    print(f"MAE: {mae:.4f}")
+    print(f"R²: {r2:.4f}")
+    print(f"CV MSE: {cv_mean:.4f} (+/- {cv_std*2:.4f})")
+
+# Compare models
+results_df = pd.DataFrame(results)
+print("\n=== Model Comparison ===")
+print(results_df.to_string(index=False))
+
+# Visualize predictions vs actual
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Plot 1: Predictions vs Actual
+for idx, (name, pipeline) in enumerate(pipelines.items()):
+    row = idx // 2
+    col = idx % 2
+    
+    if name in param_grids:
+        model = GridSearchCV(pipeline, param_grids[name], cv=5).fit(X_train, y_train).best_estimator_
+    else:
+        model = pipeline.fit(X_train, y_train)
+    
+    y_pred = model.predict(X_test)
+    
+    axes[row, col].scatter(y_test, y_pred, alpha=0.5)
+    axes[row, col].plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 
+                       'r--', lw=2, label='Perfect Prediction')
+    axes[row, col].set_xlabel('Actual Values')
+    axes[row, col].set_ylabel('Predicted Values')
+    axes[row, col].set_title(f'{name} Regression')
+    axes[row, col].legend()
+    axes[row, col].grid(True, alpha=0.3)
+
+# Plot 2: Residuals
+axes[1, 1].clear()
+for name, pipeline in pipelines.items():
+    if name in param_grids:
+        model = GridSearchCV(pipeline, param_grids[name], cv=5).fit(X_train, y_train).best_estimator_
+    else:
+        model = pipeline.fit(X_train, y_train)
+    
+    y_pred = model.predict(X_test)
+    residuals = y_test - y_pred
+    axes[1, 1].scatter(y_pred, residuals, alpha=0.5, label=name)
+
+axes[1, 1].axhline(y=0, color='r', linestyle='--')
+axes[1, 1].set_xlabel('Predicted Values')
+axes[1, 1].set_ylabel('Residuals')
+axes[1, 1].set_title('Residual Plot')
+axes[1, 1].legend()
+axes[1, 1].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Feature importance analysis
+print("\n=== Feature Importance Analysis ===")
+for name in ['Ridge', 'Lasso']:
+    if name in param_grids:
+        grid_search = GridSearchCV(pipelines[name], param_grids[name], cv=5)
+        grid_search.fit(X_train, y_train)
+        best_model = grid_search.best_estimator_.named_steps['model']
+        
+        # Get coefficients (absolute values for importance)
+        coefficients = np.abs(best_model.coef_)
+        importance_df = pd.DataFrame({
+            'Feature': feature_names,
+            'Coefficient': best_model.coef_,
+            'Absolute Importance': coefficients
+        }).sort_values('Absolute Importance', ascending=False)
+        
+        print(f"\n{name} Regression - Feature Importance:")
+        print(importance_df.to_string(index=False))
+        
+        # Plot feature importance
+        plt.figure(figsize=(10, 6))
+        plt.barh(range(len(feature_names)), coefficients)
+        plt.yticks(range(len(feature_names)), feature_names)
+        plt.xlabel('Absolute Coefficient Value')
+        plt.title(f'{name} Regression Feature Importance')
+        plt.tight_layout()
+        plt.show()</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Resources -->
+                    <section id="resources" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-book"></i> Additional Resources</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Further ML Learning</h3>
+                            
+                            <div class="resource-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h4>Recommended Books</h4>
+                                    <ul>
+                                        <li>Hands-On Machine Learning (Aurélien Géron)</li>
+                                        <li>Pattern Recognition and ML (Christopher Bishop)</li>
+                                        <li>Introduction to Statistical Learning</li>
+                                        <li>ML Yearning (Andrew Ng)</li>
+                                        <li>Python ML Cookbook</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h4>Online Courses</h4>
+                                    <ul>
+                                        <li>ML by Andrew Ng (Coursera)</li>
+                                        <li>Advanced ML Specialization</li>
+                                        <li>Deep Learning Specialization</li>
+                                        <li>ML with Python (DataCamp)</li>
+                                        <li>ML Crash Course (Google)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>Practice Platforms</h4>
+                                    <ul>
+                                        <li>Kaggle Competitions</li>
+                                        <li>ML Challenges on DrivenData</li>
+                                        <li>HackerRank ML Track</li>
+                                        <li>LeetCode ML Problems</li>
+                                        <li>Google Colab Notebooks</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Project Ideas</h4>
+                                    <ul>
+                                        <li>House Price Prediction</li>
+                                        <li>Customer Churn Analysis</li>
+                                        <li>Image Classification</li>
+                                        <li>Sentiment Analysis</li>
+                                        <li>Recommendation System</li>
+                                        <li>Anomaly Detection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="algorithm-cheatsheet">
+                                <h4><i class="fas fa-scroll"></i> ML Algorithm Cheat Sheet</h4>
+                                <div class="cheatsheet-grid">
+                                    <div class="cheatsheet-section">
+                                        <h5>When to Use What?</h5>
+                                        <ul>
+                                            <li><strong>Linear Regression:</strong> Predicting continuous values</li>
+                                            <li><strong>Logistic Regression:</strong> Binary classification</li>
+                                            <li><strong>Decision Trees:</strong> Interpretable classification/regression</li>
+                                            <li><strong>SVM:</strong> High-dimensional, small to medium datasets</li>
+                                            <li><strong>K-Means:</strong> Customer segmentation, pattern discovery</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Common Pitfalls</h5>
+                                        <ul>
+                                            <li>Not scaling features for distance-based algorithms</li>
+                                            <li>Overfitting with complex models</li>
+                                            <li>Ignoring class imbalance</li>
+                                            <li>Not validating assumptions</li>
+                                            <li>Data leakage in preprocessing</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Key Parameters</h5>
+                                        <ul>
+                                            <li><strong>Decision Trees:</strong> max_depth, min_samples_split</li>
+                                            <li><strong>SVM:</strong> C, gamma, kernel</li>
+                                            <li><strong>K-Means:</strong> n_clusters, init</li>
+                                            <li><strong>Regularization:</strong> alpha (Ridge/Lasso)</li>
+                                            <li><strong>Logistic Regression:</strong> C, penalty</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheatsheet-section">
+                                        <h5>Evaluation Metrics</h5>
+                                        <ul>
+                                            <li><strong>Regression:</strong> MSE, RMSE, R², MAE</li>
+                                            <li><strong>Classification:</strong> Accuracy, Precision, Recall, F1, AUC-ROC</li>
+                                            <li><strong>Clustering:</strong> Silhouette, Davies-Bouldin</li>
+                                            <li><strong>General:</strong> Cross-validation, Learning Curves</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pro-tip">
+                                <h4><i class="fas fa-lightbulb"></i> Pro Tip: ML Workflow</h4>
+                                <ol>
+                                    <li><strong>Understand the Problem:</strong> Is it regression, classification, or clustering?</li>
+                                    <li><strong>Explore and Clean Data:</strong> Handle missing values, outliers, and imbalances</li>
+                                    <li><strong>Feature Engineering:</strong> Create relevant features, scale/normalize</li>
+                                    <li><strong>Start Simple:</strong> Begin with baseline models (linear/logistic regression)</li>
+                                    <li><strong>Evaluate Properly:</strong> Use cross-validation, appropriate metrics</li>
+                                    <li><strong>Tune Hyperparameters:</strong> Grid search, random search, Bayesian optimization</li>
+                                    <li><strong>Ensemble Methods:</strong> Combine models for better performance</li>
+                                    <li><strong>Interpret Results:</strong> Understand feature importance, model limitations</li>
+                                </ol>
+                                <p>Remember: No free lunch theorem - no single algorithm works best for all problems!</p>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4><i class="fas fa-arrow-right"></i> Next Steps in Curriculum</h4>
+                                <div class="next-topics">
+                                    <div class="topic-preview">
+                                        <h5>Module 6: Advanced ML</h5>
+                                        <p>Ensemble methods, neural networks, deep learning.</p>
+                                        <span class="duration">8 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 7: Model Deployment</h5>
+                                        <p>MLOps, model serving, monitoring.</p>
+                                        <span class="duration">4 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 8: Capstone Project</h5>
+                                        <p>End-to-end ML project implementation.</p>
+                                        <span class="duration">10 hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Comprehensive learning resource for BCA students</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#topics">All Topics</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: aiguide@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide for BCA Students. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Machine Learning Algorithms JavaScript
+        
+        // Decision Tree Simulation
+        function simulateDecisionTree() {
+            const depth = parseInt(document.getElementById('tree-depth').value);
+            const criterion = document.getElementById('criterion').value;
+            const minSamples = parseInt(document.getElementById('min-samples').value);
+            
+            // Simulate training
+            const accuracy = 0.85 + (Math.random() * 0.1 - 0.05); // Random accuracy 80-90%
+            const nLeaves = Math.pow(2, depth - 1) + Math.floor(Math.random() * 3);
+            
+            const results = `
+                <div class="tree-simulation">
+                    <h5>Decision Tree Results</h5>
+                    <div class="simulation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Max Depth:</span>
+                            <span class="stat-value">${depth}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Criterion:</span>
+                            <span class="stat-value">${criterion}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Min Samples Split:</span>
+                            <span class="stat-value">${minSamples}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value">${(accuracy * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Number of Leaves:</span>
+                            <span class="stat-value">${nLeaves}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-insights">
+                        <h6>Insights:</h6>
+                        <ul>
+                            <li>${depth <= 3 ? '✅ Good depth - prevents overfitting' : '⚠️ Deep tree - risk of overfitting'}</li>
+                            <li>${criterion === 'gini' ? 'Using Gini - computationally efficient' : 'Using Entropy - produces balanced splits'}</li>
+                            <li>${minSamples > 2 ? '✅ High min_samples prevents overfitting' : '⚠️ Low min_samples may cause overfitting'}</li>
+                            <li>${accuracy > 0.88 ? '✅ Good model performance' : '📊 Average model performance'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tree-recommendation">
+                        <h6>Recommendation:</h6>
+                        <p>For better performance, try:</p>
+                        <ul>
+                            <li>Pruning the tree (set max_depth to ${Math.max(3, depth - 2)})</li>
+                            <li>Using cross-validation to tune hyperparameters</li>
+                            <li>Checking feature importance to remove irrelevant features</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('tree-results').innerHTML = results;
+        }
+        
+        // Update depth value display
+        document.getElementById('tree-depth').addEventListener('input', function() {
+            document.getElementById('depth-value').textContent = this.value;
+        });
+        
+        // Regression Simulation
+        function simulateRegression() {
+            const noiseLevel = parseFloat(document.getElementById('noise-level').value);
+            const hasOutliers = document.getElementById('outliers').checked;
+            const regType = document.getElementById('reg-type').value;
+            
+            // Simulate regression results
+            let mse, r2, recommendation;
+            
+            if (regType === 'linear') {
+                mse = 0.5 + noiseLevel * 0.3;
+                r2 = 0.85 - noiseLevel * 0.1;
+                recommendation = hasOutliers ? 
+                    "Outliers significantly affect linear regression. Consider Robust Regression or removing outliers." :
+                    "Good performance for linear relationships.";
+            } else if (regType === 'ridge') {
+                mse = 0.55 + noiseLevel * 0.2;
+                r2 = 0.83 - noiseLevel * 0.08;
+                recommendation = "Ridge regression handles multicollinearity well but may have slightly higher bias.";
+            } else { // lasso
+                mse = 0.6 + noiseLevel * 0.15;
+                r2 = 0.8 - noiseLevel * 0.05;
+                recommendation = "Lasso performs feature selection automatically. Useful when you suspect many irrelevant features.";
+            }
+            
+            if (hasOutliers) {
+                mse *= 1.5;
+                r2 *= 0.9;
+            }
+            
+            const results = `
+                <div class="regression-simulation">
+                    <h5>${regType.charAt(0).toUpperCase() + regType.slice(1)} Regression Results</h5>
+                    <div class="simulation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Noise Level:</span>
+                            <span class="stat-value">${noiseLevel.toFixed(1)}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Outliers:</span>
+                            <span class="stat-value">${hasOutliers ? 'Yes' : 'No'}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Mean Squared Error:</span>
+                            <span class="stat-value">${mse.toFixed(3)}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">R² Score:</span>
+                            <span class="stat-value">${r2.toFixed(3)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="regression-insights">
+                        <h6>Assumption Check:</h6>
+                        <ul>
+                            <li>${noiseLevel < 1 ? '✅ Reasonable noise level' : '⚠️ High noise - consider feature engineering'}</li>
+                            <li>${!hasOutliers ? '✅ No outliers detected' : '⚠️ Outliers present - consider robust methods'}</li>
+                            <li>${r2 > 0.8 ? '✅ Good model fit' : '📊 Moderate model fit - check feature selection'}</li>
+                            <li>${mse < 0.7 ? '✅ Low error' : '⚠️ High error - consider non-linear methods'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="regression-recommendation">
+                        <h6>Recommendation:</h6>
+                        <p>${recommendation}</p>
+                        ${hasOutliers ? '<p><strong>Try:</strong> Using HuberRegressor or Theil-Sen regression for outlier robustness.</p>' : ''}
+                        ${r2 < 0.7 ? '<p><strong>Try:</strong> Polynomial features or non-linear regression models.</p>' : ''}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('regression-results').innerHTML = results;
+        }
+        
+        // Update noise value display
+        document.getElementById('noise-level').addEventListener('input', function() {
+            document.getElementById('noise-value').textContent = parseFloat(this.value).toFixed(1);
+        });
+        
+        // Logistic Regression Simulation
+        function simulateLogisticRegression() {
+            const threshold = parseFloat(document.getElementById('threshold').value);
+            const classSeparation = document.getElementById('class-separation').value;
+            
+            // Simulate metrics based on threshold and separation
+            let accuracy, precision, recall, f1;
+            
+            // Base values based on class separation
+            if (classSeparation === 'easy') {
+                accuracy = 0.92;
+                precision = 0.94;
+                recall = 0.90;
+            } else if (classSeparation === 'medium') {
+                accuracy = 0.85;
+                precision = 0.82;
+                recall = 0.88;
+            } else { // hard
+                accuracy = 0.72;
+                precision = 0.68;
+                recall = 0.76;
+            }
+            
+            // Adjust based on threshold
+            const thresholdDiff = Math.abs(threshold - 0.5);
+            if (threshold < 0.5) {
+                // Lower threshold: higher recall, lower precision
+                recall += thresholdDiff * 0.2;
+                precision -= thresholdDiff * 0.15;
+            } else {
+                // Higher threshold: higher precision, lower recall
+                precision += thresholdDiff * 0.2;
+                recall -= thresholdDiff * 0.15;
+            }
+            
+            // Recalculate accuracy and F1
+            accuracy = Math.min(0.98, Math.max(0.6, accuracy + (Math.random() * 0.05 - 0.025)));
+            f1 = 2 * (precision * recall) / (precision + recall);
+            
+            const results = `
+                <div class="logistic-simulation">
+                    <h5>Logistic Regression Results</h5>
+                    <div class="simulation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Threshold:</span>
+                            <span class="stat-value">${threshold.toFixed(2)}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Class Separation:</span>
+                            <span class="stat-value">${classSeparation}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value">${(accuracy * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Precision:</span>
+                            <span class="stat-value">${(precision * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Recall:</span>
+                            <span class="stat-value">${(recall * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">F1-Score:</span>
+                            <span class="stat-value">${(f1 * 100).toFixed(1)}%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="logistic-insights">
+                        <h6>Trade-off Analysis:</h6>
+                        <ul>
+                            <li>${threshold < 0.4 ? '⚠️ Very low threshold - high false positives' : 
+                                 threshold < 0.5 ? '✅ Balanced threshold - good trade-off' :
+                                 threshold < 0.6 ? '✅ Slightly conservative - fewer false positives' :
+                                 '⚠️ High threshold - many false negatives'}</li>
+                            <li>${precision > recall + 0.1 ? '✅ High precision - good when false positives are costly' :
+                                 recall > precision + 0.1 ? '✅ High recall - good when false negatives are costly' :
+                                 '✅ Balanced precision and recall'}</li>
+                            <li>${f1 > 0.85 ? '✅ Excellent F1-score' : f1 > 0.7 ? '📊 Good F1-score' : '⚠️ Moderate F1-score'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="logistic-recommendation">
+                        <h6>Recommendation:</h6>
+                        <p>Based on your application:</p>
+                        <ul>
+                            <li><strong>Medical Diagnosis</strong> (need high recall): Use threshold ≈ 0.3-0.4</li>
+                            <li><strong>Spam Detection</strong> (need high precision): Use threshold ≈ 0.6-0.7</li>
+                            <li><strong>Balanced Application:</strong> Use threshold ≈ 0.5</li>
+                        </ul>
+                        <p>Consider using ROC curve to find optimal threshold.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('logistic-results').innerHTML = results;
+        }
+        
+        // Update threshold value display
+        document.getElementById('threshold').addEventListener('input', function() {
+            document.getElementById('threshold-value').textContent = parseFloat(this.value).toFixed(2);
+        });
+        
+        // SVM Visualization
+        function visualizeSVM() {
+            const kernelType = document.getElementById('kernel-type').value;
+            const cValue = Math.pow(10, parseFloat(document.getElementById('c-param').value));
+            const gammaParam = document.getElementById('gamma-param').value;
+            
+            // Update gamma control based on kernel
+            const gammaControl = document.getElementById('gamma-param');
+            const gammaValueSpan = document.getElementById('gamma-value');
+            
+            if (kernelType === 'linear') {
+                gammaControl.disabled = true;
+                gammaValueSpan.textContent = 'N/A';
+            } else {
+                gammaControl.disabled = false;
+                const gammaValue = Math.pow(10, parseFloat(gammaParam));
+                gammaValueSpan.textContent = gammaValue.toFixed(3);
+            }
+            
+            // Generate visualization
+            const gammaValue = kernelType !== 'linear' ? Math.pow(10, parseFloat(gammaParam)) : null;
+            
+            const results = `
+                <div class="svm-visualization">
+                    <h5>SVM with ${kernelType.toUpperCase()} Kernel</h5>
+                    <div class="svm-parameters">
+                        <div class="param">
+                            <span class="param-label">Kernel:</span>
+                            <span class="param-value">${kernelType}</span>
+                        </div>
+                        <div class="param">
+                            <span class="param-label">C (Regularization):</span>
+                            <span class="param-value">${cValue.toFixed(3)}</span>
+                        </div>
+                        ${gammaValue ? `
+                        <div class="param">
+                            <span class="param-label">Gamma:</span>
+                            <span class="param-value">${gammaValue.toFixed(3)}</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="svm-explanation">
+                        <h6>Parameter Effects:</h6>
+                        <ul>
+                            <li><strong>C = ${cValue.toFixed(3)}:</strong> ${cValue < 1 ? 'Low regularization - wider margin, more misclassifications allowed' : 
+                                cValue < 10 ? 'Moderate regularization - balanced margin' :
+                                'High regularization - narrow margin, strict classification'}</li>
+                            ${kernelType !== 'linear' ? `
+                            <li><strong>Gamma = ${gammaValue.toFixed(3)}:</strong> ${gammaValue < 0.1 ? 'Low gamma - far influence, smoother decision boundary' :
+                                gammaValue < 1 ? 'Moderate gamma - balanced influence' :
+                                'High gamma - close influence, complex decision boundary'}</li>
+                            ` : ''}
+                            <li><strong>Kernel = ${kernelType}:</strong> ${kernelType === 'linear' ? 'Linear separation' :
+                                kernelType === 'rbf' ? 'Radial basis function - handles non-linear patterns' :
+                                kernelType === 'poly' ? 'Polynomial - captures polynomial relationships' :
+                                'Sigmoid - neural network-like behavior'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="svm-recommendation">
+                        <h6>Recommendations:</h6>
+                        <ul>
+                            <li>${kernelType === 'linear' ? '✅ Good for linearly separable data' : 
+                                '⚠️ Try linear kernel first for simplicity'}</li>
+                            <li>${cValue > 100 ? '⚠️ High C may overfit - reduce C or increase training data' :
+                                cValue < 0.1 ? '⚠️ Low C may underfit - increase C' :
+                                '✅ Good C value for regularization'}</li>
+                            ${kernelType !== 'linear' ? `
+                            <li>${gammaValue > 10 ? '⚠️ High gamma may overfit - reduce gamma' :
+                                gammaValue < 0.01 ? '⚠️ Low gamma may underfit - increase gamma' :
+                                '✅ Good gamma value'}</li>
+                            ` : ''}
+                        </ul>
+                        <p>Use cross-validation to find optimal parameters.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('svm-visualization').innerHTML = results;
+        }
+        
+        // Update C value display
+        document.getElementById('c-param').addEventListener('input', function() {
+            const cValue = Math.pow(10, parseFloat(this.value));
+            document.getElementById('c-value').textContent = cValue.toFixed(3);
+        });
+        
+        // Update gamma value display
+        document.getElementById('gamma-param').addEventListener('input', function() {
+            const gammaValue = Math.pow(10, parseFloat(this.value));
+            document.getElementById('gamma-value').textContent = gammaValue.toFixed(3);
+        });
+        
+        // Clustering Simulation
+        function runClustering() {
+            const datasetType = document.getElementById('dataset-type').value;
+            const algorithm = document.getElementById('algorithm').value;
+            const nClusters = parseInt(document.getElementById('n-clusters').value);
+            
+            // Simulate clustering results
+            let silhouette, calinski, daviesBouldin, recommendation;
+            
+            // Base values based on dataset
+            if (datasetType === 'blobs') {
+                silhouette = 0.75 + Math.random() * 0.1;
+                calinski = 450 + Math.random() * 100;
+                daviesBouldin = 0.4 + Math.random() * 0.2;
+            } else if (datasetType === 'moons') {
+                silhouette = 0.6 + Math.random() * 0.15;
+                calinski = 350 + Math.random() * 80;
+                daviesBouldin = 0.6 + Math.random() * 0.25;
+            } else if (datasetType === 'circles') {
+                silhouette = 0.55 + Math.random() * 0.2;
+                calinski = 300 + Math.random() * 100;
+                daviesBouldin = 0.7 + Math.random() * 0.3;
+            } else { // anisotropic
+                silhouette = 0.65 + Math.random() * 0.15;
+                calinski = 400 + Math.random() * 90;
+                daviesBouldin = 0.5 + Math.random() * 0.25;
+            }
+            
+            // Adjust based on algorithm
+            if (algorithm === 'kmeans') {
+                silhouette *= (datasetType === 'blobs' ? 1.1 : 0.9);
+                recommendation = datasetType === 'blobs' ? 
+                    "K-Means works well for spherical clusters of similar size." :
+                    "K-Means may struggle with non-spherical or varying density clusters.";
+            } else if (algorithm === 'dbscan') {
+                silhouette *= (datasetType !== 'blobs' ? 1.15 : 0.95);
+                recommendation = "DBSCAN handles varying shapes and identifies noise well.";
+            } else if (algorithm === 'hierarchical') {
+                silhouette *= 1.05;
+                recommendation = "Hierarchical clustering shows cluster relationships but is computationally expensive.";
+            } else { // gmm
+                silhouette *= 1.0;
+                recommendation = "GMM provides soft clustering and handles overlapping clusters.";
+            }
+            
+            // Adjust based on number of clusters
+            const optimalK = datasetType === 'blobs' ? 3 : 2;
+            const kDiff = Math.abs(nClusters - optimalK);
+            silhouette *= (1 - kDiff * 0.05);
+            
+            const results = `
+                <div class="clustering-simulation">
+                    <h5>Clustering Results: ${algorithm.toUpperCase()} on ${datasetType} dataset</h5>
+                    <div class="simulation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Dataset:</span>
+                            <span class="stat-value">${datasetType}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Algorithm:</span>
+                            <span class="stat-value">${algorithm}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Clusters (k):</span>
+                            <span class="stat-value">${nClusters}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Silhouette Score:</span>
+                            <span class="stat-value">${silhouette.toFixed(3)}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Calinski-Harabasz:</span>
+                            <span class="stat-value">${calinski.toFixed(0)}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Davies-Bouldin:</span>
+                            <span class="stat-value">${daviesBouldin.toFixed(3)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="clustering-insights">
+                        <h6>Evaluation:</h6>
+                        <ul>
+                            <li>${silhouette > 0.7 ? '✅ Excellent clustering structure' : 
+                                 silhouette > 0.5 ? '📊 Reasonable clustering structure' :
+                                 '⚠️ Weak clustering structure'}</li>
+                            <li>${calinski > 400 ? '✅ High between-cluster variance' :
+                                 calinski > 200 ? '📊 Moderate cluster separation' :
+                                 '⚠️ Low cluster separation'}</li>
+                            <li>${daviesBouldin < 0.5 ? '✅ Well-separated clusters' :
+                                 daviesBouldin < 1.0 ? '📊 Adequate cluster separation' :
+                                 '⚠️ Poorly separated clusters'}</li>
+                            <li>${Math.abs(nClusters - optimalK) <= 1 ? '✅ Appropriate number of clusters' :
+                                 nClusters < optimalK ? '⚠️ Too few clusters - may be under-clustering' :
+                                 '⚠️ Too many clusters - may be over-clustering'}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clustering-recommendation">
+                        <h6>Recommendation:</h6>
+                        <p>${recommendation}</p>
+                        <ul>
+                            <li>${datasetType !== 'blobs' && algorithm === 'kmeans' ? 
+                                '<strong>Try:</strong> DBSCAN or hierarchical clustering for non-spherical data.' : ''}</li>
+                            <li>${silhouette < 0.5 ? '<strong>Try:</strong> Different algorithm or feature scaling.' : ''}</li>
+                            <li>${Math.abs(nClusters - optimalK) > 1 ? 
+                                `<strong>Try:</strong> Setting k closer to ${optimalK} for this dataset type.` : ''}</li>
+                        </ul>
+                        <p>Use elbow method and silhouette analysis to determine optimal k.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('clustering-results').innerHTML = results;
+        }
+        
+        // Toggle solution visibility
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize SVM gamma control
+            updateSVMGammaControl();
+            
+            // Add copy buttons to code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                if (!pre.parentElement.classList.contains('code-example')) return;
+                
+                const button = document.createElement('button');
+                button.className = 'copy-code';
+                button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                button.onclick = function() {
+                    const code = pre.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                };
+                
+                if (!pre.parentElement.querySelector('.example-header')) {
+                    const header = document.createElement('div');
+                    header.className = 'example-header';
+                    header.innerHTML = '<span>Code Example</span>';
+                    header.appendChild(button);
+                    pre.parentElement.insertBefore(header, pre);
+                } else {
+                    pre.parentElement.querySelector('.example-header').appendChild(button);
+                }
+            });
+            
+            // Mark as complete functionality
+            const completeBtn = document.querySelector('.completed');
+            if (completeBtn) {
+                completeBtn.addEventListener('click', function() {
+                    const isComplete = this.classList.contains('completed-active');
+                    this.classList.toggle('completed-active');
+                    this.innerHTML = isComplete ? 
+                        '<i class="far fa-check-circle"></i> Mark Complete' : 
+                        '<i class="fas fa-check-circle"></i> Completed!';
+                    
+                    localStorage.setItem('ml-algorithms-complete', !isComplete);
+                    
+                    if (!isComplete) {
+                        alert('🎉 Congratulations! You have completed Machine Learning Algorithms module!');
+                    }
+                });
+                
+                if (localStorage.getItem('ml-algorithms-complete') === 'true') {
+                    completeBtn.classList.add('completed-active');
+                    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed!';
+                }
+            }
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Helper function for SVM gamma control
+        function updateSVMGammaControl() {
+            const kernelType = document.getElementById('kernel-type').value;
+            const gammaControl = document.getElementById('gamma-param');
+            const gammaValueSpan = document.getElementById('gamma-value');
+            
+            if (kernelType === 'linear') {
+                gammaControl.disabled = true;
+                gammaValueSpan.textContent = 'N/A';
+            } else {
+                gammaControl.disabled = false;
+                const gammaValue = Math.pow(10, parseFloat(gammaControl.value));
+                gammaValueSpan.textContent = gammaValue.toFixed(3);
+            }
+        }
+        
+        // Listen for kernel type changes
+        document.getElementById('kernel-type').addEventListener('change', updateSVMGammaControl);
+    </script>
+</body>
+</html>

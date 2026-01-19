@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL, Tableau & Power BI - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* SQL, Tableau & Power BI Specific Styles */
+        :root {
+            --sql-blue: #3366CC;
+            --tableau-orange: #E97627;
+            --powerbi-yellow: #F2C811;
+            --data-purple: #8A2BE2;
+        }
+        
+        .data-header {
+            background: linear-gradient(135deg, #3366CC 0%, #8A2BE2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .tool-card.sql {
+            border-top-color: var(--sql-blue);
+        }
+        
+        .tool-card.tableau {
+            border-top-color: var(--tableau-orange);
+        }
+        
+        .tool-card.powerbi {
+            border-top-color: var(--powerbi-yellow);
+        }
+        
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .icon-sql {
+            background: linear-gradient(135deg, #3366CC, #6699FF);
+        }
+        
+        .icon-tableau {
+            background: linear-gradient(135deg, #E97627, #FFA726);
+        }
+        
+        .icon-powerbi {
+            background: linear-gradient(135deg, #F2C811, #FFD700);
+        }
+        
+        .query-editor {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .query-header {
+            background: #2d2d30;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #404040;
+        }
+        
+        .query-body {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .sql-keyword {
+            color: #569CD6;
+        }
+        
+        .sql-function {
+            color: #DCDCAA;
+        }
+        
+        .sql-string {
+            color: #CE9178;
+        }
+        
+        .sql-comment {
+            color: #6A9955;
+        }
+        
+        .data-flow {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .flow-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--sql-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-arrow {
+            font-size: 2rem;
+            color: var(--sql-blue);
+        }
+        
+        .dashboard-demo {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .dashboard-widget {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-widget:hover {
+            border-color: var(--tableau-orange);
+            transform: translateY(-5px);
+        }
+        
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .widget-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .widget-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sql-blue);
+        }
+        
+        .widget-chart {
+            height: 50px;
+            background: linear-gradient(90deg, #3366CC, #6699FF);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #3366CC 0%, #8A2BE2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .feature-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        
+        .tag-sql {
+            background: rgba(51, 102, 204, 0.1);
+            color: var(--sql-blue);
+        }
+        
+        .tag-tableau {
+            background: rgba(233, 118, 39, 0.1);
+            color: var(--tableau-orange);
+        }
+        
+        .tag-powerbi {
+            background: rgba(242, 200, 17, 0.1);
+            color: var(--powerbi-yellow);
+        }
+        
+        .interactive-query {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .query-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+        
+        .query-input:focus {
+            outline: none;
+            border-color: var(--sql-blue);
+        }
+        
+        .query-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .query-results {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 100px;
+            overflow-x: auto;
+        }
+        
+        .viz-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .viz-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .viz-icon {
+            font-size: 2.5rem;
+            color: var(--tableau-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .viz-preview {
+            height: 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        
+        .data-table th {
+            background: var(--sql-blue);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .example-dataset {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .dataset-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--sql-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .skill-progress {
+            margin: 2rem 0;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin: 0.5rem 0 1rem;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3366CC, #8A2BE2);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-steps {
+                flex-direction: column;
+            }
+            
+            .step-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(6, 100px);
+            }
+            
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .viz-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(12, 100px);
+            }
+            
+            .viz-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .query-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="data-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#curriculum">Curriculum</a> / 
+                <span>SQL, Tableau & Power BI</span>
+            </div>
+            <h1>SQL, Tableau & Power BI (Hours 39-44)</h1>
+            <p class="subtitle">Data querying, visualization, and business intelligence tools</p>
+            <div class="header-meta">
+                <span class="meta-item"><i class="far fa-clock"></i> 6 Hours</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Intermediate</span>
+                <span class="meta-item"><i class="fas fa-database"></i> Data Tools</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3>In This Module</h3>
+                    <ul class="module-nav">
+                        <li><a href="#sql-basics" class="active">Hour 39: SQL Basics</a></li>
+                        <li><a href="#sql-advanced">Hour 40: Advanced SQL</a></li>
+                        <li><a href="#tableau-basics">Hour 41: Tableau Basics</a></li>
+                        <li><a href="#tableau-dashboards">Hour 42: Tableau Dashboards</a></li>
+                        <li><a href="#powerbi-basics">Hour 43: Power BI Basics</a></li>
+                        <li><a href="#powerbi-advanced">Hour 44: Advanced Power BI</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Quick Tools</h4>
+                    <div class="quick-tools">
+                        <a href="#query-editor" class="quick-tool">
+                            <i class="fas fa-code"></i>
+                            <span>SQL Editor</span>
+                        </a>
+                        <a href="#dashboard-preview" class="quick-tool">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard Preview</span>
+                        </a>
+                        <a href="#datasets" class="quick-tool">
+                            <i class="fas fa-table"></i>
+                            <span>Sample Datasets</span>
+                        </a>
+                        <a href="#cheatsheets" class="quick-tool">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Cheat Sheets</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4>Tool Comparison</h4>
+                    <div class="tool-comparison">
+                        <div class="tool-item">
+                            <div class="tool-dot sql"></div>
+                            <div>
+                                <strong>SQL</strong>
+                                <small>Data Querying</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-dot tableau"></div>
+                            <div>
+                                <strong>Tableau</strong>
+                                <small>Visualization</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-dot powerbi"></div>
+                            <div>
+                                <strong>Power BI</strong>
+                                <small>Business Intelligence</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Hour 39: SQL Basics -->
+                <section id="sql-basics" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 39</span>
+                        <h2>SQL Basics – Select, Where, Aggregate Functions</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>SQL (Structured Query Language) is the standard language for managing and manipulating relational databases.</p>
+                        
+                        <div class="tool-grid">
+                            <div class="tool-card sql">
+                                <div class="tool-icon icon-sql">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h3>SQL Fundamentals</h3>
+                                <p>Learn essential SQL commands for data retrieval and manipulation</p>
+                                <div class="tool-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>SELECT statements</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>WHERE clauses</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Aggregate functions</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>GROUP BY operations</span>
+                                    </div>
+                                </div>
+                                <div class="tool-tags">
+                                    <span class="feature-tag tag-sql">MySQL</span>
+                                    <span class="feature-tag tag-sql">PostgreSQL</span>
+                                    <span class="feature-tag tag-sql">SQLite</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-dataset" id="datasets">
+                            <div class="dataset-info">
+                                <h4>Sample Dataset: Sales Data</h4>
+                                <a href="#" class="download-btn" onclick="downloadDataset()">
+                                    <i class="fas fa-download"></i> Download CSV
+                                </a>
+                            </div>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>order_id</th>
+                                        <th>customer_name</th>
+                                        <th>product</th>
+                                        <th>quantity</th>
+                                        <th>price</th>
+                                        <th>order_date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1001</td>
+                                        <td>John Smith</td>
+                                        <td>Laptop</td>
+                                        <td>1</td>
+                                        <td>$999.99</td>
+                                        <td>2024-01-15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1002</td>
+                                        <td>Jane Doe</td>
+                                        <td>Mouse</td>
+                                        <td>2</td>
+                                        <td>$29.99</td>
+                                        <td>2024-01-16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1003</td>
+                                        <td>Bob Johnson</td>
+                                        <td>Keyboard</td>
+                                        <td>1</td>
+                                        <td>$89.99</td>
+                                        <td>2024-01-17</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1004</td>
+                                        <td>Alice Brown</td>
+                                        <td>Monitor</td>
+                                        <td>1</td>
+                                        <td>$299.99</td>
+                                        <td>2024-01-18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1005</td>
+                                        <td>Charlie Wilson</td>
+                                        <td>Laptop</td>
+                                        <td>1</td>
+                                        <td>$1199.99</td>
+                                        <td>2024-01-19</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="query-editor">
+                            <div class="query-header">
+                                <span>Basic SQL Queries</span>
+                                <button class="btn small" onclick="runBasicQuery()">
+                                    <i class="fas fa-play"></i> Run Query
+                                </button>
+                            </div>
+                            <div class="query-body">
+                                <pre><code><span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> sales_data;</code></pre>
+                                <pre><code><span class="sql-keyword">SELECT</span> customer_name, product, price 
+<span class="sql-keyword">FROM</span> sales_data 
+<span class="sql-keyword">WHERE</span> price > 100;</code></pre>
+                                <pre><code><span class="sql-keyword">SELECT</span> 
+    product,
+    <span class="sql-function">SUM</span>(quantity) <span class="sql-keyword">AS</span> total_quantity,
+    <span class="sql-function">AVG</span>(price) <span class="sql-keyword">AS</span> avg_price
+<span class="sql-keyword">FROM</span> sales_data 
+<span class="sql-keyword">GROUP BY</span> product
+<span class="sql-keyword">ORDER BY</span> total_quantity <span class="sql-keyword">DESC</span>;</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="interactive-query" id="query-editor">
+                            <h4>Try SQL Yourself</h4>
+                            <textarea class="query-input" id="sqlInput" placeholder="Enter your SQL query here...">SELECT * FROM sales_data LIMIT 5;</textarea>
+                            
+                            <div class="query-buttons">
+                                <button class="btn small" onclick="runSQL()">
+                                    <i class="fas fa-play"></i> Run Query
+                                </button>
+                                <button class="btn small secondary" onclick="clearSQL()">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                                <button class="btn small accent" onclick="loadExample('basic')">
+                                    <i class="fas fa-lightbulb"></i> Load Example
+                                </button>
+                            </div>
+                            
+                            <div class="query-results" id="sqlResults">
+                                <div class="results-placeholder">
+                                    <p>Your query results will appear here...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <h4>SQL Learning Progress</h4>
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>Basic SELECT Statements</span>
+                                    <span id="skill1Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="skill1Fill"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>WHERE Clauses & Filters</span>
+                                    <span id="skill2Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="skill2Fill"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>Aggregate Functions</span>
+                                    <span id="skill3Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="skill3Fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 40: Advanced SQL -->
+                <section id="sql-advanced" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 40</span>
+                        <h2>Advanced SQL – Joins, Views, Triggers</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Master advanced SQL concepts for complex data operations and database management.</p>
+                        
+                        <div class="data-flow">
+                            <h4>SQL Join Types</h4>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-circle">
+                                        <i class="fas fa-table"></i>
+                                    </div>
+                                    <h5>INNER JOIN</h5>
+                                    <p>Matching rows from both tables</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle">
+                                        <i class="fas fa-table"></i>
+                                    </div>
+                                    <h5>LEFT JOIN</h5>
+                                    <p>All rows from left table</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle">
+                                        <i class="fas fa-table"></i>
+                                    </div>
+                                    <h5>RIGHT JOIN</h5>
+                                    <p>All rows from right table</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle">
+                                        <i class="fas fa-table"></i>
+                                    </div>
+                                    <h5>FULL OUTER JOIN</h5>
+                                    <p>All rows from both tables</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="query-editor">
+                            <div class="query-header">
+                                <span>Advanced SQL Examples</span>
+                            </div>
+                            <div class="query-body">
+                                <pre><code><span class="sql-comment">-- JOIN Example</span>
+<span class="sql-keyword">SELECT</span> 
+    o.order_id,
+    c.customer_name,
+    o.product,
+    o.quantity,
+    o.total_price
+<span class="sql-keyword">FROM</span> orders o
+<span class="sql-keyword">INNER JOIN</span> customers c <span class="sql-keyword">ON</span> o.customer_id = c.customer_id
+<span class="sql-keyword">WHERE</span> o.order_date >= <span class="sql-string">'2024-01-01'</span>;</code></pre>
+
+                                <pre><code><span class="sql-comment">-- Subquery Example</span>
+<span class="sql-keyword">SELECT</span> customer_name, total_spent
+<span class="sql-keyword">FROM</span> (
+    <span class="sql-keyword">SELECT</span> 
+        customer_id,
+        <span class="sql-function">SUM</span>(total_price) <span class="sql-keyword">AS</span> total_spent
+    <span class="sql-keyword">FROM</span> orders
+    <span class="sql-keyword">GROUP BY</span> customer_id
+) customer_totals
+<span class="sql-keyword">WHERE</span> total_spent > 1000;</code></pre>
+
+                                <pre><code><span class="sql-comment">-- VIEW Creation</span>
+<span class="sql-keyword">CREATE VIEW</span> monthly_sales <span class="sql-keyword">AS</span>
+<span class="sql-keyword">SELECT</span>
+    <span class="sql-function">DATE_FORMAT</span>(order_date, <span class="sql-string">'%Y-%m'</span>) <span class="sql-keyword">AS</span> month,
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> order_count,
+    <span class="sql-function">SUM</span>(total_price) <span class="sql-keyword">AS</span> total_revenue
+<span class="sql-keyword">FROM</span> orders
+<span class="sql-keyword">GROUP BY</span> <span class="sql-function">DATE_FORMAT</span>(order_date, <span class="sql-string">'%Y-%m'</span>);</code></pre>
+
+                                <pre><code><span class="sql-comment">-- TRIGGER Example</span>
+<span class="sql-keyword">CREATE TRIGGER</span> update_inventory
+<span class="sql-keyword">AFTER INSERT ON</span> orders
+<span class="sql-keyword">FOR EACH ROW</span>
+<span class="sql-keyword">BEGIN</span>
+    <span class="sql-keyword">UPDATE</span> products
+    <span class="sql-keyword">SET</span> stock_quantity = stock_quantity - NEW.quantity
+    <span class="sql-keyword">WHERE</span> product_id = NEW.product_id;
+<span class="sql-keyword">END</span>;</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table">
+                            <h4>SQL Join Comparison</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Join Type</th>
+                                        <th>Description</th>
+                                        <th>Use Case</th>
+                                        <th>Visual Representation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>INNER JOIN</strong></td>
+                                        <td>Returns only matching rows</td>
+                                        <td>Find related data</td>
+                                        <td>∩ (Intersection)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>LEFT JOIN</strong></td>
+                                        <td>All rows from left table + matches</td>
+                                        <td>Include all primary records</td>
+                                        <td>All Left + Matching Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>RIGHT JOIN</strong></td>
+                                        <td>All rows from right table + matches</td>
+                                        <td>Include all foreign records</td>
+                                        <td>All Right + Matching Left</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>FULL OUTER JOIN</strong></td>
+                                        <td>All rows from both tables</td>
+                                        <td>Complete data merge</td>
+                                        <td>∪ (Union)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CROSS JOIN</strong></td>
+                                        <td>Cartesian product</td>
+                                        <td>All combinations</td>
+                                        <td>× (Multiplication)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="interactive-query">
+                            <h4>Practice Joins</h4>
+                            <div class="query-buttons">
+                                <button class="btn small" onclick="loadExample('inner')">
+                                    INNER JOIN Example
+                                </button>
+                                <button class="btn small" onclick="loadExample('left')">
+                                    LEFT JOIN Example
+                                </button>
+                                <button class="btn small" onclick="loadExample('subquery')">
+                                    Subquery Example
+                                </button>
+                            </div>
+                            
+                            <textarea class="query-input" id="advancedSqlInput" placeholder="Try writing your own JOIN query..."></textarea>
+                            
+                            <button class="btn" onclick="runAdvancedSQL()">
+                                <i class="fas fa-play"></i> Execute Query
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 41: Tableau Basics -->
+                <section id="tableau-basics" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 41</span>
+                        <h2>Tableau Basics – Data Importing, Dimensions, Measures</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Tableau is a powerful data visualization tool that helps you see and understand your data.</p>
+                        
+                        <div class="tool-grid">
+                            <div class="tool-card tableau">
+                                <div class="tool-icon icon-tableau">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h3>Tableau Fundamentals</h3>
+                                <p>Connect to data sources and create basic visualizations</p>
+                                <div class="tool-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Data connection & preparation</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Dimensions vs Measures</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Basic chart types</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Filters and sorting</span>
+                                    </div>
+                                </div>
+                                <div class="tool-tags">
+                                    <span class="feature-tag tag-tableau">Data Prep</span>
+                                    <span class="feature-tag tag-tableau">Visualization</span>
+                                    <span class="feature-tag tag-tableau">Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-flow">
+                            <h4>Tableau Workflow</h4>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--tableau-orange);">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <h5>Connect</h5>
+                                    <p>Connect to data source</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--tableau-orange);">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h5>Prepare</h5>
+                                    <p>Clean and structure data</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--tableau-orange);">
+                                        <i class="fas fa-sliders-h"></i>
+                                    </div>
+                                    <h5>Analyze</h5>
+                                    <p>Drag & drop dimensions/measures</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--tableau-orange);">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h5>Visualize</h5>
+                                    <p>Create charts and graphs</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="viz-gallery">
+                            <div class="viz-card">
+                                <div class="viz-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h5>Bar Chart</h5>
+                                <p>Compare categories</p>
+                                <div class="viz-preview">
+                                    <div style="display: flex; align-items: flex-end; gap: 10px; height: 60px;">
+                                        <div style="width: 20px; height: 40px; background: var(--tableau-orange);"></div>
+                                        <div style="width: 20px; height: 60px; background: var(--tableau-orange); opacity: 0.8;"></div>
+                                        <div style="width: 20px; height: 30px; background: var(--tableau-orange); opacity: 0.6;"></div>
+                                        <div style="width: 20px; height: 50px; background: var(--tableau-orange); opacity: 0.9;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h5>Line Chart</h5>
+                                <p>Show trends over time</p>
+                                <div class="viz-preview">
+                                    <svg width="100%" height="60" style="margin-top: 20px;">
+                                        <polyline points="10,40 30,20 50,35 70,15 90,30 110,10 130,25" 
+                                                  style="fill:none;stroke:var(--tableau-orange);stroke-width:2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h5>Pie Chart</h5>
+                                <p>Show proportions</p>
+                                <div class="viz-preview">
+                                    <div style="width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(var(--tableau-orange) 0% 40%, rgba(233, 118, 39, 0.7) 40% 70%, rgba(233, 118, 39, 0.4) 70% 100%);"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon">
+                                    <i class="fas fa-map"></i>
+                                </div>
+                                <h5>Map</h5>
+                                <p>Geographic data</p>
+                                <div class="viz-preview">
+                                    <div style="width: 80px; height: 40px; border: 2px solid var(--tableau-orange); border-radius: 5px; position: relative;">
+                                        <div style="width: 10px; height: 10px; background: var(--tableau-orange); border-radius: 50%; position: absolute; top: 15px; left: 20px;"></div>
+                                        <div style="width: 10px; height: 10px; background: var(--tableau-orange); border-radius: 50%; position: absolute; top: 25px; left: 40px;"></div>
+                                        <div style="width: 10px; height: 10px; background: var(--tableau-orange); border-radius: 50%; position: absolute; top: 10px; left: 60px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table">
+                            <h4>Dimensions vs Measures</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>Dimensions</th>
+                                        <th>Measures</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Purpose</strong></td>
+                                        <td>Categorical data, labels</td>
+                                        <td>Quantitative data, numbers</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Color</strong></td>
+                                        <td>Blue in Tableau</td>
+                                        <td>Green in Tableau</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Aggregation</strong></td>
+                                        <td>Cannot be aggregated</td>
+                                        <td>SUM, AVG, COUNT, etc.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Examples</strong></td>
+                                        <td>Product names, dates, categories</td>
+                                        <td>Sales amount, quantity, profit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Default Placement</strong></td>
+                                        <td>Rows/Columns shelf</td>
+                                        <td>Marks card</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="example-dataset">
+                            <h4>Tableau Data Connection Types</h4>
+                            <div class="data-sources">
+                                <div class="source-item">
+                                    <i class="fas fa-file-excel"></i>
+                                    <span>Excel Files (.xlsx)</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-file-csv"></i>
+                                    <span>CSV Files</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>SQL Databases</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>Cloud Services</span>
+                                </div>
+                                <div class="source-item">
+                                    <i class="fas fa-server"></i>
+                                    <span>Web Data Connectors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 42: Tableau Dashboards -->
+                <section id="tableau-dashboards" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 42</span>
+                        <h2>Tableau Dashboards – Interactive Visualizations</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Create interactive dashboards that combine multiple visualizations with filters and actions.</p>
+                        
+                        <div class="dashboard-demo" id="dashboard-preview">
+                            <h4>Sales Dashboard Preview</h4>
+                            <div class="dashboard-grid">
+                                <!-- Row 1 -->
+                                <div class="dashboard-widget" style="grid-column: span 2;">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Total Revenue</div>
+                                        <div class="widget-value">$125,430</div>
+                                    </div>
+                                    <div class="widget-chart"></div>
+                                </div>
+                                
+                                <div class="dashboard-widget">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Orders</div>
+                                        <div class="widget-value">1,245</div>
+                                    </div>
+                                    <div class="widget-chart" style="background: linear-gradient(90deg, #E97627, #FFA726);"></div>
+                                </div>
+                                
+                                <div class="dashboard-widget">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Customers</div>
+                                        <div class="widget-value">892</div>
+                                    </div>
+                                    <div class="widget-chart" style="background: linear-gradient(90deg, #4CAF50, #2E7D32);"></div>
+                                </div>
+                                
+                                <!-- Row 2 -->
+                                <div class="dashboard-widget" style="grid-column: span 4;">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Monthly Sales Trend</div>
+                                    </div>
+                                    <div class="widget-chart" style="height: 60px; background: repeating-linear-gradient(
+                                        90deg,
+                                        var(--sql-blue) 0px,
+                                        var(--sql-blue) 10px,
+                                        var(--tableau-orange) 10px,
+                                        var(--tableau-orange) 20px,
+                                        var(--powerbi-yellow) 20px,
+                                        var(--powerbi-yellow) 30px
+                                    );"></div>
+                                </div>
+                                
+                                <!-- Row 3 -->
+                                <div class="dashboard-widget" style="grid-column: span 2; grid-row: span 2;">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Top Products</div>
+                                    </div>
+                                    <div style="margin-top: 1rem;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Laptops</span>
+                                            <span>$45,230</span>
+                                        </div>
+                                        <div style="height: 10px; background: var(--sql-blue); border-radius: 5px; margin-bottom: 10px;"></div>
+                                        
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Monitors</span>
+                                            <span>$32,150</span>
+                                        </div>
+                                        <div style="height: 10px; background: var(--tableau-orange); border-radius: 5px; margin-bottom: 10px;"></div>
+                                        
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Accessories</span>
+                                            <span>$28,450</span>
+                                        </div>
+                                        <div style="height: 10px; background: var(--powerbi-yellow); border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="dashboard-widget" style="grid-column: span 2;">
+                                    <div class="widget-header">
+                                        <div class="widget-title">Regional Distribution</div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                                        <div style="text-align: center;">
+                                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--sql-blue); margin: 0 auto 5px;"></div>
+                                            <small>North</small>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--tableau-orange); margin: 0 auto 5px;"></div>
+                                            <small>South</small>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--powerbi-yellow); margin: 0 auto 5px;"></div>
+                                            <small>West</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-controls">
+                                <h5>Interactive Filters</h5>
+                                <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                                    <div class="filter-control">
+                                        <label>Date Range:</label>
+                                        <select>
+                                            <option>Last 30 days</option>
+                                            <option>Last 90 days</option>
+                                            <option>Year to Date</option>
+                                            <option>All Time</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-control">
+                                        <label>Product Category:</label>
+                                        <select>
+                                            <option>All Categories</option>
+                                            <option>Electronics</option>
+                                            <option>Accessories</option>
+                                            <option>Software</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-control">
+                                        <label>Region:</label>
+                                        <select>
+                                            <option>All Regions</option>
+                                            <option>North America</option>
+                                            <option>Europe</option>
+                                            <option>Asia Pacific</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table">
+                            <h4>Dashboard Components</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Purpose</th>
+                                        <th>Best Practices</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Worksheets</strong></td>
+                                        <td>Individual visualizations</td>
+                                        <td>Keep focused on one insight</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Containers</strong></td>
+                                        <td>Organize layout</td>
+                                        <td>Use tiled vs floating wisely</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Filters</strong></td>
+                                        <td>Control data display</td>
+                                        <td>Make them intuitive</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Parameters</strong></td>
+                                        <td>Dynamic controls</td>
+                                        <td>Use for what-if analysis</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Actions</strong></td>
+                                        <td>Interactivity between sheets</td>
+                                        <td>Highlight, filter, URL actions</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="example-dataset">
+                            <h4>Tableau Dashboard Tips</h4>
+                            <div class="tips-list">
+                                <div class="tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <div>
+                                        <h5>Mobile First</h5>
+                                        <p>Design for mobile devices first, then expand for desktop</p>
+                                    </div>
+                                </div>
+                                <div class="tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <div>
+                                        <h5>Consistent Colors</h5>
+                                        <p>Use a consistent color palette across all visualizations</p>
+                                    </div>
+                                </div>
+                                <div class="tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <div>
+                                        <h5>Performance</h5>
+                                        <p>Use extracts for better performance with large datasets</p>
+                                    </div>
+                                </div>
+                                <div class="tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <div>
+                                        <h5>Storytelling</h5>
+                                        <p>Arrange dashboards to tell a data story</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 43: Power BI Basics -->
+                <section id="powerbi-basics" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 43</span>
+                        <h2>Power BI Basics – Dashboarding Fundamentals</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Power BI is Microsoft's business analytics tool for visualizing data and sharing insights.</p>
+                        
+                        <div class="tool-grid">
+                            <div class="tool-card powerbi">
+                                <div class="tool-icon icon-powerbi">
+                                    <i class="fas fa-chart-area"></i>
+                                </div>
+                                <h3>Power BI Essentials</h3>
+                                <p>Learn to create reports and dashboards in Power BI</p>
+                                <div class="tool-features">
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Power Query for ETL</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>DAX formulas</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Visualizations</span>
+                                    </div>
+                                    <div class="feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Report publishing</span>
+                                    </div>
+                                </div>
+                                <div class="tool-tags">
+                                    <span class="feature-tag tag-powerbi">Microsoft</span>
+                                    <span class="feature-tag tag-powerbi">Business Intelligence</span>
+                                    <span class="feature-tag tag-powerbi">Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table">
+                            <h4>Power BI Components</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Description</th>
+                                        <th>Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Power BI Desktop</strong></td>
+                                        <td>Free desktop application</td>
+                                        <td>Create reports and visualizations</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Power BI Service</strong></td>
+                                        <td>Cloud-based service (SaaS)</td>
+                                        <td>Share and collaborate on dashboards</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Power BI Mobile</strong></td>
+                                        <td>Mobile apps</td>
+                                        <td>Access dashboards on mobile devices</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Power BI Report Server</strong></td>
+                                        <td>On-premises solution</td>
+                                        <td>Host reports within organization</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Power BI Embedded</strong></td>
+                                        <td>Embed analytics in apps</td>
+                                        <td>Integrate Power BI in applications</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="data-flow">
+                            <h4>Power BI Workflow</h4>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--powerbi-yellow);">
+                                        <i class="fas fa-download"></i>
+                                    </div>
+                                    <h5>Get Data</h5>
+                                    <p>Connect to data sources</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--powerbi-yellow);">
+                                        <i class="fas fa-filter"></i>
+                                    </div>
+                                    <h5>Transform</h5>
+                                    <p>Power Query Editor</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--powerbi-yellow);">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <h5>Model</h5>
+                                    <p>Create relationships</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--powerbi-yellow);">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <h5>Visualize</h5>
+                                    <p>Build reports</p>
+                                </div>
+                                
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="flow-step">
+                                    <div class="step-circle" style="color: var(--powerbi-yellow);">
+                                        <i class="fas fa-share-alt"></i>
+                                    </div>
+                                    <h5>Share</h5>
+                                    <p>Publish to service</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="viz-gallery">
+                            <div class="viz-card">
+                                <div class="viz-icon" style="color: var(--powerbi-yellow);">
+                                    <i class="fas fa-sort-amount-down"></i>
+                                </div>
+                                <h5>KPI Cards</h5>
+                                <p>Key performance indicators</p>
+                                <div class="viz-preview">
+                                    <div style="text-align: center; padding: 10px;">
+                                        <div style="font-size: 1.2rem; font-weight: bold; color: var(--powerbi-yellow);">$125K</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Revenue</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon" style="color: var(--powerbi-yellow);">
+                                    <i class="fas fa-table"></i>
+                                </div>
+                                <h5>Matrix Tables</h5>
+                                <p>Multi-dimensional data</p>
+                                <div class="viz-preview">
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 10px;">
+                                        <div style="background: var(--powerbi-yellow); opacity: 0.3; height: 15px;"></div>
+                                        <div style="background: var(--powerbi-yellow); opacity: 0.5; height: 15px;"></div>
+                                        <div style="background: var(--powerbi-yellow); opacity: 0.7; height: 15px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon" style="color: var(--powerbi-yellow);">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <h5>Waterfall Charts</h5>
+                                <p>Cumulative effect</p>
+                                <div class="viz-preview">
+                                    <div style="display: flex; align-items: flex-end; height: 40px; gap: 5px; margin-top: 20px;">
+                                        <div style="width: 15px; height: 30px; background: var(--powerbi-yellow);"></div>
+                                        <div style="width: 15px; height: 20px; background: var(--powerbi-yellow); opacity: 0.7;"></div>
+                                        <div style="width: 15px; height: 40px; background: var(--powerbi-yellow);"></div>
+                                        <div style="width: 15px; height: 25px; background: var(--powerbi-yellow); opacity: 0.7;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="viz-card">
+                                <div class="viz-icon" style="color: var(--powerbi-yellow);">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <h5>Filled Maps</h5>
+                                <p>Geographic heatmaps</p>
+                                <div class="viz-preview">
+                                    <div style="width: 80px; height: 40px; background: linear-gradient(135deg, #F2C811, #FFD700); border-radius: 5px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-dataset">
+                            <h4>DAX (Data Analysis Expressions) Basics</h4>
+                            <div class="code-snippet">
+                                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+<span style="color: #0072C6;">-- Basic DAX Functions</span>
+Total Sales = SUM(Sales[Amount])
+
+Sales YTD = TOTALYTD(SUM(Sales[Amount]), 'Date'[Date])
+
+Sales Previous Year = 
+CALCULATE(
+    SUM(Sales[Amount]),
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+
+Profit Margin = 
+DIVIDE(
+    SUM(Sales[Profit]),
+    SUM(Sales[Amount]),
+    0
+)</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hour 44: Advanced Power BI -->
+                <section id="powerbi-advanced" class="section">
+                    <div class="section-header">
+                        <span class="hour-tag">Hour 44</span>
+                        <h2>Advanced Power BI – Complex Dashboards</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Master advanced Power BI features for creating enterprise-level dashboards and reports.</p>
+                        
+                        <div class="comparison-table">
+                            <h4>Tableau vs Power BI Comparison</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Tableau</th>
+                                        <th>Power BI</th>
+                                        <th>Best For</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Pricing</strong></td>
+                                        <td>Higher cost</td>
+                                        <td>Lower cost (free desktop)</td>
+                                        <td>Power BI for budget-conscious</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ease of Use</strong></td>
+                                        <td>Steeper learning curve</td>
+                                        <td>More intuitive</td>
+                                        <td>Power BI for beginners</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Data Modeling</strong></td>
+                                        <td>Good</td>
+                                        <td>Excellent (Power Pivot)</td>
+                                        <td>Power BI for complex models</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Visualization</strong></td>
+                                        <td>Superior</td>
+                                        <td>Good and improving</td>
+                                        <td>Tableau for advanced visuals</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Microsoft Integration</strong></td>
+                                        <td>Limited</td>
+                                        <td>Excellent (Office 365)</td>
+                                        <td>Power BI for MS ecosystem</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mobile Experience</strong></td>
+                                        <td>Excellent</td>
+                                        <td>Good</td>
+                                        <td>Tableau for mobile-first</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="dashboard-demo">
+                            <h4>Advanced Power BI Dashboard Features</h4>
+                            <div class="advanced-features">
+                                <div class="feature-grid">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <h5>Real-time Dashboards</h5>
+                                        <p>Streaming datasets and real-time updates</p>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <h5>AI Visuals</h5>
+                                        <p>Q&A, key influencers, decomposition trees</p>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-code-branch"></i>
+                                        </div>
+                                        <h5>Power BI Service</h5>
+                                        <p>Workspaces, apps, and content packs</p>
+                                    </div>
+                                    
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <h5>Row-Level Security</h5>
+                                        <p>Data security based on user roles</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-dataset">
+                            <h4>Power BI Advanced DAX Patterns</h4>
+                            <div class="code-snippet">
+                                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+<span style="color: #0072C6;">-- Time Intelligence Patterns</span>
+Sales MTD = 
+TOTALMTD(
+    SUM(Sales[Amount]),
+    'Date'[Date]
+)
+
+Moving Average 30 Days = 
+AVERAGEX(
+    DATESINPERIOD(
+        'Date'[Date],
+        LASTDATE('Date'[Date]),
+        -30,
+        DAY
+    ),
+    [Total Sales]
+)
+
+<span style="color: #0072C6;">-- Dynamic Segmentation</span>
+Customer Segment = 
+SWITCH(
+    TRUE(),
+    [Total Sales] >= 10000, "VIP",
+    [Total Sales] >= 5000, "Premium",
+    [Total Sales] >= 1000, "Standard",
+    "Basic"
+)
+
+<span style="color: #0072C6;">-- What-If Parameters</span>
+Discount Rate = SELECTEDVALUE('Discount'[Rate], 0)
+Discounted Price = [Price] * (1 - [Discount Rate])</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <h4>Data Tools Mastery</h4>
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>SQL Proficiency</span>
+                                    <span id="mastery1Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="mastery1Fill" style="background: linear-gradient(90deg, #3366CC, #6699FF);"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>Tableau Skills</span>
+                                    <span id="mastery2Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="mastery2Fill" style="background: linear-gradient(90deg, #E97627, #FFA726);"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-label">
+                                    <span>Power BI Expertise</span>
+                                    <span id="mastery3Percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" id="mastery3Fill" style="background: linear-gradient(90deg, #F2C811, #FFD700);"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resources-section" id="cheatsheets">
+                            <h4>Learning Resources & Cheat Sheets</h4>
+                            <div class="resources-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <h5>SQL Cheat Sheet</h5>
+                                    <p>Essential SQL commands and syntax</p>
+                                    <a href="#" class="download-link">Download PDF</a>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <h5>Tableau Guide</h5>
+                                    <p>Visualization types and best practices</p>
+                                    <a href="#" class="download-link">Download PDF</a>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <h5>Power BI DAX Reference</h5>
+                                    <p>Complete DAX function reference</p>
+                                    <a href="#" class="download-link">Download PDF</a>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h5>Video Tutorials</h5>
+                                    <p>Step-by-step video guides</p>
+                                    <a href="#" class="download-link">Watch Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-challenge">
+                            <h4>Final Project Challenge</h4>
+                            <div class="challenge-card">
+                                <h5>Create a Complete Business Dashboard</h5>
+                                <p>Combine SQL, Tableau, and Power BI skills to build an end-to-end business intelligence solution:</p>
+                                
+                                <div class="challenge-steps">
+                                    <div class="step">
+                                        <div class="step-number">1</div>
+                                        <div>
+                                            <h6>SQL Database</h6>
+                                            <p>Design and populate a sales database</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step">
+                                        <div class="step-number">2</div>
+                                        <div>
+                                            <h6>Tableau Analysis</h6>
+                                            <p>Create exploratory analysis in Tableau</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step">
+                                        <div class="step-number">3</div>
+                                        <div>
+                                            <h6>Power BI Dashboard</h6>
+                                            <p>Build an executive dashboard in Power BI</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step">
+                                        <div class="step-number">4</div>
+                                        <div>
+                                            <h6>Presentation</h6>
+                                            <p>Present insights to stakeholders</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn" onclick="startChallenge()">
+                                    <i class="fas fa-rocket"></i> Start Challenge
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI & ML Guide</h4>
+                    <p>Master data tools for AI and machine learning</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Next Module</h4>
+                    <a href="generative-ai.html" class="next-module">
+                        <i class="fas fa-arrow-right"></i>
+                        <div>
+                            <h5>Generative AI</h5>
+                            <p>Create new content with AI models</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>Data Tools</h4>
+                    <div class="tool-badges">
+                        <span class="tool-badge sql">SQL</span>
+                        <span class="tool-badge tableau">Tableau</span>
+                        <span class="tool-badge powerbi">Power BI</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize skill progress bars
+        function initializeSkills() {
+            const skills = [
+                { id: 'skill1', percent: 85, fill: 'skill1Fill', text: 'skill1Percent' },
+                { id: 'skill2', percent: 70, fill: 'skill2Fill', text: 'skill2Percent' },
+                { id: 'skill3', percent: 60, fill: 'skill3Fill', text: 'skill3Percent' },
+                { id: 'mastery1', percent: 90, fill: 'mastery1Fill', text: 'mastery1Percent' },
+                { id: 'mastery2', percent: 75, fill: 'mastery2Fill', text: 'mastery2Percent' },
+                { id: 'mastery3', percent: 80, fill: 'mastery3Fill', text: 'mastery3Percent' }
+            ];
+            
+            skills.forEach(skill => {
+                setTimeout(() => {
+                    document.getElementById(skill.fill).style.width = `${skill.percent}%`;
+                    document.getElementById(skill.text).textContent = `${skill.percent}%`;
+                }, skill.percent * 10);
+            });
+        }
+        
+        // SQL query execution simulation
+        function runSQL() {
+            const input = document.getElementById('sqlInput').value;
+            const resultsDiv = document.getElementById('sqlResults');
+            
+            resultsDiv.innerHTML = `
+                <div style="background: white; padding: 1rem; border-radius: 5px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <strong>Query Results</strong>
+                        <small style="color: #666;">${new Date().toLocaleTimeString()}</small>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa;">
+                                    <th style="padding: 0.5rem; border: 1px solid #dee2e6;">order_id</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #dee2e6;">customer_name</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #dee2e6;">product</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #dee2e6;">quantity</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #dee2e6;">price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1001</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">John Smith</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Laptop</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">$999.99</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1002</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Jane Doe</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Mouse</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">2</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">$29.99</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1003</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Bob Johnson</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Keyboard</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">$89.99</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1004</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Alice Brown</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Monitor</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">$299.99</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1005</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Charlie Wilson</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">Laptop</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">1</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #dee2e6;">$1199.99</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        5 rows returned in 0.02 seconds
+                    </div>
+                </div>
+            `;
+        }
+        
+        function clearSQL() {
+            document.getElementById('sqlInput').value = '';
+            document.getElementById('sqlResults').innerHTML = `
+                <div class="results-placeholder">
+                    <p>Your query results will appear here...</p>
+                </div>
+            `;
+        }
+        
+        function loadExample(type) {
+            const examples = {
+                basic: `SELECT customer_name, product, price 
+FROM sales_data 
+WHERE price > 500 
+ORDER BY price DESC;`,
+                
+                inner: `SELECT 
+    o.order_id,
+    c.customer_name,
+    p.product_name,
+    o.quantity,
+    o.total_price
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.customer_id
+INNER JOIN products p ON o.product_id = p.product_id
+WHERE o.order_date >= '2024-01-01';`,
+                
+                left: `SELECT 
+    c.customer_name,
+    COUNT(o.order_id) AS order_count,
+    SUM(o.total_price) AS total_spent
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_name
+ORDER BY total_spent DESC;`,
+                
+                subquery: `SELECT 
+    product_name,
+    category,
+    price,
+    (SELECT AVG(price) FROM products p2 WHERE p2.category = p1.category) AS avg_category_price
+FROM products p1
+WHERE price > (SELECT AVG(price) FROM products);`
+            };
+            
+            if (type === 'basic') {
+                document.getElementById('sqlInput').value = examples[type];
+            } else {
+                document.getElementById('advancedSqlInput').value = examples[type];
+            }
+        }
+        
+        function runAdvancedSQL() {
+            const input = document.getElementById('advancedSqlInput').value;
+            alert(`Executing query:\n\n${input}\n\n(Simulation only - in a real environment, this would execute against a database)`);
+        }
+        
+        function runBasicQuery() {
+            alert('Running basic SQL queries... (Simulation)');
+        }
+        
+        function downloadDataset() {
+            alert('Downloading sample dataset... (Simulation)\n\nIn a real scenario, this would download a CSV file.');
+        }
+        
+        function startChallenge() {
+            alert('Starting Final Project Challenge!\n\nObjective: Create a complete business intelligence solution using SQL, Tableau, and Power BI.\n\nCheck the Resources section for datasets and guidance.');
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.module-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize on load
+        window.onload = function() {
+            initializeSkills();
+            
+            // Add scroll-based active link update
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.module-nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html>

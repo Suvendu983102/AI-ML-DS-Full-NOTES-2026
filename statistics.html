@@ -1,0 +1,2345 @@
+x<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics for AI - AI & ML Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="topics1.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i> AI & ML Guide
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="index.html#topics">Topics</a> / 
+                <span>Statistics for AI</span>
+            </div>
+            <h1>Statistics for AI (Hours 9-14)</h1>
+            <p class="topic-description">Essential statistical concepts for Machine Learning: Central tendency, probability, distributions, and hypothesis testing</p>
+            <div class="topic-meta">
+                <span class="duration"><i class="far fa-clock"></i> 6 Hours</span>
+                <span class="difficulty"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="completed"><i class="far fa-check-circle"></i> Mark Complete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Content -->
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="topic-sidebar">
+                    <h3>In This Module</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#hour9" class="active">Hour 9: Central Tendency</a></li>
+                        <li><a href="#hour10">Hour 10: Dispersion</a></li>
+                        <li><a href="#hour11">Hour 11: Probability</a></li>
+                        <li><a href="#hour12">Hour 12: Distributions</a></li>
+                        <li><a href="#hour13">Hour 13: Permutations & Combinations</a></li>
+                        <li><a href="#hour14">Hour 14: Hypothesis Testing</a></li>
+                        <li><a href="#practice">Practice Exercises</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Statistical Tools</h4>
+                        <div class="library-icons">
+                            <div class="library-icon">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Descriptive Stats</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-dice"></i>
+                                <span>Probability</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Distributions</span>
+                            </div>
+                            <div class="library-icon">
+                                <i class="fas fa-vial"></i>
+                                <span>Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Quick Formulas</h4>
+                        <div class="formulas-list">
+                            <div class="formula">
+                                <span class="formula-name">Mean</span>
+                                <span class="formula-equation">μ = Σx/n</span>
+                            </div>
+                            <div class="formula">
+                                <span class="formula-name">Variance</span>
+                                <span class="formula-equation">σ² = Σ(x-μ)²/n</span>
+                            </div>
+                            <div class="formula">
+                                <span class="formula-name">Z-score</span>
+                                <span class="formula-equation">z = (x-μ)/σ</span>
+                            </div>
+                            <div class="formula">
+                                <span class="formula-name">Probability</span>
+                                <span class="formula-equation">P(A) = n(A)/n(S)</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="topic-main">
+                    <!-- Hour 9: Measures of Central Tendency -->
+                    <section id="hour9" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">9</span> Measures of Central Tendency</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Mean, Median, Mode</h3>
+                            <p>Central tendency measures describe the center point of a dataset. They are fundamental in understanding data distribution.</p>
+                            
+                            <div class="stats-visualization">
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </div>
+                                        <h4>Mean (Average)</h4>
+                                        <p class="formula">μ = Σx/n</p>
+                                        <p>The sum of all values divided by the number of values. Sensitive to outliers.</p>
+                                    </div>
+                                    
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-sort-numeric-down"></i>
+                                        </div>
+                                        <h4>Median</h4>
+                                        <p class="formula">Middle value</p>
+                                        <p>The middle value when data is sorted. Robust to outliers.</p>
+                                    </div>
+                                    
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                        <h4>Mode</h4>
+                                        <p class="formula">Most frequent value</p>
+                                        <p>The value that appears most frequently. Useful for categorical data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Calculating Central Tendency in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+from scipy import stats
+
+# Sample dataset
+data = [23, 29, 20, 32, 23, 21, 33, 25, 21, 30, 28, 23, 100]  # Contains outlier 100
+
+# Mean
+mean_value = np.mean(data)
+print(f"Mean: {mean_value:.2f}")
+
+# Median
+median_value = np.median(data)
+print(f"Median: {median_value:.2f}")
+
+# Mode
+mode_result = stats.mode(data)
+print(f"Mode: {mode_result.mode[0]} (appears {mode_result.count[0]} times)")
+
+# Trimmed mean (removes outliers)
+from scipy.stats import trim_mean
+trimmed_mean = trim_mean(data, proportiontocut=0.1)
+print(f"Trimmed mean (10%): {trimmed_mean:.2f}")
+
+# Weighted mean
+weights = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 0.1]  # Less weight to outlier
+weighted_mean = np.average(data, weights=weights)
+print(f"Weighted mean: {weighted_mean:.2f}")</code></pre>
+                            </div>
+                            
+                            <h4>When to Use Which Measure?</h4>
+                            <div class="decision-guide">
+                                <table class="decision-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Situation</th>
+                                            <th>Recommended Measure</th>
+                                            <th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Normal distribution, no outliers</td>
+                                            <td>Mean</td>
+                                            <td>Uses all data points efficiently</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Skewed distribution or outliers</td>
+                                            <td>Median</td>
+                                            <td>Robust against extreme values</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Categorical data</td>
+                                            <td>Mode</td>
+                                            <td>Shows most common category</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Data with measurement errors</td>
+                                            <td>Trimmed Mean</td>
+                                            <td>Removes extreme values</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Interactive Central Tendency Calculator</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="data-input">Enter numbers (comma-separated):</label>
+                                        <input type="text" id="data-input" value="23, 29, 20, 32, 23, 21, 33, 25, 21, 30, 28, 23">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="outlier">Add outlier value:</label>
+                                        <input type="number" id="outlier" value="100" min="0" max="1000">
+                                    </div>
+                                    <button onclick="calculateCentralTendency()" class="btn">
+                                        <i class="fas fa-calculator"></i> Calculate
+                                    </button>
+                                </div>
+                                <div id="central-tendency-results" class="demo-output"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 10: Measures of Dispersion -->
+                    <section id="hour10" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">10</span> Measures of Dispersion</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Range, Variance, Standard Deviation</h3>
+                            <p>Dispersion measures describe how spread out the data is. They complement central tendency measures.</p>
+                            
+                            <div class="dispersion-visualization">
+                                <div class="dispersion-explanation">
+                                    <div class="dispersion-item">
+                                        <h4>Range</h4>
+                                        <p>Difference between maximum and minimum values. Simple but sensitive to outliers.</p>
+                                        <div class="formula-box">
+                                            Range = Max - Min
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dispersion-item">
+                                        <h4>Variance (σ²)</h4>
+                                        <p>Average of squared differences from the mean. Measures spread in squared units.</p>
+                                        <div class="formula-box">
+                                            σ² = Σ(x - μ)² / n
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dispersion-item">
+                                        <h4>Standard Deviation (σ)</h4>
+                                        <p>Square root of variance. Measures spread in original units. Most commonly used.</p>
+                                        <div class="formula-box">
+                                            σ = √Variance
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dispersion-item">
+                                        <h4>Interquartile Range (IQR)</h4>
+                                        <p>Range of middle 50% of data. Robust to outliers.</p>
+                                        <div class="formula-box">
+                                            IQR = Q3 - Q1
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Calculating Dispersion in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+from scipy import stats
+
+# Sample datasets
+data_a = [23, 29, 20, 32, 23, 21, 33, 25, 21, 30, 28, 23]  # Low dispersion
+data_b = [10, 50, 5, 45, 15, 55, 2, 48, 20, 40, 8, 52]     # High dispersion
+
+print("Dataset A (Low dispersion):", data_a)
+print("Dataset B (High dispersion):", data_b)
+
+# Range
+range_a = np.ptp(data_a)  # peak-to-peak
+range_b = np.ptp(data_b)
+print(f"\nRange - A: {range_a}, B: {range_b}")
+
+# Variance
+variance_a = np.var(data_a)
+variance_b = np.var(data_b)
+print(f"Variance - A: {variance_a:.2f}, B: {variance_b:.2f}")
+
+# Standard Deviation
+std_a = np.std(data_a)
+std_b = np.std(data_b)
+print(f"Standard Deviation - A: {std_a:.2f}, B: {std_b:.2f}")
+
+# Interquartile Range (IQR)
+q1_a, q3_a = np.percentile(data_a, [25, 75])
+q1_b, q3_b = np.percentile(data_b, [25, 75])
+iqr_a = q3_a - q1_a
+iqr_b = q3_b - q1_b
+print(f"IQR - A: {iqr_a:.2f}, B: {iqr_b:.2f}")
+
+# Coefficient of Variation (relative dispersion)
+cv_a = (std_a / np.mean(data_a)) * 100
+cv_b = (std_b / np.mean(data_b)) * 100
+print(f"Coefficient of Variation - A: {cv_a:.1f}%, B: {cv_b:.1f}%")
+
+# Z-scores (standardization)
+z_scores_a = stats.zscore(data_a)
+print(f"\nZ-scores for Dataset A (first 5): {z_scores_a[:5].round(2)}")</code></pre>
+                            </div>
+                            
+                            <h4>Understanding Standard Deviation</h4>
+                            <div class="normal-distribution">
+                                <div class="distribution-visual">
+                                    <div class="distribution-label left">μ-3σ</div>
+                                    <div class="distribution-label">μ-2σ</div>
+                                    <div class="distribution-label">μ-σ</div>
+                                    <div class="distribution-label center">μ</div>
+                                    <div class="distribution-label">μ+σ</div>
+                                    <div class="distribution-label">μ+2σ</div>
+                                    <div class="distribution-label right">μ+3σ</div>
+                                    
+                                    <div class="distribution-bars">
+                                        <div class="bar" style="width: 2.5%; background: #ff6b6b;">0.1%</div>
+                                        <div class="bar" style="width: 13.5%; background: #ffa726;">2.1%</div>
+                                        <div class="bar" style="width: 34%; background: #42a5f5;">13.6%</div>
+                                        <div class="bar" style="width: 34%; background: #66bb6a;">34.1%</div>
+                                        <div class="bar" style="width: 34%; background: #42a5f5;">34.1%</div>
+                                        <div class="bar" style="width: 13.5%; background: #ffa726;">13.6%</div>
+                                        <div class="bar" style="width: 2.5%; background: #ff6b6b;">2.1%</div>
+                                    </div>
+                                    
+                                    <div class="distribution-percentages">
+                                        <div class="percentage">68% of data within 1σ</div>
+                                        <div class="percentage">95% of data within 2σ</div>
+                                        <div class="percentage">99.7% of data within 3σ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-points">
+                                <h4><i class="fas fa-key"></i> Key Insights</h4>
+                                <ul>
+                                    <li><strong>Low variance</strong> means data points are close to the mean</li>
+                                    <li><strong>High variance</strong> means data points are spread out</li>
+                                    <li><strong>Standard deviation</strong> is in same units as original data</li>
+                                    <li><strong>Coefficient of Variation</strong> compares dispersion across different scales</li>
+                                    <li><strong>IQR</strong> is better for skewed distributions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 11: Probability Basics -->
+                    <section id="hour11" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">11</span> Probability Basics</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Fundamental Concepts</h3>
+                            <p>Probability quantifies uncertainty. It's the foundation of statistical inference and machine learning algorithms.</p>
+                            
+                            <div class="probability-concepts">
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <div class="concept-icon">
+                                            <i class="fas fa-dice"></i>
+                                        </div>
+                                        <h4>Probability Rules</h4>
+                                        <ul>
+                                            <li>0 ≤ P(A) ≤ 1</li>
+                                            <li>P(Sample Space) = 1</li>
+                                            <li>P(A') = 1 - P(A)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <div class="concept-icon">
+                                            <i class="fas fa-venus-mars"></i>
+                                        </div>
+                                        <h4>Types of Events</h4>
+                                        <ul>
+                                            <li>Independent: P(A∩B) = P(A)×P(B)</li>
+                                            <li>Mutually Exclusive: P(A∪B) = P(A)+P(B)</li>
+                                            <li>Conditional: P(A|B) = P(A∩B)/P(B)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <div class="concept-icon">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </div>
+                                        <h4>Bayes' Theorem</h4>
+                                        <p class="formula-small">P(A|B) = P(B|A)×P(A)/P(B)</p>
+                                        <p>Updates probability based on new evidence</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Probability Calculations in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+from scipy import stats
+
+# Example 1: Dice probability
+print("=== Dice Probability ===")
+# Probability of rolling a 6 on fair die
+p_six = 1/6
+print(f"P(rolling 6) = {p_six:.3f}")
+
+# Probability of rolling even number
+p_even = 3/6  # 2, 4, 6
+print(f"P(even) = {p_even:.3f}")
+
+# Probability of rolling 6 twice in a row
+p_two_sixes = (1/6) * (1/6)
+print(f"P(two sixes) = {p_two_sixes:.4f}")
+
+# Example 2: Card deck probability
+print("\n=== Card Deck Probability ===")
+# Standard deck: 52 cards, 4 suits, 13 ranks
+# Probability of drawing an Ace
+p_ace = 4/52
+print(f"P(Ace) = {p_ace:.3f}")
+
+# Probability of drawing a Heart
+p_heart = 13/52
+print(f"P(Heart) = {p_heart:.3f}")
+
+# Probability of drawing Ace of Hearts
+p_ace_hearts = 1/52
+print(f"P(Ace of Hearts) = {p_ace_hearts:.4f}")
+
+# Example 3: Conditional probability
+print("\n=== Conditional Probability ===")
+# In a class of 100 students:
+# 60 study ML, 40 study DL, 20 study both
+p_ml = 60/100
+p_dl = 40/100
+p_both = 20/100
+
+# Probability of studying DL given studying ML
+p_dl_given_ml = p_both / p_ml
+print(f"P(DL | ML) = {p_dl_given_ml:.3f}")
+
+# Example 4: Bayes' Theorem
+print("\n=== Bayes' Theorem ===")
+# Medical test: Disease prevalence = 1%
+# Test accuracy: 95% true positive, 90% true negative
+p_disease = 0.01
+p_positive_given_disease = 0.95
+p_negative_given_no_disease = 0.90
+
+# Calculate P(disease | positive)
+p_positive = (p_positive_given_disease * p_disease + 
+              (1 - p_negative_given_no_disease) * (1 - p_disease))
+p_disease_given_positive = (p_positive_given_disease * p_disease) / p_positive
+print(f"P(Disease | Positive test) = {p_disease_given_positive:.3f}")</code></pre>
+                            </div>
+                            
+                            <h4>Probability Simulation</h4>
+                            <div class="interactive-demo">
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="simulation-type">Simulation Type:</label>
+                                        <select id="simulation-type">
+                                            <option value="coin">Coin Toss</option>
+                                            <option value="dice">Dice Roll</option>
+                                            <option value="cards">Card Draw</option>
+                                            <option value="birthday">Birthday Paradox</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="trials">Number of Trials:</label>
+                                        <input type="number" id="trials" value="1000" min="10" max="100000">
+                                    </div>
+                                    <button onclick="runProbabilitySimulation()" class="btn">
+                                        <i class="fas fa-play"></i> Run Simulation
+                                    </button>
+                                </div>
+                                <div id="probability-results" class="demo-output"></div>
+                            </div>
+                            
+                            <div class="probability-rules">
+                                <h4>Important Probability Rules</h4>
+                                <div class="rules-grid">
+                                    <div class="rule">
+                                        <h5>Addition Rule</h5>
+                                        <div class="formula">P(A∪B) = P(A) + P(B) - P(A∩B)</div>
+                                        <p>For non-mutually exclusive events</p>
+                                    </div>
+                                    
+                                    <div class="rule">
+                                        <h5>Multiplication Rule</h5>
+                                        <div class="formula">P(A∩B) = P(A) × P(B|A)</div>
+                                        <p>For dependent events</p>
+                                    </div>
+                                    
+                                    <div class="rule">
+                                        <h5>Law of Total Probability</h5>
+                                        <div class="formula">P(B) = Σ P(B|Aᵢ)P(Aᵢ)</div>
+                                        <p>When events partition sample space</p>
+                                    </div>
+                                    
+                                    <div class="rule">
+                                        <h5>Bayes' Rule</h5>
+                                        <div class="formula">P(A|B) = P(B|A)P(A)/P(B)</div>
+                                        <p>Updates beliefs with evidence</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 12: Distributions -->
+                    <section id="hour12" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">12</span> Probability Distributions</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Common Distributions in ML</h3>
+                            <p>Probability distributions describe how probabilities are distributed over values of a random variable.</p>
+                            
+                            <div class="distributions-overview">
+                                <div class="distribution-tabs">
+                                    <button class="distribution-tab active" onclick="showDistribution('normal')">
+                                        Normal
+                                    </button>
+                                    <button class="distribution-tab" onclick="showDistribution('binomial')">
+                                        Binomial
+                                    </button>
+                                    <button class="distribution-tab" onclick="showDistribution('poisson')">
+                                        Poisson
+                                    </button>
+                                    <button class="distribution-tab" onclick="showDistribution('uniform')">
+                                        Uniform
+                                    </button>
+                                    <button class="distribution-tab" onclick="showDistribution('exponential')">
+                                        Exponential
+                                    </button>
+                                </div>
+                                
+                                <div id="normal-dist" class="distribution-content active">
+                                    <div class="distribution-header">
+                                        <h4>Normal (Gaussian) Distribution</h4>
+                                        <div class="distribution-formula">N(μ, σ²)</div>
+                                    </div>
+                                    <div class="distribution-details">
+                                        <div class="distribution-info">
+                                            <h5>Characteristics:</h5>
+                                            <ul>
+                                                <li>Bell-shaped curve</li>
+                                                <li>Symmetric about mean</li>
+                                                <li>68-95-99.7 rule</li>
+                                                <li>Central Limit Theorem applies</li>
+                                            </ul>
+                                            
+                                            <h5>Parameters:</h5>
+                                            <ul>
+                                                <li>μ = Mean (center)</li>
+                                                <li>σ = Standard deviation (spread)</li>
+                                            </ul>
+                                            
+                                            <h5>Applications in ML:</h5>
+                                            <ul>
+                                                <li>Error terms in linear regression</li>
+                                                <li>Assumption in many statistical tests</li>
+                                                <li>Feature normalization</li>
+                                            </ul>
+                                        </div>
+                                        <div class="distribution-code">
+                                            <pre><code>import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Generate normal distribution
+mu, sigma = 0, 1  # Standard normal
+data = np.random.normal(mu, sigma, 1000)
+
+# Calculate PDF
+x = np.linspace(-4, 4, 100)
+pdf = stats.norm.pdf(x, mu, sigma)
+
+# Calculate CDF
+cdf = stats.norm.cdf(x, mu, sigma)
+
+# Calculate probabilities
+p_less_than_1 = stats.norm.cdf(1, mu, sigma)
+p_between = stats.norm.cdf(1, mu, sigma) - stats.norm.cdf(-1, mu, sigma)
+
+print(f"P(X < 1) = {p_less_than_1:.3f}")
+print(f"P(-1 < X < 1) = {p_between:.3f}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="binomial-dist" class="distribution-content">
+                                    <div class="distribution-header">
+                                        <h4>Binomial Distribution</h4>
+                                        <div class="distribution-formula">B(n, p)</div>
+                                    </div>
+                                    <div class="distribution-details">
+                                        <div class="distribution-info">
+                                            <h5>Characteristics:</h5>
+                                            <ul>
+                                                <li>Fixed number of trials (n)</li>
+                                                <li>Two outcomes: success/failure</li>
+                                                <li>Constant probability (p)</li>
+                                                <li>Independent trials</li>
+                                            </ul>
+                                            
+                                            <h5>Parameters:</h5>
+                                            <ul>
+                                                <li>n = Number of trials</li>
+                                                <li>p = Probability of success</li>
+                                            </ul>
+                                            
+                                            <h5>Applications in ML:</h5>
+                                            <ul>
+                                                <li>A/B testing</li>
+                                                <li>Classification accuracy</li>
+                                                <li>Quality control</li>
+                                            </ul>
+                                        </div>
+                                        <div class="distribution-code">
+                                            <pre><code>from scipy import stats
+
+# Binomial distribution parameters
+n = 10  # trials
+p = 0.5  # probability of success
+
+# Calculate probabilities
+for k in range(n+1):
+    prob = stats.binom.pmf(k, n, p)
+    print(f"P(X = {k}) = {prob:.4f}")
+
+# Cumulative probability
+prob_at_least_7 = 1 - stats.binom.cdf(6, n, p)
+print(f"\nP(X ≥ 7) = {prob_at_least_7:.4f}")
+
+# Expected value and variance
+expected = n * p
+variance = n * p * (1 - p)
+print(f"Expected: {expected}")
+print(f"Variance: {variance}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="poisson-dist" class="distribution-content">
+                                    <div class="distribution-header">
+                                        <h4>Poisson Distribution</h4>
+                                        <div class="distribution-formula">Pois(λ)</div>
+                                    </div>
+                                    <div class="distribution-details">
+                                        <div class="distribution-info">
+                                            <h5>Characteristics:</h5>
+                                            <ul>
+                                                <li>Events in fixed interval</li>
+                                                <li>Events occur independently</li>
+                                                <li>Constant average rate (λ)</li>
+                                                <li>Discrete distribution</li>
+                                            </ul>
+                                            
+                                            <h5>Parameters:</h5>
+                                            <ul>
+                                                <li>λ = Average rate of events</li>
+                                            </ul>
+                                            
+                                            <h5>Applications in ML:</h5>
+                                            <ul>
+                                                <li>Count data modeling</li>
+                                                <li>Customer arrivals</li>
+                                                <li>Defect counts</li>
+                                            </ul>
+                                        </div>
+                                        <div class="distribution-code">
+                                            <pre><code>from scipy import stats
+import numpy as np
+
+# Poisson distribution parameters
+lambda_param = 3  # average rate
+
+# Calculate probabilities
+for k in range(10):
+    prob = stats.poisson.pmf(k, lambda_param)
+    print(f"P(X = {k}) = {prob:.4f}")
+
+# Probability of more than 5 events
+prob_more_than_5 = 1 - stats.poisson.cdf(5, lambda_param)
+print(f"\nP(X > 5) = {prob_more_than_5:.4f}")
+
+# Simulate Poisson process
+events = stats.poisson.rvs(lambda_param, size=1000)
+print(f"\nSimulated mean: {np.mean(events):.2f}")
+print(f"Simulated variance: {np.var(events):.2f}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4>Distribution Visualization</h4>
+                            <div class="interactive-demo">
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="dist-type">Distribution:</label>
+                                        <select id="dist-type" onchange="updateDistributionPlot()">
+                                            <option value="normal">Normal</option>
+                                            <option value="binomial">Binomial</option>
+                                            <option value="poisson">Poisson</option>
+                                            <option value="uniform">Uniform</option>
+                                            <option value="exponential">Exponential</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="parameter-controls">
+                                        <!-- Parameters will be added dynamically by JavaScript -->
+                                    </div>
+                                    
+                                    <button onclick="generateDistribution()" class="btn">
+                                        <i class="fas fa-chart-line"></i> Plot Distribution
+                                    </button>
+                                </div>
+                                <div id="distribution-plot" class="demo-output">
+                                    <div class="plot-placeholder">
+                                        <p>Select a distribution and click "Plot Distribution" to visualize</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-points">
+                                <h4><i class="fas fa-key"></i> Distribution Selection Guide</h4>
+                                <table class="distribution-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Data Type</th>
+                                            <th>Recommended Distribution</th>
+                                            <th>Example Use Case</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Continuous, symmetric</td>
+                                            <td>Normal</td>
+                                            <td>Heights, test scores</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Binary outcomes</td>
+                                            <td>Binomial</td>
+                                            <td>Coin flips, success/failure</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Count data</td>
+                                            <td>Poisson</td>
+                                            <td>Customer arrivals, defects</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Time between events</td>
+                                            <td>Exponential</td>
+                                            <td>Waiting times, lifetime</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Equal likelihood</td>
+                                            <td>Uniform</td>
+                                            <td>Dice rolls, random numbers</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 13: Permutations & Combinations -->
+                    <section id="hour13" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">13</span> Permutations & Combinations</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Counting Principles</h3>
+                            <p>Permutations and combinations are fundamental for counting possibilities in probability and statistics.</p>
+                            
+                            <div class="counting-methods">
+                                <div class="method-comparison">
+                                    <div class="method-card">
+                                        <div class="method-icon">
+                                            <i class="fas fa-sort-amount-down"></i>
+                                        </div>
+                                        <h4>Permutations</h4>
+                                        <p class="formula">nPr = n!/(n-r)!</p>
+                                        <p><strong>Order matters</strong></p>
+                                        <p class="example">Example: Arranging books on a shelf</p>
+                                    </div>
+                                    
+                                    <div class="method-card">
+                                        <div class="method-icon">
+                                            <i class="fas fa-object-group"></i>
+                                        </div>
+                                        <h4>Combinations</h4>
+                                        <p class="formula">nCr = n!/[r!(n-r)!]</p>
+                                        <p><strong>Order doesn't matter</strong></p>
+                                        <p class="example">Example: Choosing team members</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Calculating Permutations and Combinations in Python</span>
+                                </div>
+                                <pre><code>import math
+from itertools import permutations, combinations
+
+# Example 1: Basic calculations
+print("=== Basic Calculations ===")
+n = 5
+r = 3
+
+# Permutations
+permutations_count = math.perm(n, r)  # Python 3.8+
+print(f"Permutations of {n} items taken {r} at a time:")
+print(f"   Using math.perm: {permutations_count}")
+print(f"   Using formula: {math.factorial(n) // math.factorial(n - r)}")
+
+# Combinations
+combinations_count = math.comb(n, r)  # Python 3.8+
+print(f"\nCombinations of {n} items taken {r} at a time:")
+print(f"   Using math.comb: {combinations_count}")
+print(f"   Using formula: {math.factorial(n) // (math.factorial(r) * math.factorial(n - r))}")
+
+# Example 2: Listing all possibilities
+print("\n=== Listing All Possibilities ===")
+items = ['A', 'B', 'C', 'D']
+
+print("All permutations of 2 items:")
+for perm in permutations(items, 2):
+    print(f"  {perm}")
+
+print("\nAll combinations of 2 items:")
+for comb in combinations(items, 2):
+    print(f"  {comb}")
+
+# Example 3: Real-world problems
+print("\n=== Real-world Problems ===")
+
+# Problem 1: Password combinations
+# 4-digit PIN with digits 0-9
+digits = 10
+pin_length = 4
+pin_combinations = digits ** pin_length
+print(f"4-digit PIN combinations: {pin_combinations:,}")
+
+# Problem 2: Committee selection
+# Choose 3 people from 10
+people = 10
+committee_size = 3
+committee_combinations = math.comb(people, committee_size)
+print(f"Ways to choose {committee_size} from {people}: {committee_combinations:,}")
+
+# Problem 3: Arranging books
+# 5 books on a shelf
+books = 5
+arrangements = math.factorial(books)
+print(f"Ways to arrange {books} books: {arrangements:,}")
+
+# Problem 4: Poker hands
+# Number of 5-card poker hands from 52-card deck
+poker_hands = math.comb(52, 5)
+print(f"5-card poker hands: {poker_hands:,}")
+
+# Probability of specific hand (e.g., royal flush)
+royal_flushes = 4  # One for each suit
+p_royal_flush = royal_flushes / poker_hands
+print(f"P(Royal Flush) = {p_royal_flush:.10f}")</code></pre>
+                            </div>
+                            
+                            <h4>Interactive Permutation & Combination Calculator</h4>
+                            <div class="interactive-demo">
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="n-value">n (total items):</label>
+                                        <input type="number" id="n-value" value="5" min="1" max="100">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="r-value">r (selected items):</label>
+                                        <input type="number" id="r-value" value="3" min="1" max="100">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-type">Calculation Type:</label>
+                                        <select id="calc-type">
+                                            <option value="permutation">Permutation (nPr)</option>
+                                            <option value="combination">Combination (nCr)</option>
+                                        </select>
+                                    </div>
+                                    <button onclick="calculatePermComb()" class="btn">
+                                        <i class="fas fa-calculator"></i> Calculate
+                                    </button>
+                                </div>
+                                <div id="perm-comb-results" class="demo-output"></div>
+                            </div>
+                            
+                            <div class="applications-section">
+                                <h4>Applications in Machine Learning</h4>
+                                <div class="applications-grid">
+                                    <div class="application-card">
+                                        <h5>Feature Selection</h5>
+                                        <p>Combinations used to select optimal feature subsets from large datasets.</p>
+                                        <div class="example">
+                                            <strong>Example:</strong> Choosing 5 features from 20 possibilities
+                                            <div class="formula-small">C(20,5) = 15,504 combinations</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="application-card">
+                                        <h5>Cross-Validation</h5>
+                                        <p>Permutations used in k-fold cross-validation to create training/test splits.</p>
+                                        <div class="example">
+                                            <strong>Example:</strong> 5-fold CV with 100 data points
+                                            <div class="formula-small">Various permutations of splits</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="application-card">
+                                        <h5>Ensemble Methods</h5>
+                                        <p>Combinations of models in ensemble learning (Random Forests, Boosting).</p>
+                                        <div class="example">
+                                            <strong>Example:</strong> Selecting subsets of training data
+                                            <div class="formula-small">Bagging with replacement</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="application-card">
+                                        <h5>Hyperparameter Tuning</h5>
+                                        <p>Permutations used in grid search for hyperparameter optimization.</p>
+                                        <div class="example">
+                                            <strong>Example:</strong> Testing 3×4×2 parameter combinations
+                                            <div class="formula-small">24 different configurations</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="special-cases">
+                                <h4>Special Cases and Formulas</h4>
+                                <div class="formulas-grid">
+                                    <div class="formula-case">
+                                        <h5>With Repetition</h5>
+                                        <div class="formula">n^r</div>
+                                        <p>Permutations with repetition allowed</p>
+                                    </div>
+                                    
+                                    <div class="formula-case">
+                                        <h5>Circular Permutations</h5>
+                                        <div class="formula">(n-1)!</div>
+                                        <p>Arrangements in a circle</p>
+                                    </div>
+                                    
+                                    <div class="formula-case">
+                                        <h5>Multiset Permutations</h5>
+                                        <div class="formula">n!/(n₁!n₂!...nₖ!)</div>
+                                        <p>Items with repetitions</p>
+                                    </div>
+                                    
+                                    <div class="formula-case">
+                                        <h5>Binomial Theorem</h5>
+                                        <div class="formula">(a+b)^n = Σ C(n,k)a^k b^{n-k}</div>
+                                        <p>Expansion using combinations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Hour 14: Inferential Statistics & Hypothesis Testing -->
+                    <section id="hour14" class="hour-section">
+                        <div class="hour-header">
+                            <h2><span class="hour-number">14</span> Inferential Statistics & Hypothesis Testing</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>From Data to Conclusions</h3>
+                            <p>Inferential statistics allows us to make predictions or inferences about a population based on a sample.</p>
+                            
+                            <div class="inferential-overview">
+                                <div class="inference-flow">
+                                    <div class="flow-step">
+                                        <div class="step-number">1</div>
+                                        <h5>Define Hypothesis</h5>
+                                        <p>Null (H₀) vs Alternative (H₁)</p>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-step">
+                                        <div class="step-number">2</div>
+                                        <h5>Choose Test</h5>
+                                        <p>Select appropriate statistical test</p>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-step">
+                                        <div class="step-number">3</div>
+                                        <h5>Calculate</h5>
+                                        <p>Test statistic and p-value</p>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-step">
+                                        <div class="step-number">4</div>
+                                        <h5>Decide</h5>
+                                        <p>Reject or fail to reject H₀</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="example-header">
+                                    <span>Hypothesis Testing in Python</span>
+                                </div>
+                                <pre><code>import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Example 1: One-sample t-test
+print("=== One-sample t-test ===")
+# Test if sample mean differs from population mean
+sample = [23.4, 24.2, 25.1, 23.8, 24.5, 24.9, 23.7, 24.8, 25.2, 24.0]
+population_mean = 24.5
+
+# Perform t-test
+t_stat, p_value = stats.ttest_1samp(sample, population_mean)
+print(f"Sample mean: {np.mean(sample):.2f}")
+print(f"Population mean (H₀): {population_mean}")
+print(f"t-statistic: {t_stat:.3f}")
+print(f"p-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Result: Reject H₀ (significant difference)")
+else:
+    print("Result: Fail to reject H₀ (no significant difference)")
+
+# Example 2: Two-sample t-test
+print("\n=== Two-sample t-test ===")
+# Compare means of two independent samples
+group_a = [85, 88, 92, 78, 90, 87, 89, 84, 91, 86]
+group_b = [78, 82, 85, 79, 81, 84, 80, 83, 82, 79]
+
+# Perform independent t-test
+t_stat, p_value = stats.ttest_ind(group_a, group_b)
+print(f"Group A mean: {np.mean(group_a):.2f}")
+print(f"Group B mean: {np.mean(group_b):.2f}")
+print(f"t-statistic: {t_stat:.3f}")
+print(f"p-value: {p_value:.6f}")
+
+# Example 3: Chi-square test
+print("\n=== Chi-square test ===")
+# Test independence between categorical variables
+observed = np.array([[50, 30, 20],  # Group 1 preferences
+                     [30, 40, 30],  # Group 2 preferences
+                     [20, 30, 50]]) # Group 3 preferences
+
+chi2, p_value, dof, expected = stats.chi2_contingency(observed)
+print(f"Chi-square statistic: {chi2:.3f}")
+print(f"p-value: {p_value:.4f}")
+print(f"Degrees of freedom: {dof}")
+
+# Example 4: ANOVA (Analysis of Variance)
+print("\n=== One-way ANOVA ===")
+# Compare means of three or more groups
+group1 = [23, 25, 28, 22, 24]
+group2 = [30, 32, 29, 31, 33]
+group3 = [35, 37, 36, 34, 38]
+
+f_stat, p_value = stats.f_oneway(group1, group2, group3)
+print(f"F-statistic: {f_stat:.3f}")
+print(f"p-value: {p_value:.6f}")
+
+if p_value < 0.05:
+    print("Result: Significant difference between group means")
+    # Post-hoc test if ANOVA is significant
+    from statsmodels.stats.multicomp import pairwise_tukeyhsd
+    import pandas as pd
+    
+    data = group1 + group2 + group3
+    groups = ['G1']*len(group1) + ['G2']*len(group2) + ['G3']*len(group3)
+    
+    tukey = pairwise_tukeyhsd(data, groups, alpha=0.05)
+    print("\nTukey HSD Post-hoc test:")
+    print(tukey)</code></pre>
+                            </div>
+                            
+                            <h4>Types of Statistical Tests</h4>
+                            <div class="test-selection-guide">
+                                <table class="test-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Test Type</th>
+                                            <th>When to Use</th>
+                                            <th>Assumptions</th>
+                                            <th>Python Function</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>t-test (one-sample)</strong></td>
+                                            <td>Compare sample mean to population mean</td>
+                                            <td>Normality, independence</td>
+                                            <td><code>stats.ttest_1samp()</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>t-test (two-sample)</strong></td>
+                                            <td>Compare means of two independent groups</td>
+                                            <td>Normality, equal variances</td>
+                                            <td><code>stats.ttest_ind()</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Paired t-test</strong></td>
+                                            <td>Compare means of two related groups</td>
+                                            <td>Normality of differences</td>
+                                            <td><code>stats.ttest_rel()</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ANOVA</strong></td>
+                                            <td>Compare means of three+ groups</td>
+                                            <td>Normality, homogeneity of variance</td>
+                                            <td><code>stats.f_oneway()</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Chi-square</strong></td>
+                                            <td>Test independence of categorical variables</td>
+                                            <td>Large sample, expected counts >5</td>
+                                            <td><code>stats.chi2_contingency()</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Mann-Whitney U</strong></td>
+                                            <td>Non-parametric alternative to t-test</td>
+                                            <td>Ordinal data, no normality</td>
+                                            <td><code>stats.mannwhitneyu()</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <h4>Understanding P-values and Confidence Intervals</h4>
+                            <div class="statistical-concepts">
+                                <div class="concept-grid-2">
+                                    <div class="concept-item">
+                                        <h5>P-value</h5>
+                                        <p>Probability of observing the data (or more extreme) if the null hypothesis is true.</p>
+                                        <div class="interpretation">
+                                            <strong>Interpretation:</strong>
+                                            <ul>
+                                                <li>p < 0.01: Very strong evidence against H₀</li>
+                                                <li>p < 0.05: Strong evidence against H₀</li>
+                                                <li>p < 0.10: Some evidence against H₀</li>
+                                                <li>p ≥ 0.10: Weak or no evidence against H₀</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-item">
+                                        <h5>Confidence Interval</h5>
+                                        <p>Range of values that likely contains the true population parameter.</p>
+                                        <div class="interpretation">
+                                            <strong>95% CI Interpretation:</strong>
+                                            <p>If we repeated the study 100 times, 95 of the confidence intervals would contain the true population parameter.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-item">
+                                        <h5>Type I & II Errors</h5>
+                                        <div class="error-table">
+                                            <table>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Reject H₀</th>
+                                                    <th>Fail to reject H₀</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>H₀ True</td>
+                                                    <td class="error-type1">Type I Error (α)</td>
+                                                    <td class="correct">Correct</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>H₀ False</td>
+                                                    <td class="correct">Correct (Power)</td>
+                                                    <td class="error-type2">Type II Error (β)</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-item">
+                                        <h5>Effect Size</h5>
+                                        <p>Magnitude of the difference, independent of sample size.</p>
+                                        <div class="effect-size">
+                                            <strong>Common Measures:</strong>
+                                            <ul>
+                                                <li>Cohen's d (t-tests)</li>
+                                                <li>η² (ANOVA)</li>
+                                                <li>Odds Ratio (Chi-square)</li>
+                                                <li>Correlation Coefficient</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="interactive-demo">
+                                <h4>Hypothesis Testing Simulation</h4>
+                                <div class="demo-controls">
+                                    <div class="input-group">
+                                        <label for="test-type">Test Type:</label>
+                                        <select id="test-type">
+                                            <option value="onesample">One-sample t-test</option>
+                                            <option value="twosample">Two-sample t-test</option>
+                                            <option value="anova">ANOVA</option>
+                                            <option value="chi2">Chi-square</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="alpha-level">Alpha Level (α):</label>
+                                        <select id="alpha-level">
+                                            <option value="0.01">0.01</option>
+                                            <option value="0.05" selected>0.05</option>
+                                            <option value="0.10">0.10</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="sample-size">Sample Size:</label>
+                                        <input type="number" id="sample-size" value="30" min="5" max="1000">
+                                    </div>
+                                    <button onclick="runHypothesisTest()" class="btn">
+                                        <i class="fas fa-vial"></i> Run Test
+                                    </button>
+                                </div>
+                                <div id="hypothesis-results" class="demo-output"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Practice Exercises -->
+                    <section id="practice" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-laptop-code"></i> Practice Exercises</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Test Your Statistical Knowledge</h3>
+                            <p>Solve these exercises to reinforce your understanding of statistical concepts.</p>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 1: Descriptive Statistics</h4>
+                                    <span class="difficulty-badge easy">Easy</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Given the following dataset of exam scores:</p>
+                                    <pre><code>scores = [85, 92, 78, 90, 88, 76, 95, 89, 84, 91, 87, 83, 79, 94, 86]</code></pre>
+                                    <p>Calculate:</p>
+                                    <ol>
+                                        <li>Mean, median, and mode</li>
+                                        <li>Range, variance, and standard deviation</li>
+                                        <li>Q1, Q3, and IQR</li>
+                                        <li>Z-score for the score 85</li>
+                                        <li>Identify any outliers using the 1.5×IQR rule</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('stats-solution1')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="stats-solution1" class="solution-content">
+                                            <pre><code>import numpy as np
+from scipy import stats
+
+scores = [85, 92, 78, 90, 88, 76, 95, 89, 84, 91, 87, 83, 79, 94, 86]
+
+# 1. Central tendency
+mean = np.mean(scores)
+median = np.median(scores)
+mode_result = stats.mode(scores)
+
+print(f"1. Mean: {mean:.2f}")
+print(f"   Median: {median}")
+print(f"   Mode: {mode_result.mode[0]} (appears {mode_result.count[0]} times)")
+
+# 2. Dispersion
+range_val = np.ptp(scores)
+variance = np.var(scores, ddof=1)  # sample variance
+std_dev = np.std(scores, ddof=1)
+
+print(f"\n2. Range: {range_val}")
+print(f"   Variance: {variance:.2f}")
+print(f"   Standard Deviation: {std_dev:.2f}")
+
+# 3. Quartiles
+q1 = np.percentile(scores, 25)
+q3 = np.percentile(scores, 75)
+iqr = q3 - q1
+
+print(f"\n3. Q1: {q1:.2f}")
+print(f"   Q3: {q3:.2f}")
+print(f"   IQR: {iqr:.2f}")
+
+# 4. Z-score for 85
+z_score = (85 - mean) / std_dev
+print(f"\n4. Z-score for 85: {z_score:.2f}")
+
+# 5. Outliers using 1.5×IQR rule
+lower_bound = q1 - 1.5 * iqr
+upper_bound = q3 + 1.5 * iqr
+outliers = [x for x in scores if x < lower_bound or x > upper_bound]
+
+print(f"\n5. Lower bound: {lower_bound:.2f}")
+print(f"   Upper bound: {upper_bound:.2f}")
+print(f"   Outliers: {outliers if outliers else 'None'}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 2: Probability Problems</h4>
+                                    <span class="difficulty-badge medium">Medium</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>Solve these probability problems:</p>
+                                    <ol>
+                                        <li>In a class of 30 students, 18 study ML, 15 study DL, and 10 study both. What's the probability that a randomly selected student studies either ML or DL?</li>
+                                        <li>A fair coin is tossed 5 times. What's the probability of getting exactly 3 heads?</li>
+                                        <li>In a deck of cards, what's the probability of drawing either a King or a Heart?</li>
+                                        <li>A test for a disease is 99% accurate. The disease prevalence is 0.1%. If a person tests positive, what's the probability they actually have the disease?</li>
+                                        <li>In a lottery, you need to match 6 numbers from 1-49. What's the probability of winning?</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('stats-solution2')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="stats-solution2" class="solution-content">
+                                            <pre><code>import math
+
+# 1. ML/DL students problem
+print("1. ML/DL Students Problem:")
+ml_only = 8  # 18 total ML - 10 both
+dl_only = 5  # 15 total DL - 10 both
+both = 10
+neither = 30 - (ml_only + dl_only + both)
+
+p_ml_or_dl = (ml_only + dl_only + both) / 30
+print(f"   P(ML or DL) = {p_ml_or_dl:.3f}")
+
+# 2. Coin toss problem
+print("\n2. Coin Toss Problem:")
+n = 5
+k = 3
+p = 0.5
+prob_3_heads = math.comb(n, k) * (p ** k) * ((1-p) ** (n-k))
+print(f"   P(exactly 3 heads in 5 tosses) = {prob_3_heads:.4f}")
+
+# 3. Cards problem
+print("\n3. Cards Problem:")
+p_king = 4/52
+p_heart = 13/52
+p_king_of_hearts = 1/52
+p_king_or_heart = p_king + p_heart - p_king_of_hearts
+print(f"   P(King or Heart) = {p_king_or_heart:.4f}")
+
+# 4. Disease test problem (Bayes' Theorem)
+print("\n4. Disease Test Problem:")
+p_disease = 0.001
+p_positive_given_disease = 0.99
+p_negative_given_no_disease = 0.99
+
+p_positive = (p_positive_given_disease * p_disease + 
+              (1 - p_negative_given_no_disease) * (1 - p_disease))
+p_disease_given_positive = (p_positive_given_disease * p_disease) / p_positive
+print(f"   P(Disease | Positive) = {p_disease_given_positive:.6f}")
+
+# 5. Lottery problem
+print("\n5. Lottery Problem:")
+n_lottery = 49
+k_lottery = 6
+total_combinations = math.comb(n_lottery, k_lottery)
+p_win = 1 / total_combinations
+print(f"   Total combinations: {total_combinations:,}")
+print(f"   P(Winning) = {p_win:.10f}")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise">
+                                <div class="exercise-header">
+                                    <h4>Exercise 3: Hypothesis Testing</h4>
+                                    <span class="difficulty-badge hard">Hard</span>
+                                </div>
+                                <div class="exercise-content">
+                                    <p>A company claims their new algorithm improves accuracy from the current 85%. They test it on 100 samples and get 92 correct predictions.</p>
+                                    <ol>
+                                        <li>Formulate null and alternative hypotheses</li>
+                                        <li>Choose an appropriate statistical test</li>
+                                        <li>Calculate the test statistic and p-value</li>
+                                        <li>Interpret the results at α=0.05</li>
+                                        <li>Calculate a 95% confidence interval for the true accuracy</li>
+                                        <li>Discuss potential Type I and Type II errors</li>
+                                    </ol>
+                                    <div class="solution-section">
+                                        <button class="solution-toggle" onclick="toggleSolution('stats-solution3')">
+                                            <i class="fas fa-code"></i> Show Solution
+                                        </button>
+                                        <div id="stats-solution3" class="solution-content">
+                                            <pre><code>import numpy as np
+from scipy import stats
+import math
+
+print("=== Hypothesis Testing Solution ===")
+
+# Given data
+n = 100
+successes = 92
+p_sample = successes / n
+p_null = 0.85
+alpha = 0.05
+
+print(f"Sample size: {n}")
+print(f"Successes: {successes}")
+print(f"Sample proportion: {p_sample:.3f}")
+print(f"Null hypothesis proportion: {p_null}")
+
+# 1. Hypotheses
+print("\n1. Hypotheses:")
+print("   H₀: p = 0.85 (accuracy hasn't improved)")
+print("   H₁: p > 0.85 (accuracy has improved)")
+
+# 2. Test choice
+print("\n2. Test:")
+print("   One-sample proportion z-test")
+
+# 3. Calculate test statistic and p-value
+# z = (p̂ - p₀) / sqrt(p₀(1-p₀)/n)
+se = math.sqrt(p_null * (1 - p_null) / n)
+z_stat = (p_sample - p_null) / se
+p_value = 1 - stats.norm.cdf(z_stat)  # One-tailed test
+
+print(f"\n3. Calculations:")
+print(f"   Standard Error: {se:.4f}")
+print(f"   z-statistic: {z_stat:.3f}")
+print(f"   p-value: {p_value:.6f}")
+
+# 4. Interpretation
+print("\n4. Interpretation:")
+if p_value < alpha:
+    print(f"   Reject H₀ (p-value {p_value:.4f} < α {alpha})")
+    print("   There is significant evidence that the new algorithm improves accuracy")
+else:
+    print(f"   Fail to reject H₀ (p-value {p_value:.4f} ≥ α {alpha})")
+    print("   No significant evidence that the new algorithm improves accuracy")
+
+# 5. 95% Confidence Interval
+# CI = p̂ ± z* × SE(p̂)
+z_star = stats.norm.ppf(0.975)  # 97.5th percentile for 95% CI
+se_ci = math.sqrt(p_sample * (1 - p_sample) / n)
+ci_lower = p_sample - z_star * se_ci
+ci_upper = p_sample + z_star * se_ci
+
+print(f"\n5. 95% Confidence Interval:")
+print(f"   CI = ({ci_lower:.3f}, {ci_upper:.3f})")
+print(f"   We are 95% confident that the true accuracy is between {ci_lower:.1%} and {ci_upper:.1%}")
+
+# 6. Error discussion
+print("\n6. Potential Errors:")
+print("   Type I Error (α = 0.05):")
+print("   - Concluding algorithm improves when it doesn't")
+print("   - Probability: 5% when H₀ is true")
+print("\n   Type II Error (β):")
+print("   - Failing to detect improvement when it exists")
+print("   - Depends on effect size and sample size")
+print("\n   Power (1-β):")
+print("   - Probability of correctly detecting improvement")</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Resources -->
+                    <section id="resources" class="hour-section">
+                        <div class="hour-header">
+                            <h2><i class="fas fa-book"></i> Additional Resources</h2>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Further Statistical Learning</h3>
+                            
+                            <div class="resource-grid">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h4>Textbooks & References</h4>
+                                    <ul>
+                                        <li>Introduction to Statistical Learning (James et al.)</li>
+                                        <li>Statistics for Business & Economics (Anderson et al.)</li>
+                                        <li>Naked Statistics (Charles Wheelan)</li>
+                                        <li>Think Stats (Allen Downey)</li>
+                                        <li>OpenIntro Statistics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h4>Online Courses</h4>
+                                    <ul>
+                                        <li>Statistics with Python - Coursera</li>
+                                        <li>Intro to Inferential Statistics - Udacity</li>
+                                        <li>Probability & Statistics - Khan Academy</li>
+                                        <li>Statistical Thinking - DataCamp</li>
+                                        <li>Statistics for Data Science - edX</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>Practice Platforms</h4>
+                                    <ul>
+                                        <li>Kaggle Statistics Micro-Courses</li>
+                                        <li>Brilliant.org Probability</li>
+                                        <li>Stat Trek Tutorials</li>
+                                        <li>Wolfram Alpha Statistics</li>
+                                        <li>R-bloggers Statistics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Statistical Software</h4>
+                                    <ul>
+                                        <li>Python: SciPy, Statsmodels</li>
+                                        <li>R: Comprehensive Statistics</li>
+                                        <li>JMP: Visual Statistics</li>
+                                        <li>Minitab: Quality Statistics</li>
+                                        <li>SPSS: Social Science Stats</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="cheat-sheet">
+                                <h4><i class="fas fa-scroll"></i> Statistics Cheat Sheet</h4>
+                                <div class="cheat-sheet-grid">
+                                    <div class="cheat-section">
+                                        <h5>Descriptive Statistics</h5>
+                                        <ul>
+                                            <li><strong>Mean:</strong> Σx/n</li>
+                                            <li><strong>Median:</strong> Middle value</li>
+                                            <li><strong>Mode:</strong> Most frequent</li>
+                                            <li><strong>Variance:</strong> Σ(x-μ)²/n</li>
+                                            <li><strong>Std Dev:</strong> √Variance</li>
+                                            <li><strong>IQR:</strong> Q3 - Q1</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheat-section">
+                                        <h5>Probability Rules</h5>
+                                        <ul>
+                                            <li><strong>Addition:</strong> P(A∪B) = P(A) + P(B) - P(A∩B)</li>
+                                            <li><strong>Multiplication:</strong> P(A∩B) = P(A) × P(B|A)</li>
+                                            <li><strong>Complement:</strong> P(A') = 1 - P(A)</li>
+                                            <li><strong>Conditional:</strong> P(A|B) = P(A∩B)/P(B)</li>
+                                            <li><strong>Bayes':</strong> P(A|B) = P(B|A)P(A)/P(B)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheat-section">
+                                        <h5>Common Distributions</h5>
+                                        <ul>
+                                            <li><strong>Normal:</strong> N(μ, σ²)</li>
+                                            <li><strong>Binomial:</strong> B(n, p)</li>
+                                            <li><strong>Poisson:</strong> Pois(λ)</li>
+                                            <li><strong>Uniform:</strong> U(a, b)</li>
+                                            <li><strong>Exponential:</strong> Exp(λ)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="cheat-section">
+                                        <h5>Hypothesis Testing</h5>
+                                        <ul>
+                                            <li><strong>Significance:</strong> α = 0.05</li>
+                                            <li><strong>Power:</strong> 1 - β</li>
+                                            <li><strong>Type I Error:</strong> Reject true H₀</li>
+                                            <li><strong>Type II Error:</strong> Fail to reject false H₀</li>
+                                            <li><strong>p-value:</strong> P(data|H₀)</li>
+                                            <li><strong>CI:</strong> Parameter ± margin</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pro-tip">
+                                <h4><i class="fas fa-lightbulb"></i> Pro Tip: Statistical Thinking</h4>
+                                <p>Master statistics through practice, not just theory:</p>
+                                <ol>
+                                    <li><strong>Always visualize data first</strong> - Create histograms, box plots, scatter plots</li>
+                                    <li><strong>Understand assumptions</strong> - Know when to use parametric vs non-parametric tests</li>
+                                    <li><strong>Focus on effect sizes</strong> - Statistical significance ≠ practical significance</li>
+                                    <li><strong>Consider multiple testing</strong> - Adjust p-values for multiple comparisons</li>
+                                    <li><strong>Validate with resampling</strong> - Use bootstrap for confidence intervals</li>
+                                </ol>
+                                <p>Statistics is the language of data science. Invest time in mastering it!</p>
+                            </div>
+                            
+                            <div class="next-steps">
+                                <h4><i class="fas fa-arrow-right"></i> Next Steps in Curriculum</h4>
+                                <div class="next-topics">
+                                    <div class="topic-preview">
+                                        <h5>Module 4: ML Algorithms - I</h5>
+                                        <p>Linear regression, logistic regression, and evaluation metrics.</p>
+                                        <span class="duration">6 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 5: ML Algorithms - II</h5>
+                                        <p>Decision trees, random forests, and clustering algorithms.</p>
+                                        <span class="duration">6 hours</span>
+                                    </div>
+                                    <div class="topic-preview">
+                                        <h5>Module 6: Advanced Topics</h5>
+                                        <p>Neural networks, deep learning, and deployment.</p>
+                                        <span class="duration">8 hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI & ML Guide</h3>
+                    <p>Comprehensive learning resource for BCA students</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#topics">All Topics</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For queries: aiguide@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI & ML Guide for BCA Students. All rights reserved.</p>
+                <p class="disclaimer">This content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Statistics Module JavaScript
+        
+        // Central Tendency Calculator
+        function calculateCentralTendency() {
+            const dataInput = document.getElementById('data-input').value;
+            const outlier = parseFloat(document.getElementById('outlier').value);
+            
+            // Parse data
+            let data = dataInput.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+            
+            // Add outlier
+            if (!isNaN(outlier)) {
+                data.push(outlier);
+            }
+            
+            if (data.length === 0) {
+                document.getElementById('central-tendency-results').innerHTML = 
+                    '<div class="error">Please enter valid numbers</div>';
+                return;
+            }
+            
+            // Sort data for median calculation
+            const sortedData = [...data].sort((a, b) => a - b);
+            
+            // Calculate statistics
+            const sum = data.reduce((a, b) => a + b, 0);
+            const mean = sum / data.length;
+            const median = data.length % 2 === 0 ? 
+                (sortedData[data.length/2 - 1] + sortedData[data.length/2]) / 2 :
+                sortedData[Math.floor(data.length/2)];
+            
+            // Calculate mode
+            const frequency = {};
+            data.forEach(num => {
+                frequency[num] = (frequency[num] || 0) + 1;
+            });
+            let maxFreq = 0;
+            let modes = [];
+            for (const [num, freq] of Object.entries(frequency)) {
+                if (freq > maxFreq) {
+                    maxFreq = freq;
+                    modes = [parseFloat(num)];
+                } else if (freq === maxFreq) {
+                    modes.push(parseFloat(num));
+                }
+            }
+            
+            // Calculate trimmed mean (10%)
+            const trimCount = Math.floor(data.length * 0.1);
+            const trimmedData = sortedData.slice(trimCount, data.length - trimCount);
+            const trimmedMean = trimmedData.reduce((a, b) => a + b, 0) / trimmedData.length;
+            
+            const results = `
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h5>Dataset</h5>
+                        <p>${data.length} values: [${data.slice(0, 10).join(', ')}${data.length > 10 ? '...' : ''}]</p>
+                    </div>
+                    <div class="result-card">
+                        <h5>Mean (Average)</h5>
+                        <div class="result-value">${mean.toFixed(2)}</div>
+                        <p>Σx/n = ${sum} / ${data.length}</p>
+                    </div>
+                    <div class="result-card">
+                        <h5>Median</h5>
+                        <div class="result-value">${median.toFixed(2)}</div>
+                        <p>Middle value of sorted data</p>
+                    </div>
+                    <div class="result-card">
+                        <h5>Mode</h5>
+                        <div class="result-value">${modes.join(', ')}</div>
+                        <p>Appears ${maxFreq} time${maxFreq > 1 ? 's' : ''}</p>
+                    </div>
+                    <div class="result-card">
+                        <h5>Trimmed Mean (10%)</h5>
+                        <div class="result-value">${trimmedMean.toFixed(2)}</div>
+                        <p>Removed ${trimCount} values from each end</p>
+                    </div>
+                    <div class="result-card">
+                        <h5>Comparison</h5>
+                        <p>Mean affected by outlier: ${Math.abs(mean - trimmedMean) > 1 ? 'Yes' : 'No'}</p>
+                        <p>Median robust to outlier: ${Math.abs(median - trimmedMean) < 1 ? 'Yes' : 'No'}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('central-tendency-results').innerHTML = results;
+        }
+        
+        // Probability Simulation
+        function runProbabilitySimulation() {
+            const type = document.getElementById('simulation-type').value;
+            const trials = parseInt(document.getElementById('trials').value);
+            
+            let results = `<h5>Simulation Results (${trials.toLocaleString()} trials)</h5>`;
+            
+            switch(type) {
+                case 'coin':
+                    let heads = 0;
+                    for (let i = 0; i < trials; i++) {
+                        if (Math.random() < 0.5) heads++;
+                    }
+                    const pHeads = heads / trials;
+                    results += `
+                        <div class="simulation-result">
+                            <p>Heads: ${heads} (${(pHeads * 100).toFixed(2)}%)</p>
+                            <p>Tails: ${trials - heads} (${((1 - pHeads) * 100).toFixed(2)}%)</p>
+                            <p>Theoretical: 50% heads, 50% tails</p>
+                            <p>Difference: ${Math.abs(pHeads - 0.5) * 100}%</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'dice':
+                    const counts = [0, 0, 0, 0, 0, 0];
+                    for (let i = 0; i < trials; i++) {
+                        const roll = Math.floor(Math.random() * 6);
+                        counts[roll]++;
+                    }
+                    results += '<div class="simulation-result"><p>Die Face Frequencies:</p><ul>';
+                    counts.forEach((count, index) => {
+                        const p = count / trials;
+                        results += `<li>${index + 1}: ${count} (${(p * 100).toFixed(2)}%) - Theoretical: 16.67%</li>`;
+                    });
+                    results += '</ul></div>';
+                    break;
+                    
+                case 'cards':
+                    // Simulate drawing a card
+                    const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+                    const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+                    
+                    let aceCount = 0;
+                    let heartCount = 0;
+                    let aceHeartCount = 0;
+                    
+                    for (let i = 0; i < trials; i++) {
+                        const suit = suits[Math.floor(Math.random() * 4)];
+                        const rank = ranks[Math.floor(Math.random() * 13)];
+                        
+                        if (rank === 'A') aceCount++;
+                        if (suit === 'Hearts') heartCount++;
+                        if (rank === 'A' && suit === 'Hearts') aceHeartCount++;
+                    }
+                    
+                    results += `
+                        <div class="simulation-result">
+                            <p>Aces: ${aceCount} (${(aceCount/trials*100).toFixed(2)}%) - Theoretical: 7.69%</p>
+                            <p>Hearts: ${heartCount} (${(heartCount/trials*100).toFixed(2)}%) - Theoretical: 25%</p>
+                            <p>Ace of Hearts: ${aceHeartCount} (${(aceHeartCount/trials*100).toFixed(2)}%) - Theoretical: 1.92%</p>
+                            <p>P(Ace or Heart) simulated: ${((aceCount + heartCount - aceHeartCount)/trials*100).toFixed(2)}%</p>
+                            <p>P(Ace or Heart) theoretical: 30.77%</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'birthday':
+                    // Birthday paradox simulation
+                    const people = 23;
+                    let matches = 0;
+                    
+                    for (let t = 0; t < trials; t++) {
+                        const birthdays = [];
+                        let hasMatch = false;
+                        
+                        for (let i = 0; i < people; i++) {
+                            const day = Math.floor(Math.random() * 365);
+                            if (birthdays.includes(day)) {
+                                hasMatch = true;
+                                break;
+                            }
+                            birthdays.push(day);
+                        }
+                        
+                        if (hasMatch) matches++;
+                    }
+                    
+                    const pMatch = matches / trials;
+                    const theoretical = 1 - (364/365) ** (people*(people-1)/2);
+                    
+                    results += `
+                        <div class="simulation-result">
+                            <p>Birthday Paradox with ${people} people</p>
+                            <p>Matches found in: ${matches} trials (${(pMatch * 100).toFixed(2)}%)</p>
+                            <p>Theoretical probability: ${(theoretical * 100).toFixed(2)}%</p>
+                            <p>Difference: ${Math.abs(pMatch - theoretical) * 100}%</p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            document.getElementById('probability-results').innerHTML = results;
+        }
+        
+        // Distribution Visualization
+        function showDistribution(distType) {
+            // Hide all distribution contents
+            document.querySelectorAll('.distribution-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.distribution-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected distribution
+            document.getElementById(`${distType}-dist`).classList.add('active');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+        }
+        
+        function updateDistributionPlot() {
+            const distType = document.getElementById('dist-type').value;
+            const paramControls = document.querySelector('.parameter-controls');
+            
+            let html = '';
+            
+            switch(distType) {
+                case 'normal':
+                    html = `
+                        <div class="input-group">
+                            <label for="mean">Mean (μ):</label>
+                            <input type="number" id="mean" value="0" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="std">Std Dev (σ):</label>
+                            <input type="number" id="std" value="1" step="0.1" min="0.1">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'binomial':
+                    html = `
+                        <div class="input-group">
+                            <label for="n_trials">n (trials):</label>
+                            <input type="number" id="n_trials" value="10" min="1" max="100">
+                        </div>
+                        <div class="input-group">
+                            <label for="p_success">p (success):</label>
+                            <input type="number" id="p_success" value="0.5" min="0" max="1" step="0.1">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'poisson':
+                    html = `
+                        <div class="input-group">
+                            <label for="lambda">λ (rate):</label>
+                            <input type="number" id="lambda" value="3" min="0.1" step="0.1">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'uniform':
+                    html = `
+                        <div class="input-group">
+                            <label for="a">a (lower):</label>
+                            <input type="number" id="a" value="0" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="b">b (upper):</label>
+                            <input type="number" id="b" value="1" step="0.1">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'exponential':
+                    html = `
+                        <div class="input-group">
+                            <label for="lambda_exp">λ (rate):</label>
+                            <input type="number" id="lambda_exp" value="1" min="0.1" step="0.1">
+                        </div>
+                    `;
+                    break;
+            }
+            
+            paramControls.innerHTML = html;
+        }
+        
+        function generateDistribution() {
+            const distType = document.getElementById('dist-type').value;
+            let plotContent = '';
+            
+            switch(distType) {
+                case 'normal':
+                    const mean = parseFloat(document.getElementById('mean').value);
+                    const std = parseFloat(document.getElementById('std').value);
+                    plotContent = `
+                        <h5>Normal Distribution: N(${mean}, ${std}²)</h5>
+                        <p>PDF: f(x) = (1/(σ√(2π))) * exp(-(x-μ)²/(2σ²))</p>
+                        <div class="distribution-facts">
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Mean = ${mean}</li>
+                                <li>Variance = ${(std*std).toFixed(2)}</li>
+                                <li>68% within [${(mean - std).toFixed(2)}, ${(mean + std).toFixed(2)}]</li>
+                                <li>95% within [${(mean - 2*std).toFixed(2)}, ${(mean + 2*std).toFixed(2)}]</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'binomial':
+                    const n = parseInt(document.getElementById('n_trials').value);
+                    const p = parseFloat(document.getElementById('p_success').value);
+                    const meanBin = n * p;
+                    const varBin = n * p * (1 - p);
+                    plotContent = `
+                        <h5>Binomial Distribution: B(${n}, ${p})</h5>
+                        <p>PMF: P(X=k) = C(n,k) * p^k * (1-p)^{n-k}</p>
+                        <div class="distribution-facts">
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Mean = n*p = ${meanBin.toFixed(2)}</li>
+                                <li>Variance = n*p*(1-p) = ${varBin.toFixed(2)}</li>
+                                <li>Mode = floor((n+1)*p) = ${Math.floor((n+1)*p)}</li>
+                                <li>Most likely outcomes: ${Math.max(0, Math.floor(meanBin - Math.sqrt(varBin)))} to ${Math.min(n, Math.ceil(meanBin + Math.sqrt(varBin)))}</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'poisson':
+                    const lambda = parseFloat(document.getElementById('lambda').value);
+                    plotContent = `
+                        <h5>Poisson Distribution: Pois(${lambda})</h5>
+                        <p>PMF: P(X=k) = (λ^k * e^{-λ}) / k!</p>
+                        <div class="distribution-facts">
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Mean = ${lambda}</li>
+                                <li>Variance = ${lambda}</li>
+                                <li>Standard deviation = ${Math.sqrt(lambda).toFixed(2)}</li>
+                                <li>Mode = floor(λ) = ${Math.floor(lambda)}</li>
+                                <li>Probability of 0 events: ${Math.exp(-lambda).toFixed(4)}</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            document.getElementById('distribution-plot').innerHTML = plotContent;
+        }
+        
+        // Permutation & Combination Calculator
+        function calculatePermComb() {
+            const n = parseInt(document.getElementById('n-value').value);
+            const r = parseInt(document.getElementById('r-value').value);
+            const calcType = document.getElementById('calc-type').value;
+            
+            if (r > n) {
+                document.getElementById('perm-comb-results').innerHTML = 
+                    '<div class="error">r cannot be greater than n</div>';
+                return;
+            }
+            
+            let result, formula, explanation;
+            
+            if (calcType === 'permutation') {
+                result = factorial(n) / factorial(n - r);
+                formula = `nPr = n!/(n-r)! = ${n}!/(${n}-${r})!`;
+                explanation = `Number of ways to arrange ${r} items from ${n} items when order matters`;
+            } else {
+                result = factorial(n) / (factorial(r) * factorial(n - r));
+                formula = `nCr = n!/(r!(n-r)!) = ${n}!/(${r}!(${n}-${r})!)`;
+                explanation = `Number of ways to choose ${r} items from ${n} items when order doesn't matter`;
+            }
+            
+            const results = `
+                <div class="perm-comb-result">
+                    <h5>${calcType === 'permutation' ? 'Permutation' : 'Combination'} Calculation</h5>
+                    <div class="formula-display">${formula}</div>
+                    <div class="result-value">${result.toLocaleString()}</div>
+                    <p>${explanation}</p>
+                    
+                    <div class="comparison">
+                        <p><strong>For comparison:</strong></p>
+                        <ul>
+                            <li>Permutations: ${(factorial(n) / factorial(n - r)).toLocaleString()}</li>
+                            <li>Combinations: ${(factorial(n) / (factorial(r) * factorial(n - r))).toLocaleString()}</li>
+                            <li>Permutations with repetition: ${Math.pow(n, r).toLocaleString()}</li>
+                            <li>Combinations with repetition: ${(factorial(n + r - 1) / (factorial(r) * factorial(n - 1))).toLocaleString()}</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('perm-comb-results').innerHTML = results;
+        }
+        
+        // Helper function for factorial
+        function factorial(num) {
+            if (num < 0) return NaN;
+            if (num === 0 || num === 1) return 1;
+            
+            let result = 1;
+            for (let i = 2; i <= num; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        
+        // Hypothesis Testing Simulation
+        function runHypothesisTest() {
+            const testType = document.getElementById('test-type').value;
+            const alpha = parseFloat(document.getElementById('alpha-level').value);
+            const sampleSize = parseInt(document.getElementById('sample-size').value);
+            
+            let results = `<h5>Hypothesis Test Simulation (α = ${alpha})</h5>`;
+            
+            switch(testType) {
+                case 'onesample':
+                    // Simulate one-sample t-test
+                    const popMean = 100;
+                    const sampleMean = 105 + (Math.random() * 10 - 5); // Random around 105
+                    const sampleStd = 15;
+                    
+                    const tStat = (sampleMean - popMean) / (sampleStd / Math.sqrt(sampleSize));
+                    const pValue = 2 * (1 - tCDF(Math.abs(tStat), sampleSize - 1)); // Two-tailed
+                    
+                    results += `
+                        <div class="test-result">
+                            <p><strong>One-sample t-test</strong></p>
+                            <p>H₀: μ = ${popMean}</p>
+                            <p>H₁: μ ≠ ${popMean} (two-tailed)</p>
+                            <p>Sample mean: ${sampleMean.toFixed(2)}</p>
+                            <p>Sample size: ${sampleSize}</p>
+                            <p>t-statistic: ${tStat.toFixed(3)}</p>
+                            <p>p-value: ${pValue.toFixed(4)}</p>
+                            <p class="${pValue < alpha ? 'reject' : 'fail-reject'}">
+                                ${pValue < alpha ? 'Reject H₀' : 'Fail to reject H₀'}
+                            </p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'twosample':
+                    // Simulate two-sample t-test
+                    const mean1 = 100;
+                    const mean2 = 110;
+                    const std = 15;
+                    
+                    // Generate sample data
+                    const sample1 = Array.from({length: sampleSize}, () => mean1 + std * (Math.random() - 0.5));
+                    const sample2 = Array.from({length: sampleSize}, () => mean2 + std * (Math.random() - 0.5));
+                    
+                    const meanDiff = mean(sample2) - mean(sample1);
+                    const pooledStd = Math.sqrt((variance(sample1) + variance(sample2)) / 2);
+                    const tStat2 = meanDiff / (pooledStd * Math.sqrt(2/sampleSize));
+                    const pValue2 = 2 * (1 - tCDF(Math.abs(tStat2), 2*sampleSize - 2));
+                    
+                    results += `
+                        <div class="test-result">
+                            <p><strong>Two-sample t-test</strong></p>
+                            <p>H₀: μ₁ = μ₂</p>
+                            <p>H₁: μ₁ ≠ μ₂ (two-tailed)</p>
+                            <p>Group 1 mean: ${mean(sample1).toFixed(2)}</p>
+                            <p>Group 2 mean: ${mean(sample2).toFixed(2)}</p>
+                            <p>Mean difference: ${meanDiff.toFixed(2)}</p>
+                            <p>t-statistic: ${tStat2.toFixed(3)}</p>
+                            <p>p-value: ${pValue2.toFixed(4)}</p>
+                            <p class="${pValue2 < alpha ? 'reject' : 'fail-reject'}">
+                                ${pValue2 < alpha ? 'Reject H₀' : 'Fail to reject H₀'}
+                            </p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            document.getElementById('hypothesis-results').innerHTML = results;
+        }
+        
+        // Helper functions for hypothesis testing
+        function mean(arr) {
+            return arr.reduce((a, b) => a + b, 0) / arr.length;
+        }
+        
+        function variance(arr) {
+            const m = mean(arr);
+            return arr.reduce((a, b) => a + Math.pow(b - m, 2), 0) / (arr.length - 1);
+        }
+        
+        // Approximate t-distribution CDF
+        function tCDF(t, df) {
+            // Simple approximation for demonstration
+            const x = df / (df + t * t);
+            const a = df / 2;
+            const b = 0.5;
+            
+            // Incomplete beta function approximation
+            let bt = Math.exp(lgamma(a + b) - lgamma(a) - lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+            
+            if (x < (a + 1) / (a + b + 2)) {
+                return bt * betacf(x, a, b) / a;
+            } else {
+                return 1 - bt * betacf(1 - x, b, a) / b;
+            }
+        }
+        
+        function lgamma(x) {
+            // Log gamma approximation
+            const p = [
+                676.5203681218851,
+                -1259.1392167224028,
+                771.32342877765313,
+                -176.61502916214059,
+                12.507343278686905,
+                -0.13857109526572012,
+                9.9843695780195716e-6,
+                1.5056327351493116e-7
+            ];
+            
+            if (x < 0.5) {
+                return Math.log(Math.PI) - Math.log(Math.sin(Math.PI * x)) - lgamma(1 - x);
+            }
+            
+            x -= 1;
+            let a = 0.99999999999980993;
+            const t = x + 7.5;
+            
+            for (let i = 0; i < p.length; i++) {
+                a += p[i] / (x + i + 1);
+            }
+            
+            return 0.5 * Math.log(2 * Math.PI) + (x + 0.5) * Math.log(t) - t + Math.log(a);
+        }
+        
+        function betacf(x, a, b) {
+            // Continued fraction for incomplete beta function
+            const maxIterations = 100;
+            const eps = 3.0e-7;
+            
+            let am = 1;
+            let bm = 1;
+            let az = 1;
+            
+            let qab = a + b;
+            let qap = a + 1;
+            let qam = a - 1;
+            let bz = 1 - qab * x / qap;
+            
+            for (let m = 1; m <= maxIterations; m++) {
+                const em = m;
+                const tem = em + em;
+                let d = em * (b - m) * x / ((qam + tem) * (a + tem));
+                let ap = az + d * am;
+                let bp = bz + d * bm;
+                d = -(a + em) * (qab + em) * x / ((a + tem) * (qap + tem));
+                const app = ap + d * az;
+                const bpp = bp + d * bz;
+                const aold = az;
+                am = ap / bpp;
+                bm = bp / bpp;
+                az = app / bpp;
+                bz = 1;
+                
+                if (Math.abs(az - aold) < eps * Math.abs(az)) {
+                    return az;
+                }
+            }
+            
+            return az;
+        }
+        
+        // Toggle solution visibility
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize distribution parameters
+            updateDistributionPlot();
+            
+            // Add copy buttons to code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                if (!pre.parentElement.classList.contains('code-example')) return;
+                
+                const button = document.createElement('button');
+                button.className = 'copy-code';
+                button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                button.onclick = function() {
+                    const code = pre.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="far fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                };
+                
+                if (!pre.parentElement.querySelector('.example-header')) {
+                    const header = document.createElement('div');
+                    header.className = 'example-header';
+                    header.innerHTML = '<span>Code Example</span>';
+                    header.appendChild(button);
+                    pre.parentElement.insertBefore(header, pre);
+                } else {
+                    pre.parentElement.querySelector('.example-header').appendChild(button);
+                }
+            });
+            
+            // Mark as complete functionality
+            const completeBtn = document.querySelector('.completed');
+            if (completeBtn) {
+                completeBtn.addEventListener('click', function() {
+                    const isComplete = this.classList.contains('completed-active');
+                    this.classList.toggle('completed-active');
+                    this.innerHTML = isComplete ? 
+                        '<i class="far fa-check-circle"></i> Mark Complete' : 
+                        '<i class="fas fa-check-circle"></i> Completed!';
+                    
+                    localStorage.setItem('statistics-ai-complete', !isComplete);
+                    
+                    if (!isComplete) {
+                        alert('🎉 Congratulations! You have completed Statistics for AI module!');
+                    }
+                });
+                
+                if (localStorage.getItem('statistics-ai-complete') === 'true') {
+                    completeBtn.classList.add('completed-active');
+                    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed!';
+                }
+            }
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
